@@ -1,0 +1,14 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="32" fill="#FFF5E7"/>
+  <rect x="96" y="96" width="1408" height="708" rx="24" fill="white" fill-opacity="0.72" stroke="#6A4313" stroke-opacity="0.45" stroke-width="4"/>
+  <rect x="160" y="160" width="700" height="28" rx="14" fill="#6A4313" fill-opacity="0.5"/>
+  <rect x="160" y="224" width="1180" height="18" rx="9" fill="#6A4313" fill-opacity="0.22"/>
+  <rect x="160" y="262" width="1050" height="18" rx="9" fill="#6A4313" fill-opacity="0.18"/>
+  <rect x="160" y="360" width="540" height="300" rx="20" fill="#6A4313" fill-opacity="0.12"/>
+  <rect x="748" y="360" width="692" height="38" rx="19" fill="#6A4313" fill-opacity="0.26"/>
+  <rect x="748" y="430" width="540" height="18" rx="9" fill="#6A4313" fill-opacity="0.18"/>
+  <rect x="748" y="468" width="612" height="18" rx="9" fill="#6A4313" fill-opacity="0.18"/>
+  <rect x="748" y="506" width="570" height="18" rx="9" fill="#6A4313" fill-opacity="0.18"/>
+  <rect x="748" y="584" width="250" height="56" rx="28" fill="#DD8A1D"/>
+  <text x="160" y="770" fill="#6A4313" fill-opacity="0.72" font-family="Arial, sans-serif" font-size="58" font-weight="700">PROJECT 03</text>
+</svg>
