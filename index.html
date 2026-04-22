@@ -15,16 +15,14 @@
   <main>
     <section class="hero" id="hero">
       <div class="container hero-layout">
-        <div class="hero-copy">
+        <div class="hero-copy" aria-label="Hero 텍스트+배경형 영역">
           <p class="eyebrow">INTRODUCTION PAGE WIREFRAME</p>
           <h1>게임 시스템 기획자 지망</h1>
           <p>
             플레이 흐름의 막힘을 먼저 찾고, 구현 가능한 조건과 규칙으로 정리해,
             팀이 같은 기준으로 움직일 수 있게 연결하는 사람이라는 점을 보여주기 위한 자기소개서형 페이지입니다.
           </p>
-        </div>
-        <div class="hero-visual" aria-label="Hero 이미지 플레이스홀더">
-          <span>Hero 이미지 플레이스홀더<br>추후 확정 이미지 영역</span>
+          <p class="hero-note">배경형 Hero 와이어프레임 (이미지/그래픽 확정 전)</p>
         </div>
       </div>
     </section>
@@ -35,6 +33,8 @@
         <div class="profile-copy">
           <h2>Profile</h2>
           <p class="name">홍길동 (가명)</p>
+          <p class="profile-meta"><strong>전공:</strong> 게임기획 전공</p>
+          <p class="profile-meta"><strong>희망 직무:</strong> 게임 시스템 기획자</p>
           <p>
             저는 기획을 "아이디어 제시"보다 "사용자 경험을 구현 가능한 흐름으로 정리하는 작업"으로 이해합니다.
             모호한 요구를 조건으로 번역하고, 팀 간 해석 차이를 줄이는 문서 기준을 만드는 데 강점을 갖고 있습니다.
@@ -172,11 +172,11 @@
   </main>
 
   <div class="modal-backdrop" id="modalBackdrop" hidden>
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="상세 정보 모달">
       <button type="button" class="modal-close" id="modalClose" aria-label="닫기">×</button>
-      <h3 id="modalTitle">상세 내용</h3>
       <div class="modal-media">상세 이미지/영상 플레이스홀더</div>
-      <p id="modalBody"></p>
+      <p class="modal-description-label">설명 텍스트 영역</p>
+      <p id="modalBody">플레이스홀더 아래에 표시될 상세 설명 텍스트</p>
     </div>
   </div>
 </body>
