@@ -68,12 +68,15 @@ if (closeButton) {
   closeButton.addEventListener('click', closeModal);
 }
 
+function handleBackdropClose(event) {
+  if (event.target === backdrop) {
+    closeModal();
+  }
+}
+
 if (backdrop) {
-  backdrop.addEventListener('click', (event) => {
-    if (event.target === backdrop) {
-      closeModal();
-    }
-  });
+  backdrop.addEventListener('click', handleBackdropClose);
+  backdrop.addEventListener('touchstart', handleBackdropClose, { passive: true });
 }
 
 window.addEventListener('keydown', (event) => {

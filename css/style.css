@@ -88,6 +88,10 @@ p { margin: 0 0 1rem; }
   font-weight: 600;
 }
 
+.modal-test-trigger {
+  margin-top: 1.1rem;
+}
+
 .profile-photo,
 .media-placeholder,
 .modal-media {
