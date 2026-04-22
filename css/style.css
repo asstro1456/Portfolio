@@ -9,8 +9,8 @@
   --max: 1180px;
   --profile-photo-width: 236px;
   --profile-gap: 32px;
-  --summary-width: 600px;
-  --scene-card-width: 640px;
+  --summary-width: 720px;
+  --scene-card-width: 760px;
 }
 
 * { box-sizing: border-box; }
@@ -146,6 +146,12 @@ p { margin: 0 0 1rem; }
   gap: calc(var(--profile-gap) * var(--layout-scale));
 }
 
+.profile-side {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
 .profile-photo {
   width: 100%;
   aspect-ratio: 3 / 4;
@@ -153,6 +159,37 @@ p { margin: 0 0 1rem; }
   border-radius: 20px;
   overflow: hidden;
   justify-self: start;
+}
+
+.profile-contact {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: linear-gradient(180deg, #fbfcfd 0%, #f4f7fa 100%);
+  overflow: hidden;
+}
+
+.contact-item {
+  padding: .9rem 1rem;
+  border-bottom: 1px solid #dde4ea;
+}
+
+.contact-item:last-child {
+  border-bottom: 0;
+}
+
+.contact-label {
+  display: block;
+  margin-bottom: .35rem;
+  font-size: .78rem;
+  letter-spacing: .08em;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.contact-value {
+  display: block;
+  font-size: .98rem;
+  color: #22384f;
 }
 
 .profile-copy {
@@ -484,8 +521,8 @@ body.modal-open {
     --max: 980px;
     --profile-photo-width: 214px;
     --profile-gap: 26px;
-    --summary-width: 520px;
-    --scene-card-width: 560px;
+    --summary-width: 660px;
+    --scene-card-width: 680px;
   }
 
   .grid.three,

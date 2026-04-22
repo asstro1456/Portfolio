@@ -12,7 +12,7 @@
   <script src="js/main.js" defer></script>
 </head>
 <body>
-  <div class="version-bar" aria-label="페이지 버전">Version 0.0.12</div>
+  <div class="version-bar" aria-label="페이지 버전">Version 0.0.13</div>
   <main>
     <section class="hero" id="hero">
       <div class="container hero-layout">
@@ -33,7 +33,19 @@
 
     <section class="section" id="profile">
       <div class="container profile-grid">
-        <div class="profile-photo" aria-label="프로필 사진 플레이스홀더">Photo Placeholder</div>
+        <div class="profile-side">
+          <div class="profile-photo" aria-label="프로필 사진 플레이스홀더">Photo Placeholder</div>
+          <div class="profile-contact" aria-label="연락처 정보">
+            <div class="contact-item">
+              <span class="contact-label">전화번호</span>
+              <strong class="contact-value">010-1234-5678</strong>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">이메일</span>
+              <strong class="contact-value">hello@example.com</strong>
+            </div>
+          </div>
+        </div>
         <div class="profile-copy">
           <h2>Profile</h2>
           <div class="profile-summary" aria-label="프로필 요약 정보">
@@ -64,8 +76,6 @@
             <li>검토 루프 운영</li>
           </ul>
           <div class="profile-links">
-            <a href="#">이메일</a>
-            <a href="#">GitHub</a>
             <a href="#">Notion</a>
           </div>
         </div>
