@@ -36,6 +36,7 @@ const modalData = {
 const backdrop = document.getElementById('modalBackdrop');
 const modalBody = document.getElementById('modalBody');
 const closeButton = document.getElementById('modalClose');
+const modal = backdrop ? backdrop.querySelector('.modal') : null;
 const triggers = document.querySelectorAll('.open-modal');
 
 let lastScrollY = 0;
@@ -65,7 +66,13 @@ triggers.forEach((button) => {
 });
 
 if (closeButton) {
-  closeButton.addEventListener('click', closeModal);
+  const handleCloseButton = (event) => {
+    event.preventDefault();
+    closeModal();
+  };
+
+  closeButton.addEventListener('click', handleCloseButton);
+  closeButton.addEventListener('touchend', handleCloseButton, { passive: false });
 }
 
 function handleBackdropClose(event) {
@@ -76,7 +83,17 @@ function handleBackdropClose(event) {
 
 if (backdrop) {
   backdrop.addEventListener('click', handleBackdropClose);
-  backdrop.addEventListener('touchstart', handleBackdropClose, { passive: true });
+  backdrop.addEventListener('touchend', handleBackdropClose, { passive: true });
+}
+
+if (modal) {
+  modal.addEventListener('click', (event) => {
+    event.stopPropagation();
+  });
+
+  modal.addEventListener('touchend', (event) => {
+    event.stopPropagation();
+  }, { passive: true });
 }
 
 window.addEventListener('keydown', (event) => {
