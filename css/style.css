@@ -17,6 +17,17 @@ body {
   line-height: 1.65;
 }
 
+.version-bar {
+  padding: .55rem 1rem;
+  border-bottom: 1px solid var(--line);
+  background: #e9edf1;
+  color: #39414a;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
 .container {
   width: min(calc(100% - 2rem), var(--max));
   margin: 0 auto;
