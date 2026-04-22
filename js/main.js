@@ -38,6 +38,9 @@ const modalBody = document.getElementById('modalBody');
 const closeButton = document.getElementById('modalClose');
 const modal = backdrop ? backdrop.querySelector('.modal') : null;
 const triggers = document.querySelectorAll('.open-modal');
+const sliderButtons = document.querySelectorAll('.scene-nav');
+const sceneSlider = document.getElementById('sceneSlider');
+const sceneSliderDots = document.getElementById('sceneSliderDots');
 
 let lastScrollY = 0;
 
@@ -69,6 +72,86 @@ triggers.forEach((button) => {
       event.preventDefault();
       openModal(button.dataset.modal);
     }
+  });
+});
+
+function centerCardInSlider(slider, direction) {
+  const cards = Array.from(slider.children);
+  if (!cards.length) return;
+
+  const currentIndex = getCenteredCardIndex(slider);
+  const nextIndex = Math.max(0, Math.min(cards.length - 1, currentIndex + direction));
+  scrollCardToCenter(slider, cards[nextIndex]);
+}
+
+function getCenteredCardIndex(slider) {
+  const cards = Array.from(slider.children);
+  const sliderCenter = slider.scrollLeft + (slider.clientWidth / 2);
+  let currentIndex = 0;
+  let minDistance = Number.POSITIVE_INFINITY;
+
+  cards.forEach((card, index) => {
+    const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+    const distance = Math.abs(cardCenter - sliderCenter);
+
+    if (distance < minDistance) {
+      minDistance = distance;
+      currentIndex = index;
+    }
+  });
+
+  return currentIndex;
+}
+
+function scrollCardToCenter(slider, card) {
+  const targetLeft = card.offsetLeft - ((slider.clientWidth - card.offsetWidth) / 2);
+
+  slider.scrollTo({
+    left: Math.max(0, targetLeft),
+    behavior: 'smooth'
+  });
+}
+
+function updateSceneDots(activeIndex) {
+  if (!sceneSliderDots) return;
+
+  Array.from(sceneSliderDots.children).forEach((dot, index) => {
+    dot.classList.toggle('is-active', index === activeIndex);
+    dot.setAttribute('aria-pressed', index === activeIndex ? 'true' : 'false');
+  });
+}
+
+if (sceneSlider && sceneSliderDots) {
+  const cards = Array.from(sceneSlider.children);
+
+  cards.forEach((card, index) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'scene-dot';
+    dot.setAttribute('aria-label', `${index + 1}번 카드 보기`);
+
+    dot.addEventListener('click', () => {
+      scrollCardToCenter(sceneSlider, card);
+      updateSceneDots(index);
+    });
+
+    sceneSliderDots.appendChild(dot);
+  });
+
+  updateSceneDots(getCenteredCardIndex(sceneSlider));
+
+  sceneSlider.addEventListener('scroll', () => {
+    updateSceneDots(getCenteredCardIndex(sceneSlider));
+  });
+}
+
+sliderButtons.forEach((button) => {
+  const slider = document.getElementById(button.dataset.sliderTarget);
+  if (!slider) return;
+
+  button.addEventListener('click', () => {
+    const direction = button.classList.contains('scene-nav-next') ? 1 : -1;
+    centerCardInSlider(slider, direction);
   });
 });
 
