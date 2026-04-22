@@ -249,6 +249,10 @@ button,
   z-index: 99;
 }
 
+.modal-backdrop[hidden] {
+  display: none;
+}
+
 .modal {
   width: min(100%, 740px);
   max-height: 88vh;
