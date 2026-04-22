@@ -63,6 +63,13 @@ triggers.forEach((button) => {
   button.addEventListener('click', () => {
     openModal(button.dataset.modal);
   });
+
+  button.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openModal(button.dataset.modal);
+    }
+  });
 });
 
 if (closeButton) {
