@@ -5,7 +5,12 @@
   --text: #1e1f22;
   --muted: #5f6369;
   --line: #d9dce1;
-  --max: 1100px;
+  --layout-scale: 1;
+  --max: 1180px;
+  --profile-photo-width: 236px;
+  --profile-gap: 32px;
+  --summary-width: 600px;
+  --scene-card-width: 640px;
 }
 
 * { box-sizing: border-box; }
@@ -29,7 +34,7 @@ body {
 }
 
 .container {
-  width: min(calc(100% - 2rem), var(--max));
+  width: min(calc(100% - 2rem), calc(var(--max) * var(--layout-scale)));
   margin: 0 auto;
 }
 
@@ -136,19 +141,18 @@ p { margin: 0 0 1rem; }
 
 .profile-grid {
   display: grid;
-  grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
+  grid-template-columns: calc(var(--profile-photo-width) * var(--layout-scale)) minmax(0, 1fr);
   align-items: start;
-  gap: 2.5rem;
+  gap: calc(var(--profile-gap) * var(--layout-scale));
 }
 
 .profile-photo {
   width: 100%;
-  max-width: 260px;
   aspect-ratio: 3 / 4;
   min-height: auto;
   border-radius: 20px;
   overflow: hidden;
-  justify-self: center;
+  justify-self: start;
 }
 
 .profile-copy {
@@ -158,7 +162,7 @@ p { margin: 0 0 1rem; }
 }
 
 .profile-summary {
-  width: min(100%, 560px);
+  width: min(100%, calc(var(--summary-width) * var(--layout-scale)));
   border: 1px solid var(--line);
   border-radius: 16px;
   background: linear-gradient(180deg, #fbfcfd 0%, #f4f7fa 100%);
@@ -290,17 +294,16 @@ p { margin: 0 0 1rem; }
 
 .scene-slider-shell {
   position: relative;
-  padding: 0 2.6rem;
+  padding: 0 3.4rem;
 }
 
 .scene-slider {
-  --scene-card-width: min(620px, 72vw);
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: var(--scene-card-width);
+  grid-auto-columns: min(calc(var(--scene-card-width) * var(--layout-scale)), calc(100% - 7rem));
   gap: 1rem;
   overflow-x: auto;
-  padding: .25rem calc((100% - var(--scene-card-width)) / 2) .5rem;
+  padding: .25rem calc((100% - min(calc(var(--scene-card-width) * var(--layout-scale)), calc(100% - 7rem))) / 2) .5rem;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   scrollbar-width: none;
@@ -332,11 +335,11 @@ p { margin: 0 0 1rem; }
 }
 
 .scene-nav-prev {
-  left: 0;
+  left: .55rem;
 }
 
 .scene-nav-next {
-  right: 0;
+  right: .55rem;
 }
 
 .scene-slider-dots {
@@ -475,48 +478,18 @@ body.modal-open {
   overflow: hidden;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
+  :root {
+    --layout-scale: .82;
+    --max: 980px;
+    --profile-photo-width: 214px;
+    --profile-gap: 26px;
+    --summary-width: 520px;
+    --scene-card-width: 560px;
+  }
+
   .grid.three,
   .grid.tools {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-}
-
-@media (max-width: 640px) {
-  .hero { min-height: auto; }
-
-  .hero-layout,
-  .profile-grid,
-  .principle-grid,
-  .grid.three,
-  .grid.tools,
-  .grid.links {
-    grid-template-columns: 1fr;
-  }
-
-  .section { padding: 4rem 0; }
-  .hero-copy,
-  .hero-overlay { min-height: 420px; }
-  .hero-overlay {
-    max-width: none;
-    background: linear-gradient(180deg, rgba(245, 248, 252, 0.94) 0%, rgba(245, 248, 252, 0.84) 72%, rgba(245, 248, 252, 0.18) 100%);
-  }
-  .profile-photo {
-    width: min(180px, 100%);
-    max-width: 180px;
-  }
-  .profile-summary {
-    width: 100%;
-  }
-  .scene-slider-shell {
-    padding: 0;
-  }
-  .scene-slider-dots {
-    margin-top: .75rem;
-  }
-  .scene-slider {
-    --scene-card-width: 82vw;
-    grid-auto-columns: var(--scene-card-width);
-  }
-  .modal { width: 100%; }
 }
