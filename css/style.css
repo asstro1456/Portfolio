@@ -482,7 +482,7 @@ body.modal-open {
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 640px) {
   .hero { min-height: auto; }
 
   .hero-layout,
@@ -510,9 +510,6 @@ body.modal-open {
   }
   .scene-slider-shell {
     padding: 0;
-  }
-  .scene-nav {
-    display: none;
   }
   .scene-slider-dots {
     margin-top: .75rem;
