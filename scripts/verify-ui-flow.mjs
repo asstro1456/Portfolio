@@ -66,6 +66,14 @@ async function waitForSliderSettle(page, timeout = 1200) {
   await page.waitForTimeout(timeout);
 }
 
+async function assertCardOpensModal(page, selector, message) {
+  const modalBackdrop = page.locator('#modalBackdrop');
+  await page.locator(selector).first().click();
+  assert(await modalBackdrop.isVisible(), message);
+  await page.locator('#modalClose').click();
+  assert(await modalBackdrop.isHidden(), 'Modal should close after clicking the close button.');
+}
+
 async function run() {
   const browser = await chromium.launch({ headless: isHeadless });
   const page = await browser.newPage({ viewport: { width: 1440, height: 1200 } });
@@ -106,6 +114,10 @@ async function run() {
 
     await page.locator('#modalClose').click();
     assert(await modalBackdrop.isHidden(), 'Modal should close after clicking the close button.');
+
+    await assertCardOpensModal(page, '#originSlider .open-modal', 'Origin slider card should open the modal.');
+    await assertCardOpensModal(page, '#approachSlider .open-modal', 'Approach slider card should open the modal.');
+    await assertCardOpensModal(page, '#alignmentSlider .open-modal', 'Alignment slider card should open the modal.');
 
     await cards.nth(0).click();
     assert(await modalBackdrop.isVisible(), 'Modal should reopen after clicking another scene card.');
