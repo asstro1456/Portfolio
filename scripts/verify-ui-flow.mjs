@@ -48,6 +48,30 @@ async function getCenteredCardIndex(page) {
   });
 }
 
+async function getCenteredCardIndexForSlider(page, sliderId) {
+  return page.evaluate((id) => {
+    const slider = document.getElementById(id);
+    const cards = slider ? Array.from(slider.children) : [];
+    if (!slider || !cards.length) return -1;
+
+    const sliderCenter = slider.scrollLeft + (slider.clientWidth / 2);
+    let currentIndex = 0;
+    let minDistance = Number.POSITIVE_INFINITY;
+
+    cards.forEach((card, index) => {
+      const cardCenter = card.offsetLeft + (card.clientWidth / 2);
+      const distance = Math.abs(cardCenter - sliderCenter);
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        currentIndex = index;
+      }
+    });
+
+    return currentIndex;
+  }, sliderId);
+}
+
 async function getActiveDotIndex(page) {
   const dots = page.locator('#sceneSliderDots .scene-dot');
   const count = await dots.count();
@@ -118,6 +142,19 @@ async function run() {
     await assertCardOpensModal(page, '#originSlider .open-modal', 'Origin slider card should open the modal.');
     await assertCardOpensModal(page, '#approachSlider .open-modal', 'Approach slider card should open the modal.');
     await assertCardOpensModal(page, '#alignmentSlider .open-modal', 'Alignment slider card should open the modal.');
+
+    const originNext = page.locator('[data-slider-target="originSlider"].slider-nav-next');
+    const originPrev = page.locator('[data-slider-target="originSlider"].slider-nav-prev');
+
+    await originNext.click();
+    await waitForSliderSettle(page);
+    await originNext.click();
+    await waitForSliderSettle(page);
+    assert((await getCenteredCardIndexForSlider(page, 'originSlider')) === 0, 'Origin slider next button should wrap to the first card.');
+
+    await originPrev.click();
+    await waitForSliderSettle(page);
+    assert((await getCenteredCardIndexForSlider(page, 'originSlider')) === 1, 'Origin slider prev button should wrap to the last card.');
 
     await cards.nth(0).click();
     assert(await modalBackdrop.isVisible(), 'Modal should reopen after clicking another scene card.');

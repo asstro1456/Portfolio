@@ -119,7 +119,7 @@ function centerCardInSlider(slider, direction) {
   if (!cards.length) return;
 
   const currentIndex = getCenteredCardIndex(slider);
-  const nextIndex = Math.max(0, Math.min(cards.length - 1, currentIndex + direction));
+  const nextIndex = (currentIndex + direction + cards.length) % cards.length;
   scrollCardToCenter(slider, cards[nextIndex]);
 }
 

@@ -12,7 +12,7 @@
   <script src="js/main.js" defer></script>
 </head>
 <body>
-  <div class="version-bar" aria-label="페이지 버전">Version 0.0.16</div>
+  <div class="version-bar" aria-label="페이지 버전">Version 0.0.17</div>
   <main>
     <section class="hero" id="hero">
       <div class="container hero-layout">
@@ -32,28 +32,23 @@
     </section>
 
     <section class="section" id="profile">
-      <div class="container profile-grid">
-        <div class="profile-side">
+      <div class="container">
+        <h2 class="profile-heading">Profile</h2>
+        <div class="profile-grid">
+          <div class="profile-side">
           <div class="profile-photo" aria-label="프로필 사진 플레이스홀더">Photo Placeholder</div>
           <div class="profile-contact" aria-label="연락처 정보">
-            <div class="contact-item">
-              <span class="contact-label">전화번호</span>
-              <strong class="contact-value">010-5290-4901</strong>
+            <div class="contact-block">
+              <span class="contact-label">연락처 정보</span>
+              <p class="contact-text">
+                전화번호 010-5290-4901
+                <br>
+                이메일 <span class="contact-value contact-value-email">ug777070@gmail.com</span>
+              </p>
             </div>
-            <div class="contact-item">
-              <span class="contact-label">이메일</span>
-              <strong class="contact-value contact-value-email">ug777070@gmail.com</strong>
-            </div>
-            <ul class="keyword-list profile-keywords">
-              <li>흐름 중심 사고</li>
-              <li>조건/규칙 문서화</li>
-              <li>협업 정렬</li>
-              <li>검토 루프 운영</li>
-            </ul>
           </div>
         </div>
         <div class="profile-copy">
-          <h2>Profile</h2>
           <div class="profile-summary" aria-label="프로필 요약 정보">
             <div class="summary-item">
               <span class="summary-label">이름</span>
@@ -74,6 +69,15 @@
                 모호한 요구를 조건으로 번역하고, 팀 간 해석 차이를 줄이는 문서 기준을 만드는 데 강점을 갖고 있습니다.
               </p>
             </div>
+          </div>
+          <div class="profile-skills" aria-label="역량 요약">
+            <span class="summary-label">핵심 역량</span>
+            <ul class="keyword-list profile-keywords">
+              <li>흐름 중심 사고</li>
+              <li>조건/규칙 문서화</li>
+              <li>협업 정렬</li>
+              <li>검토 루프 운영</li>
+            </ul>
           </div>
           <div class="profile-links">
             <a href="#">Notion</a>
