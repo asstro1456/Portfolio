@@ -108,6 +108,7 @@ async function run() {
     const modalBackdrop = page.locator('#modalBackdrop');
     assert(await modalBackdrop.isHidden(), 'Initial modal state should be hidden.');
     assert((await page.locator('.rail-number').count()) === 0, 'Rail number badges should be removed.');
+    assert((await page.locator('.rail-marker').count()) >= 7, 'Rail markers should be rendered.');
 
     const guideToggle = page.locator('#railGuideToggle');
     const guidePanel = page.locator('#railGuidePanel');
@@ -120,6 +121,12 @@ async function run() {
     await page.waitForTimeout(350);
     assert(await page.locator('.rail-link[href="#profile"]').evaluate((node) => node.classList.contains('is-active')), 'Profile rail link should become active after navigation.');
     assert(await guidePanel.isHidden(), 'Guide panel should close after choosing a rail link.');
+    assert(await page.locator('.hero-action').first().isVisible(), 'Hero CTA should be visible.');
+    assert(await page.locator('.hero-profile-card').isVisible(), 'Hero quick profile card should be visible.');
+    assert(await page.locator('.editorial-story').isVisible(), 'Origin editorial layout should be rendered.');
+    assert((await page.locator('#originSlider').count()) === 0, 'Origin slider should be removed.');
+    assert(await page.locator('#approach .principle-grid').isVisible(), 'Approach should render as a grid.');
+    assert(await page.locator('#alignment .process-flow').isVisible(), 'Alignment should render as a process flow.');
 
     const cards = page.locator('#sceneSlider .card');
     const nextButton = page.locator('[data-slider-target="sceneSlider"].slider-nav-next');
@@ -152,22 +159,9 @@ async function run() {
     await page.locator('#modalClose').click();
     assert(await modalBackdrop.isHidden(), 'Modal should close after clicking the close button.');
 
-    await assertCardOpensModal(page, '#originSlider .open-modal', 'Origin slider card should open the modal.');
-    await assertCardOpensModal(page, '#approachSlider .open-modal', 'Approach slider card should open the modal.');
-    await assertCardOpensModal(page, '#alignmentSlider .open-modal', 'Alignment slider card should open the modal.');
-
-    const originNext = page.locator('[data-slider-target="originSlider"].slider-nav-next');
-    const originPrev = page.locator('[data-slider-target="originSlider"].slider-nav-prev');
-
-    await originNext.click();
-    await waitForSliderSettle(page);
-    await originNext.click();
-    await waitForSliderSettle(page);
-    assert((await getCenteredCardIndexForSlider(page, 'originSlider')) === 0, 'Origin slider next button should wrap to the first card.');
-
-    await originPrev.click();
-    await waitForSliderSettle(page);
-    assert((await getCenteredCardIndexForSlider(page, 'originSlider')) === 1, 'Origin slider prev button should wrap to the last card.');
+    await assertCardOpensModal(page, '#approach .open-modal', 'Approach card should open the modal.');
+    await assertCardOpensModal(page, '#alignment .open-modal', 'Alignment step should open the modal.');
+    await assertCardOpensModal(page, '#tools .open-modal', 'Tool card should open the modal.');
 
     await cards.nth(0).click();
     assert(await modalBackdrop.isVisible(), 'Modal should reopen after clicking another scene card.');
