@@ -77,7 +77,7 @@ async function run() {
     assert(await modalBackdrop.isHidden(), 'Initial modal state should be hidden.');
 
     const cards = page.locator('#sceneSlider .card');
-    const nextButton = page.locator('.scene-nav-next');
+    const nextButton = page.locator('[data-slider-target="sceneSlider"].slider-nav-next');
     const dots = page.locator('#sceneSliderDots .scene-dot');
 
     assert(await cards.count() >= 3, 'Expected at least 3 scene cards.');

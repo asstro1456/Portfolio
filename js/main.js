@@ -38,9 +38,8 @@ const modalBody = document.getElementById('modalBody');
 const closeButton = document.getElementById('modalClose');
 const modal = backdrop ? backdrop.querySelector('.modal') : null;
 const triggers = document.querySelectorAll('.open-modal');
-const sliderButtons = document.querySelectorAll('.scene-nav');
-const sceneSlider = document.getElementById('sceneSlider');
-const sceneSliderDots = document.getElementById('sceneSliderDots');
+const sliderButtons = document.querySelectorAll('.slider-nav');
+const sliderTracks = document.querySelectorAll('[data-slider-dots]');
 
 let lastScrollY = 0;
 
@@ -112,17 +111,20 @@ function scrollCardToCenter(slider, card) {
   });
 }
 
-function updateSceneDots(activeIndex) {
-  if (!sceneSliderDots) return;
+function updateSliderDots(dotsContainer, activeIndex) {
+  if (!dotsContainer) return;
 
-  Array.from(sceneSliderDots.children).forEach((dot, index) => {
+  Array.from(dotsContainer.children).forEach((dot, index) => {
     dot.classList.toggle('is-active', index === activeIndex);
     dot.setAttribute('aria-pressed', index === activeIndex ? 'true' : 'false');
   });
 }
 
-if (sceneSlider && sceneSliderDots) {
-  const cards = Array.from(sceneSlider.children);
+sliderTracks.forEach((slider) => {
+  const dotsContainer = document.getElementById(slider.dataset.sliderDots);
+  if (!dotsContainer) return;
+
+  const cards = Array.from(slider.children);
 
   cards.forEach((card, index) => {
     const dot = document.createElement('button');
@@ -131,26 +133,26 @@ if (sceneSlider && sceneSliderDots) {
     dot.setAttribute('aria-label', `${index + 1}번 카드 보기`);
 
     dot.addEventListener('click', () => {
-      scrollCardToCenter(sceneSlider, card);
-      updateSceneDots(index);
+      scrollCardToCenter(slider, card);
+      updateSliderDots(dotsContainer, index);
     });
 
-    sceneSliderDots.appendChild(dot);
+    dotsContainer.appendChild(dot);
   });
 
-  updateSceneDots(getCenteredCardIndex(sceneSlider));
+  updateSliderDots(dotsContainer, getCenteredCardIndex(slider));
 
-  sceneSlider.addEventListener('scroll', () => {
-    updateSceneDots(getCenteredCardIndex(sceneSlider));
+  slider.addEventListener('scroll', () => {
+    updateSliderDots(dotsContainer, getCenteredCardIndex(slider));
   });
-}
+});
 
 sliderButtons.forEach((button) => {
   const slider = document.getElementById(button.dataset.sliderTarget);
   if (!slider) return;
 
   button.addEventListener('click', () => {
-    const direction = button.classList.contains('scene-nav-next') ? 1 : -1;
+    const direction = button.classList.contains('slider-nav-next') ? 1 : -1;
     centerCardInSlider(slider, direction);
   });
 });
