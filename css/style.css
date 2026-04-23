@@ -201,6 +201,13 @@ p { margin: 0 0 1rem; }
   overflow-wrap: anywhere;
 }
 
+.contact-value-email {
+  font-size: .85rem;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
 .profile-copy {
   display: grid;
   gap: 1.2rem;
@@ -319,6 +326,7 @@ p { margin: 0 0 1rem; }
   margin-bottom: .9rem;
 }
 
+.card-media-slot,
 .tool-media-slot {
   aspect-ratio: 16 / 9;
   margin-bottom: .9rem;
@@ -337,6 +345,9 @@ p { margin: 0 0 1rem; }
   text-align: center;
 }
 
+.card-media-slot img,
+.card-media-slot iframe,
+.card-media-slot video,
 .tool-media-slot img,
 .tool-media-slot iframe,
 .tool-media-slot video {
