@@ -118,8 +118,10 @@ function centerCardInSlider(slider, direction) {
   const cards = Array.from(slider.children);
   if (!cards.length) return;
 
-  const currentIndex = getCenteredCardIndex(slider);
+  const currentIndex = Number.parseInt(slider.dataset.activeIndex ?? `${getCenteredCardIndex(slider)}`, 10);
   const nextIndex = (currentIndex + direction + cards.length) % cards.length;
+  slider.dataset.activeIndex = `${nextIndex}`;
+  slider.dataset.wrapCheck = 'pending';
   scrollCardToCenter(slider, cards[nextIndex]);
 }
 
@@ -165,6 +167,7 @@ sliderTracks.forEach((slider) => {
   if (!dotsContainer) return;
 
   const cards = Array.from(slider.children);
+  let scrollTimer = null;
 
   cards.forEach((card, index) => {
     const dot = document.createElement('button');
@@ -173,6 +176,7 @@ sliderTracks.forEach((slider) => {
     dot.setAttribute('aria-label', `${index + 1}번 카드 보기`);
 
     dot.addEventListener('click', () => {
+      slider.dataset.activeIndex = `${index}`;
       scrollCardToCenter(slider, card);
       updateSliderDots(dotsContainer, index);
     });
@@ -180,10 +184,21 @@ sliderTracks.forEach((slider) => {
     dotsContainer.appendChild(dot);
   });
 
-  updateSliderDots(dotsContainer, getCenteredCardIndex(slider));
+  const initialIndex = getCenteredCardIndex(slider);
+  slider.dataset.activeIndex = `${initialIndex}`;
+  updateSliderDots(dotsContainer, initialIndex);
 
   slider.addEventListener('scroll', () => {
-    updateSliderDots(dotsContainer, getCenteredCardIndex(slider));
+    if (scrollTimer) {
+      window.clearTimeout(scrollTimer);
+    }
+
+    scrollTimer = window.setTimeout(() => {
+      const activeIndex = getCenteredCardIndex(slider);
+      slider.dataset.activeIndex = `${activeIndex}`;
+      slider.dataset.wrapCheck = 'idle';
+      updateSliderDots(dotsContainer, activeIndex);
+    }, 140);
   });
 });
 
