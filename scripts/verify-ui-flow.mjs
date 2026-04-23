@@ -107,6 +107,19 @@ async function run() {
 
     const modalBackdrop = page.locator('#modalBackdrop');
     assert(await modalBackdrop.isHidden(), 'Initial modal state should be hidden.');
+    assert((await page.locator('.rail-number').count()) === 0, 'Rail number badges should be removed.');
+
+    const guideToggle = page.locator('#railGuideToggle');
+    const guidePanel = page.locator('#railGuidePanel');
+
+    await guideToggle.click();
+    assert(await guidePanel.isVisible(), 'Guide panel should open after clicking the rail toggle.');
+    assert((await guideToggle.getAttribute('aria-expanded')) === 'true', 'Guide toggle should reflect the open state.');
+
+    await page.locator('.rail-link[href="#profile"]').click();
+    await page.waitForTimeout(350);
+    assert(await page.locator('.rail-link[href="#profile"]').evaluate((node) => node.classList.contains('is-active')), 'Profile rail link should become active after navigation.');
+    assert(await guidePanel.isHidden(), 'Guide panel should close after choosing a rail link.');
 
     const cards = page.locator('#sceneSlider .card');
     const nextButton = page.locator('[data-slider-target="sceneSlider"].slider-nav-next');

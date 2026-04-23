@@ -8,32 +8,57 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=0.0.21">
-  <script src="js/main.js?v=0.0.21" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=0.0.22">
+  <script src="js/main.js?v=0.0.22" defer></script>
 </head>
 <body>
-  <div class="version-bar" aria-label="페이지 버전">Version 0.0.21</div>
+  <div class="version-bar" aria-label="페이지 버전">Version 0.0.22</div>
   <div class="page-shell">
     <aside class="section-rail" aria-label="섹션 목차">
       <div class="section-rail-card">
-        <button type="button" class="rail-guide-toggle" id="railGuideToggle" aria-expanded="false" aria-controls="railGuidePanel">Guide</button>
+        <button type="button" class="rail-guide-toggle" id="railGuideToggle" aria-expanded="false" aria-controls="railGuidePanel" aria-label="섹션 가이드 열기">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <nav class="rail-nav" aria-label="페이지 이동">
-          <a href="#hero" class="rail-link"><span class="rail-number">1</span><span class="rail-text">Main</span></a>
-          <a href="#profile" class="rail-link"><span class="rail-number">2</span><span class="rail-text">Profile</span></a>
-          <a href="#origin" class="rail-link"><span class="rail-number">3</span><span class="rail-text">Why</span></a>
-          <a href="#approach" class="rail-link"><span class="rail-number">4</span><span class="rail-text">How</span></a>
-          <a href="#tools" class="rail-link"><span class="rail-number">5</span><span class="rail-text">What</span></a>
-          <a href="#future" class="rail-link"><span class="rail-number">6</span><span class="rail-text">Vision</span></a>
-          <a href="#more" class="rail-link"><span class="rail-number">7</span><span class="rail-text">Portfolio</span></a>
+          <a href="#hero" class="rail-link" data-rail-target="hero"><span class="rail-text">Main</span></a>
+          <a href="#profile" class="rail-link" data-rail-target="profile"><span class="rail-text">Profile</span></a>
+          <a href="#origin" class="rail-link" data-rail-target="origin"><span class="rail-text">Why</span></a>
+          <a href="#approach" class="rail-link" data-rail-target="approach"><span class="rail-text">How</span></a>
+          <a href="#tools" class="rail-link" data-rail-target="tools"><span class="rail-text">What</span></a>
+          <a href="#future" class="rail-link" data-rail-target="future"><span class="rail-text">Vision</span></a>
+          <a href="#more" class="rail-link" data-rail-target="more"><span class="rail-text">Portfolio</span></a>
         </nav>
         <div class="rail-guide-panel" id="railGuidePanel" hidden>
-          <p><strong>1 Main</strong> Hero 첫 화면</p>
-          <p><strong>2 Profile</strong> 프로필과 연락처</p>
-          <p><strong>3 Why</strong> 출발점과 기준</p>
-          <p><strong>4 How</strong> Approach / Alignment / Scenes</p>
-          <p><strong>5 What</strong> Tools</p>
-          <p><strong>6 Vision</strong> 앞으로 설계하고 싶은 흐름</p>
-          <p><strong>7 Portfolio</strong> 추가 자료와 링크</p>
+          <div class="rail-guide-item">
+            <strong>Main</strong>
+            <span>Hero 첫 화면</span>
+          </div>
+          <div class="rail-guide-item">
+            <strong>Profile</strong>
+            <span>프로필과 연락처</span>
+          </div>
+          <div class="rail-guide-item">
+            <strong>Why</strong>
+            <span>출발점과 기준</span>
+          </div>
+          <div class="rail-guide-item">
+            <strong>How</strong>
+            <span>Approach / Alignment / Scenes</span>
+          </div>
+          <div class="rail-guide-item">
+            <strong>What</strong>
+            <span>Tools</span>
+          </div>
+          <div class="rail-guide-item">
+            <strong>Vision</strong>
+            <span>앞으로 설계하고 싶은 흐름</span>
+          </div>
+          <div class="rail-guide-item">
+            <strong>Portfolio</strong>
+            <span>추가 자료와 링크</span>
+          </div>
         </div>
       </div>
     </aside>

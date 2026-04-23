@@ -82,6 +82,10 @@ const sliderButtons = document.querySelectorAll('.slider-nav');
 const sliderTracks = document.querySelectorAll('[data-slider-dots]');
 const railGuideToggle = document.getElementById('railGuideToggle');
 const railGuidePanel = document.getElementById('railGuidePanel');
+const railLinks = Array.from(document.querySelectorAll('.rail-link'));
+const railSections = railLinks
+  .map((link) => document.getElementById(link.dataset.railTarget))
+  .filter(Boolean);
 
 let lastScrollY = 0;
 
@@ -251,9 +255,52 @@ if (railGuideToggle && railGuidePanel) {
     railGuideToggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
     railGuidePanel.hidden = isOpen;
   });
+
+  document.addEventListener('click', (event) => {
+    if (!railGuidePanel.hidden && !railGuidePanel.contains(event.target) && !railGuideToggle.contains(event.target)) {
+      railGuideToggle.setAttribute('aria-expanded', 'false');
+      railGuidePanel.hidden = true;
+    }
+  });
+}
+
+if (railLinks.length && railSections.length) {
+  const updateActiveRailLink = () => {
+    const threshold = window.innerHeight * 0.28;
+    let activeSectionId = railSections[0].id;
+
+    railSections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= threshold) {
+        activeSectionId = section.id;
+      }
+    });
+
+    railLinks.forEach((link) => {
+      link.classList.toggle('is-active', link.dataset.railTarget === activeSectionId);
+    });
+  };
+
+  railLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      if (railGuideToggle && railGuidePanel && !railGuidePanel.hidden) {
+        railGuideToggle.setAttribute('aria-expanded', 'false');
+        railGuidePanel.hidden = true;
+      }
+    });
+  });
+
+  updateActiveRailLink();
+  window.addEventListener('scroll', updateActiveRailLink, { passive: true });
+  window.addEventListener('hashchange', updateActiveRailLink);
 }
 
 window.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && railGuideToggle && railGuidePanel && !railGuidePanel.hidden) {
+    railGuideToggle.setAttribute('aria-expanded', 'false');
+    railGuidePanel.hidden = true;
+  }
+
   if (event.key === 'Escape') {
     closeModal();
   }
