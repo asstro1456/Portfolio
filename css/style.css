@@ -22,6 +22,10 @@ body {
   line-height: 1.65;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .version-bar {
   padding: .55rem 1rem;
   border-bottom: 1px solid var(--line);
@@ -31,6 +35,89 @@ body {
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
+}
+
+.page-shell {
+  display: grid;
+  grid-template-columns: 118px minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+  width: min(calc(100% - 2rem), calc(var(--max) * var(--layout-scale) + 118px + 1.25rem));
+  margin: 0 auto;
+  padding: 1.5rem 0 0;
+}
+
+.section-rail {
+  padding-top: 1rem;
+}
+
+.section-rail-card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(251, 252, 253, 0.94) 0%, rgba(241, 244, 247, 0.94) 100%);
+  padding: .9rem .75rem;
+  box-shadow: 0 12px 28px rgba(27, 36, 48, 0.08);
+}
+
+.rail-guide-toggle {
+  width: 100%;
+  margin-bottom: .8rem;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+.rail-nav {
+  display: grid;
+  gap: .55rem;
+}
+
+.rail-link {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: .55rem;
+  align-items: center;
+  text-decoration: none;
+  color: #24364b;
+  border: 1px solid #ccd4dc;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
+  padding: .35rem .55rem .35rem .35rem;
+}
+
+.rail-number {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: #2f5578;
+  color: #fff;
+  font-size: .88rem;
+  font-weight: 800;
+}
+
+.rail-text {
+  font-size: .9rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.rail-guide-panel {
+  margin-top: .8rem;
+  padding-top: .8rem;
+  border-top: 1px solid #dbe2e8;
+}
+
+.rail-guide-panel p {
+  margin: 0 0 .55rem;
+  font-size: .8rem;
+  color: #4b5867;
+  line-height: 1.45;
+}
+
+.rail-guide-panel p:last-child {
+  margin-bottom: 0;
 }
 
 .container {
@@ -65,7 +152,7 @@ p { margin: 0 0 1rem; }
 
 .hero-layout {
   display: block;
-  width: min(100% - 2rem, calc(100vw - 2rem));
+  width: min(100%, calc(100vw - 2rem - 118px - 1.25rem));
   max-width: none;
 }
 

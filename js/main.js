@@ -80,6 +80,8 @@ const modal = backdrop ? backdrop.querySelector('.modal') : null;
 const triggers = document.querySelectorAll('.open-modal');
 const sliderButtons = document.querySelectorAll('.slider-nav');
 const sliderTracks = document.querySelectorAll('[data-slider-dots]');
+const railGuideToggle = document.getElementById('railGuideToggle');
+const railGuidePanel = document.getElementById('railGuidePanel');
 
 let lastScrollY = 0;
 
@@ -241,6 +243,14 @@ if (modal) {
   modal.addEventListener('touchend', (event) => {
     event.stopPropagation();
   }, { passive: true });
+}
+
+if (railGuideToggle && railGuidePanel) {
+  railGuideToggle.addEventListener('click', () => {
+    const isOpen = railGuideToggle.getAttribute('aria-expanded') === 'true';
+    railGuideToggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+    railGuidePanel.hidden = isOpen;
+  });
 }
 
 window.addEventListener('keydown', (event) => {
