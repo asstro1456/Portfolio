@@ -73,7 +73,7 @@ const closeButton = document.getElementById('modalClose');
 
 const modalTriggers = document.querySelectorAll('.open-modal');
 const sliderButtons = document.querySelectorAll('.slider-nav');
-const sliderTracks = document.querySelectorAll('[data-slider-dots]');
+const sliderTracks = Array.from(document.querySelectorAll('[data-slider-dots]'));
 
 const navGuideToggle = document.getElementById('navGuideToggle');
 const navGuidePanel = document.getElementById('navGuidePanel');
@@ -147,14 +147,62 @@ function updateSliderDots(dotsContainer, activeIndex) {
   });
 }
 
+function updateSliderClasses(slider, activeIndex) {
+  const cards = Array.from(slider.children);
+
+  cards.forEach((card, index) => {
+    card.classList.remove('is-active', 'is-prev', 'is-next');
+
+    if (index === activeIndex) {
+      card.classList.add('is-active');
+      return;
+    }
+
+    if (index === (activeIndex - 1 + cards.length) % cards.length) {
+      card.classList.add('is-prev');
+      return;
+    }
+
+    if (index === (activeIndex + 1) % cards.length) {
+      card.classList.add('is-next');
+    }
+  });
+}
+
+function setActiveSliderCard(slider, activeIndex) {
+  const dotsContainer = document.getElementById(slider.dataset.sliderDots);
+  slider.dataset.activeIndex = `${activeIndex}`;
+  updateSliderDots(dotsContainer, activeIndex);
+  updateSliderClasses(slider, activeIndex);
+}
+
 function centerCardInSlider(slider, direction) {
   const cards = Array.from(slider.children);
   if (!cards.length) return;
 
   const currentIndex = Number.parseInt(slider.dataset.activeIndex ?? `${getCenteredCardIndex(slider)}`, 10);
   const nextIndex = (currentIndex + direction + cards.length) % cards.length;
-  slider.dataset.activeIndex = `${nextIndex}`;
+  setActiveSliderCard(slider, nextIndex);
   scrollCardToCenter(slider, cards[nextIndex]);
+}
+
+function centerSliderCardById(targetId) {
+  const target = document.getElementById(targetId);
+  if (!target) return false;
+
+  const slider = sliderTracks.find((track) => track.contains(target));
+  if (!slider) return false;
+
+  const cards = Array.from(slider.children);
+  const index = cards.indexOf(target);
+  if (index < 0) return false;
+
+  setActiveSliderCard(slider, index);
+  requestAnimationFrame(() => {
+    scrollCardToCenter(slider, target);
+  });
+
+  return true;
 }
 
 sliderTracks.forEach((slider) => {
@@ -171,17 +219,15 @@ sliderTracks.forEach((slider) => {
     dot.setAttribute('aria-label', `${index + 1}번 카드 보기`);
 
     dot.addEventListener('click', () => {
-      slider.dataset.activeIndex = `${index}`;
+      setActiveSliderCard(slider, index);
       scrollCardToCenter(slider, card);
-      updateSliderDots(dotsContainer, index);
     });
 
     dotsContainer.appendChild(dot);
   });
 
   const initialIndex = getCenteredCardIndex(slider);
-  slider.dataset.activeIndex = `${initialIndex}`;
-  updateSliderDots(dotsContainer, initialIndex);
+  setActiveSliderCard(slider, initialIndex);
 
   slider.addEventListener('scroll', () => {
     if (scrollTimer) {
@@ -190,8 +236,7 @@ sliderTracks.forEach((slider) => {
 
     scrollTimer = window.setTimeout(() => {
       const activeIndex = getCenteredCardIndex(slider);
-      slider.dataset.activeIndex = `${activeIndex}`;
-      updateSliderDots(dotsContainer, activeIndex);
+      setActiveSliderCard(slider, activeIndex);
     }, 140);
   });
 });
@@ -285,6 +330,15 @@ if (navLinks.length && navSections.length) {
   window.addEventListener('scroll', updateActiveNavLink, { passive: true });
   window.addEventListener('hashchange', updateActiveNavLink);
 }
+
+function syncHashToSlider() {
+  const targetId = window.location.hash.replace('#', '');
+  if (!targetId) return;
+  centerSliderCardById(targetId);
+}
+
+window.addEventListener('hashchange', syncHashToSlider);
+window.addEventListener('load', syncHashToSlider);
 
 window.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && navGuideToggle && navGuidePanel && !navGuidePanel.hidden) {
