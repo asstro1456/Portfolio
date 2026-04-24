@@ -1,101 +1,93 @@
 const modalData = {
   scene1: {
     title: '튜토리얼 이탈 구간 재정리',
-    body: '초기 5분 구간에서 과도하게 집중된 설명을 행동 기반 단계로 분리해, 플레이어가 직접 조작 후 규칙을 이해하도록 순서를 재설계한 사례입니다. 문서에는 화면 단위가 아닌 사용자 행동 단위로 조건을 정리했습니다.'
+    body: '초기 학습 구간에서 설명량이 많아지던 부분을 다시 쪼개, 플레이어가 규칙을 행동으로 익히게 만든 사례입니다. 문서는 화면 단위가 아니라 흐름 단위로 다시 정리했습니다.'
   },
   scene2: {
     title: '강화 규칙 예외 처리 통합',
-    body: '여러 문서에 흩어져 있던 강화 실패, 보정 수치, 자원 환급 조건을 한 시트로 통합해 QA 점검 순서를 단순화한 장면입니다. 팀 내 질문량과 재확인 비용이 줄어드는 것을 목표로 했습니다.'
+    body: '여러 문서에 흩어진 강화 예외 조건을 한 구조로 묶어 QA 누락을 줄인 사례입니다. 예외를 부록이 아니라 핵심 설계 항목으로 다뤄야 한다는 기준을 보여줍니다.'
   },
   scene3: {
     title: '보스 패턴 전달 구조 재배치',
-    body: '위험 신호의 타이밍이 늦어 대응 실패가 반복되던 구간에서, 시각/사운드/이펙트 신호를 행동 단계와 맞춰 재배치한 흐름입니다. 난이도 조정 이전에 전달 구조를 정리한 접근을 보여줍니다.'
-  },
-  origin1: {
-    title: '출발점 1',
-    body: '결과물 자체보다 어떤 판단 기준으로 만들었는지가 협업 품질을 좌우한다는 점을 정리한 카드입니다. 사용자 경험의 흐름 단위로 문제를 바라보게 된 계기를 담고 있습니다.'
-  },
-  origin2: {
-    title: '출발점 2',
-    body: '같은 화면이라도 설명 순서와 조건 정의에 따라 구현과 QA의 난도가 달라진다는 경험을 바탕으로, 다시 같은 문제가 발생하지 않도록 문서 기준을 정리하는 방식을 설명합니다.'
+    body: '위험 신호와 대응 정보를 같은 흐름 안에서 읽히도록 재배치해, 난이도보다 전달 구조를 먼저 조정한 장면입니다.'
   },
   approach1: {
     title: '막히는 지점을 먼저 본다',
-    body: '사용자가 멈추는 순간과 팀이 해석을 나누는 순간을 먼저 찾고, 그 지점부터 우선순위를 정해 해결하는 방식입니다.'
+    body: '플레이어가 멈추는 순간과 팀이 다르게 해석하는 순간을 먼저 찾고, 그 지점을 우선순위로 올려 해결하는 방식입니다.'
   },
   approach2: {
     title: '기준은 문서로 남긴다',
-    body: '구두 합의로 끝내지 않고 조건, 예외, 완료 기준을 문장과 표로 남겨 다음 작업에서도 같은 기준이 유지되도록 정리합니다.'
+    body: '구두 합의로 끝내지 않고 조건, 예외, 완료 기준을 문장과 표로 남겨 다음 작업에서도 같은 기준으로 읽히게 만듭니다.'
   },
   approach3: {
     title: '전달 후에도 확인한다',
-    body: '전달 완료를 끝으로 보지 않고, 문서를 받은 사람이 동일하게 이해했는지 확인한 뒤 필요한 수정 사항을 짧은 주기로 반영합니다.'
+    body: '문서를 전달한 뒤에도 해석이 같은지 확인하고, 필요한 수정은 짧은 루프로 빠르게 반영합니다.'
   },
   approach4: {
     title: '필요한 순간에 묻는다',
-    body: '늦은 질문보다 빠른 질문이 비용을 줄인다는 기준으로, 결정 전 확인 루프를 운영하는 방식을 담은 카드입니다.'
+    body: '늦은 질문보다 빠른 질문이 비용을 줄인다고 보고, 결정 전 확인 루프를 운영하는 방식입니다.'
   },
   alignment1: {
-    title: '경험 우선 합의',
-    body: '요구사항을 사용자 행동 흐름으로 재정렬해 기능 우선이 아니라 경험 우선으로 합의하는 기준을 보여줍니다.'
+    title: '요구 재정렬',
+    body: '요구사항을 기능 목록이 아니라 사용자 행동 흐름으로 다시 묶어, 경험 우선의 합의점으로 바꾸는 단계입니다.'
   },
   alignment2: {
-    title: '문서 배치 기준',
-    body: '목적, 조건, 예외, 검수 포인트를 한 화면에서 읽히도록 배치해 문서만으로도 구현 판단이 가능하도록 만드는 구조입니다.'
+    title: '문서화',
+    body: '목적, 조건, 예외, 검수 포인트가 한 화면 안에서 읽히도록 배치해 문서만으로도 구현 기준이 보이게 만듭니다.'
   },
   alignment3: {
-    title: '용어와 단계 통일',
-    body: '디자인, 개발, QA가 같은 용어와 단계 이름을 보도록 정렬해 탐색 비용과 해석 차이를 줄이는 방식입니다.'
+    title: '용어 통일',
+    body: '디자인, 개발, QA가 같은 단계 이름과 상태값으로 대화하게 맞춰 해석 차이를 줄이는 단계입니다.'
   },
   alignment4: {
-    title: '최종 점검 루프',
-    body: '최종 전달 직전에 문서만 보고 구현 가능한지 한 번 더 확인하는 점검 루프를 추가해 누락 가능성을 낮춥니다.'
+    title: '점검 루프',
+    body: '최종 전달 직전에 문서만 보고 구현 가능한지 다시 확인하는 마지막 검토 루프를 추가합니다.'
   },
   tool1: {
-    title: 'ChatGPT 활용 기준',
-    body: '최종 답안을 대신 작성하는 용도가 아니라, 질문 구조를 빠르게 정제하고 누락 조건을 찾는 보조 도구로 사용합니다. 산출물 반영 전에는 반드시 팀 기준 문장으로 재작성합니다.'
+    title: 'ChatGPT 사용 기준',
+    body: '완성 문장을 대신 쓰는 용도보다, 초기 가설을 압축하고 질문 구조를 정리하는 보조 도구로 사용합니다.'
   },
   tool2: {
-    title: 'Ludo 활용 기준',
-    body: '레퍼런스 탐색 시 장르/목표/문제 상황을 먼저 정의한 뒤 사례를 비교합니다. 기능 목록 수집보다, 왜 해당 설계가 작동했는지 판단 근거를 가져오는 데 집중합니다.'
+    title: 'Ludo 사용 기준',
+    body: '시스템 레퍼런스를 비교하면서 규칙 사례와 전달 구조의 차이를 확인하는 데 사용합니다.'
   },
   tool3: {
-    title: 'Suno 활용 기준',
-    body: '초기 분위기 검토 단계에서 감정 톤을 빠르게 공유하기 위한 보조 수단으로 사용합니다. 핵심 기획 판단은 플레이 경험과 시스템 규칙 검토를 우선합니다.'
+    title: 'Suno 사용 기준',
+    body: '초기 분위기 실험 단계에서 감정 톤과 리듬을 빠르게 맞춰 보는 참고 도구로 활용합니다.'
   },
   tool4: {
-    title: 'Notion 활용 기준',
-    body: '회의 결론, 버전 기록, 보류 이슈를 분리해 팀이 같은 상태를 보게 만드는 용도로 사용합니다. 문서 제목 체계와 태그 기준을 고정해 추적 가능성을 유지합니다.'
+    title: 'Notion 사용 기준',
+    body: '버전 기록과 회의 결론을 한곳에 모아, 팀이 같은 기준과 상태를 보게 만드는 문서 허브로 사용합니다.'
   },
   tool5: {
-    title: 'Figma 활용 기준',
-    body: '화면 디자인보다 흐름 검토 단계에서 상태 전이와 예외 분기를 먼저 시각화합니다. 구현 협업 전 문서와 도식의 불일치 여부를 확인하는 체크포인트로 활용합니다.'
+    title: 'Figma 사용 기준',
+    body: '화면 흐름과 상태 전이를 시각화해, 구현 전에 생길 해석 차이를 줄이는 확인 지점으로 사용합니다.'
   }
 };
 
 const backdrop = document.getElementById('modalBackdrop');
+const modal = backdrop ? backdrop.querySelector('.modal') : null;
+const modalTitle = document.getElementById('modalTitle');
 const modalBody = document.getElementById('modalBody');
 const closeButton = document.getElementById('modalClose');
-const modal = backdrop ? backdrop.querySelector('.modal') : null;
-const triggers = document.querySelectorAll('.open-modal');
+
+const modalTriggers = document.querySelectorAll('.open-modal');
 const sliderButtons = document.querySelectorAll('.slider-nav');
 const sliderTracks = document.querySelectorAll('[data-slider-dots]');
-const railGuideToggle = document.getElementById('railGuideToggle');
-const railGuidePanel = document.getElementById('railGuidePanel');
-const railLinks = Array.from(document.querySelectorAll('.rail-link'));
-const railSections = railLinks
-  .map((link) => document.getElementById(link.dataset.railTarget))
-  .filter(Boolean);
 
-let lastScrollY = 0;
+const navGuideToggle = document.getElementById('navGuideToggle');
+const navGuidePanel = document.getElementById('navGuidePanel');
+const navLinks = Array.from(document.querySelectorAll('.site-link'));
+const navSections = navLinks
+  .map((link) => document.getElementById(link.dataset.navTarget))
+  .filter(Boolean);
 
 function openModal(key) {
   const data = modalData[key];
-  if (!data || !backdrop || !modalBody) return;
+  if (!data || !backdrop || !modalTitle || !modalBody) return;
 
-  modalBody.textContent = `${data.title} — ${data.body}`;
-  lastScrollY = window.scrollY;
-
+  modalTitle.textContent = data.title;
+  modalBody.textContent = data.body;
   backdrop.hidden = false;
   document.body.classList.add('modal-open');
 }
@@ -104,32 +96,20 @@ function closeModal() {
   if (!backdrop || backdrop.hidden) return;
   backdrop.hidden = true;
   document.body.classList.remove('modal-open');
-  window.scrollTo({ top: lastScrollY, behavior: 'auto' });
 }
 
-triggers.forEach((button) => {
-  button.addEventListener('click', () => {
-    openModal(button.dataset.modal);
+modalTriggers.forEach((trigger) => {
+  trigger.addEventListener('click', () => {
+    openModal(trigger.dataset.modal);
   });
 
-  button.addEventListener('keydown', (event) => {
+  trigger.addEventListener('keydown', (event) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
-      openModal(button.dataset.modal);
+      openModal(trigger.dataset.modal);
     }
   });
 });
-
-function centerCardInSlider(slider, direction) {
-  const cards = Array.from(slider.children);
-  if (!cards.length) return;
-
-  const currentIndex = Number.parseInt(slider.dataset.activeIndex ?? `${getCenteredCardIndex(slider)}`, 10);
-  const nextIndex = (currentIndex + direction + cards.length) % cards.length;
-  slider.dataset.activeIndex = `${nextIndex}`;
-  slider.dataset.wrapCheck = 'pending';
-  scrollCardToCenter(slider, cards[nextIndex]);
-}
 
 function getCenteredCardIndex(slider) {
   const cards = Array.from(slider.children);
@@ -152,7 +132,6 @@ function getCenteredCardIndex(slider) {
 
 function scrollCardToCenter(slider, card) {
   const targetLeft = card.offsetLeft - ((slider.clientWidth - card.offsetWidth) / 2);
-
   slider.scrollTo({
     left: Math.max(0, targetLeft),
     behavior: 'smooth'
@@ -166,6 +145,16 @@ function updateSliderDots(dotsContainer, activeIndex) {
     dot.classList.toggle('is-active', index === activeIndex);
     dot.setAttribute('aria-pressed', index === activeIndex ? 'true' : 'false');
   });
+}
+
+function centerCardInSlider(slider, direction) {
+  const cards = Array.from(slider.children);
+  if (!cards.length) return;
+
+  const currentIndex = Number.parseInt(slider.dataset.activeIndex ?? `${getCenteredCardIndex(slider)}`, 10);
+  const nextIndex = (currentIndex + direction + cards.length) % cards.length;
+  slider.dataset.activeIndex = `${nextIndex}`;
+  scrollCardToCenter(slider, cards[nextIndex]);
 }
 
 sliderTracks.forEach((slider) => {
@@ -202,7 +191,6 @@ sliderTracks.forEach((slider) => {
     scrollTimer = window.setTimeout(() => {
       const activeIndex = getCenteredCardIndex(slider);
       slider.dataset.activeIndex = `${activeIndex}`;
-      slider.dataset.wrapCheck = 'idle';
       updateSliderDots(dotsContainer, activeIndex);
     }, 140);
   });
@@ -219,24 +207,27 @@ sliderButtons.forEach((button) => {
 });
 
 if (closeButton) {
-  const handleCloseButton = (event) => {
+  const handleClose = (event) => {
     event.preventDefault();
     closeModal();
   };
 
-  closeButton.addEventListener('click', handleCloseButton);
-  closeButton.addEventListener('touchend', handleCloseButton, { passive: false });
-}
-
-function handleBackdropClose(event) {
-  if (event.target === backdrop) {
-    closeModal();
-  }
+  closeButton.addEventListener('click', handleClose);
+  closeButton.addEventListener('touchend', handleClose, { passive: false });
 }
 
 if (backdrop) {
-  backdrop.addEventListener('click', handleBackdropClose);
-  backdrop.addEventListener('touchend', handleBackdropClose, { passive: true });
+  backdrop.addEventListener('click', (event) => {
+    if (event.target === backdrop) {
+      closeModal();
+    }
+  });
+
+  backdrop.addEventListener('touchend', (event) => {
+    if (event.target === backdrop) {
+      closeModal();
+    }
+  }, { passive: true });
 }
 
 if (modal) {
@@ -249,56 +240,56 @@ if (modal) {
   }, { passive: true });
 }
 
-if (railGuideToggle && railGuidePanel) {
-  railGuideToggle.addEventListener('click', () => {
-    const isOpen = railGuideToggle.getAttribute('aria-expanded') === 'true';
-    railGuideToggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-    railGuidePanel.hidden = isOpen;
+if (navGuideToggle && navGuidePanel) {
+  navGuideToggle.addEventListener('click', () => {
+    const isOpen = navGuideToggle.getAttribute('aria-expanded') === 'true';
+    navGuideToggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+    navGuidePanel.hidden = isOpen;
   });
 
   document.addEventListener('click', (event) => {
-    if (!railGuidePanel.hidden && !railGuidePanel.contains(event.target) && !railGuideToggle.contains(event.target)) {
-      railGuideToggle.setAttribute('aria-expanded', 'false');
-      railGuidePanel.hidden = true;
+    if (!navGuidePanel.hidden && !navGuidePanel.contains(event.target) && !navGuideToggle.contains(event.target)) {
+      navGuideToggle.setAttribute('aria-expanded', 'false');
+      navGuidePanel.hidden = true;
     }
   });
 }
 
-if (railLinks.length && railSections.length) {
-  const updateActiveRailLink = () => {
-    const threshold = window.innerHeight * 0.28;
-    let activeSectionId = railSections[0].id;
+if (navLinks.length && navSections.length) {
+  const updateActiveNavLink = () => {
+    const threshold = window.innerHeight * 0.3;
+    let activeSectionId = navSections[0].id;
 
-    railSections.forEach((section) => {
+    navSections.forEach((section) => {
       const rect = section.getBoundingClientRect();
       if (rect.top <= threshold) {
         activeSectionId = section.id;
       }
     });
 
-    railLinks.forEach((link) => {
-      link.classList.toggle('is-active', link.dataset.railTarget === activeSectionId);
+    navLinks.forEach((link) => {
+      link.classList.toggle('is-active', link.dataset.navTarget === activeSectionId);
     });
   };
 
-  railLinks.forEach((link) => {
+  navLinks.forEach((link) => {
     link.addEventListener('click', () => {
-      if (railGuideToggle && railGuidePanel && !railGuidePanel.hidden) {
-        railGuideToggle.setAttribute('aria-expanded', 'false');
-        railGuidePanel.hidden = true;
+      if (navGuideToggle && navGuidePanel && !navGuidePanel.hidden) {
+        navGuideToggle.setAttribute('aria-expanded', 'false');
+        navGuidePanel.hidden = true;
       }
     });
   });
 
-  updateActiveRailLink();
-  window.addEventListener('scroll', updateActiveRailLink, { passive: true });
-  window.addEventListener('hashchange', updateActiveRailLink);
+  updateActiveNavLink();
+  window.addEventListener('scroll', updateActiveNavLink, { passive: true });
+  window.addEventListener('hashchange', updateActiveNavLink);
 }
 
 window.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && railGuideToggle && railGuidePanel && !railGuidePanel.hidden) {
-    railGuideToggle.setAttribute('aria-expanded', 'false');
-    railGuidePanel.hidden = true;
+  if (event.key === 'Escape' && navGuideToggle && navGuidePanel && !navGuidePanel.hidden) {
+    navGuideToggle.setAttribute('aria-expanded', 'false');
+    navGuidePanel.hidden = true;
   }
 
   if (event.key === 'Escape') {

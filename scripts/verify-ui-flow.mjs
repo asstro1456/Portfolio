@@ -27,30 +27,6 @@ async function captureFailure(page, name) {
 async function getCenteredCardIndex(page) {
   return page.evaluate(() => {
     const slider = document.getElementById('sceneSlider');
-    const cards = Array.from(document.querySelectorAll('#sceneSlider .card'));
-    if (!slider || !cards.length) return -1;
-
-    const sliderCenter = slider.scrollLeft + (slider.clientWidth / 2);
-    let currentIndex = 0;
-    let minDistance = Number.POSITIVE_INFINITY;
-
-    cards.forEach((card, index) => {
-      const cardCenter = card.offsetLeft + (card.clientWidth / 2);
-      const distance = Math.abs(cardCenter - sliderCenter);
-
-      if (distance < minDistance) {
-        minDistance = distance;
-        currentIndex = index;
-      }
-    });
-
-    return currentIndex;
-  });
-}
-
-async function getCenteredCardIndexForSlider(page, sliderId) {
-  return page.evaluate((id) => {
-    const slider = document.getElementById(id);
     const cards = slider ? Array.from(slider.children) : [];
     if (!slider || !cards.length) return -1;
 
@@ -69,7 +45,7 @@ async function getCenteredCardIndexForSlider(page, sliderId) {
     });
 
     return currentIndex;
-  }, sliderId);
+  });
 }
 
 async function getActiveDotIndex(page) {
@@ -107,25 +83,49 @@ async function run() {
 
     const modalBackdrop = page.locator('#modalBackdrop');
     assert(await modalBackdrop.isHidden(), 'Initial modal state should be hidden.');
-    assert((await page.locator('.rail-number').count()) === 0, 'Rail number badges should be removed.');
-    assert((await page.locator('.rail-marker').count()) >= 7, 'Rail markers should be rendered.');
+    assert((await page.locator('.section-rail').count()) === 0, 'Left rail navigation should be removed.');
+    assert((await page.locator('#profile').count()) === 0, 'Standalone profile section should be removed.');
 
-    const guideToggle = page.locator('#railGuideToggle');
-    const guidePanel = page.locator('#railGuidePanel');
+    const heroMetrics = await page.locator('.hero-stage').evaluate((node) => {
+      const rect = node.getBoundingClientRect();
+      return { width: rect.width, height: rect.height, viewportWidth: window.innerWidth, viewportHeight: window.innerHeight };
+    });
+
+    assert(heroMetrics.width >= heroMetrics.viewportWidth - 8, 'Hero should span the full viewport width.');
+    assert(heroMetrics.height >= heroMetrics.viewportHeight - 8, 'Hero should span the full viewport height.');
+
+    const navTexts = await page.locator('.site-link').evaluateAll((nodes) => nodes.map((node) => node.textContent?.trim() ?? ''));
+    assert(JSON.stringify(navTexts) === JSON.stringify(['Main', 'What', 'Why', 'How', 'Vision', 'Portfolio']), 'Top nav items should match the expected order.');
+
+    const guideToggle = page.locator('#navGuideToggle');
+    const guidePanel = page.locator('#navGuidePanel');
 
     await guideToggle.click();
-    assert(await guidePanel.isVisible(), 'Guide panel should open after clicking the rail toggle.');
+    assert(await guidePanel.isVisible(), 'Guide panel should open after clicking the nav toggle.');
     assert((await guideToggle.getAttribute('aria-expanded')) === 'true', 'Guide toggle should reflect the open state.');
 
-    await page.locator('.rail-link[href="#profile"]').click();
+    await page.locator('.site-link[href="#tools"]').click();
     await page.waitForTimeout(350);
-    assert(await page.locator('.rail-link[href="#profile"]').evaluate((node) => node.classList.contains('is-active')), 'Profile rail link should become active after navigation.');
-    assert(await guidePanel.isHidden(), 'Guide panel should close after choosing a rail link.');
-    assert(await page.locator('.hero-action').first().isVisible(), 'Hero CTA should be visible.');
-    assert(await page.locator('.hero-profile-card').isVisible(), 'Hero quick profile card should be visible.');
-    assert(await page.locator('.editorial-story').isVisible(), 'Origin editorial layout should be rendered.');
-    assert((await page.locator('#originSlider').count()) === 0, 'Origin slider should be removed.');
-    assert(await page.locator('#approach .principle-grid').isVisible(), 'Approach should render as a grid.');
+    assert(await page.locator('.site-link[href="#tools"]').evaluate((node) => node.classList.contains('is-active')), 'What nav link should become active after navigation.');
+    assert(await guidePanel.isHidden(), 'Guide panel should close after choosing a nav link.');
+
+    const heroPrimaryCta = page.locator('.hero-action-primary');
+    const heroSecondaryCta = page.locator('.hero-action-secondary');
+    assert((await heroPrimaryCta.getAttribute('href')) === '#tools', 'Primary hero CTA should point to the What section.');
+    assert((await heroSecondaryCta.getAttribute('href')) === '#scenes', 'Secondary hero CTA should point to the scenes section.');
+
+    const heroCard = page.locator('.hero-profile-card');
+    assert(await heroCard.isVisible(), 'Hero profile card should be visible.');
+
+    const orderIsCorrect = await page.evaluate(() => {
+      const main = document.querySelector('main');
+      return main?.firstElementChild?.id === 'tools';
+    });
+    assert(orderIsCorrect, 'What section should appear immediately after the hero.');
+
+    assert(await page.locator('#origin .editorial-story').isVisible(), 'Why section should render as an editorial layout.');
+    assert(await page.locator('#how').isVisible(), 'How wrapper should be present.');
+    assert(await page.locator('#approach .principle-grid').isVisible(), 'Approach should render as a principles grid.');
     assert(await page.locator('#alignment .process-flow').isVisible(), 'Alignment should render as a process flow.');
 
     const cards = page.locator('#sceneSlider .card');
@@ -159,9 +159,9 @@ async function run() {
     await page.locator('#modalClose').click();
     assert(await modalBackdrop.isHidden(), 'Modal should close after clicking the close button.');
 
+    await assertCardOpensModal(page, '#tools .open-modal', 'Tool card should open the modal.');
     await assertCardOpensModal(page, '#approach .open-modal', 'Approach card should open the modal.');
     await assertCardOpensModal(page, '#alignment .open-modal', 'Alignment step should open the modal.');
-    await assertCardOpensModal(page, '#tools .open-modal', 'Tool card should open the modal.');
 
     await cards.nth(0).click();
     assert(await modalBackdrop.isVisible(), 'Modal should reopen after clicking another scene card.');
