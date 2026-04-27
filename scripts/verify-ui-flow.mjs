@@ -93,6 +93,9 @@ async function run() {
 
     assert((await page.locator(".site-title").count()) === 0, "Site brand title should be removed.");
     assert((await page.locator(".eyebrow").count()) === 0, "Hero eyebrow should be removed.");
+    assert((await page.locator(".site-header .site-version").count()) === 0, "Version should be removed from the sticky header.");
+    assert((await page.locator("#hero .hero-version").count()) === 1, "Version should be displayed inside the hero.");
+    assert((await page.locator(".hero-summary").count()) === 0, "Hero summary should be removed.");
     assert((await page.locator("#tools .section-lead").count()) === 0, "What lead text should be removed.");
     assert((await page.locator("#how .section-lead").count()) === 0, "How lead text should be removed.");
     assert((await page.locator(".hero-actions").count()) === 0, "Hero action buttons should be removed.");
@@ -104,10 +107,8 @@ async function run() {
     assert(Math.abs(headerTopBefore) <= 2, "Header should start at the top of the viewport.");
     assert(Math.abs(headerTopAfter) <= 2, "Header should remain stuck to the top while scrolling.");
 
-    const headerBg = await page.locator(".site-header").evaluate((node) => getComputedStyle(node).backgroundColor);
     const navBg = await page.locator(".site-nav").evaluate((node) => getComputedStyle(node).backgroundColor);
-    assert(headerBg === "rgba(0, 0, 0, 0)" || headerBg === "transparent", "Header background should be transparent.");
-    assert(navBg === "rgba(0, 0, 0, 0)" || navBg === "transparent", "Nav panel background should be transparent.");
+    assert(navBg.includes("0.5") || navBg.includes("0.50"), "Nav panel background should be visible over light sections.");
 
     const heroMetrics = await page.locator(".hero-stage").evaluate((node) => {
       const rect = node.getBoundingClientRect();
@@ -124,15 +125,19 @@ async function run() {
     const heroLayout = await page.evaluate(() => {
       const card = document.querySelector(".hero-profile-card")?.getBoundingClientRect();
       const copy = document.querySelector(".hero-copy")?.getBoundingClientRect();
+      const version = document.querySelector(".hero-version")?.getBoundingClientRect();
       return {
         cardLeft: card?.left ?? 0,
         cardTop: card?.top ?? 0,
         copyLeft: copy?.left ?? 0,
-        copyTop: copy?.top ?? 0
+        copyTop: copy?.top ?? 0,
+        versionTop: version?.top ?? 0,
+        versionLeft: version?.left ?? 0
       };
     });
     assert(Math.abs(heroLayout.cardLeft - heroLayout.copyLeft) <= 24, "Profile card and hero copy should share the same left anchor.");
     assert(heroLayout.cardTop < heroLayout.copyTop, "Profile card should sit above the main copy.");
+    assert(heroLayout.versionTop < heroLayout.cardTop && heroLayout.versionLeft <= heroLayout.cardLeft + 4, "Hero version should sit above the profile near the left edge.");
 
     const titleLines = await page.locator(".hero-title-line").evaluateAll((nodes) => nodes.map((node) => node.textContent?.trim() ?? ""));
     assert(JSON.stringify(titleLines) === JSON.stringify(["막히는 흐름을 구조로 바꾸는", "게임 시스템 기획자"]), "Hero title should keep the fixed two-line split.");
@@ -152,6 +157,7 @@ async function run() {
     assert(await howSlider.isVisible(), "How slider should be rendered.");
     assert(await howCards.count() === 3, "How slider should contain exactly 3 slides.");
     assert(await howDots.count() === 3, "How slider should render exactly 3 dots.");
+    assert(await page.locator("#scenes .case-card").count() <= 4, "Cases slide should support up to four visible case cards.");
 
     await page.locator('[data-slider-target="howSlider"].slider-nav-next').click();
     await waitForSliderSettle(page);
