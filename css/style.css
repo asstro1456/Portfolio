@@ -108,8 +108,9 @@ p {
 
 .site-header-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: auto auto;
   align-items: center;
+  justify-content: end;
   gap: 1rem;
 }
 
@@ -129,9 +130,11 @@ p {
 
 .site-nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: .32rem;
+  width: max-content;
+  max-width: calc(100vw - 7rem);
   padding: .38rem;
   border-radius: 999px;
   border: 1px solid rgba(168, 205, 229, 0.38);
@@ -780,6 +783,21 @@ p {
   padding: 1.2rem;
 }
 
+.resource-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  margin-top: .4rem;
+  padding: .7rem 1.05rem;
+  border-radius: 999px;
+  border: 1px solid rgba(36, 74, 105, 0.24);
+  background: #173a55;
+  color: #f2f8ff;
+  text-decoration: none;
+  font-weight: 800;
+}
+
 .resource-badge {
   display: inline-flex;
   align-items: center;
@@ -920,14 +938,22 @@ body.modal-open {
   }
 
   .site-header-inner {
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: auto auto;
     align-items: center;
+    justify-content: end;
   }
 
   .site-nav {
     grid-column: auto;
     order: 0;
-    justify-content: flex-end;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .site-nav-utility {
@@ -950,6 +976,37 @@ body.modal-open {
   }
 
   .process-step::after {
+    display: none;
+  }
+
+  .slider-shell {
+    overflow: visible;
+  }
+
+  .how-slider {
+    min-height: 0;
+    padding-bottom: 1rem;
+  }
+
+  .how-slide {
+    position: relative;
+    top: auto;
+    left: auto;
+    display: none;
+    width: 100%;
+    min-height: auto;
+    transform: none;
+    opacity: 1;
+    filter: none;
+  }
+
+  .how-slide.is-active {
+    display: block;
+    transform: none;
+  }
+
+  .how-slide.is-prev,
+  .how-slide.is-next {
     display: none;
   }
 }
@@ -975,7 +1032,7 @@ body.modal-open {
     flex-wrap: nowrap;
     justify-content: flex-start;
     overflow-x: auto;
-    max-width: 100%;
+    max-width: calc(100vw - 5.5rem);
     scrollbar-width: none;
   }
 
