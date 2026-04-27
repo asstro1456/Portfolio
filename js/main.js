@@ -112,6 +112,10 @@ modalTriggers.forEach((trigger) => {
 });
 
 function getCenteredCardIndex(slider) {
+  if (slider.id === 'howSlider') {
+    return Number.parseInt(slider.dataset.activeIndex ?? '0', 10);
+  }
+
   const cards = Array.from(slider.children);
   const sliderCenter = slider.scrollLeft + (slider.clientWidth / 2);
   let currentIndex = 0;
@@ -130,11 +134,15 @@ function getCenteredCardIndex(slider) {
   return currentIndex;
 }
 
-function scrollCardToCenter(slider, card) {
+function scrollCardToCenter(slider, card, behavior = 'smooth') {
+  if (slider.id === 'howSlider') {
+    return;
+  }
+
   const targetLeft = card.offsetLeft - ((slider.clientWidth - card.offsetWidth) / 2);
   slider.scrollTo({
     left: Math.max(0, targetLeft),
-    behavior: 'smooth'
+    behavior
   });
 }
 
@@ -149,22 +157,28 @@ function updateSliderDots(dotsContainer, activeIndex) {
 
 function updateSliderClasses(slider, activeIndex) {
   const cards = Array.from(slider.children);
+  const prevIndex = (activeIndex - 1 + cards.length) % cards.length;
+  const nextIndex = (activeIndex + 1) % cards.length;
 
   cards.forEach((card, index) => {
     card.classList.remove('is-active', 'is-prev', 'is-next');
+    card.style.order = '4';
 
     if (index === activeIndex) {
       card.classList.add('is-active');
+      card.style.order = '2';
       return;
     }
 
-    if (index === (activeIndex - 1 + cards.length) % cards.length) {
+    if (index === prevIndex) {
       card.classList.add('is-prev');
+      card.style.order = '1';
       return;
     }
 
-    if (index === (activeIndex + 1) % cards.length) {
+    if (index === nextIndex) {
       card.classList.add('is-next');
+      card.style.order = '3';
     }
   });
 }
@@ -228,6 +242,9 @@ sliderTracks.forEach((slider) => {
 
   const initialIndex = getCenteredCardIndex(slider);
   setActiveSliderCard(slider, initialIndex);
+  requestAnimationFrame(() => {
+    scrollCardToCenter(slider, cards[initialIndex], 'auto');
+  });
 
   slider.addEventListener('scroll', () => {
     if (scrollTimer) {
