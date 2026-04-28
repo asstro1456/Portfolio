@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Limbus Roguelike Prototype — 7 슬롯(인격/장비 공용)</title>
+  <style>
+    :root{
+      --bg:#0f1115; --panel:#161a22; --panel2:#1c2230; --text:#e7eaf0; --muted:#a8b0c2;
+      --accent:#7aa2f7; --accent2:#f7c97a; --danger:#f7768e; --ok:#9ece6a; --line:#2a3245;
+      --chip:#20283a;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;}
+    header{padding:14px 16px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#111521,#0f1115);}
+    header h1{margin:0;font-size:16px;font-weight:700}
+    header .sub{margin-top:4px;color:var(--muted);font-size:12px}
+    main{display:grid;grid-template-columns: 360px 1fr; gap:14px; padding:14px; max-width:1200px; margin:0 auto;}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:14px; padding:12px; box-shadow: 0 10px 30px rgba(0,0,0,.25);}
+    .card h2{margin:0 0 10px;font-size:13px;color:var(--muted);font-weight:700;letter-spacing:.02em;text-transform:uppercase}
+    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .stat{background:var(--chip);border:1px solid var(--line);padding:8px 10px;border-radius:12px;min-width:110px}
+    .stat .k{color:var(--muted);font-size:11px}
+    .stat .v{font-size:15px;font-weight:700;margin-top:2px}
+    .btn{background:var(--panel2);border:1px solid var(--line);color:var(--text);padding:10px 12px;border-radius:12px;cursor:pointer;font-weight:700}
+    .btn:hover{border-color:#3b4763}
+    .btn:disabled{opacity:.45;cursor:not-allowed}
+    .btn.primary{background:linear-gradient(180deg,#2a3a63,#1b2743);border-color:#3d528b}
+    .btn.warn{background:linear-gradient(180deg,#5b4520,#3c2d12);border-color:#846433}
+    .btn.danger{background:linear-gradient(180deg,#5a1f2d,#3a141c);border-color:#8b3b52}
+    .badge{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:999px;background:var(--chip);border:1px solid var(--line);color:var(--muted);font-size:12px}
+    .badge b{color:var(--text)}
+    .split{display:grid;grid-template-columns: 1fr 1fr; gap:10px}
+    .slots{display:grid;grid-template-columns: repeat(7, 1fr); gap:10px}
+    .slot{border:1px dashed #3b4763;border-radius:14px; padding:10px; min-height:88px; background:rgba(255,255,255,.02); position:relative}
+    .slot.locked{opacity:.35; filter:saturate(.6)}
+    .slot .idx{position:absolute;top:8px;left:10px;color:var(--muted);font-size:11px}
+    .item{border:1px solid var(--line);background:var(--panel2);border-radius:12px;padding:8px 10px;cursor:pointer}
+    .item:hover{border-color:#3b4763}
+    .item .top{display:flex;justify-content:space-between;gap:8px}
+    .item .name{font-weight:800}
+    .item .tag{font-size:11px;color:var(--muted)}
+    .item .desc{margin-top:4px;color:var(--muted);font-size:12px}
+    .item.identity{border-color:#3b528b}
+    .item.equip{border-color:#846433}
+    .item .pill{padding:2px 6px;border-radius:999px;border:1px solid var(--line);background:#101521;color:var(--muted);font-size:11px}
+    .item.identity .pill{border-color:#3b528b}
+    .item.equip .pill{border-color:#846433}
+    .list{display:flex;flex-direction:column;gap:10px}
+    .muted{color:var(--muted)}
+    .hr{height:1px;background:var(--line);margin:10px 0}
+    .log{height:210px;overflow:auto;font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+         background:#0c0f16;border:1px solid var(--line);border-radius:12px;padding:10px;color:#cbd3e6;font-size:12px}
+    .small{font-size:12px}
+    .nodebar{display:flex;gap:8px;flex-wrap:wrap}
+    .nodechip{padding:6px 8px;border-radius:10px;border:1px solid var(--line);background:var(--chip);color:var(--muted);font-size:12px}
+    .nodechip.active{border-color:#3d528b;color:var(--text);background:#121a2a}
+    .nodechip.done{opacity:.6}
+    .kpi{display:grid;grid-template-columns: repeat(3, 1fr); gap:10px}
+    .notice{border:1px solid var(--line);background:#101521;border-radius:12px;padding:10px;color:var(--muted)}
+    .two{display:grid;grid-template-columns: 1fr 1fr; gap:10px}
+    @media (max-width: 980px){
+      main{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Limbus 신규 로그라이크 — 7 슬롯(인격/장비 공용) 프로토타입</h1>
+  <div class="sub">포트폴리오용: 10노드 축약 / 오토 전투(확률) / 정비 노드에서 슬롯 개방·영입·장비·강화 선택</div>
+</header>
+
+<main>
+  <section class="card" id="left">
+    <h2>Run Status</h2>
+    <div class="kpi">
+      <div class="stat"><div class="k">HP</div><div class="v" id="hpV">—</div></div>
+      <div class="stat"><div class="k">던전 재화</div><div class="v" id="goldV">—</div></div>
+      <div class="stat"><div class="k">강화 횟수</div><div class="v" id="upgV">—</div></div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="row">
+      <span class="badge">노드 <b id="nodeIdx">1</b> / 10</span>
+      <span class="badge">루트 <b id="routeV">미결정</b></span>
+      <span class="badge">전투 비중 <b id="combatBiasV">—</b></span>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="nodebar" id="nodebar"></div>
+
+    <div class="hr"></div>
+
+    <div class="notice small" id="nodeDesc">—</div>
+
+    <div class="row" style="margin-top:10px">
+      <button class="btn primary" id="btnNext">다음 노드 진행</button>
+      <button class="btn danger" id="btnRestart">재도전(새 런)</button>
+    </div>
+
+    <div class="hr"></div>
+
+    <h2>Log</h2>
+    <div class="log" id="log"></div>
+  </section>
+
+  <section class="card" id="right">
+    <h2>7 슬롯 (인격/장비 공용)</h2>
+    <div class="slots" id="slots"></div>
+
+    <div class="hr"></div>
+
+    <div class="split">
+      <div>
+        <h2>보유 인격</h2>
+        <div class="list" id="poolIdent"></div>
+      </div>
+      <div>
+        <h2>보유 장비</h2>
+        <div class="list" id="poolEquip"></div>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="two">
+      <div class="card" style="padding:12px;background:var(--panel2)">
+        <h2 style="margin-bottom:8px">정비 노드 액션</h2>
+        <div class="row">
+          <button class="btn" id="btnOpenSlot">슬롯 개방</button>
+          <button class="btn" id="btnRecruit">영입</button>
+          <button class="btn warn" id="btnBuyEquip">장비 확보</button>
+          <button class="btn primary" id="btnUpgrade">강화</button>
+        </div>
+        <div class="muted small" style="margin-top:8px" id="maintHint">
+          정비 노드에서만 활성화됩니다.
+        </div>
+      </div>
+
+      <div class="card" style="padding:12px;background:var(--panel2)">
+        <h2 style="margin-bottom:8px">전투/이벤트 액션</h2>
+        <div class="row">
+          <button class="btn" id="btnEventA">이벤트 선택 A</button>
+          <button class="btn" id="btnEventB">이벤트 선택 B</button>
+          <button class="btn primary" id="btnFight">전투 수행</button>
+        </div>
+        <div class="muted small" style="margin-top:8px" id="evtHint">
+          해당 노드에서만 활성화됩니다.
+        </div>
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="notice small">
+      <b>조작법(간단):</b>
+      (1) 우측 보유 리스트에서 인격/장비를 클릭 → 빈 슬롯에 장착.<br/>
+      (2) 장착된 슬롯을 클릭 → 해제(보유 목록으로 반환).<br/>
+      (3) 정비 노드에서 슬롯 개방·영입·장비·강화를 선택해 런을 설계.<br/>
+      <span class="muted">※ 이 프로토타입은 “구조 검증용”이며 수치 밸런스는 임의입니다.</span>
+    </div>
+  </section>
+</main>
+
+<script>
+(function(){
+  // ---------- Data ----------
+  const IDENTITY_TIER = { "3성":"#3b528b", "2성":"#4d66a8", "1성":"#6476a3" };
+
+  const identityDB = [
+    {id:"id_3_a", name:"3성 인격 A", tier:"3성", tag:"메인", base:8, synergy:1, lvl:1},
+    {id:"id_3_b", name:"3성 인격 B", tier:"3성", tag:"메인", base:8, synergy:1, lvl:1},
+    {id:"id_2_x", name:"2성 엑스트라 X", tier:"2성", tag:"시너지", base:3, synergy:2, lvl:1},
+    {id:"id_2_y", name:"2성 엑스트라 Y", tier:"2성", tag:"시너지", base:3, synergy:2, lvl:1},
+    {id:"id_1_m", name:"1성 용병 M", tier:"1성", tag:"용병", base:2, synergy:0, lvl:1},
+    {id:"id_1_n", name:"1성 용병 N", tier:"1성", tag:"용병", base:2, synergy:0, lvl:1},
+  ];
+
+  const equipDB = [
+    {id:"eq_a", name:"장비 A", tag:"공격", bonus:3, desc:"+전투력"},
+    {id:"eq_b", name:"장비 B", tag:"방어", bonus:2, desc:"+생존"},
+    {id:"eq_c", name:"장비 C", tag:"유틸", bonus:2, desc:"+유틸"},
+  ];
+
+  // Nodes: E=event, M=maintenance, B=battle, MB=midboss, FB=finalboss
+  // 10 nodes 축약. 실제 기획의 30~40노드를 압축 표현.
+  const baseNodes = [
+    {t:"E", title:"초반 이벤트", desc:"초기 선택지. 소량 재화/HP 변동."},
+    {t:"M", title:"정비", desc:"슬롯 개방/영입/장비/강화."},
+    {t:"B", title:"소규모 전투", desc:"1~2분 오토 전투(확률)."},
+    {t:"E", title:"이벤트", desc:"선택에 따라 재화/HP."},
+    {t:"M", title:"정비", desc:"빌드 조정."},
+    {t:"MB", title:"중간 보스", desc:"성장 체크."},
+    {t:"E", title:"분기 이벤트", desc:"강화/영입 방향을 고정하는 선택."},
+    {t:"M", title:"정비", desc:"최종전 대비."},
+    {t:"B", title:"전투(웨이브)", desc:"조합 루트는 여기서 소모."},
+    {t:"FB", title:"최종 보스", desc:"루트별 난이도 분리."},
+  ];
+
+  // ---------- State ----------
+  let state = {};
+
+  function newRun(){
+    state = {
+      hp: 100,
+      gold: 20,
+      upgrades: 0,            // 총 강화 횟수
+      slotsUnlocked: 2,       // 시작 2칸
+      // Pools
+      poolIdent: [clone(identityDB.find(x=>x.id==="id_3_a")), clone(identityDB.find(x=>x.id==="id_2_x"))],
+      poolEquip: [clone(equipDB.find(x=>x.id==="eq_b"))],
+      // Equipped slots (7)
+      slots: Array.from({length:7}, (_,i)=>({ locked: i>=2, item:null })),
+      // Progress
+      nodes: clone(baseNodes),
+      nodeIndex: 0,
+      inNodeActionDone: false, // prevent double actions without moving
+      route: "미결정",          // 강화 / 영입
+      combatBias: "—",          // 전투↑/이벤트↓, etc
+      // For prototype: difficulty scaling
+      seed: Math.random().toString(16).slice(2),
+    };
+
+    // auto equip first identity into slot 1
+    equipItem(state.poolIdent[0].id);
+    logClear();
+    log(`새 런 시작. (시드 ${state.seed})`);
+    syncUI();
+    setNodeUI();
+  }
+
+  function clone(o){ return JSON.parse(JSON.stringify(o)); }
+
+  // ---------- UI helpers ----------
+  const $ = (id)=>document.getElementById(id);
+  function log(msg){
+    const el = $("log");
+    const ts = new Date().toLocaleTimeString();
+    el.innerHTML += `[${ts}] ${escapeHtml(msg)}<br/>`;
+    el.scrollTop = el.scrollHeight;
+  }
+  function logClear(){ $("log").innerHTML=""; }
+  function escapeHtml(s){ return (s+"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;"); }
+
+  function syncUI(){
+    $("hpV").textContent = Math.max(0, Math.floor(state.hp));
+    $("goldV").textContent = Math.floor(state.gold);
+    $("upgV").textContent = state.upgrades;
+
+    $("nodeIdx").textContent = (state.nodeIndex+1);
+    $("routeV").textContent = state.route;
+    $("combatBiasV").textContent = state.combatBias;
+
+    renderNodebar();
+    renderSlots();
+    renderPools();
+    updateActionAvailability();
+  }
+
+  function renderNodebar(){
+    const bar = $("nodebar");
+    bar.innerHTML="";
+    state.nodes.forEach((n, i)=>{
+      const c = document.createElement("div");
+      c.className = "nodechip" + (i===state.nodeIndex?" active":"") + (i<state.nodeIndex?" done":"");
+      c.textContent = `${i+1}:${n.t}`;
+      bar.appendChild(c);
+    });
+  }
+
+  function renderSlots(){
+    const wrap = $("slots");
+    wrap.innerHTML="";
+    state.slots.forEach((s, i)=>{
+      const d = document.createElement("div");
+      d.className = "slot" + (s.locked ? " locked":"");
+      d.innerHTML = `<div class="idx">슬롯 ${i+1}${s.locked?" (잠김)":""}</div>`;
+      if(s.item){
+        const it = s.item;
+        const kind = it.kind;
+        const pill = kind==="identity" ? it.tier : it.tag;
+        const bonusText = kind==="identity" ? `전투력 ${it.base}, 시너지 ${it.synergy}` : `보너스 +${it.bonus}`;
+        const cls = kind==="identity" ? "identity" : "equip";
+        const box = document.createElement("div");
+        box.className = `item ${cls}`;
+        box.innerHTML = `
+          <div class="top">
+            <div class="name">${escapeHtml(it.name)}</div>
+            <span class="pill">${escapeHtml(pill)}</span>
+          </div>
+          <div class="desc">${escapeHtml(bonusText)}</div>
+          <div class="desc muted">클릭: 해제</div>
+        `;
+        box.onclick = ()=>{ unequipSlot(i); };
+        d.appendChild(box);
+      }else{
+        const hint = document.createElement("div");
+        hint.className="muted small";
+        hint.style.marginTop="28px";
+        hint.textContent = s.locked ? "정비/이벤트로 슬롯 개방" : "클릭 가능한 아이템을 선택해 장착";
+        d.appendChild(hint);
+      }
+      wrap.appendChild(d);
+    });
+  }
+
+  function renderPools(){
+    // identities
+    const pi = $("poolIdent");
+    pi.innerHTML="";
+    state.poolIdent.forEach(it=>{
+      const d = document.createElement("div");
+      d.className="item identity";
+      d.innerHTML = `
+        <div class="top">
+          <div class="name">${escapeHtml(it.name)}</div>
+          <span class="pill">${escapeHtml(it.tier)}</span>
+        </div>
+        <div class="desc">전투력 ${it.base} · 시너지 ${it.synergy}</div>
+        <div class="desc muted">클릭: 장착</div>
+      `;
+      d.onclick = ()=>equipItem(it.id);
+      pi.appendChild(d);
+    });
+    if(state.poolIdent.length===0){
+      const e=document.createElement("div");
+      e.className="muted small";
+      e.textContent="보유 인격 없음";
+      pi.appendChild(e);
+    }
+
+    // equipment
+    const pe = $("poolEquip");
+    pe.innerHTML="";
+    state.poolEquip.forEach(it=>{
+      const d = document.createElement("div");
+      d.className="item equip";
+      d.innerHTML = `
+        <div class="top">
+          <div class="name">${escapeHtml(it.name)}</div>
+          <span class="pill">${escapeHtml(it.tag)}</span>
+        </div>
+        <div class="desc">보너스 +${it.bonus}</div>
+        <div class="desc muted">클릭: 장착</div>
+      `;
+      d.onclick = ()=>equipItem(it.id);
+      pe.appendChild(d);
+    });
+    if(state.poolEquip.length===0){
+      const e=document.createElement("div");
+      e.className="muted small";
+      e.textContent="보유 장비 없음";
+      pe.appendChild(e);
+    }
+  }
+
+  function updateActionAvailability(){
+    const n = state.nodes[state.nodeIndex];
+    const isMaint = (n.t==="M");
+    const isEvent = (n.t==="E");
+    const isBattle = (n.t==="B" || n.t==="MB" || n.t==="FB");
+
+    $("btnOpenSlot").disabled = !(isMaint) || state.inNodeActionDone || state.slotsUnlocked>=7;
+    $("btnRecruit").disabled   = !(isMaint) || state.inNodeActionDone;
+    $("btnBuyEquip").disabled  = !(isMaint) || state.inNodeActionDone;
+    $("btnUpgrade").disabled   = !(isMaint) || state.inNodeActionDone;
+
+    $("btnEventA").disabled = !(isEvent) || state.inNodeActionDone;
+    $("btnEventB").disabled = !(isEvent) || state.inNodeActionDone;
+    $("btnFight").disabled  = !(isBattle) || state.inNodeActionDone;
+
+    $("maintHint").textContent = isMaint ? "정비 노드: 1회 액션 후 다음 노드로 진행." : "정비 노드에서만 활성화됩니다.";
+    $("evtHint").textContent = (isEvent||isBattle) ? "해당 노드: 1회 액션 후 다음 노드로 진행." : "해당 노드에서만 활성화됩니다.";
+
+    $("btnNext").disabled = state.inNodeActionDone===false; // must act once per node
+  }
+
+  function setNodeUI(){
+    const n = state.nodes[state.nodeIndex];
+    $("nodeDesc").innerHTML = `<b>${escapeHtml(n.title)}</b><br/><span class="muted">${escapeHtml(n.desc)}</span>`;
+    state.inNodeActionDone = false;
+    // Route hint updates after 분기 이벤트
+    syncUI();
+  }
+
+  // ---------- Equip / Unequip ----------
+  function equipItem(itemId){
+    // find item in pools
+    const idIdx = state.poolIdent.findIndex(x=>x.id===itemId);
+    const eqIdx = state.poolEquip.findIndex(x=>x.id===itemId);
+
+    let it=null;
+    if(idIdx>=0){ it = state.poolIdent[idIdx]; it.kind="identity"; }
+    else if(eqIdx>=0){ it = state.poolEquip[eqIdx]; it.kind="equip"; }
+    else { return; }
+
+    // find first unlocked empty slot
+    const slotIdx = state.slots.findIndex((s)=>!s.locked && s.item===null);
+    if(slotIdx<0){
+      log("빈 슬롯이 없습니다. 슬롯을 개방하거나 기존 장착을 해제하세요.");
+      return;
+    }
+
+    // remove from pool
+    if(idIdx>=0) state.poolIdent.splice(idIdx,1);
+    else state.poolEquip.splice(eqIdx,1);
+
+    state.slots[slotIdx].item = it;
+    log(`장착: 슬롯 ${slotIdx+1} ← ${it.name}`);
+    syncUI();
+  }
+
+  function unequipSlot(slotIdx){
+    const s = state.slots[slotIdx];
+    if(!s.item) return;
+    const it = s.item;
+    s.item=null;
+    if(it.kind==="identity"){ delete it.kind; state.poolIdent.push(it); }
+    else { delete it.kind; state.poolEquip.push(it); }
+    log(`해제: 슬롯 ${slotIdx+1} → ${it.name}`);
+    syncUI();
+  }
+
+  // ---------- Core calculations ----------
+  function calcPower(){
+    let p=0, synergy=0, idCount=0, eqCount=0, tier3=0, tier2=0, tier1=0;
+    state.slots.forEach(s=>{
+      if(!s.locked && s.item){
+        if(s.item.kind==="identity"){
+          p += s.item.base + ((s.item.lvl||1)-1);
+          synergy += s.item.synergy;
+          idCount++;
+          if(s.item.tier==="3성") tier3++;
+          if(s.item.tier==="2성") tier2++;
+          if(s.item.tier==="1성") tier1++;
+        }else{
+          p += s.item.bonus;
+          eqCount++;
+        }
+      }
+    });
+
+    // upgrades: high-cost, high impact (prototype)
+    p += state.upgrades * 2;
+
+    // synergy gives small stability bump
+    p += Math.floor(synergy/2);
+
+    return {power:p, synergy, idCount, eqCount, tier3, tier2, tier1};
+  }
+
+  function openSlotCost(){
+    // increasing cost each slot, keep rough
+    return 6 + (state.slotsUnlocked-2) * 4;
+  }
+  function recruitCost(){
+    // cheap and repeatable; encourages synergy
+    return 4;
+  }
+  function equipCost(){
+    return 5;
+  }
+  function upgradeCost(){
+    // expensive and escalating
+    return 10 + state.upgrades*6;
+  }
+
+  // ---------- Node actions ----------
+  function doOpenSlot(){
+    const cost = openSlotCost();
+    if(state.gold < cost){ log(`슬롯 개방 실패: 재화 부족 (필요 ${cost})`); return; }
+    if(state.slotsUnlocked>=7){ log("이미 최대 슬롯(7)입니다."); return; }
+    state.gold -= cost;
+    const idx = state.slotsUnlocked;
+    state.slotsUnlocked++;
+    state.slots[idx].locked=false;
+    state.slots[idx].locked=false;
+    log(`슬롯 개방: 슬롯 ${idx+1} 해금 (비용 ${cost})`);
+    state.inNodeActionDone = true;
+    syncUI();
+  }
+
+  
+
+function doRecruit(){
+  const n = currentNode();
+  if(n.t!=="M"){ log("영입은 정비 노드에서만 가능."); return; }
+
+  if(state.recruitCount >= state.recruitLimit){
+    log("영입 한도(4회)에 도달했다.");
+    return;
+  }
+
+  const cost = 4;
+  if(state.gold < cost){
+    log("안이 부족하다.");
+    return;
+  }
+  state.gold -= cost;
+
+  // 확률 공개: 3성 15% / 2성 45% / 1성 40%
+  const r = Math.random();
+  let tier = "1성";
+  if(r < 0.15) tier = "3성";
+  else if(r < 0.60) tier = "2성";
+
+  const pool = identityDB.filter(x=>x.tier===tier);
+  const pick = clone(pool[Math.floor(Math.random()*pool.length)]);
+  pick.lvl = pick.lvl || 1;
+
+  const ownedIdx = state.poolIdent.findIndex(x=>x.id===pick.id);
+  if(ownedIdx >= 0){
+    state.poolIdent[ownedIdx].lvl = (state.poolIdent[ownedIdx].lvl || 1) + 1;
+    log(`중복 영입: ${state.poolIdent[ownedIdx].name} 강화 (Lv ${state.poolIdent[ownedIdx].lvl})`);
+  }else{
+    state.poolIdent.push(pick);
+    log(`영입: ${pick.name} (Lv 1)`);
+  }
+
+  state.recruitCount += 1;
+  log(`영입 횟수: ${state.recruitCount}/${state.recruitLimit}`);
+  syncUI();
+}
+
+  if(state.an < cost){
+    log("안이 부족하다.");
+    return;
+  }
+  state.an -= cost;
+
+  // Roll rarity
+  const r = Math.random();
+  let rarity = "1★";
+  if(r < 0.15) rarity = "3★";
+  else if(r < 0.60) rarity = "2★";
+
+  // Pick identity key by rarity (simplified pool)
+  const key = rarity;
+
+  // Check duplicate
+  const idx = state.party.findIndex(u=>u.key===key);
+  if(idx >= 0){
+    state.party[idx].lvl = (state.party[idx].lvl||1) + 1;
+    log(`중복 영입: ${rarity} 인격 강화 (Lv ${state.party[idx].lvl})`);
+  }else{
+    state.party.push({ key, rarity, lvl: 1, cost });
+    log(`영입 성공: ${rarity} 인격 (Lv 1)`);
+  }
+
+  state.recruitCount += 1;
+  log(`영입 횟수: ${state.recruitCount}/${state.recruitLimit}`);
+  syncUI();
+}
+)`); return; }
+    state.gold -= cost;
+
+    // cheap recruitment: mostly 1성, sometimes 2성, rarely 3성
+    const r = Math.random();
+    let pick;
+    if(r < 0.60) pick = clone(identityDB.find(x=>x.tier==="1성" && (Math.random()<0.5 ? x.id==="id_1_m" : x.id==="id_1_n")));
+    else if(r < 0.92) pick = clone(identityDB.find(x=>x.tier==="2성" && (Math.random()<0.5 ? x.id==="id_2_x" : x.id==="id_2_y")));
+    else pick = clone(identityDB.find(x=>x.tier==="3성" && (Math.random()<0.5 ? x.id==="id_3_a" : x.id==="id_3_b")));
+
+    state.poolIdent.push(pick);
+    log(`영입: ${pick.name} (비용 ${cost})`);
+    state.inNodeActionDone = true;
+    syncUI();
+  }
+
+  function doBuyEquip(){
+    const cost = equipCost();
+    if(state.gold < cost){ log(`장비 확보 실패: 재화 부족 (필요 ${cost})`); return; }
+    state.gold -= cost;
+    const pick = clone(equipDB[Math.floor(Math.random()*equipDB.length)]);
+    state.poolEquip.push(pick);
+    log(`장비 확보: ${pick.name} (비용 ${cost})`);
+    state.inNodeActionDone = true;
+    syncUI();
+  }
+
+  function doUpgrade(){
+    const cost = upgradeCost();
+    if(state.gold < cost){ log(`강화 실패: 재화 부족 (필요 ${cost})`); return; }
+    state.gold -= cost;
+    state.upgrades += 1;
+    log(`강화 +1 (비용 ${cost}) — 조건부 강화 스킬: 전투당 1~2회 발동(컨셉)`);
+    state.inNodeActionDone = true;
+    syncUI();
+  }
+
+  function doEvent(choice){
+    const s = calcPower();
+    // event: simple dice check influenced by synergy, encourages different builds
+    const roll = 1 + Math.floor(Math.random()*20);
+    const mod = Math.min(6, Math.floor(s.synergy/2));
+    const total = roll + mod;
+
+    // determine mild reward/penalty
+    if(choice==="A"){
+      if(total>=16){ state.gold += 8; log(`이벤트 A 성공: 주사위 ${roll}+${mod}=${total} → 재화 +8`); }
+      else if(total>=11){ state.gold += 4; log(`이벤트 A 부분성공: ${roll}+${mod}=${total} → 재화 +4`); }
+      else { state.hp -= 10; log(`이벤트 A 실패: ${roll}+${mod}=${total} → HP -10`); }
+    }else{
+      if(total>=16){ // slot as event reward
+        if(state.slotsUnlocked<7){
+          const idx = state.slotsUnlocked;
+          state.slotsUnlocked++;
+          state.slots[idx].locked=false;
+          log(`이벤트 B 대성공: ${roll}+${mod}=${total} → 슬롯 ${idx+1} 해금`);
+        }else{
+          state.gold += 6;
+          log(`이벤트 B 대성공: ${roll}+${mod}=${total} → (슬롯 최대) 재화 +6`);
+        }
+      }else if(total>=11){
+        state.gold += 3;
+        log(`이벤트 B 성공: ${roll}+${mod}=${total} → 재화 +3`);
+      }else{
+        state.hp -= 6;
+        log(`이벤트 B 실패: ${roll}+${mod}=${total} → HP -6`);
+      }
+    }
+
+    // Route decision at node 7 (분기 이벤트)
+    if(state.nodeIndex===6){
+      if(choice==="A"){
+        state.route="강화";
+        state.combatBias="전투↑ 이벤트↓";
+        log("루트 확정: 강화 루트(전투↑).");
+      }else{
+        state.route="영입";
+        state.combatBias="전투↓ 이벤트↑";
+        log("루트 확정: 영입 루트(이벤트↑).");
+      }
+    }
+
+    state.inNodeActionDone = true;
+    syncUI();
+  }
+
+  function difficultyForNode(t){
+    // base difficulty
+    let d = 10 + state.nodeIndex*2;
+    if(t==="MB") d += 6;
+    if(t==="FB") d += 12;
+
+    // route influence at end game
+    if(t==="FB"){
+      if(state.route==="강화") d += 6;     // 1:1 harder
+      if(state.route==="영입") d -= 4;     // wave then weaker boss concept
+    }
+    return d;
+  }
+
+  function doBattle(){
+    const n = state.nodes[state.nodeIndex];
+    const t = n.t;
+
+    const s = calcPower();
+    const d = difficultyForNode(t);
+
+    // auto battle: win chance based on power vs difficulty
+    const diff = s.power - d;
+    const winChance = clamp(0.10, 0.90, 0.50 + diff/40);
+
+    // 1인일수록 전투 위험 상승(컨셉)
+    const idCount = s.idCount;
+    const riskAdj = (idCount<=1) ? -0.08 : (idCount>=4 ? +0.04 : 0);
+    const finalChance = clamp(0.05, 0.95, winChance + riskAdj);
+
+    const roll = Math.random();
+    const win = roll < finalChance;
+
+    if(win){
+      // reward
+      const reward = (t==="MB") ? 12 : (t==="FB") ? 18 : 8;
+      state.gold += reward;
+      // minor hp loss
+      const chip = (t==="FB") ? 12 : (t==="MB") ? 8 : 5;
+      state.hp -= Math.max(0, chip - Math.floor(s.synergy/3));
+      log(`전투 승리: 파워 ${s.power} vs 난이도 ${d}, 승률 ${(finalChance*100).toFixed(0)}% → 재화 +${reward}, HP -${Math.max(0, chip - Math.floor(s.synergy/3))}`);
+    }else{
+      // damage
+      const dmg = (t==="FB") ? 35 : (t==="MB") ? 25 : 18;
+      state.hp -= dmg;
+      // consolation
+      const cons = 4;
+      state.gold += cons;
+      log(`전투 패배: 파워 ${s.power} vs 난이도 ${d}, 승률 ${(finalChance*100).toFixed(0)}% → HP -${dmg}, 재화 +${cons}`);
+    }
+
+    // Fail state
+    if(state.hp<=0){
+      state.hp = 0;
+      log("패배 엔딩: HP 0. 재도전 필요.");
+      // lock progression: end run
+      state.inNodeActionDone = true;
+      $("btnNext").disabled = true;
+      updateActionAvailability();
+      return;
+    }
+
+    state.inNodeActionDone = true;
+    syncUI();
+  }
+
+  function clamp(a,b,x){ return Math.max(a, Math.min(b, x)); }
+
+  // ---------- Progress ----------
+  function nextNode(){
+    if(!state.inNodeActionDone){
+      log("현재 노드에서 1회 액션을 수행해야 진행할 수 있습니다.");
+      return;
+    }
+
+    if(state.hp<=0){
+      log("패배 상태입니다. 재도전(새 런)하세요.");
+      return;
+    }
+
+    if(state.nodeIndex>=state.nodes.length-1){
+      // End: final summary
+      const s = calcPower();
+      log(`런 종료(시연): 최종 파워 ${s.power}, 슬롯 ${state.slotsUnlocked}/7, 강화 ${state.upgrades}`);
+      log("재도전으로 새 런을 시작할 수 있습니다.");
+      $("btnNext").disabled = true;
+      return;
+    }
+
+    state.nodeIndex++;
+    setNodeUI();
+  }
+
+  // ---------- Bind ----------
+  $("btnRestart").onclick = ()=>newRun();
+  $("btnNext").onclick = ()=>nextNode();
+
+  $("btnOpenSlot").onclick = ()=>doOpenSlot();
+  $("btnRecruit").onclick = ()=>doRecruit();
+  $("btnBuyEquip").onclick = ()=>doBuyEquip();
+  $("btnUpgrade").onclick = ()=>doUpgrade();
+
+  $("btnEventA").onclick = ()=>doEvent("A");
+  $("btnEventB").onclick = ()=>doEvent("B");
+  $("btnFight").onclick = ()=>doBattle();
+
+  // ---------- Init ----------
+  newRun();
+})();
+</script>
+</body>
+</html>

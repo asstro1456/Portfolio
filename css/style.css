@@ -464,8 +464,16 @@ p {
 }
 
 .tool-media-slot,
-.card-media-slot,
-.media-placeholder,
+.card-media-slot {
+  overflow: hidden;
+  border: 1px solid #ccd7e2;
+  background: #f7fafc;
+  color: #545b65;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
 .modal-media {
   border: 1.5px dashed #aab0b8;
   background: repeating-linear-gradient(
@@ -482,8 +490,7 @@ p {
 }
 
 .tool-media-slot,
-.card-media-slot,
-.media-placeholder {
+.card-media-slot {
   aspect-ratio: 16 / 9;
   height: auto;
   margin-bottom: .9rem;
@@ -500,7 +507,8 @@ p {
   height: 100%;
   border: 0;
   border-radius: 14px;
-  object-fit: cover;
+  object-fit: contain;
+  background: #ffffff;
 }
 
 .editorial-story {

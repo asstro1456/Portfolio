@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=0.1.14">
-  <script src="js/main.js?v=0.1.14" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=0.1.15">
+  <script src="js/main.js?v=0.1.15" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -72,7 +72,7 @@
 
   <section class="hero" id="hero">
     <div class="hero-stage" aria-label="메인 메시지와 대표 비주얼">
-      <span class="hero-version">Version 0.1.14</span>
+      <span class="hero-version">Version 0.1.15</span>
       <div class="hero-visual" aria-hidden="true"></div>
 
       <div class="hero-overlay">
@@ -124,31 +124,41 @@
 
         <div class="grid tools">
           <article class="card compact interactive-card open-modal tool-card" data-modal="tool1" role="button" tabindex="0" aria-label="데이터 테이블 설계 상세 보기">
-            <div class="tool-media-slot">Image / YouTube Slot</div>
+            <div class="tool-media-slot">
+              <img src="assets/images/data-table-reference.png" alt="데이터 테이블 참조 구조도">
+            </div>
             <h3>데이터 테이블 설계</h3>
             <p>시나리오, 선택지, 리소스, 보상 데이터를 구현 가능한 구조로 나눕니다.</p>
           </article>
 
           <article class="card compact interactive-card open-modal tool-card" data-modal="tool2" role="button" tabindex="0" aria-label="플로우차트와 상태 정의 상세 보기">
-            <div class="tool-media-slot">Image / YouTube Slot</div>
+            <div class="tool-media-slot">
+              <img src="assets/images/flow-room-rules.png" alt="방 진행 규칙 플로우차트">
+            </div>
             <h3>플로우차트와 상태 정의</h3>
             <p>방 진행, 피격, 강화, 상점처럼 조건이 갈리는 흐름을 시각화합니다.</p>
           </article>
 
           <article class="card compact interactive-card open-modal tool-card" data-modal="tool3" role="button" tabindex="0" aria-label="협업 문서화 상세 보기">
-            <div class="tool-media-slot">Image / YouTube Slot</div>
+            <div class="tool-media-slot">
+              <img src="assets/images/project-bb-thumbnail.png" alt="Project_BB 대표 썸네일">
+            </div>
             <h3>협업 문서화</h3>
             <p>팀원이 같은 기준을 보고 움직이도록 역할, 일정, 검수 기준을 남깁니다.</p>
           </article>
 
           <article class="card compact interactive-card open-modal tool-card" data-modal="tool4" role="button" tabindex="0" aria-label="구조 검증용 프로토타입 상세 보기">
-            <div class="tool-media-slot">Image / YouTube Slot</div>
+            <div class="tool-media-slot">
+              <img src="assets/images/limbus-prototype.png" alt="림버스 로그라이크 슬롯 프로토타입 화면">
+            </div>
             <h3>구조 검증용 프로토타입</h3>
             <p>제안이 말로만 끝나지 않도록 작은 작동 구조로 먼저 검증합니다.</p>
           </article>
 
           <article class="card compact interactive-card open-modal tool-card" data-modal="tool5" role="button" tabindex="0" aria-label="AI와 툴 검토 루프 상세 보기">
-            <div class="tool-media-slot">Image / YouTube Slot</div>
+            <div class="tool-media-slot">
+              <img src="assets/images/flow-shop.png" alt="상점 규칙 플로우차트">
+            </div>
             <h3>AI와 툴 검토 루프</h3>
             <p>AI 결과를 그대로 쓰기보다 값의 흐름과 호출 순서를 따라가며 검토합니다.</p>
           </article>
@@ -268,21 +278,27 @@
 
               <div class="case-grid">
                 <article class="card interactive-card open-modal case-card" data-modal="scene1" role="button" tabindex="0" aria-label="림버스 튜토리얼 학습 공백 분석 상세 보기">
-                  <div class="media-placeholder card-media-slot">Scene Placeholder</div>
+                  <div class="media-placeholder card-media-slot">
+                    <img src="assets/images/limbus-prototype.png" alt="림버스 구조 검증 프로토타입 화면">
+                  </div>
                   <h3>림버스 튜토리얼 학습 공백 분석</h3>
                   <p><strong>요약:</strong> 중간층 유저가 세부 전투 규칙을 다시 학습하기 어려운 지점을 정리했습니다.</p>
                   <p><strong>교훈:</strong> 튜토리얼은 필요한 순간에 다시 확인할 수 있는 구조여야 합니다.</p>
                 </article>
 
                 <article class="card interactive-card open-modal case-card" data-modal="scene2" role="button" tabindex="0" aria-label="비주얼노벨 데이터 구조 분리 상세 보기">
-                  <div class="media-placeholder card-media-slot">Scene Placeholder</div>
+                  <div class="media-placeholder card-media-slot">
+                    <img src="assets/images/data-table-reference.png" alt="비주얼노벨 데이터 참조 구조도">
+                  </div>
                   <h3>비주얼노벨 데이터 구조 분리</h3>
                   <p><strong>요약:</strong> Script, Text, Character, Art, Sound, Choice 데이터를 나눠 흐름을 검토했습니다.</p>
                   <p><strong>교훈:</strong> 문장 기획은 구현 가능한 데이터 구조로 바뀌어야 합니다.</p>
                 </article>
 
                 <article class="card interactive-card open-modal case-card" data-modal="scene3" role="button" tabindex="0" aria-label="Project_BB 시스템 기준 문서화 상세 보기">
-                  <div class="media-placeholder card-media-slot">Scene Placeholder</div>
+                  <div class="media-placeholder card-media-slot">
+                    <img src="assets/images/flow-equipment-upgrade.png" alt="장비 강화 규칙 플로우차트">
+                  </div>
                   <h3>Project_BB 시스템 기준 문서화</h3>
                   <p><strong>요약:</strong> 방 진행, 미니맵, 조작, 피격, 상점, 장비 강화 조건을 문서화했습니다.</p>
                   <p><strong>교훈:</strong> 좋은 기획서는 아이디어보다 조건과 판정 기준이 명확해야 합니다.</p>
