@@ -1,0 +1,14 @@
+# Local Google Apps Script and authentication configuration
+/node_modules/
+.clasp.json
+.clasprc.json
+.env
+.env.*
+!.env.example
+apps-script/.gas-release.local.json
+apps-script/.existing-webapp-snapshot/
+
+# Codex/Git scan noise
+tmp/
+output/
+.codex-skill-staging/
