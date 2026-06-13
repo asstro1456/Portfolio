@@ -1,0 +1,7 @@
+{
+  "libraryId": "REPLACE_WITH_CAREER_HUB_CORE_SCRIPT_ID",
+  "webappDeploymentId": "REPLACE_WITH_EXISTING_WEBAPP_DEPLOYMENT_ID",
+  "webAppUrl": "https://script.google.com/macros/s/REPLACE_WITH_EXISTING_WEBAPP_DEPLOYMENT_ID/exec",
+  "qaWebappDeploymentId": "REPLACE_WITH_QA_TC_WEBAPP_DEPLOYMENT_ID",
+  "qaWebAppUrl": "https://script.google.com/macros/s/REPLACE_WITH_QA_TC_WEBAPP_DEPLOYMENT_ID/exec"
+}

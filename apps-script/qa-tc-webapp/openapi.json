@@ -1,0 +1,337 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "QA TC Sheet Automation",
+    "version": "1.4.2",
+    "description": "Actions for reading and updating the SNS QA TC workbook through the deployed Apps Script web app. The webhook secret is sent in the JSON request body as secret."
+  },
+  "servers": [
+    {
+      "url": "https://script.google.com/macros/s/AKfycbz_g-QVnoDz6MnDz9Bif5YuY-U34yAXBzLfl4370fuuL0Ba2LCPUesVfU_SwuJ0NPyp/exec"
+    }
+  ],
+  "paths": {
+    "/": {
+      "post": {
+        "operationId": "qaTcAction",
+        "summary": "Run a QA TC spreadsheet action",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QaTcRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "JSON response from the QA TC Apps Script web app",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "QaTcRequest": {
+        "type": "object",
+        "required": [
+          "action",
+          "secret"
+        ],
+        "properties": {
+          "secret": {
+            "type": "string",
+            "description": "Webhook secret from apps-script/.gas-release.local.json qaWebhookSecret. Send this in the JSON body, not as a query parameter."
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "validate",
+              "getAutomationSchema",
+              "listTestCases",
+              "listBugReports",
+              "listTcImprovementBacklog",
+              "listBugLinks",
+              "listBugLinkedSheets",
+              "cleanupTcTemplateResiduePreview",
+              "cleanupTcTemplateResidue",
+              "setupTcSheet",
+              "setupAll",
+              "formatTcSheet",
+              "appendTestCase",
+              "updateTestResult",
+              "setupBugSheets",
+              "formatBugSheets",
+              "createBugReport",
+              "linkBugToTc",
+              "syncBugSummaryToTc",
+              "syncManualBugReports",
+              "syncTcImprovementBacklog",
+              "syncAllQaBugRelations",
+              "addBugLinkedSheet",
+              "removeBugLinkedSheet",
+              "validateBugLinks",
+              "syncHubCountsPreview",
+              "syncHubCounts"
+            ]
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500,
+            "description": "Maximum rows returned by list actions."
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Zero-based offset for list actions."
+          },
+          "tcId": {
+            "type": "string"
+          },
+          "bugId": {
+            "type": "string"
+          },
+          "sheetName": {
+            "type": "string",
+            "description": "Target TC sheet name. TC_List_Auto_Test is a hidden test tab and is excluded from bug automation."
+          },
+          "result": {
+            "type": "string",
+            "enum": [
+              "Pass",
+              "Fail",
+              "Blocked",
+              "Not Test",
+              "N/A"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "description": "Optional list filter. Bug_Report column J is user-managed; do not use this field to update Bug_Report status."
+          },
+          "linkStatus": {
+            "type": "string",
+            "enum": [
+              "Active",
+              "Resolved",
+              "Ignored"
+            ]
+          },
+          "confirm": {
+            "type": "boolean",
+            "description": "Required as true for syncHubCounts."
+          },
+          "testCase": {
+            "$ref": "#/components/schemas/TestCase"
+          },
+          "bug": {
+            "$ref": "#/components/schemas/BugReport"
+          },
+          "link": {
+            "$ref": "#/components/schemas/BugLink"
+          },
+          "sheet": {
+            "$ref": "#/components/schemas/BugLinkedSheet"
+          },
+          "resultCheck": {
+            "type": "string",
+            "enum": [
+              "Pass",
+              "Fail",
+              "Blocked",
+              "Not Test",
+              "N/A"
+            ]
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "1",
+              "2",
+              "3",
+              "4"
+            ]
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      },
+      "TestCase": {
+        "type": "object",
+        "properties": {
+          "tcId": {
+            "type": "string"
+          },
+          "sheetName": {
+            "type": "string"
+          },
+          "middleCategory": {
+            "type": "string"
+          },
+          "subCategory": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "precondition": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "1",
+              "2",
+              "3",
+              "4"
+            ]
+          },
+          "resultCheck": {
+            "type": "string",
+            "enum": [
+              "Pass",
+              "Fail",
+              "Blocked",
+              "Not Test",
+              "N/A"
+            ]
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BugReport": {
+        "type": "object",
+        "properties": {
+          "bugId": {
+            "type": "string"
+          },
+          "sheetName": {
+            "type": "string",
+            "description": "First detected TC sheet name. Required when firstTcId is used outside the default sheet."
+          },
+          "title": {
+            "type": "string"
+          },
+          "middleCategory": {
+            "type": "string"
+          },
+          "subCategory": {
+            "type": "string"
+          },
+          "reproCondition": {
+            "type": "string"
+          },
+          "reproSteps": {
+            "type": "string"
+          },
+          "expected": {
+            "type": "string"
+          },
+          "actual": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "1",
+              "2",
+              "3",
+              "4"
+            ]
+          },
+          "firstTcId": {
+            "type": "string"
+          },
+          "phoneModel": {
+            "type": "string",
+            "description": "Optional smartphone model used when the bug was found, for example Galaxy S24 or iPhone 15."
+          },
+          "versionResult": {
+            "type": "string",
+            "enum": [
+              "미확인",
+              "재현됨",
+              "부분 수정",
+              "수정 확인",
+              "재발"
+            ],
+            "description": "Optional version-level result. Use 재현됨 when the bug remains in the next build, 부분 수정 when only part of the issue is fixed."
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BugLink": {
+        "type": "object",
+        "properties": {
+          "tcId": {
+            "type": "string"
+          },
+          "sheetName": {
+            "type": "string"
+          },
+          "bugId": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "linkStatus": {
+            "type": "string",
+            "enum": [
+              "Active",
+              "Resolved",
+              "Ignored"
+            ]
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "sheetName",
+          "tcId",
+          "bugId"
+        ],
+        "additionalProperties": false
+      },
+      "BugLinkedSheet": {
+        "type": "object",
+        "properties": {
+          "sheetName": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "sheetName"
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
+}

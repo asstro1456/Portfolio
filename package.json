@@ -4,7 +4,23 @@
   "description": "단일 페이지 문서형 포트폴리오 초안입니다.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run verify:ui",
+    "verify:ui": "node ./scripts/verify-ui-flow.mjs \"file:///C:/Users/User/Documents/Portfolio/index.html\"",
+    "gas:check": "node ./scripts/apps-script-release.mjs check",
+    "gas:login": "clasp login",
+    "gas:push:core": "node ./scripts/apps-script-release.mjs push:core",
+    "gas:push:hub": "node ./scripts/apps-script-release.mjs push:hub",
+    "gas:push:qa": "node ./scripts/apps-script-release.mjs push:qa",
+    "gas:release:hub": "node ./scripts/apps-script-release.mjs release:hub",
+    "gas:release:qa": "node ./scripts/apps-script-release.mjs release:qa",
+    "gas:release:all": "node ./scripts/apps-script-release.mjs release:all",
+    "gas:release:all:hub": "node ./scripts/apps-script-release.mjs release:all:hub",
+    "gas:release:all:qa": "node ./scripts/apps-script-release.mjs release:all:qa",
+    "gas:verify:hub": "node ./scripts/apps-script-release.mjs verify:hub",
+    "gas:verify:qa": "node ./scripts/apps-script-release.mjs verify:qa",
+    "gas:setup:qa": "node ./scripts/apps-script-release.mjs setup:qa",
+    "gas:configure:qa": "node ./scripts/qa-tc-webapp-configure.mjs",
+    "gas:collect:gamejob": "node ./scripts/gamejob-collect.mjs"
   },
   "repository": {
     "type": "git",
@@ -19,6 +35,7 @@
   },
   "homepage": "https://github.com/asstro1456/Portfolio#readme",
   "devDependencies": {
+    "@google/clasp": "^3.3.0",
     "playwright": "^1.59.1"
   }
 }

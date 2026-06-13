@@ -11,4 +11,6 @@ apps-script/.existing-webapp-snapshot/
 # Codex/Git scan noise
 tmp/
 output/
+Portfolio-Coach/
+chat_summaries/
 .codex-skill-staging/
