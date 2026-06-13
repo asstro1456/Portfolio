@@ -140,7 +140,7 @@ async function run() {
     assert(heroLayout.versionTop < heroLayout.cardTop && heroLayout.versionLeft <= heroLayout.cardLeft + 4, "Hero version should sit above the profile near the left edge.");
 
     const titleLines = await page.locator(".hero-title-line").evaluateAll((nodes) => nodes.map((node) => node.textContent?.trim() ?? ""));
-    assert(JSON.stringify(titleLines) === JSON.stringify(["막히는 흐름을 구조로 바꾸는", "게임 시스템 기획자"]), "Hero title should keep the fixed two-line split.");
+    assert(JSON.stringify(titleLines) === JSON.stringify(["시스템을 이해하고 UX로 풀어내는", "게임 UI/UX 기획자"]), "Hero title should keep the fixed two-line split.");
 
     const guideToggle = page.locator("#navGuideToggle");
     const guidePanel = page.locator("#navGuidePanel");
