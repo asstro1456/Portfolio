@@ -45,9 +45,14 @@ REFERENCE_SOURCE_IDS_JSON={"experience":"13I_5bjDPsswLKJ73cBgkfl-5SUxQA7JbRharzg
 | `npm run gas:verify:hub` | 기존 URL에서 상태, 인증 차단, 읽기 전용 검증 요청 확인 |
 | `npm run gas:verify:qa` | QA TC URL에서 상태, 인증 차단, 읽기 전용 검증 요청 확인 |
 | `npm run gas:setup:qa` | QA TC URL에 `setupTcSheet`를 호출해 헤더, 상태 드롭다운, Hub 집계를 적용 |
+| `npm run gamejob:weekly:dry-run` | GameJob 주간 payload를 백업만 하고 Google Sheets에는 전송하지 않음 |
+| `npm run gamejob:weekly` | `GAMEJOB_AUTOMATION_SECRET` 환경 변수로 인증해 GameJob 주간 payload를 웹앱에 전송 |
+| `npm run gamejob:backup-report` | 자동화 백업 JSON만 읽어 최신 주차 수동입력경력 이월 리포트를 출력 |
 
 운영 릴리스와 검증을 실행할 때는 현재 셸 세션에 `CAREER_HUB_WEBHOOK_SECRET` 환경 변수를 설정한다. 이 값은 파일에 저장하지 않는다.
 릴리스는 새 버전을 임시 URL에서 읽기 전용으로 검증한 뒤 운영 URL에 반영하며, 운영 확인에 실패하면 직전 버전으로 되돌린다.
+GameJob 주간 수집 전송을 실행할 때는 현재 셸 세션에 `GAMEJOB_AUTOMATION_SECRET` 환경 변수를 설정한다. 드라이런은 이 값을 요구하지 않는다.
+GameJob 백업은 기본적으로 `GAMEJOB_OUT_DIR` 또는 `C:\Users\User\.codex\automations\automation`의 `gamejob_payload_YYYY-MM-DD.json`, `gamejob_post_result_YYYY-MM-DD.json`을 사용한다. `gamejob:backup-report -- --date YYYY-MM-DD --write`로 `tmp/gamejob_backup_report_YYYY-MM-DD.json` 리포트를 만들 수 있다. 새 웹앱 응답은 `manualExperience.unmatchedManualRows`를 포함하므로, 다음 실행부터 시트 전체를 읽지 않고도 이월 실패 행을 백업 JSON에서 확인한다.
 
 ## 추가 누적 탭
 

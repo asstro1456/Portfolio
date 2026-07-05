@@ -1178,7 +1178,17 @@ function applyManualExperienceControls_(sheet) {
 
 function carryForwardManualExperience_(jobsSheet, jobRows, excludedRows) {
   if (!jobsSheet || !jobRows || jobRows.length === 0) {
-    return { preservedManual: 0, reclassified: 0, recordedExcluded: 0, ambiguousManual: 0, staleManual: 0, unmatchedManual: 0 };
+    return {
+      preservedManual: 0,
+      reclassified: 0,
+      recordedExcluded: 0,
+      ambiguousManual: 0,
+      staleManual: 0,
+      unmatchedManual: 0,
+      unmatchedManualRows: [],
+      ambiguousManualRows: [],
+      staleManualRows: []
+    };
   }
 
   const lookup = buildManualExperienceLookup_(readTable(jobsSheet, JOB_HEADERS.length));
@@ -1188,6 +1198,9 @@ function carryForwardManualExperience_(jobsSheet, jobRows, excludedRows) {
   let ambiguousManual = 0;
   let staleManual = 0;
   let unmatchedManual = 0;
+  const unmatchedManualRows = [];
+  const ambiguousManualRows = [];
+  const staleManualRows = [];
 
   jobRows.forEach(function (row) {
     const currentManual = normalizeManualExperience_(row[15]);
@@ -1195,15 +1208,20 @@ function carryForwardManualExperience_(jobsSheet, jobRows, excludedRows) {
 
     const existing = findManualExperienceMatch_(row, lookup);
     if (!existing) {
-      if (isManualConfirmationNeeded_(row[14])) unmatchedManual += 1;
+      if (isManualConfirmationNeeded_(row[14])) {
+        unmatchedManual += 1;
+        unmatchedManualRows.push(buildManualCarryForwardDiagnosticRow_(row, '기존 수동입력경력 매칭 없음'));
+      }
       return;
     }
     if (existing.ambiguous) {
       ambiguousManual += 1;
+      ambiguousManualRows.push(buildManualCarryForwardDiagnosticRow_(row, '회사+공고명 중복으로 이월 보류'));
       return;
     }
     if (isManualExperienceStale_(existing.baseDate)) {
       staleManual += 1;
+      staleManualRows.push(buildManualCarryForwardDiagnosticRow_(row, '기존 수동입력경력 보존 기간 초과', existing));
       return;
     }
     if (!isResolvedManualExperience_(existing.manualExperience)) return;
@@ -1231,7 +1249,26 @@ function carryForwardManualExperience_(jobsSheet, jobRows, excludedRows) {
     recordedExcluded: recordedExcluded,
     ambiguousManual: ambiguousManual,
     staleManual: staleManual,
-    unmatchedManual: unmatchedManual
+    unmatchedManual: unmatchedManual,
+    unmatchedManualRows: unmatchedManualRows,
+    ambiguousManualRows: ambiguousManualRows,
+    staleManualRows: staleManualRows
+  };
+}
+
+function buildManualCarryForwardDiagnosticRow_(row, reason, match) {
+  return {
+    기준일: keyValue(row[0]).trim(),
+    회사: textValue(row[2]).trim(),
+    공고명: textValue(row[3]).trim(),
+    공고URL: textValue(row[10]).trim(),
+    표시경력: textValue(row[13]).trim(),
+    본문요구경력: textValue(row[14]).trim(),
+    수동입력경력: normalizeManualExperience_(row[15]),
+    경력판정근거: textValue(row[16]).trim(),
+    원인: reason,
+    매칭유형: match && match.matchType ? match.matchType : '',
+    기존기준일: match && match.baseDate ? keyValue(match.baseDate).trim() : ''
   };
 }
 
@@ -1267,8 +1304,10 @@ function findManualExperienceMatch_(row, lookup) {
     return copyManualExperienceMatch_(lookup.byUrl[urlKey], 'URL');
   }
 
-  if (urlKey) return null;
+  return findManualExperienceTitleMatch_(row, lookup);
+}
 
+function findManualExperienceTitleMatch_(row, lookup) {
   const titleKey = buildJobTitleKey_(row);
   if (!titleKey || !lookup.byTitle[titleKey]) return null;
   if (lookup.titleCounts[titleKey] > 1) return { ambiguous: true };
@@ -1285,7 +1324,15 @@ function copyManualExperienceMatch_(candidate, matchType) {
 
 function buildJobUrlKey_(row) {
   const url = textValue(row[10]).trim().toLowerCase().replace(/\/+$/, '');
+  const gameJobPostingId = extractGameJobPostingId_(url);
+  if (gameJobPostingId) return 'gamejob:' + gameJobPostingId;
   return url ? 'url:' + url : '';
+}
+
+function extractGameJobPostingId_(url) {
+  const value = textValue(url).replace(/&amp;/gi, '&');
+  const match = /[?&](?:GI_No|gno)=([0-9]+)/i.exec(value);
+  return match ? match[1] : '';
 }
 
 function buildJobTitleKey_(row) {

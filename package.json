@@ -20,7 +20,10 @@
     "gas:verify:qa": "node ./scripts/apps-script-release.mjs verify:qa",
     "gas:setup:qa": "node ./scripts/apps-script-release.mjs setup:qa",
     "gas:configure:qa": "node ./scripts/qa-tc-webapp-configure.mjs",
-    "gas:collect:gamejob": "node ./scripts/gamejob-collect.mjs"
+    "gas:collect:gamejob": "node ./scripts/gamejob-collect.mjs",
+    "gamejob:weekly": "node ./scripts/gamejob-weekly-collect.mjs",
+    "gamejob:weekly:dry-run": "node ./scripts/gamejob-weekly-collect.mjs --dry-run",
+    "gamejob:backup-report": "node ./scripts/gamejob-backup-report.mjs"
   },
   "repository": {
     "type": "git",

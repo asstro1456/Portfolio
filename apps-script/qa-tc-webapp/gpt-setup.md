@@ -26,13 +26,14 @@ Rules:
 - To connect a bug to a known test case, use `linkBugToTc`.
 - To reflect manual rows written in `Bug_Report`, use `syncManualBugReports`.
 - To apply `TC_Improvement_Backlog` decisions, use `syncTcImprovementBacklog`.
-- To run the full TC sheet - Bug_Report - TC_Improvement_Backlog - QA_Dashboard refresh, use `syncAllQaBugRelations`.
+- To run the full TC sheet - Bug_Report - TC_Improvement_Backlog - QA_Dashboard refresh, use `syncAllQaBugRelations`. `QA_Dashboard` is Bug_Report-first and uses live formulas for chart source tables.
+- `Bug_Report` columns C/D category dropdown values and data-validation rules are user-managed. GPT and automation do not add, delete, or modify those rules.
 - `Bug_Report` J열 `처리 상태`는 사용자가 수동으로 관리한다. GPT는 드롭다운 옵션이나 셀 값을 추가/삭제/수정하지 않는다.
 - `Bug_Report` J열 값 중 `수정 안 함`은 TC 요약 반영 제외 신호로만 읽는다.
+- `Bug_Report` 1~2행과 기존 조건부 서식은 사용자가 관리한다. GPT와 자동화는 수정하지 않는다.
 - Backlog statuses are `대기`, `보강 완료`, `제외`, `종료`.
 - Existing TC result values remain English: `Pass`, `Fail`, `Blocked`, `Not Test`, `N/A`.
-- `Bug_Report` O열 `빌드 버전`과 Q열 `재확인 빌드 버전`은 사용자가 수동으로 관리한다. GPT는 드롭다운 옵션이나 셀 값을 추가/삭제/수정하지 않고, action 요청에도 포함하지 않는다.
-- `스마트폰 기종`은 선택 입력이다. 기기 의존 가능성이 있는 버그는 가능한 한 기종을 적는다.
+- `Bug_Report` O열 `빌드 버전`, P열 `스마트폰 기종`, Q열 `재확인 빌드 버전`은 사용자가 수동으로 관리한다. GPT는 드롭다운·값·서식을 수정하지 않고 action 요청에도 포함하지 않는다.
 - 다음 버전에서도 같은 버그가 재현되면 사용자가 `재확인 빌드 버전`을 직접 입력하고, GPT는 필요한 경우 `버전 확인 결과`만 `재현됨`으로 둘 수 있다.
 - 일부만 고쳐졌으면 `버전 확인 결과`를 `부분 수정`으로 둔다. 완전히 고쳐졌으면 `수정 확인`으로 둔다.
 - If required tabs are missing, call `setupAll` once before other write actions.
@@ -85,7 +86,7 @@ Default hidden columns: `Backlog ID`, `입력 TC ID`, `등록일`, `수정일`. 
 ```
 
 ```json
-{"action":"createBugReport","secret":"<qaWebhookSecret>","bug":{"sheetName":"TC_List_Sever","title":"Login retry fails","firstTcId":"SNS-TC-001","severity":"2","phoneModel":"Galaxy S24","actual":"Retry returns an error."}}
+{"action":"createBugReport","secret":"<qaWebhookSecret>","bug":{"sheetName":"TC_List_Sever","title":"Login retry fails","firstTcId":"SNS-TC-001","severity":"2","actual":"Retry returns an error."}}
 ```
 
 ```json

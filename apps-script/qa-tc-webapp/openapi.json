@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "QA TC Sheet Automation",
-    "version": "1.4.2",
+    "version": "1.4.4",
     "description": "Actions for reading and updating the SNS QA TC workbook through the deployed Apps Script web app. The webhook secret is sent in the JSON request body as secret."
   },
   "servers": [
@@ -261,10 +261,6 @@
           },
           "firstTcId": {
             "type": "string"
-          },
-          "phoneModel": {
-            "type": "string",
-            "description": "Optional smartphone model used when the bug was found, for example Galaxy S24 or iPhone 15."
           },
           "versionResult": {
             "type": "string",

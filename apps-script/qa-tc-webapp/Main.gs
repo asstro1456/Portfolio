@@ -1,12 +1,13 @@
 ﻿/**
  * Consumer web app for SNS QA test-case spreadsheets.
- * Version: v10 - Bug_Report status/build columns are manually managed; backlog automation remains Korean.
+ * Version: v12 - QA_Dashboard is Bug_Report-first and formula-driven for live chart refresh.
  *
  * Scope:
  * - Do NOT modify the shared CareerHubCore library.
  * - TC_List_Auto_Test is kept as a hidden automation test tab and excluded from active bug automation.
  * - The QA sheet schema is fixed to A3:J3.
  * - Existing dropdown/data-validation rules on 중분류(B), 우선 순위(G), and 결과 확인(H) are not recreated or overwritten.
+ * - Existing dropdown/data-validation rules on Bug_Report 중분류(C) and 소분류(D) are not recreated or overwritten.
  * - Rows 1-2 are preserved. A1 image frame is fixed to 117 x 117 px. B1 Hub-return cell is not modified.
  * - Layout formatting is intentionally separated into formatTcSheet(), so automation writes do not re-align the whole table.
  * - If TC_List_Auto_Test is missing, it is created by copying TC_List_Template.
@@ -65,7 +66,7 @@ const LOCAL_QA_TC = {
   bugExampleRow: 4,
   bugLinkFirstDataRow: 4,
   backlogFirstDataRow: 4,
-  dashboardMinRows: 80,
+  dashboardMinRows: 110,
   bugLinkedSheetHeaderRow: 1,
   bugLinkedSheetFirstDataRow: 2,
   bugMinRows: 200,
@@ -122,7 +123,10 @@ const LOCAL_QA_TC = {
     '등록일',
     '비고'
   ],
-  bugStatusValues: ['열림', '수정 완료', '재검증', '종료', '수정 안 함'],
+  bugStatusValues: ['깃이슈 미제출', '깃이슈 작성 중', '열림', '재검증', '종료', '수정 안 함', '중복 리포트', '수정 완료'],
+  bugGithubPendingStatusValues: ['', '깃이슈 미제출', '깃이슈 작성 중'],
+  bugGithubManagedStatusValues: ['열림', '재검증', '종료', '수정 안 함', '중복 리포트', '수정 완료'],
+  bugUnresolvedStatusValues: ['', '깃이슈 미제출', '깃이슈 작성 중', '열림', '재검증', '수정 완료'],
   bugBuildVersionValues: ['0.1.0', '1.0.0'],
   bugVersionResultValues: ['미확인', '재현됨', '부분 수정', '수정 확인', '재발'],
   bugStatusAliases: {
@@ -394,7 +398,7 @@ function validateQaTcConnectionLocal_(config) {
 
 function buildAutomationSchemaLocal_() {
   return {
-    version: 'v10-bug-report-status-build-manual',
+    version: 'v12-bug-report-live-dashboard',
     purpose: 'Expose stable, machine-readable sheet contracts so GPT can read and edit without guessing columns.',
     auth: {
       method: 'POST JSON',
@@ -420,8 +424,10 @@ function buildAutomationSchemaLocal_() {
         manualEntryPolicy: 'Rows 1-2 explain per-column input policy, row 3 is the header, row 4 is an example and automation starts at row 5. Column K is the first detected sheet name.',
         writableViaActions: ['createBugReport', 'syncManualBugReports', 'syncAllQaBugRelations'],
         manualColumns: {
+          categoryDropdowns: 'Columns C/D 중분류/소분류 dropdown values and validation rules are user-managed. Automation may write row values, but does not set or clear their data validation.',
           status: 'Column J 처리 상태 is user-managed. Automation does not set its data validation or values.',
           buildVersion: 'Column O 빌드 버전 is user-managed. Automation does not set its data validation or values.',
+          phoneModel: 'Column P 스마트폰 기종 is user-managed. Automation does not set its values, data validation, or formatting.',
           recheckBuildVersion: 'Column Q 재확인 빌드 버전 is user-managed. Automation does not set its data validation or values.'
         }
       },
@@ -456,7 +462,7 @@ function buildAutomationSchemaLocal_() {
       setupAll: {description: 'Create/repair TC and bug tabs before automation.'},
       appendTestCase: {description: 'Append a TC row.', required: [], accepts: ['sheetName', 'tcId', 'middleCategory', 'subCategory', 'title', 'precondition', 'purpose', 'priority', 'resultCheck', 'note']},
       updateTestResult: {description: 'Update result/note/priority for an existing TC.', required: ['tcId'], accepts: ['sheetName', 'resultCheck', 'note', 'priority']},
-      createBugReport: {description: 'Create a normalized bug report and optionally link it to a TC. Bug_Report columns J/O/Q are left untouched for manual entry.', required: [], accepts: ['sheetName', 'bugId', 'title', 'middleCategory', 'subCategory', 'reproCondition', 'reproSteps', 'expected', 'actual', 'severity', 'firstTcId', 'phoneModel', 'versionResult', 'note']},
+      createBugReport: {description: 'Create a normalized bug report and optionally link it to a TC. Bug_Report columns J/O/P/Q are left untouched for manual entry.', required: [], accepts: ['sheetName', 'bugId', 'title', 'middleCategory', 'subCategory', 'reproCondition', 'reproSteps', 'expected', 'actual', 'severity', 'firstTcId', 'versionResult', 'note']},
       linkBugToTc: {description: 'Compatibility action. It writes confirmed sheet/TC back to Bug_Report and rebuilds TC column I.', required: ['sheetName', 'tcId', 'bugId'], accepts: ['reason', 'note']},
       syncBugSummaryToTc: {description: 'Rebuild active linked TC sheet column I from Bug_Report. TC_List_Auto_Test is excluded.'},
       syncManualBugReports: {description: 'Read Bug_Report row 5+ manual entries, generate missing Bug IDs/dates, and queue invalid TC targets into TC_Improvement_Backlog. Columns J/O/Q are not changed.'},
@@ -471,6 +477,9 @@ function buildAutomationSchemaLocal_() {
       result: LOCAL_QA_TC.resultValues,
       priority: LOCAL_QA_TC.priorityValues,
       bugReportManualStatusReadSignals: ['수정 안 함'],
+      bugReportStatus: LOCAL_QA_TC.bugStatusValues,
+      bugGithubPendingStatus: LOCAL_QA_TC.bugGithubPendingStatusValues,
+      bugGithubManagedStatus: LOCAL_QA_TC.bugGithubManagedStatusValues,
       bugVersionResult: LOCAL_QA_TC.bugVersionResultValues,
       bugSeverity: LOCAL_QA_TC.bugSeverityValues,
       backlogStatus: LOCAL_QA_TC.backlogStatusValues,
@@ -480,7 +489,9 @@ function buildAutomationSchemaLocal_() {
       'Read the schema first when the tab structure may have changed.',
       'Use read actions before write actions when updating existing rows.',
       'Do not write directly to linked TC sheet column I; it is rebuilt from Bug_Report.',
-      'Do not write Bug_Report columns J/O/Q. 처리 상태, 빌드 버전, and 재확인 빌드 버전 are manually managed by the sheet owner.',
+      'Do not write Bug_Report columns J/O/P/Q. 처리 상태, 빌드 버전, 스마트폰 기종, and 재확인 빌드 버전 are manually managed by the sheet owner.',
+      'Do not modify Bug_Report columns C/D dropdown values or validation rules.',
+      'Do not modify Bug_Report rows 1-2 or existing Bug_Report conditional formatting.',
       'TC_List_Auto_Test is hidden and excluded from bug automation.',
       'Existing TC result values remain English. TC_Improvement_Backlog statuses are Korean; Bug_Report columns J/O/Q are manual.',
       'Use TC_Improvement_Backlog for bugs found outside the current TC list.',
@@ -1573,8 +1584,8 @@ function setupBugSheetsCoreLocal_(ss) {
       legacyBugTcLink: legacyMigration
     },
     dataValidations: {
-      bugReportMiddleCategory: 'C5:C uses TC_Hub middle categories (' + categoryOptions.middleCategories.length + ' options)',
-      bugReportSubCategory: 'D5:D uses sub categories from active linked TC sheets (' + categoryOptions.subCategories.length + ' options)',
+      bugReportMiddleCategory: 'C5:C is manually managed; automation does not set or clear dropdown values/rules',
+      bugReportSubCategory: 'D5:D is manually managed; automation does not set or clear dropdown values/rules',
       bugReportSeverity: 'I5:I uses 1/2/3/4',
       bugReportStatus: 'J5:J is manually managed; automation does not set dropdowns or values',
       bugReportBuildVersion: 'O5:O and Q5:Q are manually managed; automation does not set dropdowns or values',
@@ -1683,6 +1694,16 @@ function migrateBugReportSchemaLocal_(sheet) {
   const existingHeaders = readHeaderRowLocal_(sheet, Math.max(sheet.getLastColumn(), oldHeaders.length, LOCAL_QA_TC.bugReportHeaders.length));
   const sourceHeaders = existingHeaders.some(function (value) { return !!value; }) ? existingHeaders : oldHeaders;
   const lastRow = sheet.getLastRow();
+  const currentSchema = LOCAL_QA_TC.bugReportHeaders.every(function (header, index) {
+    return isBugReportManualValueColumnLocal_(index + 1) || existingHeaders[index] === header;
+  });
+  if (currentSchema) {
+    return {
+      preservedRows: Math.max(0, lastRow - LOCAL_QA_TC.bugFirstDataRow + 1),
+      migrationSkipped: true,
+      defaultSheetNameApplied: 0
+    };
+  }
   const readWidth = Math.max(sheet.getLastColumn(), sourceHeaders.length, LOCAL_QA_TC.bugReportHeaders.length);
   const preservedRows = [];
   if (lastRow >= LOCAL_QA_TC.bugExampleRow) {
@@ -1717,7 +1738,7 @@ function migrateBugReportSchemaLocal_(sheet) {
     clearBugReportContentPreservingManualColumnsLocal_(sheet, LOCAL_QA_TC.bugExampleRow, clearRows, LOCAL_QA_TC.bugReportHeaders.length);
     clearBugReportManagedDataValidationsLocal_(sheet, LOCAL_QA_TC.bugExampleRow, clearRows);
   }
-  sheet.getRange(LOCAL_QA_TC.bugHeaderRow, 1, 1, LOCAL_QA_TC.bugReportHeaders.length).setValues([LOCAL_QA_TC.bugReportHeaders]);
+  setBugReportRowsPreservingManualColumnsLocal_(sheet, LOCAL_QA_TC.bugHeaderRow, [LOCAL_QA_TC.bugReportHeaders], LOCAL_QA_TC.bugReportHeaders.length);
   if (preservedRows.length) {
     setBugReportRowsPreservingManualColumnsLocal_(sheet, LOCAL_QA_TC.bugFirstDataRow, preservedRows, LOCAL_QA_TC.bugReportHeaders.length);
   }
@@ -1729,7 +1750,7 @@ function migrateBugReportSchemaLocal_(sheet) {
 
 function clearBugReportManagedDataValidationsLocal_(sheet, startRow, rowCount) {
   for (let column = 1; column <= LOCAL_QA_TC.bugReportHeaders.length; column += 1) {
-    if (isBugReportManualValueColumnLocal_(column)) continue;
+    if (isBugReportManualDataValidationColumnLocal_(column)) continue;
     sheet.getRange(startRow, column, rowCount, 1).clearDataValidations();
   }
 }
@@ -1751,7 +1772,11 @@ function setBugReportRowsPreservingManualColumnsLocal_(sheet, startRow, rows, wi
 }
 
 function isBugReportManualValueColumnLocal_(column) {
-  return column === 10 || column === 15 || column === 17;
+  return column === 10 || column === 15 || column === 16 || column === 17;
+}
+
+function isBugReportManualDataValidationColumnLocal_(column) {
+  return column === 3 || column === 4 || isBugReportManualValueColumnLocal_(column);
 }
 
 function migrateBugLinkSchemaLocal_(sheet) {
@@ -1884,68 +1909,6 @@ function isBugReportExampleObjectLocal_(obj) {
 }
 
 function applyBugReportInstructionRowsLocal_(sheet, width, categoryOptions) {
-  const firstRow = sheet.getRange(1, 1, 1, width);
-  const secondRow = sheet.getRange(2, 1, 1, width);
-  firstRow.breakApart();
-  secondRow.breakApart();
-  firstRow.setValues([[
-    '자동',
-    '작성',
-    '작성',
-    '작성',
-    '작성',
-    '작성',
-    '작성',
-    '작성',
-    '작성',
-    '작성',
-    '작성',
-    '작성',
-    '자동',
-    '자동',
-    '작성',
-    '작성',
-    '선택',
-    '선택',
-    '작성'
-  ].slice(0, width)])
-    .setFontWeight('normal')
-    .setFontColor('#0b1f33')
-    .setBackground('#d9ead3')
-    .setHorizontalAlignment('center')
-    .setWrap(true)
-    .setVerticalAlignment('middle');
-  secondRow.setValues([[
-    '미입력 시 생성',
-    '필수',
-    '드롭다운',
-    '드롭다운',
-    '재현 환경',
-    '단계별 절차',
-    '정상 기대값',
-    '실제 관찰값',
-    '1 높음-4 낮음',
-    '기본: 깃이슈 미제출',
-    '연동 TC 탭',
-    '비면 보강 목록',
-    '자동 날짜',
-    '상태 변경 시 자동',
-    '필수 빌드',
-    '기종 입력',
-    '다시 본 빌드',
-    '재현/부분 수정',
-    '선택'
-  ].slice(0, width)])
-    .setFontWeight('normal')
-    .setFontColor('#660000')
-    .setBackground('#f4cccc')
-    .setHorizontalAlignment('center')
-    .setWrap(true)
-    .setVerticalAlignment('middle');
-  sheet.setRowHeight(1, 34);
-  sheet.setRowHeight(2, 44);
-  applyBugReportInstructionAutoEmphasisLocal_(sheet);
-
   const middleExample = categoryOptions && categoryOptions.middleCategories[0] ? categoryOptions.middleCategories[0] : '업로드';
   const subExample = categoryOptions && categoryOptions.subCategories[0] ? categoryOptions.subCategories[0] : '이미지 업로드';
   const sheetNameExample = categoryOptions && categoryOptions.linkedSheetNames[0] ? categoryOptions.linkedSheetNames[0] : LOCAL_QA_TC.sheetName;
@@ -1971,17 +1934,19 @@ function applyBugReportInstructionRowsLocal_(sheet, width, categoryOptions) {
     '재현됨',
     '예시 행은 자동화 대상에서 제외'
   ];
-  sheet.getRange(LOCAL_QA_TC.bugHeaderRow, 1, 1, width).clearNote();
+  sheet.getRange(LOCAL_QA_TC.bugHeaderRow, 1, 1, 15).clearNote();
+  sheet.getRange(LOCAL_QA_TC.bugHeaderRow, 17, 1, 3).clearNote();
   clearBugReportManagedDataValidationsLocal_(sheet, LOCAL_QA_TC.bugExampleRow, 1);
-  const exampleRange = sheet.getRange(LOCAL_QA_TC.bugExampleRow, 1, 1, width);
   setBugReportRowsPreservingManualColumnsLocal_(sheet, LOCAL_QA_TC.bugExampleRow, [example.slice(0, width)], width);
-  exampleRange
-    .setBackground('#fff2cc')
-    .setFontColor('#333333')
-    .setFontStyle('italic')
-    .setWrap(true)
-    .setVerticalAlignment('top');
-  sheet.setRowHeight(LOCAL_QA_TC.bugExampleRow, 72);
+  [sheet.getRange(LOCAL_QA_TC.bugExampleRow, 1, 1, 15), sheet.getRange(LOCAL_QA_TC.bugExampleRow, 17, 1, 3)]
+    .forEach(function (range) {
+      range
+        .setBackground('#fff2cc')
+        .setFontColor('#333333')
+        .setFontStyle('italic')
+        .setWrap(true)
+        .setVerticalAlignment('top');
+    });
 }
 
 function applyBacklogInstructionRowsLocal_(sheet, width, categoryOptions) {
@@ -2068,20 +2033,6 @@ function applyBugDataValidationsLocal_(bugReport, backlog, categoryOptions) {
   const reportRows = bugReport.getMaxRows() - LOCAL_QA_TC.bugFirstDataRow + 1;
   const backlogRows = backlog.getMaxRows() - LOCAL_QA_TC.backlogFirstDataRow + 1;
   if (reportRows > 0) {
-    if (categoryOptions.middleCategories.length > 0) {
-      const middleCategoryRule = SpreadsheetApp.newDataValidation()
-        .requireValueInList(categoryOptions.middleCategories, true)
-        .setAllowInvalid(false)
-        .build();
-      bugReport.getRange(LOCAL_QA_TC.bugFirstDataRow, 3, reportRows, 1).setDataValidation(middleCategoryRule);
-    }
-    if (categoryOptions.subCategories.length > 0) {
-      const subCategoryRule = SpreadsheetApp.newDataValidation()
-        .requireValueInList(categoryOptions.subCategories, true)
-        .setAllowInvalid(false)
-        .build();
-      bugReport.getRange(LOCAL_QA_TC.bugFirstDataRow, 4, reportRows, 1).setDataValidation(subCategoryRule);
-    }
     const severityRule = SpreadsheetApp.newDataValidation()
       .requireValueInList(LOCAL_QA_TC.bugSeverityValues, true)
       .setAllowInvalid(false)
@@ -2352,7 +2303,7 @@ function formatBugSheetsCoreLocal_(ss) {
   const backlog = ss.getSheetByName(LOCAL_QA_TC.tcImprovementBacklogSheetName);
   const linkedSheets = ss.getSheetByName(LOCAL_QA_TC.bugLinkedSheetsSheetName);
   const dashboard = ss.getSheetByName(LOCAL_QA_TC.qaDashboardSheetName);
-  formatOneBugSheetLocal_(bugReport, LOCAL_QA_TC.bugReportHeaders.length, [95, 220, 110, 130, 180, 230, 190, 210, 80, 105, 150, 120, 95, 95, 100, 140, 125, 125, 190], LOCAL_QA_TC.bugFirstDataRow);
+  formatOneBugSheetLocal_(bugReport, LOCAL_QA_TC.bugReportHeaders.length, [95, 220, 110, 130, 180, 230, 190, 210, 80, 105, 150, 120, 95, 95, 100, 140, 125, 125, 190], LOCAL_QA_TC.bugFirstDataRow, [16]);
   formatBugReportSheetLocal_(bugReport);
   formatOneBugSheetLocal_(backlog, LOCAL_QA_TC.backlogHeaders.length, [105, 95, 220, 150, 110, 150, 110, 170, 220, 110, 95, 95, 200], LOCAL_QA_TC.backlogFirstDataRow);
   formatTcImprovementBacklogSheetLocal_(backlog);
@@ -2364,46 +2315,24 @@ function formatBugSheetsCoreLocal_(ss) {
     setup: setup,
     dashboard: dashboardResult,
     formattedSheets: [LOCAL_QA_TC.bugReportSheetName, LOCAL_QA_TC.tcImprovementBacklogSheetName, LOCAL_QA_TC.bugLinkedSheetsSheetName, LOCAL_QA_TC.qaDashboardSheetName],
-    readabilityPolicy: 'Header row 3, frozen rows 3, long text columns wrapped, auto guidance in rows 1-2 bolded, TC_Improvement_Backlog formatting included, required manual blanks highlighted when a row has content.'
+    readabilityPolicy: 'Rows 1-2, Bug_Report conditional formats, and column P are preserved. Header row 3 and non-manual columns are formatted.'
   };
 }
 
 function formatBugReportSheetLocal_(sheet) {
   const maxRows = sheet.getMaxRows();
-  const width = LOCAL_QA_TC.bugReportHeaders.length;
-  sheet.getRange(1, 1, 2, width)
-    .setHorizontalAlignment('center')
-    .setVerticalAlignment('middle')
-    .setWrap(true);
-  sheet.getRange(LOCAL_QA_TC.bugHeaderRow, 1, 1, width)
-    .setHorizontalAlignment('center')
-    .setVerticalAlignment('middle');
-  sheet.getRange(LOCAL_QA_TC.bugExampleRow, 1, 1, width)
-    .setVerticalAlignment('top')
-    .setWrap(true);
-  sheet.getRange(LOCAL_QA_TC.bugExampleRow, 1, maxRows - LOCAL_QA_TC.bugExampleRow + 1, width)
-    .setFontWeight('normal');
+  const bodyWithExampleRows = maxRows - LOCAL_QA_TC.bugExampleRow + 1;
+  sheet.getRange(LOCAL_QA_TC.bugExampleRow, 1, bodyWithExampleRows, 15).setFontWeight('normal');
+  sheet.getRange(LOCAL_QA_TC.bugExampleRow, 17, bodyWithExampleRows, 3).setFontWeight('normal');
 
   if (maxRows >= LOCAL_QA_TC.bugFirstDataRow) {
     const rows = maxRows - LOCAL_QA_TC.bugFirstDataRow + 1;
     sheet.getRange(LOCAL_QA_TC.bugFirstDataRow, 1, rows, 1).setHorizontalAlignment('center');
     sheet.getRange(LOCAL_QA_TC.bugFirstDataRow, 2, rows, 7).setHorizontalAlignment('left');
-    sheet.getRange(LOCAL_QA_TC.bugFirstDataRow, 9, rows, 10).setHorizontalAlignment('center');
+    sheet.getRange(LOCAL_QA_TC.bugFirstDataRow, 9, rows, 7).setHorizontalAlignment('center');
+    sheet.getRange(LOCAL_QA_TC.bugFirstDataRow, 17, rows, 2).setHorizontalAlignment('center');
     sheet.getRange(LOCAL_QA_TC.bugFirstDataRow, 19, rows, 1).setHorizontalAlignment('left');
   }
-
-  applyBugReportInstructionAutoEmphasisLocal_(sheet);
-}
-
-function applyBugReportInstructionAutoEmphasisLocal_(sheet) {
-  [1, 13, 14].forEach(function (column) {
-    sheet.getRange(1, column, 2, 1)
-      .setFontWeight('bold')
-      .setFontColor('#073763')
-      .setBackground('#cfe2f3')
-      .setHorizontalAlignment('center')
-      .setVerticalAlignment('middle');
-  });
 }
 
 function formatTcImprovementBacklogSheetLocal_(sheet) {
@@ -2453,27 +2382,30 @@ function hideBacklogInternalColumnsLocal_(sheet) {
   });
 }
 
-function formatOneBugSheetLocal_(sheet, width, columnWidths, firstDataRow) {
+function formatOneBugSheetLocal_(sheet, width, columnWidths, firstDataRow, preservedColumns) {
   const maxRows = sheet.getMaxRows();
-  const header = sheet.getRange(LOCAL_QA_TC.bugHeaderRow, 1, 1, width);
-  header
-    .setFontWeight('bold')
-    .setHorizontalAlignment('center')
-    .setVerticalAlignment('middle')
-    .setFontColor('#ffffff')
-    .setBackground('#1f4e78');
+  const preserved = {};
+  (preservedColumns || []).forEach(function (column) { preserved[column] = true; });
   sheet.setFrozenRows(LOCAL_QA_TC.bugHeaderRow);
   columnWidths.forEach(function (pixelSize, index) {
+    if (preserved[index + 1]) return;
     sheet.setColumnWidth(index + 1, pixelSize);
   });
-  sheet.getRange(LOCAL_QA_TC.bugHeaderRow, 1, maxRows - LOCAL_QA_TC.bugHeaderRow + 1, width)
-    .setWrap(true)
-    .setVerticalAlignment('top');
-  sheet.getRange(LOCAL_QA_TC.bugHeaderRow, 1, 1, width).setVerticalAlignment('middle');
-  if (maxRows >= firstDataRow) {
-    const bodyRows = maxRows - firstDataRow + 1;
-    sheet.getRange(firstDataRow, 1, bodyRows, width).setHorizontalAlignment('left');
-    sheet.getRange(firstDataRow, 1, bodyRows, 1).setHorizontalAlignment('center');
+  for (let column = 1; column <= width; column += 1) {
+    if (preserved[column]) continue;
+    sheet.getRange(LOCAL_QA_TC.bugHeaderRow, column, 1, 1)
+      .setFontWeight('bold')
+      .setHorizontalAlignment('center')
+      .setVerticalAlignment('middle')
+      .setFontColor('#ffffff')
+      .setBackground('#1f4e78');
+    sheet.getRange(LOCAL_QA_TC.bugHeaderRow, column, maxRows - LOCAL_QA_TC.bugHeaderRow + 1, 1)
+      .setWrap(true)
+      .setVerticalAlignment('top');
+    sheet.getRange(LOCAL_QA_TC.bugHeaderRow, column, 1, 1).setVerticalAlignment('middle');
+    if (maxRows >= firstDataRow) {
+      sheet.getRange(firstDataRow, column, maxRows - firstDataRow + 1, 1).setHorizontalAlignment(column === 1 ? 'center' : 'left');
+    }
   }
 }
 
@@ -2504,136 +2436,190 @@ function formatBugLinkedSheetsLocal_(sheet) {
 
 function refreshQaDashboardLocal_(ss, dashboardSheet) {
   const sheet = dashboardSheet || ensureQaDashboardSheetLocal_(ss);
-  const bugReport = ss.getSheetByName(LOCAL_QA_TC.bugReportSheetName);
-  const backlogSheet = ss.getSheetByName(LOCAL_QA_TC.tcImprovementBacklogSheetName);
-  const activeSheetNames = getActiveBugLinkedSheetNamesLocal_(ss);
-  const resultCounts = {};
-  LOCAL_QA_TC.resultValues.forEach(function (value) { resultCounts[value] = 0; });
-  const perSheetRows = [['시트명', 'TC 수', '결과 입력', '달성률 - 결과 입력/전체 TC']];
-  let totalTc = 0;
-  let testedTc = 0;
+  const dashboard = buildLiveDashboardFormulaContextLocal_();
 
-  activeSheetNames.forEach(function (sheetName) {
-    const tcSheet = ss.getSheetByName(sheetName);
-    if (!tcSheet) return;
-    const rows = getTcRowsLocal_(tcSheet, sheetName);
-    let sheetTested = 0;
-    rows.forEach(function (tc) {
-      totalTc += 1;
-      if (resultCounts[tc.result] === undefined) resultCounts[tc.result] = 0;
-      resultCounts[tc.result] += 1;
-      if (tc.result && tc.result !== 'Not Test') {
-        testedTc += 1;
-        sheetTested += 1;
-      }
-    });
-    perSheetRows.push([sheetName, rows.length, sheetTested, rows.length ? sheetTested / rows.length : 0]);
-  });
-
-  const bugs = bugReport ? getBugRowsLocal_(bugReport) : [];
-  const backlogRows = backlogSheet ? getBacklogRowsLocal_(backlogSheet) : [];
-  const bugStatusCounts = {};
-  LOCAL_QA_TC.bugStatusValues.forEach(function (value) { bugStatusCounts[value] = 0; });
-  let classifiedBugs = 0;
-  let unclassifiedBugs = 0;
-  let missingTcBugs = 0;
-  bugs.forEach(function (bug) {
-    if (bugStatusCounts[bug.status] === undefined) bugStatusCounts[bug.status] = 0;
-    bugStatusCounts[bug.status] += 1;
-    const target = resolveBugTcTargetLocal_(ss, bug.firstSheetName, bug.firstTcId);
-    const classified = !!bug.middleCategory && !!bug.subCategory && target.valid;
-    if (classified) classifiedBugs += 1;
-    else unclassifiedBugs += 1;
-    if (!target.valid) missingTcBugs += 1;
-  });
-
-  const backlogStatusCounts = {};
-  LOCAL_QA_TC.backlogStatusValues.forEach(function (value) { backlogStatusCounts[value] = 0; });
-  backlogRows.forEach(function (row) {
-    if (backlogStatusCounts[row.status] === undefined) backlogStatusCounts[row.status] = 0;
-    backlogStatusCounts[row.status] += 1;
-  });
-
-  sheet.getCharts().forEach(function (chart) { sheet.removeChart(chart); });
-  sheet.clear();
-  sheet.setFrozenRows(1);
-  sheet.setColumnWidths(1, 12, 120);
-  sheet.setColumnWidth(1, 160);
-  sheet.setColumnWidth(4, 170);
-  sheet.setColumnWidth(8, 160);
-
-  sheet.getRange(1, 1).setValue('QA_Dashboard').setFontWeight('bold').setFontSize(16).setFontColor('#1f4e78');
-  sheet.getRange(1, 2).setValue('갱신: ' + Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy-MM-dd HH:mm:ss'));
+  sheet.getRange(1, 1, 90, 6).clearContent();
+  sheet.getRange(1, 1).setValue('QA_Dashboard');
+  sheet.getRange(1, 2).setFormula('="갱신: "&TEXT(NOW(),"yyyy-MM-dd HH:mm:ss")');
 
   const summaryRows = [
-    ['항목', '값'],
-    ['활성 TC 시트', activeSheetNames.length],
-    ['전체 TC', totalTc],
-    ['결과 입력 TC', testedTc],
-    ['TC 달성률', percentTextLocal_(testedTc, totalTc)],
-    ['Bug_Report 행', bugs.length],
-    ['버그 미분류 행', unclassifiedBugs],
-    ['TC 미연결 버그', missingTcBugs],
-    ['보강 대기', backlogStatusCounts['대기'] || 0]
+    ['항목', '건수', '대상 Bug ID'],
+    ['전체 버그 리포트', dashboard.bugRows, '-'],
+    ['Bug ID 미발급', dashboard.bugIdMissing, dashboard.bugIdMissingIds],
+    ['깃 이슈 미제출', dashboard.githubNotSubmitted, dashboard.githubNotSubmittedIds],
+    ['깃 이슈 작성 중', dashboard.githubWriting, dashboard.githubWritingIds],
+    ['깃 이슈 등록/관리 중', dashboard.githubManaged, '-'],
+    ['작성 후 2일 초과 + 깃 이슈 미제출/작성 중', dashboard.githubPendingOverdue, dashboard.githubPendingOverdueIds],
+    ['작성 후 2일 초과 + 미종료', dashboard.unresolvedOverdue, dashboard.unresolvedOverdueIds],
+    ['등록일 누락', dashboard.missingCreatedAt, dashboard.missingCreatedAtIds]
   ];
-  writeDashboardTableLocal_(sheet, 3, 1, summaryRows, '전체 요약');
+  writeDashboardTableLocal_(sheet, 3, 1, summaryRows, '버그 리포트 핵심 요약');
 
-  const resultRows = [['결과 확인 범례', '건수']];
-  LOCAL_QA_TC.resultValues.forEach(function (value) { resultRows.push([dashboardResultLabelLocal_(value), resultCounts[value] || 0]); });
-  writeDashboardTableLocal_(sheet, 3, 4, resultRows, 'TC 결과 현황');
+  const githubRows = [
+    ['깃 이슈 반영 상태', '건수', '대상 Bug ID'],
+    ['미제출 - 빈 상태/깃이슈 미제출', dashboard.githubNotSubmitted, dashboard.githubNotSubmittedIds],
+    ['작성 중 - 깃이슈 작성 중', dashboard.githubWriting, dashboard.githubWritingIds],
+    ['등록/관리 중 - 열림/재검증/종료/수정 안 함/중복', dashboard.githubManaged, '-']
+  ];
+  writeDashboardTableLocal_(sheet, 3, 4, githubRows, '깃 이슈 반영 현황');
 
-  const bugRows = [['버그 범례', '건수']];
-  bugRows.push(['분류 완료 - 분류와 TC 연결이 모두 있음', classifiedBugs]);
-  bugRows.push(['미분류 - 분류 또는 TC 연결 보강 필요', unclassifiedBugs]);
-  LOCAL_QA_TC.bugStatusValues.forEach(function (value) { bugRows.push([dashboardBugStatusLabelLocal_(value), bugStatusCounts[value] || 0]); });
-  Object.keys(bugStatusCounts).sort().forEach(function (value) {
-    if (LOCAL_QA_TC.bugStatusValues.indexOf(value) !== -1) return;
-    bugRows.push([dashboardBugStatusLabelLocal_(value), bugStatusCounts[value] || 0]);
+  const bugStatusRows = [['처리 상태', '건수']];
+  LOCAL_QA_TC.bugStatusValues.forEach(function (value) {
+    bugStatusRows.push([dashboardBugStatusLabelLocal_(value), dashboardBugStatusCountFormulaLocal_(dashboard, [value])]);
   });
-  writeDashboardTableLocal_(sheet, 14, 1, bugRows, '버그 현황');
+  bugStatusRows.push([dashboardBugStatusLabelLocal_(''), dashboardBugStatusCountFormulaLocal_(dashboard, [''])]);
+  writeDashboardTableLocal_(sheet, 16, 1, bugStatusRows, 'Bug_Report 처리 상태');
 
-  const backlogTable = [['보강 상태 범례', '건수']];
-  LOCAL_QA_TC.backlogStatusValues.forEach(function (value) { backlogTable.push([dashboardBacklogStatusLabelLocal_(value), backlogStatusCounts[value] || 0]); });
-  writeDashboardTableLocal_(sheet, 14, 4, backlogTable, '보강 목록 현황');
+  const agingRows = [
+    ['확인 항목', '건수', '대상 Bug ID'],
+    ['2일 초과 + 깃 이슈 미제출/작성 중', dashboard.githubPendingOverdue, dashboard.githubPendingOverdueIds],
+    ['2일 초과 + 미종료', dashboard.unresolvedOverdue, dashboard.unresolvedOverdueIds],
+    ['등록일 누락', dashboard.missingCreatedAt, dashboard.missingCreatedAtIds]
+  ];
+  writeDashboardTableLocal_(sheet, 16, 4, agingRows, '2일 초과/등록일 확인');
 
-  writeDashboardTableLocal_(sheet, 25, 1, perSheetRows, '시트별 TC 현황');
-  if (perSheetRows.length > 1) {
-    sheet.getRange(27, 4, perSheetRows.length - 1, 1).setNumberFormat('0.0%');
+  const severityRows = [['심각도', '건수']];
+  LOCAL_QA_TC.bugSeverityValues.forEach(function (value) {
+    severityRows.push(['심각도 ' + value, dashboardBugSeverityCountFormulaLocal_(dashboard, value)]);
+  });
+  writeDashboardTableLocal_(sheet, 30, 1, severityRows, '버그 심각도 현황');
+
+  if (sheet.getCharts().length === 0) {
+    addDashboardChartLocal_(sheet, 'bar', sheet.getRange(4, 4, githubRows.length, 2), 3, 8, '깃 이슈 반영 현황 - Bug_Report J열 기준');
+    addDashboardChartLocal_(sheet, 'bar', sheet.getRange(17, 1, bugStatusRows.length, 2), 19, 8, 'Bug_Report 처리 상태 - J열 실시간 집계');
+    addDashboardChartLocal_(sheet, 'column', sheet.getRange(17, 4, agingRows.length, 2), 35, 8, '2일 초과/등록일 확인 - 대상 Bug ID는 표 참조');
+    addDashboardChartLocal_(sheet, 'pie', sheet.getRange(31, 1, severityRows.length, 2), 51, 8, '버그 심각도 분포 - Bug_Report I열 기준');
   }
-
-  addDashboardChartLocal_(sheet, 'pie', sheet.getRange(4, 4, resultRows.length, 2), 3, 8, 'TC 결과 분포 - Pass/Fail/Blocked/Not Test/N/A');
-  addDashboardChartLocal_(sheet, 'column', sheet.getRange(26, 1, Math.max(2, perSheetRows.length), 4), 19, 8, '활성 TC 시트별 달성률 - 결과 입력/전체 TC');
-  addDashboardChartLocal_(sheet, 'pie', sheet.getRange(15, 1, 3, 2), 35, 8, '버그 분류 현황 - TC 연결 포함');
-  addDashboardChartLocal_(sheet, 'bar', sheet.getRange(15, 4, backlogTable.length, 2), 51, 8, '보강 목록 상태 - 대기/완료/제외/종료');
 
   return {
     sheetName: sheet.getName(),
-    activeTcSheets: activeSheetNames.length,
-    totalTc: totalTc,
-    testedTc: testedTc,
-    achievementRate: percentTextLocal_(testedTc, totalTc),
-    bugRows: bugs.length,
-    unclassifiedBugRows: unclassifiedBugs,
-    pendingBacklogRows: backlogStatusCounts['대기'] || 0,
+    liveFormulaDashboard: true,
+    priority: 'Bug_Report first; TC link and TC list metrics excluded from dashboard counts',
     charts: 4,
-    tables: 4
+    tables: 5
   };
 }
 
 function writeDashboardTableLocal_(sheet, row, column, values, title) {
-  sheet.getRange(row, column).setValue(title).setFontWeight('bold').setFontColor('#1f4e78');
+  sheet.getRange(row, column).setValue(title);
   const range = sheet.getRange(row + 1, column, values.length, values[0].length);
-  range.setValues(values).setWrap(true).setVerticalAlignment('middle');
-  sheet.getRange(row + 1, column, 1, values[0].length)
-    .setFontWeight('bold')
-    .setHorizontalAlignment('center')
-    .setFontColor('#ffffff')
-    .setBackground('#1f4e78');
-  if (values.length > 1) {
-    sheet.getRange(row + 2, column, values.length - 1, values[0].length).setBackground('#f8fbfd');
-  }
-  range.setBorder(true, true, true, true, true, true, '#d9e2ec', SpreadsheetApp.BorderStyle.SOLID);
+  range.setValues(values);
   return range;
+}
+
+function buildLiveDashboardFormulaContextLocal_() {
+  const bugSheet = quoteSheetNameForFormulaLocal_(LOCAL_QA_TC.bugReportSheetName);
+  const context = {
+    bugIdRange: bugSheet + '!A5:A',
+    bugTitleRange: bugSheet + '!B5:B',
+    bugSeverityRange: bugSheet + '!I5:I',
+    bugStatusRange: bugSheet + '!J5:J',
+    bugCreatedAtRange: bugSheet + '!M5:M'
+  };
+
+  context.bugRows = '=COUNTIF(' + context.bugTitleRange + ',' + dashboardFormulaStringLocal_('<>') + ')';
+  context.bugIdMissing = dashboardCountifsFormulaLocal_([
+    [context.bugTitleRange, dashboardFormulaStringLocal_('<>')],
+    [context.bugIdRange, dashboardFormulaStringLocal_('')]
+  ]);
+  context.githubNotSubmitted = dashboardBugStatusCountFormulaLocal_(context, ['', '깃이슈 미제출']);
+  context.githubWriting = dashboardBugStatusCountFormulaLocal_(context, ['깃이슈 작성 중']);
+  context.githubManaged = dashboardBugStatusCountFormulaLocal_(context, LOCAL_QA_TC.bugGithubManagedStatusValues);
+  context.githubPendingOverdue = dashboardBugStatusAgeFormulaLocal_(context, LOCAL_QA_TC.bugGithubPendingStatusValues);
+  context.unresolvedOverdue = dashboardBugStatusAgeFormulaLocal_(context, LOCAL_QA_TC.bugUnresolvedStatusValues);
+  context.missingCreatedAt = dashboardCountifsFormulaLocal_([
+    [context.bugTitleRange, dashboardFormulaStringLocal_('<>')],
+    [context.bugCreatedAtRange, dashboardFormulaStringLocal_('')]
+  ]);
+  context.bugIdMissingIds = dashboardBugIdListFormulaLocal_(context, [
+    context.bugTitleRange + '<>""',
+    context.bugIdRange + '=""'
+  ]);
+  context.githubNotSubmittedIds = dashboardBugIdListFormulaLocal_(context, [
+    context.bugTitleRange + '<>""',
+    dashboardBugStatusRegexConditionLocal_(context, ['', '깃이슈 미제출'])
+  ]);
+  context.githubWritingIds = dashboardBugIdListFormulaLocal_(context, [
+    context.bugTitleRange + '<>""',
+    dashboardBugStatusRegexConditionLocal_(context, ['깃이슈 작성 중'])
+  ]);
+  context.githubPendingOverdueIds = dashboardBugIdListFormulaLocal_(context, [
+    context.bugTitleRange + '<>""',
+    context.bugCreatedAtRange + '<>""',
+    context.bugCreatedAtRange + '<TODAY()-2',
+    dashboardBugStatusRegexConditionLocal_(context, LOCAL_QA_TC.bugGithubPendingStatusValues)
+  ]);
+  context.unresolvedOverdueIds = dashboardBugIdListFormulaLocal_(context, [
+    context.bugTitleRange + '<>""',
+    context.bugCreatedAtRange + '<>""',
+    context.bugCreatedAtRange + '<TODAY()-2',
+    dashboardBugStatusRegexConditionLocal_(context, LOCAL_QA_TC.bugUnresolvedStatusValues)
+  ]);
+  context.missingCreatedAtIds = dashboardBugIdListFormulaLocal_(context, [
+    context.bugTitleRange + '<>""',
+    context.bugCreatedAtRange + '=""'
+  ]);
+  return context;
+}
+
+function dashboardBugStatusCountFormulaLocal_(context, statuses) {
+  return dashboardSumTermsFormulaLocal_(statuses.map(function (status) {
+    return dashboardCountifsTermLocal_([
+      [context.bugTitleRange, dashboardFormulaStringLocal_('<>')],
+      [context.bugStatusRange, dashboardFormulaStringLocal_(status)]
+    ]);
+  }));
+}
+
+function dashboardBugStatusAgeFormulaLocal_(context, statuses) {
+  return dashboardSumTermsFormulaLocal_(statuses.map(function (status) {
+    return dashboardCountifsTermLocal_([
+      [context.bugTitleRange, dashboardFormulaStringLocal_('<>')],
+      [context.bugCreatedAtRange, '"<"&TODAY()-2'],
+      [context.bugStatusRange, dashboardFormulaStringLocal_(status)]
+    ]);
+  }));
+}
+
+function dashboardBugSeverityCountFormulaLocal_(context, severity) {
+  return dashboardCountifsFormulaLocal_([
+    [context.bugTitleRange, dashboardFormulaStringLocal_('<>')],
+    [context.bugSeverityRange, dashboardFormulaStringLocal_(severity)]
+  ]);
+}
+
+function dashboardCountifsFormulaLocal_(criteriaPairs) {
+  return '=' + dashboardCountifsTermLocal_(criteriaPairs);
+}
+
+function dashboardCountifsTermLocal_(criteriaPairs) {
+  return 'COUNTIFS(' + criteriaPairs.map(function (pair) {
+    return pair[0] + ',' + pair[1];
+  }).join(',') + ')';
+}
+
+function dashboardSumTermsFormulaLocal_(terms) {
+  if (!terms || terms.length === 0) return '=0';
+  if (terms.length === 1) return '=' + terms[0];
+  return '=SUM(' + terms.join(',') + ')';
+}
+
+function dashboardFormulaStringLocal_(value) {
+  return '"' + textValueLocal_(value).replace(/"/g, '""') + '"';
+}
+
+function dashboardBugIdListFormulaLocal_(context, conditions) {
+  const bugIdExpression = 'IF(' + context.bugIdRange + '<>"",' + context.bugIdRange + ',"행 "&ROW(' + context.bugIdRange + ')&" ID 없음")';
+  return '=IFERROR(TEXTJOIN(CHAR(10),TRUE,FILTER(' + [bugIdExpression].concat(conditions).join(',') + ')),"-")';
+}
+
+function dashboardBugStatusRegexConditionLocal_(context, statuses) {
+  const regex = '^(' + statuses.map(function (status) { return dashboardRegexEscapeLocal_(status); }).join('|') + ')$';
+  return 'REGEXMATCH(' + context.bugStatusRange + '&"",' + dashboardFormulaStringLocal_(regex) + ')';
+}
+
+function dashboardRegexEscapeLocal_(value) {
+  return textValueLocal_(value).replace(/[\\^$.*+?()[\]{}|]/g, '\\$&');
 }
 
 function addDashboardChartLocal_(sheet, type, range, row, column, title) {
@@ -2670,11 +2656,14 @@ function dashboardResultLabelLocal_(value) {
 function dashboardBugStatusLabelLocal_(value) {
   if (!textValueLocal_(value).trim()) return '미입력 - J열 수동 입력 필요';
   const labels = {
-    '열림': '열림 - 조치 필요',
-    '수정 완료': '수정 완료 - 수정됨',
+    '깃이슈 미제출': '깃이슈 미제출 - 등록 필요',
+    '깃이슈 작성 중': '깃이슈 작성 중 - 등록 진행',
+    '열림': '열림 - 깃 이슈 등록/조치 필요',
     '재검증': '재검증 - 다시 확인 필요',
     '종료': '종료 - 처리 완료',
-    '수정 안 함': '수정 안 함 - TC 반영 제외'
+    '수정 안 함': '수정 안 함 - TC 반영 제외',
+    '중복 리포트': '중복 리포트 - 통합/제외 확인',
+    '수정 완료': '수정 완료 - 재검증 필요'
   };
   return labels[value] || value;
 }
@@ -2690,38 +2679,6 @@ function dashboardBacklogStatusLabelLocal_(value) {
 }
 
 function applyBugConditionalFormattingLocal_(bugReport, backlog) {
-  const reportRows = bugReport.getMaxRows() - LOCAL_QA_TC.bugFirstDataRow + 1;
-  if (reportRows > 0) {
-    const severityRange = bugReport.getRange(LOCAL_QA_TC.bugFirstDataRow, 9, reportRows, 1);
-    const statusRange = bugReport.getRange(LOCAL_QA_TC.bugFirstDataRow, 10, reportRows, 1);
-    const rules = bugReport.getConditionalFormatRules().filter(function (rule) {
-      const condition = rule.getBooleanCondition && rule.getBooleanCondition();
-      if (!condition) return true;
-      const values = condition.getCriteriaValues();
-      const formula = values && values[0] ? String(values[0]) : '';
-      if (formula.indexOf('MANUAL_REQUIRED_BLANK') !== -1) return false;
-      return !/^=\$(?:I|J)\d+=/.test(formula);
-    });
-    addBugReportRequiredBlankRulesLocal_(rules, bugReport, reportRows);
-    const severityColors = {'1':'#f4cccc','2':'#fce5cd','3':'#fff2cc','4':'#d9ead3'};
-    Object.keys(severityColors).forEach(function (value) {
-      rules.push(SpreadsheetApp.newConditionalFormatRule()
-        .whenFormulaSatisfied('=$I' + LOCAL_QA_TC.bugFirstDataRow + '="' + value + '"')
-        .setBackground(severityColors[value])
-        .setRanges([severityRange])
-        .build());
-    });
-    const statusColors = {'열림':'#f4cccc', '수정 완료':'#fff2cc', '재검증':'#d9ead3', '종료':'#d9d9d9', '수정 안 함':'#eeeeee'};
-    Object.keys(statusColors).forEach(function (value) {
-      rules.push(SpreadsheetApp.newConditionalFormatRule()
-        .whenFormulaSatisfied('=$J' + LOCAL_QA_TC.bugFirstDataRow + '="' + value + '"')
-        .setBackground(statusColors[value])
-        .setRanges([statusRange])
-        .build());
-    });
-    bugReport.setConditionalFormatRules(rules);
-  }
-
   const backlogRows = backlog.getMaxRows() - LOCAL_QA_TC.backlogFirstDataRow + 1;
   if (backlogRows > 0) {
     const statusRange = backlog.getRange(LOCAL_QA_TC.backlogFirstDataRow, 10, backlogRows, 1);
@@ -2781,7 +2738,6 @@ function createBugReportLocal_(ss, input) {
   if (bugId === '예시') throw new Error('Bug ID "예시" is reserved for the example row.');
   if (findBugRowByIdLocal_(bugReport, bugId)) throw new Error('Bug ID already exists: ' + bugId);
   const severity = normalizeQaPriorityLocal_(textValueLocal_(pickLocal_(input, ['severity', '심각도', 'priority', '우선 순위'], '')).trim() || '3', false);
-  const phoneModel = textValueLocal_(pickLocal_(input, ['phoneModel', 'deviceModel', '스마트폰 기종', '스마트폰 모델', '기기명'], '')).trim();
   const versionResult = normalizeOptionalListValueLocal_(pickLocal_(input, ['versionResult', '버전 확인 결과'], ''), LOCAL_QA_TC.bugVersionResultValues, 'versionResult');
   const rowIndex = findNextSimpleRowLocal_(bugReport, LOCAL_QA_TC.bugFirstDataRow, LOCAL_QA_TC.bugReportHeaders.length);
   const row = [
@@ -2800,7 +2756,7 @@ function createBugReportLocal_(ss, input) {
     now,
     now,
     '',
-    phoneModel,
+    '',
     '',
     versionResult,
     textValueLocal_(pickLocal_(input, ['note', '비고'], ''))

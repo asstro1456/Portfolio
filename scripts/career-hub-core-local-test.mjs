@@ -226,6 +226,61 @@ function testManualCarryForwardIsConservative() {
   assert.equal(result.ambiguousManual, 1);
   assert.equal(result.staleManual, 1);
   assert.equal(result.unmatchedManual, 1);
+  assert.equal(result.ambiguousManualRows.length, 1);
+  assert.equal(result.staleManualRows.length, 1);
+  assert.equal(result.unmatchedManualRows.length, 1);
+  assert.equal(result.unmatchedManualRows[0].공고명, '새 공고');
+  assert.equal(result.unmatchedManualRows[0].원인, '기존 수동입력경력 매칭 없음');
+  assert.equal(excludedRows.length, 0);
+}
+
+function testManualCarryForwardUsesGameJobIdAndTitleFallback() {
+  const context = loadCoreContext();
+  const existingJobsSheet = new FakeSheet([
+    header(JOB_WIDTH),
+    makeRow({
+      date: '2026-06-01',
+      title: 'URL 파라미터 변경',
+      url: 'https://www.gamejob.co.kr/Recruit/GI_Read/View?GI_No=281084&Page=1',
+      manual: '3년 이상'
+    }),
+    makeRow({
+      date: '2026-06-01',
+      company: '재등록회사',
+      title: '같은 제목 재등록',
+      url: 'https://www.gamejob.co.kr/Recruit/GI_Read/View?GI_No=277694',
+      manual: '2년 이상'
+    })
+  ]);
+  const jobRows = [
+    makeRow({
+      title: 'URL 파라미터 변경',
+      url: 'https://www.gamejob.co.kr/Recruit/GI_Read/View?GI_No=281084',
+      manual: '확인 전',
+      band: '신입/경력무관'
+    }),
+    makeRow({
+      company: '재등록회사',
+      title: '같은 제목 재등록',
+      url: 'https://www.gamejob.co.kr/Recruit/GI_Read/View?GI_No=281463',
+      manual: '확인 전',
+      band: '신입/경력무관'
+    })
+  ];
+  const excludedRows = [];
+
+  const result = context.carryForwardManualExperience_(existingJobsSheet, jobRows, excludedRows);
+
+  assert.equal(jobRows[0][15], '3년 이상');
+  assert.equal(jobRows[0][1], '3~5년차');
+  assert.match(jobRows[0][16], /기존 수동입력경력\(3년 이상, URL\) 반영/);
+  assert.equal(jobRows[1][15], '2년 이상');
+  assert.equal(jobRows[1][1], '1~3년차');
+  assert.match(jobRows[1][16], /기존 수동입력경력\(2년 이상, 회사\+공고명\) 반영/);
+  assert.equal(result.preservedManual, 2);
+  assert.equal(result.reclassified, 2);
+  assert.equal(result.unmatchedManual, 0);
+  assert.equal(result.unmatchedManualRows.length, 0);
   assert.equal(excludedRows.length, 0);
 }
 
@@ -302,6 +357,7 @@ function testNormalizeBodyExperienceDropdownValues() {
 
 testManualApplyDoesNotDeleteRows();
 testManualCarryForwardIsConservative();
+testManualCarryForwardUsesGameJobIdAndTitleFallback();
 testCarryForwardRecordsManualExclusion();
 testCleanupBodyExperienceFromListed();
 testNormalizeBodyExperienceDropdownValues();

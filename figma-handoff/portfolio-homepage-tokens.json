@@ -1,0 +1,670 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "meta": {
+    "name": "Portfolio Homepage CSS Tokens",
+    "sourceUrl": "https://asstro1456.github.io/Portfolio/#hero",
+    "sourceFiles": [
+      "index.html",
+      "css/style.css?v=0.1.15",
+      "js/main.js?v=0.1.15"
+    ],
+    "baseFontSize": "16px",
+    "generatedAt": "2026-06-28"
+  },
+  "color": {
+    "bg": {
+      "$type": "color",
+      "$value": "#f3f5f8"
+    },
+    "surface": {
+      "$type": "color",
+      "$value": "#ffffff"
+    },
+    "surfaceSoft": {
+      "$type": "color",
+      "$value": "#eef3f7"
+    },
+    "surfaceDeep": {
+      "$type": "color",
+      "$value": "#081520"
+    },
+    "text": {
+      "$type": "color",
+      "$value": "#161d26"
+    },
+    "muted": {
+      "$type": "color",
+      "$value": "#637080"
+    },
+    "line": {
+      "$type": "color",
+      "$value": "#d7dfe7"
+    },
+    "accent": {
+      "$type": "color",
+      "$value": "#0dd2ff"
+    },
+    "accentSoft": {
+      "$type": "color",
+      "$value": "rgba(13, 210, 255, 0.14)"
+    },
+    "accentWarm": {
+      "$type": "color",
+      "$value": "#ff9a5c"
+    },
+    "sectionTone": {
+      "$type": "color",
+      "$value": "#e9edf1"
+    },
+    "sectionKicker": {
+      "$type": "color",
+      "$value": "#5b6776"
+    },
+    "sectionLead": {
+      "$type": "color",
+      "$value": "#51606f"
+    },
+    "navGlass": {
+      "$type": "color",
+      "$value": "rgba(7, 17, 27, 0.58)"
+    },
+    "navBorder": {
+      "$type": "color",
+      "$value": "rgba(168, 205, 229, 0.38)"
+    },
+    "navText": {
+      "$type": "color",
+      "$value": "rgba(238, 247, 255, 0.95)"
+    },
+    "navActive": {
+      "$type": "color",
+      "$value": "rgba(13, 210, 255, 0.24)"
+    },
+    "navGuidePanel": {
+      "$type": "color",
+      "$value": "rgba(9, 19, 30, 0.94)"
+    },
+    "navGuidePanelText": {
+      "$type": "color",
+      "$value": "#eaf4ff"
+    },
+    "heroBg": {
+      "$type": "color",
+      "$value": "#07121d"
+    },
+    "heroText": {
+      "$type": "color",
+      "$value": "#f4f9ff"
+    },
+    "heroVersionText": {
+      "$type": "color",
+      "$value": "rgba(232, 243, 252, 0.94)"
+    },
+    "heroProfileBg": {
+      "$type": "color",
+      "$value": "rgba(8, 18, 29, 0.82)"
+    },
+    "heroProfileBorder": {
+      "$type": "color",
+      "$value": "rgba(155, 211, 241, 0.30)"
+    },
+    "heroProfileText": {
+      "$type": "color",
+      "$value": "#f3f8ff"
+    },
+    "heroCardLabel": {
+      "$type": "color",
+      "$value": "#8edcff"
+    },
+    "heroCardRole": {
+      "$type": "color",
+      "$value": "rgba(224, 236, 246, 0.84)"
+    },
+    "heroMetaLabel": {
+      "$type": "color",
+      "$value": "rgba(145, 220, 255, 0.84)"
+    },
+    "heroMetaValue": {
+      "$type": "color",
+      "$value": "#e6f2fc"
+    },
+    "heroTagBg": {
+      "$type": "color",
+      "$value": "rgba(15, 31, 47, 0.68)"
+    },
+    "heroTagBorder": {
+      "$type": "color",
+      "$value": "rgba(149, 192, 219, 0.22)"
+    },
+    "heroTagText": {
+      "$type": "color",
+      "$value": "#dceaf7"
+    },
+    "mediaBorder": {
+      "$type": "color",
+      "$value": "#ccd7e2"
+    },
+    "mediaBg": {
+      "$type": "color",
+      "$value": "#f7fafc"
+    },
+    "mediaText": {
+      "$type": "color",
+      "$value": "#545b65"
+    },
+    "editorialDarkStart": {
+      "$type": "color",
+      "$value": "#15304a"
+    },
+    "editorialDarkEnd": {
+      "$type": "color",
+      "$value": "#09131d"
+    },
+    "chipBg": {
+      "$type": "color",
+      "$value": "#16344d"
+    },
+    "chipText": {
+      "$type": "color",
+      "$value": "#eff8ff"
+    },
+    "processNumberBg": {
+      "$type": "color",
+      "$value": "#0f2940"
+    },
+    "processConnector": {
+      "$type": "color",
+      "$value": "#b8c7d3"
+    },
+    "ctaBg": {
+      "$type": "color",
+      "$value": "#173a55"
+    },
+    "ctaText": {
+      "$type": "color",
+      "$value": "#f2f8ff"
+    },
+    "badgeBg": {
+      "$type": "color",
+      "$value": "rgba(36, 74, 105, 0.10)"
+    },
+    "badgeText": {
+      "$type": "color",
+      "$value": "#244a69"
+    },
+    "modalBackdrop": {
+      "$type": "color",
+      "$value": "rgba(17, 20, 24, 0.58)"
+    },
+    "modalBodyBg": {
+      "$type": "color",
+      "$value": "#fafbfc"
+    }
+  },
+  "fontFamily": {
+    "body": {
+      "$type": "fontFamily",
+      "$value": "Noto Sans KR"
+    }
+  },
+  "fontWeight": {
+    "regular": {
+      "$type": "fontWeight",
+      "$value": "400"
+    },
+    "medium": {
+      "$type": "fontWeight",
+      "$value": "500"
+    },
+    "bold": {
+      "$type": "fontWeight",
+      "$value": "700"
+    },
+    "extraBold": {
+      "$type": "fontWeight",
+      "$value": "800"
+    }
+  },
+  "typography": {
+    "body": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.body}",
+        "fontSize": "16px",
+        "fontWeight": "{fontWeight.regular}",
+        "lineHeight": "26.4px",
+        "letterSpacing": "0"
+      }
+    },
+    "sectionH2Desktop": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.body}",
+        "fontSize": "46.4px",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "53.8px",
+        "letterSpacing": "0"
+      }
+    },
+    "sectionH2Tablet": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.body}",
+        "fontSize": "34.8px",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "40.4px",
+        "letterSpacing": "0"
+      }
+    },
+    "sectionH2Mobile": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.body}",
+        "fontSize": "32px",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "37.1px",
+        "letterSpacing": "0"
+      }
+    },
+    "cardH3Desktop": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.body}",
+        "fontSize": "28.8px",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "33.4px",
+        "letterSpacing": "0"
+      }
+    },
+    "cardH3Mobile": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.body}",
+        "fontSize": "21.1px",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "24.5px",
+        "letterSpacing": "0"
+      }
+    },
+    "heroH1Desktop": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.body}",
+        "fontSize": "75.6px",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "72.6px",
+        "letterSpacing": "-4%"
+      }
+    },
+    "heroH1Max": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.body}",
+        "fontSize": "96px",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "92.2px",
+        "letterSpacing": "-4%"
+      }
+    },
+    "heroH1Mobile": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.body}",
+        "fontSize": "21.5px",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "20.6px",
+        "letterSpacing": "-4%"
+      }
+    },
+    "kicker": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.body}",
+        "fontSize": "12.8px",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "21.1px",
+        "letterSpacing": "14%"
+      }
+    },
+    "nav": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.body}",
+        "fontSize": "13.6px",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "22.4px",
+        "letterSpacing": "0"
+      }
+    },
+    "caption": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{fontFamily.body}",
+        "fontSize": "11.5px",
+        "fontWeight": "{fontWeight.bold}",
+        "lineHeight": "19px",
+        "letterSpacing": "16%"
+      }
+    }
+  },
+  "dimension": {
+    "layout": {
+      "maxDesktop": {
+        "$type": "dimension",
+        "$value": "1240px"
+      },
+      "maxTablet": {
+        "$type": "dimension",
+        "$value": "1080px"
+      },
+      "narrowMax": {
+        "$type": "dimension",
+        "$value": "980px"
+      },
+      "headerHeight": {
+        "$type": "dimension",
+        "$value": "84px"
+      },
+      "headerHeightMobile": {
+        "$type": "dimension",
+        "$value": "74px"
+      },
+      "howCardWidthDesktop": {
+        "$type": "dimension",
+        "$value": "880px"
+      },
+      "heroProfileMaxWidth": {
+        "$type": "dimension",
+        "$value": "430px"
+      },
+      "heroCopyMaxWidth": {
+        "$type": "dimension",
+        "$value": "860px"
+      },
+      "modalMaxWidth": {
+        "$type": "dimension",
+        "$value": "740px"
+      }
+    },
+    "component": {
+      "navMinHeight": {
+        "$type": "dimension",
+        "$value": "38px"
+      },
+      "navMinHeightMobile": {
+        "$type": "dimension",
+        "$value": "34px"
+      },
+      "guideToggleSize": {
+        "$type": "dimension",
+        "$value": "40px"
+      },
+      "sliderNavSize": {
+        "$type": "dimension",
+        "$value": "44px"
+      },
+      "closeButtonSize": {
+        "$type": "dimension",
+        "$value": "34px"
+      },
+      "processNumberSize": {
+        "$type": "dimension",
+        "$value": "42px"
+      }
+    }
+  },
+  "spacing": {
+    "0": {
+      "$type": "dimension",
+      "$value": "0"
+    },
+    "xs": {
+      "$type": "dimension",
+      "$value": "4px"
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": "8px"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": "32px"
+    },
+    "sectionY": {
+      "$type": "dimension",
+      "$value": "80px"
+    },
+    "cardPadding": {
+      "$type": "dimension",
+      "$value": "19.2px"
+    },
+    "cardPaddingEmphasis": {
+      "$type": "dimension",
+      "$value": "20.8px"
+    },
+    "heroOverlayTopDesktop": {
+      "$type": "dimension",
+      "$value": "108.8px"
+    },
+    "heroOverlayTopMobile": {
+      "$type": "dimension",
+      "$value": "86.8px"
+    },
+    "sliderShellXDesktop": {
+      "$type": "dimension",
+      "$value": "56px"
+    },
+    "sliderShellXMobile": {
+      "$type": "dimension",
+      "$value": "44px"
+    }
+  },
+  "radius": {
+    "sm": {
+      "$type": "dimension",
+      "$value": "8px"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "12px"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "14px"
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": "18px"
+    },
+    "profile": {
+      "$type": "dimension",
+      "$value": "22px"
+    },
+    "sectionVisual": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
+    "pill": {
+      "$type": "dimension",
+      "$value": "999px"
+    }
+  },
+  "shadow": {
+    "nav": {
+      "$type": "shadow",
+      "$value": {
+        "color": "rgba(3, 10, 18, 0.18)",
+        "offsetX": "0",
+        "offsetY": "14px",
+        "blur": "32px",
+        "spread": "0"
+      }
+    },
+    "guidePanel": {
+      "$type": "shadow",
+      "$value": {
+        "color": "rgba(3, 10, 18, 0.24)",
+        "offsetX": "0",
+        "offsetY": "22px",
+        "blur": "42px",
+        "spread": "0"
+      }
+    },
+    "heroProfile": {
+      "$type": "shadow",
+      "$value": {
+        "color": "rgba(4, 10, 16, 0.32)",
+        "offsetX": "0",
+        "offsetY": "20px",
+        "blur": "40px",
+        "spread": "0"
+      }
+    },
+    "editorialVisual": {
+      "$type": "shadow",
+      "$value": {
+        "color": "rgba(14, 23, 34, 0.12)",
+        "offsetX": "0",
+        "offsetY": "24px",
+        "blur": "46px",
+        "spread": "0"
+      }
+    },
+    "carouselCard": {
+      "$type": "shadow",
+      "$value": {
+        "color": "rgba(20, 31, 45, 0.12)",
+        "offsetX": "0",
+        "offsetY": "20px",
+        "blur": "36px",
+        "spread": "0"
+      }
+    },
+    "carouselCardActive": {
+      "$type": "shadow",
+      "$value": {
+        "color": "rgba(20, 31, 45, 0.20)",
+        "offsetX": "0",
+        "offsetY": "28px",
+        "blur": "54px",
+        "spread": "0"
+      }
+    },
+    "sliderNav": {
+      "$type": "shadow",
+      "$value": {
+        "color": "rgba(21, 32, 46, 0.12)",
+        "offsetX": "0",
+        "offsetY": "12px",
+        "blur": "26px",
+        "spread": "0"
+      }
+    },
+    "interactiveHover": {
+      "$type": "shadow",
+      "$value": {
+        "color": "rgba(25, 40, 58, 0.10)",
+        "offsetX": "0",
+        "offsetY": "18px",
+        "blur": "34px",
+        "spread": "0"
+      }
+    },
+    "heroTitleText": {
+      "$type": "shadow",
+      "$value": {
+        "color": "rgba(0, 0, 0, 0.32)",
+        "offsetX": "0",
+        "offsetY": "10px",
+        "blur": "30px",
+        "spread": "0"
+      }
+    }
+  },
+  "gradient": {
+    "softCard": {
+      "$type": "gradient",
+      "$value": "linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(243, 247, 251, 0.98))"
+    },
+    "howGroup": {
+      "$type": "gradient",
+      "$value": "linear-gradient(180deg, #e8edf1 0%, #f4f6f8 100%)"
+    },
+    "heroImageDim": {
+      "$type": "gradient",
+      "$value": "linear-gradient(180deg, rgba(7, 16, 27, 0.04) 0%, rgba(7, 16, 27, 0.18) 58%, rgba(7, 16, 27, 0.46) 100%)"
+    },
+    "heroSideOverlay": {
+      "$type": "gradient",
+      "$value": "linear-gradient(90deg, rgba(3, 10, 18, 0.68) 0%, rgba(3, 10, 18, 0.42) 24%, rgba(3, 10, 18, 0.08) 58%, rgba(3, 10, 18, 0.18) 100%)"
+    },
+    "heroFloorFade": {
+      "$type": "gradient",
+      "$value": "linear-gradient(180deg, rgba(3, 10, 18, 0) 0%, rgba(3, 10, 18, 0.28) 100%)"
+    },
+    "editorialVisual": {
+      "$type": "gradient",
+      "$value": "radial-gradient(circle at 28% 30%, rgba(13, 210, 255, 0.22), transparent 22%), linear-gradient(160deg, rgba(8, 26, 41, 0.22), rgba(8, 26, 41, 0.72)), linear-gradient(135deg, #15304a 0%, #09131d 74%)"
+    },
+    "modalMediaStripe": {
+      "$type": "gradient",
+      "$value": "repeating-linear-gradient(-45deg, #f3f4f6, #f3f4f6 10px, #ebeef1 10px, #ebeef1 20px)"
+    }
+  },
+  "breakpoint": {
+    "desktop": {
+      "$type": "dimension",
+      "$value": "1181px"
+    },
+    "tablet": {
+      "$type": "dimension",
+      "$value": "1180px"
+    },
+    "tabletNarrow": {
+      "$type": "dimension",
+      "$value": "980px"
+    },
+    "mobile": {
+      "$type": "dimension",
+      "$value": "640px"
+    }
+  },
+  "asset": {
+    "heroSystemFlow": {
+      "$type": "asset",
+      "$value": "assets/hero-system-flow.png"
+    },
+    "dataTableReference": {
+      "$type": "asset",
+      "$value": "assets/images/data-table-reference.png"
+    },
+    "flowRoomRules": {
+      "$type": "asset",
+      "$value": "assets/images/flow-room-rules.png"
+    },
+    "projectBbThumbnail": {
+      "$type": "asset",
+      "$value": "assets/images/project-bb-thumbnail.png"
+    },
+    "limbusPrototype": {
+      "$type": "asset",
+      "$value": "assets/images/limbus-prototype.png"
+    },
+    "flowShop": {
+      "$type": "asset",
+      "$value": "assets/images/flow-shop.png"
+    },
+    "flowEquipmentUpgrade": {
+      "$type": "asset",
+      "$value": "assets/images/flow-equipment-upgrade.png"
+    }
+  }
+}

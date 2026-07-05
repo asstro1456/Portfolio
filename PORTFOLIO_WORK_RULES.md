@@ -1,10 +1,10 @@
 # Portfolio 작업 기준
 
-이 문서는 `C:\Users\User\Documents\Portfolio`의 프로젝트 기준만 정리한다. Codex 행동 규칙은 `AGENTS.md`를 따른다.
+이 문서는 `C:\Users\User\Documents\Portfolio`의 포트폴리오 웹 영역 기준만 정리한다. Codex 행동 규칙과 작업 유형 분기는 `AGENTS.md`를 따른다.
 
 ## 프로젝트 기준
 
-- 작업 유형은 GitHub Pages 정적 포트폴리오 웹사이트다.
+- 포트폴리오 웹 영역은 GitHub Pages 정적 사이트다.
 - 공개 흐름은 `Main / What / Why / How / Vision / Portfolio` 기준을 유지한다.
 - 메인 페이지는 자기소개와 작업 방식에 집중하고, 상세 증거 자료는 `portfolio.html`에서 다룬다.
 - 현재 방향은 `시스템을 이해하고 UX로 풀어내는 게임 UI/UX 기획자`다.
