@@ -1,0 +1,5 @@
+{
+  "ok": true,
+  "status": 200,
+  "text": "{\"ok\":true,\"spreadsheetUrl\":\"https://docs.google.com/spreadsheets/d/1FJ-q13akZExmQUzZ3Tj8vHLoAWz7WxkdUjpBB1iVWUA/edit\",\"기준일\":\"2026-06-04\",\"weekly\":{\"inserted\":0,\"updated\":1,\"skipped\":0},\"jobs\":{\"inserted\":264,\"updated\":0,\"skipped\":0},\"excluded\":{\"inserted\":169,\"updated\":0,\"skipped\":0},\"gameReferences\":{\"inserted\":0,\"updated\":0,\"skipped\":0},\"companyMonitor\":{\"inserted\":0,\"updated\":0,\"skipped\":0},\"industryMaterials\":{\"inserted\":0,\"updated\":0,\"skipped\":0},\"importedGameReferences\":{\"inserted\":0,\"updated\":0,\"skipped\":0}}"
+}

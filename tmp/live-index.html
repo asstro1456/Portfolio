@@ -1,0 +1,361 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게임 시스템 기획자 포트폴리오</title>
+  <meta name="description" content="막히는 흐름을 구조로 바꾸는 게임 시스템 기획자의 포트폴리오 페이지입니다.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=0.1.15">
+  <script src="js/main.js?v=0.1.15" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a href="#hero" class="site-brand" aria-label="메인 섹션으로 이동">
+      </a>
+
+      <nav class="site-nav" aria-label="페이지 이동">
+        <a href="#hero" class="site-link" data-nav-target="hero">Main</a>
+        <a href="#tools" class="site-link" data-nav-target="tools">What</a>
+        <a href="#origin" class="site-link" data-nav-target="origin">Why</a>
+        <a href="#how" class="site-link" data-nav-target="how">How</a>
+        <a href="#future" class="site-link" data-nav-target="future">Vision</a>
+        <a href="portfolio.html" class="site-link">Portfolio</a>
+      </nav>
+
+      <div class="site-nav-utility">
+        <button
+          type="button"
+          class="nav-guide-toggle"
+          id="navGuideToggle"
+          aria-expanded="false"
+          aria-controls="navGuidePanel"
+          aria-label="섹션 가이드 열기"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="nav-guide-panel" id="navGuidePanel" hidden>
+          <div class="nav-guide-item">
+            <strong>Main</strong>
+            <span>이름, 포지션, 핵심 정체성과 대표 태그</span>
+          </div>
+          <div class="nav-guide-item">
+            <strong>What</strong>
+            <span>기획을 증명하는 작업 방식과 결과물 형태</span>
+          </div>
+          <div class="nav-guide-item">
+            <strong>Why</strong>
+            <span>출발점과 문제를 보는 기준</span>
+          </div>
+          <div class="nav-guide-item">
+            <strong>How</strong>
+            <span>원칙, 프로세스, 사례를 묶은 3D 캐러셀</span>
+          </div>
+          <div class="nav-guide-item">
+            <strong>Vision</strong>
+            <span>앞으로 고도화하고 싶은 방향</span>
+          </div>
+          <div class="nav-guide-item">
+            <strong>Portfolio</strong>
+            <span>별도 페이지에서 보는 문서, 테이블, 프로토타입 증거 자료</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="hero">
+    <div class="hero-stage" aria-label="메인 메시지와 대표 비주얼">
+      <span class="hero-version">Version 0.1.15</span>
+      <div class="hero-visual" aria-hidden="true"></div>
+
+      <div class="hero-overlay">
+        <div class="container hero-overlay-inner">
+          <aside class="hero-profile-card" aria-label="요약 프로필">
+            <span class="hero-card-label">Profile</span>
+            <strong>이동현</strong>
+            <p class="hero-card-role">게임기획 전공 · 게임 시스템 기획자 지망</p>
+
+            <dl class="hero-mini-meta">
+              <div>
+                <dt>전화번호</dt>
+                <dd>010-5290-4901</dd>
+              </div>
+              <div>
+                <dt>이메일</dt>
+                <dd>ug777070@gmail.com</dd>
+              </div>
+            </dl>
+
+            <ul class="hero-mini-tags">
+              <li>플레이어 관찰</li>
+              <li>조건·예외 문서화</li>
+              <li>데이터 테이블</li>
+              <li>협업 정렬</li>
+            </ul>
+
+            <a href="#" class="hero-mini-link">Notion</a>
+          </aside>
+
+          <div class="hero-copy">
+            <h1>
+              <span class="hero-title-line">막히는 흐름을 구조로 바꾸는</span>
+              <span class="hero-title-line">게임 시스템 기획자</span>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="section section-evidence" id="tools">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">What</p>
+          <h2>기획을 증명하는 작업 방식</h2>
+        </div>
+
+        <div class="grid tools">
+          <article class="card compact interactive-card open-modal tool-card" data-modal="tool1" role="button" tabindex="0" aria-label="데이터 테이블 설계 상세 보기">
+            <div class="tool-media-slot">
+              <img src="assets/images/data-table-reference.png" alt="데이터 테이블 참조 구조도">
+            </div>
+            <h3>데이터 테이블 설계</h3>
+            <p>시나리오, 선택지, 리소스, 보상 데이터를 구현 가능한 구조로 나눕니다.</p>
+          </article>
+
+          <article class="card compact interactive-card open-modal tool-card" data-modal="tool2" role="button" tabindex="0" aria-label="플로우차트와 상태 정의 상세 보기">
+            <div class="tool-media-slot">
+              <img src="assets/images/flow-room-rules.png" alt="방 진행 규칙 플로우차트">
+            </div>
+            <h3>플로우차트와 상태 정의</h3>
+            <p>방 진행, 피격, 강화, 상점처럼 조건이 갈리는 흐름을 시각화합니다.</p>
+          </article>
+
+          <article class="card compact interactive-card open-modal tool-card" data-modal="tool3" role="button" tabindex="0" aria-label="협업 문서화 상세 보기">
+            <div class="tool-media-slot">
+              <img src="assets/images/project-bb-thumbnail.png" alt="Project_BB 대표 썸네일">
+            </div>
+            <h3>협업 문서화</h3>
+            <p>팀원이 같은 기준을 보고 움직이도록 역할, 일정, 검수 기준을 남깁니다.</p>
+          </article>
+
+          <article class="card compact interactive-card open-modal tool-card" data-modal="tool4" role="button" tabindex="0" aria-label="구조 검증용 프로토타입 상세 보기">
+            <div class="tool-media-slot">
+              <img src="assets/images/limbus-prototype.png" alt="림버스 로그라이크 슬롯 프로토타입 화면">
+            </div>
+            <h3>구조 검증용 프로토타입</h3>
+            <p>제안이 말로만 끝나지 않도록 작은 작동 구조로 먼저 검증합니다.</p>
+          </article>
+
+          <article class="card compact interactive-card open-modal tool-card" data-modal="tool5" role="button" tabindex="0" aria-label="AI와 툴 검토 루프 상세 보기">
+            <div class="tool-media-slot">
+              <img src="assets/images/flow-shop.png" alt="상점 규칙 플로우차트">
+            </div>
+            <h3>AI와 툴 검토 루프</h3>
+            <p>AI 결과를 그대로 쓰기보다 값의 흐름과 호출 순서를 따라가며 검토합니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="origin">
+      <div class="container narrow">
+        <div class="section-heading">
+          <p class="section-kicker">Why</p>
+          <h2>나는 어디에서 출발했는가</h2>
+        </div>
+
+        <article class="editorial-story">
+          <div class="editorial-visual" aria-hidden="true">
+            <span class="editorial-label">Flow First</span>
+            <strong>학생이 멈추는 지점을 보던 습관은, 플레이어가 막히는 흐름을 보는 기준이 되었습니다.</strong>
+          </div>
+
+          <div class="editorial-copy">
+            <p>
+              교육 현장에서 학생들이 같은 설명을 듣고도 서로 다른 지점에서 막히는 모습을 자주 봤습니다. 그 경험은 게임을 볼 때도 자연스럽게 "플레이어가 어디에서 멈추는가"를 먼저 살피는 태도로 이어졌습니다.
+            </p>
+            <p>
+              지금은 아이디어를 먼저 늘리기보다, 플레이어가 이해해야 할 순서와 팀이 같은 기준으로 읽어야 할 조건을 먼저 정리하려고 합니다.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="how-group" id="how">
+      <div class="container how-intro">
+        <div class="section-heading">
+          <p class="section-kicker">How</p>
+          <h2>흐름을 기준으로 바꾸는 방식</h2>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="slider-shell how-slider-shell">
+          <button type="button" class="slider-nav slider-nav-prev" data-slider-target="howSlider" aria-label="이전 카드 보기">&lt;</button>
+
+          <div class="slider-track how-slider" id="howSlider" data-slider-dots="howSliderDots" aria-label="How 3D 캐러셀">
+            <article class="card how-slide how-slide-principles" id="approach" data-slide-anchor="approach">
+              <div class="how-slide-head">
+                <p class="section-kicker">Principles</p>
+                <h3>나는 흐름을 이렇게 다룬다</h3>
+              </div>
+
+              <div class="principle-grid">
+                <article class="card emphasis principle-card interactive-card open-modal" data-modal="approach1" role="button" tabindex="0" aria-label="막히는 지점을 먼저 본다 상세 보기">
+                  <span class="principle-chip">01</span>
+                  <h3>막히는 지점을 먼저 본다</h3>
+                  <p>플레이어가 멈추는 순간과 팀이 해석을 나누는 순간을 먼저 찾아 우선순위를 정합니다.</p>
+                </article>
+
+                <article class="card emphasis principle-card interactive-card open-modal" data-modal="approach2" role="button" tabindex="0" aria-label="기준은 문서로 남긴다 상세 보기">
+                  <span class="principle-chip">02</span>
+                  <h3>기준은 문서로 남긴다</h3>
+                  <p>구두 합의로 끝내지 않고, 조건과 예외를 문장과 표로 남겨 재사용 가능하게 만듭니다.</p>
+                </article>
+
+                <article class="card emphasis principle-card interactive-card open-modal" data-modal="approach3" role="button" tabindex="0" aria-label="전달 후에도 확인한다 상세 보기">
+                  <span class="principle-chip">03</span>
+                  <h3>전달 후에도 확인한다</h3>
+                  <p>문서를 전달한 뒤에도 이해가 같은지 확인하고, 필요한 수정은 짧은 루프로 반영합니다.</p>
+                </article>
+
+                <article class="card emphasis principle-card interactive-card open-modal" data-modal="approach4" role="button" tabindex="0" aria-label="필요한 순간에 묻는다 상세 보기">
+                  <span class="principle-chip">04</span>
+                  <h3>필요한 순간에 묻는다</h3>
+                  <p>늦은 질문보다 빠른 질문이 비용을 줄인다고 보고, 결정 전 확인 루프를 운영합니다.</p>
+                </article>
+              </div>
+            </article>
+
+            <article class="card how-slide how-slide-process" id="alignment" data-slide-anchor="alignment">
+              <div class="how-slide-head">
+                <p class="section-kicker">Process</p>
+                <h3>관찰을 팀의 공통 기준으로 바꾼다</h3>
+              </div>
+
+              <div class="process-flow" aria-label="정렬 프로세스">
+                <article class="process-step interactive-card open-modal" data-modal="alignment1" role="button" tabindex="0" aria-label="관찰 상세 보기">
+                  <span class="process-number">01</span>
+                  <h3>관찰</h3>
+                  <p>플레이어와 팀원이 멈추는 지점을 먼저 찾고, 바꿔야 할 흐름을 좁힙니다.</p>
+                </article>
+
+                <article class="process-step interactive-card open-modal" data-modal="alignment2" role="button" tabindex="0" aria-label="기준화 상세 보기">
+                  <span class="process-number">02</span>
+                  <h3>기준화</h3>
+                  <p>조건, 예외, 완료 기준을 문장으로 고정해 해석 차이를 줄입니다.</p>
+                </article>
+
+                <article class="process-step interactive-card open-modal" data-modal="alignment3" role="button" tabindex="0" aria-label="구조화 상세 보기">
+                  <span class="process-number">03</span>
+                  <h3>구조화</h3>
+                  <p>테이블, 플로우차트, 와이어프레임으로 옮겨 구현 단위를 보이게 합니다.</p>
+                </article>
+
+                <article class="process-step interactive-card open-modal" data-modal="alignment4" role="button" tabindex="0" aria-label="검수 상세 보기">
+                  <span class="process-number">04</span>
+                  <h3>검수</h3>
+                  <p>문서만 보고 구현과 QA가 가능한지 다시 확인하고 수정 루프를 남깁니다.</p>
+                </article>
+              </div>
+            </article>
+
+            <article class="card how-slide how-slide-cases" id="scenes" data-slide-anchor="scenes">
+              <div class="how-slide-head">
+                <p class="section-kicker">Cases</p>
+                <h3>이 기준을 보여주는 대표 사례</h3>
+              </div>
+
+              <div class="case-grid">
+                <article class="card interactive-card open-modal case-card" data-modal="scene1" role="button" tabindex="0" aria-label="림버스 튜토리얼 학습 공백 분석 상세 보기">
+                  <div class="media-placeholder card-media-slot">
+                    <img src="assets/images/limbus-prototype.png" alt="림버스 구조 검증 프로토타입 화면">
+                  </div>
+                  <h3>림버스 튜토리얼 학습 공백 분석</h3>
+                  <p><strong>요약:</strong> 중간층 유저가 세부 전투 규칙을 다시 학습하기 어려운 지점을 정리했습니다.</p>
+                  <p><strong>교훈:</strong> 튜토리얼은 필요한 순간에 다시 확인할 수 있는 구조여야 합니다.</p>
+                </article>
+
+                <article class="card interactive-card open-modal case-card" data-modal="scene2" role="button" tabindex="0" aria-label="비주얼노벨 데이터 구조 분리 상세 보기">
+                  <div class="media-placeholder card-media-slot">
+                    <img src="assets/images/data-table-reference.png" alt="비주얼노벨 데이터 참조 구조도">
+                  </div>
+                  <h3>비주얼노벨 데이터 구조 분리</h3>
+                  <p><strong>요약:</strong> Script, Text, Character, Art, Sound, Choice 데이터를 나눠 흐름을 검토했습니다.</p>
+                  <p><strong>교훈:</strong> 문장 기획은 구현 가능한 데이터 구조로 바뀌어야 합니다.</p>
+                </article>
+
+                <article class="card interactive-card open-modal case-card" data-modal="scene3" role="button" tabindex="0" aria-label="Project_BB 시스템 기준 문서화 상세 보기">
+                  <div class="media-placeholder card-media-slot">
+                    <img src="assets/images/flow-equipment-upgrade.png" alt="장비 강화 규칙 플로우차트">
+                  </div>
+                  <h3>Project_BB 시스템 기준 문서화</h3>
+                  <p><strong>요약:</strong> 방 진행, 미니맵, 조작, 피격, 상점, 장비 강화 조건을 문서화했습니다.</p>
+                  <p><strong>교훈:</strong> 좋은 기획서는 아이디어보다 조건과 판정 기준이 명확해야 합니다.</p>
+                </article>
+              </div>
+            </article>
+          </div>
+
+          <button type="button" class="slider-nav slider-nav-next" data-slider-target="howSlider" aria-label="다음 카드 보기">&gt;</button>
+        </div>
+
+        <div class="slider-dots" id="howSliderDots" aria-label="How 캐러셀 위치 표시"></div>
+      </div>
+    </section>
+
+    <section class="section" id="future">
+      <div class="container narrow">
+        <div class="section-heading">
+          <p class="section-kicker">Vision</p>
+          <h2>앞으로 고도화하고 싶은 흐름</h2>
+        </div>
+
+        <div class="vision-panel">
+          <p>
+            앞으로는 기능 하나의 완성도뿐 아니라, 플레이어가 처음 규칙을 배우고 반복 플레이로 들어가기까지의 흐름을 더 정교하게 설계하고 싶습니다.
+          </p>
+          <p>
+            문서를 전달하는 데서 멈추지 않고, 구현 가능성과 QA 기준까지 함께 확인하는 기획자가 되는 것이 다음 목표입니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tone" id="more">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Portfolio</p>
+          <h2>증거 자료는 별도 페이지로 분리했습니다</h2>
+          <p class="section-lead">
+            메인 흐름은 자기소개와 작업 방식에 집중하고, 실제 문서와 테이블, 분석 자료, 프로토타입은 별도 Portfolio 페이지에서 증거 단위로 정리합니다.
+          </p>
+        </div>
+
+        <a class="resource-link" href="portfolio.html">Portfolio 페이지 보기</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button type="button" class="modal-close" id="modalClose" aria-label="닫기">×</button>
+      <div class="modal-media">상세 이미지/영상 플레이스홀더</div>
+      <p class="modal-description-label">상세 설명</p>
+      <h3 id="modalTitle">상세 정보</h3>
+      <p id="modalBody">카드를 선택하면 문제, 행동, 배운 점 중심의 설명이 표시됩니다.</p>
+    </div>
+  </div>
+</body>
+</html>
+

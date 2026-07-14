@@ -1,0 +1,5108 @@
+  .coach-shell {
+    --coach-ink: #000000;
+    --coach-ink-soft: rgba(0, 0, 0, 0.62);
+    --coach-paper: #ffffff;
+    --coach-paper-deep: #f7f7f7;
+    --coach-surface: #ffffff;
+    --coach-panel: #ffffff;
+    --coach-line: rgba(0, 0, 0, 0.12);
+    --coach-accent: #000000;
+    --coach-accent-dark: #000000;
+    --coach-warm: #000000;
+    --coach-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+    --feature-accent: #111827;
+    --feature-gradient: linear-gradient(135deg, rgba(17, 24, 39, 0.06) 0%, rgba(17, 24, 39, 0.01) 100%);
+    --feature-soft: rgba(17, 24, 39, 0.05);
+    --feature-ink: #000000;
+    --apple-black: var(--coach-ink);
+    --apple-gray: var(--coach-paper);
+    --apple-ink: var(--coach-ink);
+    --apple-blue: var(--coach-accent);
+    --apple-link: var(--coach-accent-dark);
+    --apple-bright: var(--coach-ink);
+    --apple-border: var(--coach-line);
+    --apple-border-strong: rgba(0, 0, 0, 0.2);
+    --apple-muted: var(--coach-ink-soft);
+    --apple-shadow: var(--coach-shadow);
+    background:
+      radial-gradient(circle at 88% 0%, rgba(15, 23, 42, 0.05), transparent 20rem),
+      radial-gradient(circle at 8% 0%, rgba(15, 23, 42, 0.03), transparent 18rem),
+      #ffffff !important;
+    color: #000000 !important;
+    font-family: figmaSans, "figmaSans Fallback", "SF Pro Display", "Pretendard", "Apple SD Gothic Neo", system-ui, helvetica, sans-serif;
+    font-feature-settings: "kern";
+    letter-spacing: -0.01em;
+  }
+
+  .coach-shell[data-feature="input"] {
+    --feature-accent: #0f766e;
+    --feature-gradient: linear-gradient(135deg, rgba(15, 118, 110, 0.08) 0%, rgba(15, 118, 110, 0.01) 100%);
+    --feature-soft: rgba(15, 118, 110, 0.06);
+  }
+
+  .coach-shell[data-feature="feedback"] {
+    --feature-accent: #4f46e5;
+    --feature-gradient: linear-gradient(135deg, rgba(79, 70, 229, 0.08) 0%, rgba(79, 70, 229, 0.01) 100%);
+    --feature-soft: rgba(79, 70, 229, 0.06);
+  }
+
+  .coach-shell[data-feature="portfolio"] {
+    --feature-accent: #2563eb;
+    --feature-gradient: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(37, 99, 235, 0.01) 100%);
+    --feature-soft: rgba(37, 99, 235, 0.06);
+  }
+
+  .coach-shell[data-feature="jobs"] {
+    --feature-accent: #0f766e;
+    --feature-gradient: linear-gradient(135deg, rgba(15, 118, 110, 0.08) 0%, rgba(15, 118, 110, 0.01) 100%);
+    --feature-soft: rgba(15, 118, 110, 0.06);
+  }
+
+  .coach-shell[data-feature="interview"] {
+    --feature-accent: #dc2626;
+    --feature-gradient: linear-gradient(135deg, rgba(220, 38, 38, 0.08) 0%, rgba(220, 38, 38, 0.01) 100%);
+    --feature-soft: rgba(220, 38, 38, 0.06);
+  }
+
+  .coach-shell[data-feature="interview-basic"] {
+    --feature-accent: #b45309;
+    --feature-gradient: linear-gradient(135deg, rgba(180, 83, 9, 0.08) 0%, rgba(180, 83, 9, 0.01) 100%);
+    --feature-soft: rgba(180, 83, 9, 0.06);
+  }
+
+  .coach-shell[data-feature="personality-test"] {
+    --feature-accent: #7c3aed;
+    --feature-gradient: linear-gradient(135deg, rgba(124, 58, 237, 0.08) 0%, rgba(124, 58, 237, 0.01) 100%);
+    --feature-soft: rgba(124, 58, 237, 0.06);
+  }
+
+  .coach-shell[data-feature="pdf-export"] {
+    --feature-accent: #475569;
+    --feature-gradient: linear-gradient(135deg, rgba(71, 85, 105, 0.08) 0%, rgba(71, 85, 105, 0.01) 100%);
+    --feature-soft: rgba(71, 85, 105, 0.06);
+  }
+
+  .coach-shell.apple-app-shell::before {
+    background:
+      linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(0, 0, 0, 0.028) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(90deg, transparent 0%, #000 26%, #000 100%);
+    opacity: 0.7;
+  }
+
+  .coach-shell button:focus-visible,
+  .coach-shell a:focus-visible,
+  .coach-shell input:focus-visible,
+  .coach-shell textarea:focus-visible,
+  .coach-shell select:focus-visible {
+    outline: 2px dashed #000000 !important;
+    outline-offset: 3px;
+    box-shadow: none !important;
+  }
+
+  .coach-studio-shell {
+    overflow: hidden;
+  }
+
+  .coach-commandbar {
+    position: relative;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: minmax(15rem, auto) minmax(12rem, 1fr) auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1.15rem;
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(18px) saturate(140%);
+  }
+
+  .coach-brandlockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    justify-self: start;
+    padding: 0.4rem 0.55rem 0.4rem 0.4rem;
+    border: 0;
+    border-radius: 22px;
+    background: transparent;
+    color: var(--coach-ink);
+    text-align: left;
+  }
+
+  .coach-brandlockup:hover {
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  .coach-brandmark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50% !important;
+    background: #000000 !important;
+    box-shadow: none !important;
+  }
+
+  .coach-brandcopy {
+    display: grid;
+    gap: 0.1rem;
+  }
+
+  .coach-brand-title {
+    color: #000000 !important;
+    font-size: 1.15rem;
+    font-weight: 540;
+    letter-spacing: -0.035em;
+    line-height: 1;
+  }
+
+  .coach-brandcopy strong {
+    color: rgba(0, 0, 0, 0.56);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .coach-command-status {
+    justify-self: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-height: 2.75rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 50px;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.62);
+  }
+
+  .coach-command-status span {
+    color: rgba(0, 0, 0, 0.58) !important;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .coach-command-status strong {
+    color: #000000;
+    font-size: 0.92rem;
+    font-weight: 540;
+  }
+
+  .coach-command-track {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: #ffffff;
+    color: rgba(0, 0, 0, 0.72) !important;
+    font-size: 0.72rem;
+    font-style: normal;
+    font-weight: 540;
+    letter-spacing: -0.01em;
+  }
+
+  .coach-command-tools {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.45rem;
+    min-width: 0;
+  }
+
+  .coach-command-tools button,
+  .coach-mobile-tools button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    min-height: 2.75rem;
+    padding: 0.65rem 0.9rem;
+    border-radius: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 0.84rem;
+    font-weight: 450;
+    box-shadow: none !important;
+  }
+
+  .coach-command-tools button:hover,
+  .coach-mobile-tools button:hover {
+    border-color: #000000;
+    background: #000000 !important;
+    color: #ffffff !important;
+  }
+
+  .coach-command-tools button:hover svg,
+  .coach-command-tools button:hover span,
+  .coach-mobile-tools button:hover svg,
+  .coach-mobile-tools button:hover span {
+    color: inherit !important;
+  }
+
+  .coach-command-tools .coach-model-command {
+    max-width: 16rem;
+  }
+
+  .coach-model-command small {
+    display: inline-block;
+    max-width: 7.8rem;
+    overflow: hidden;
+    color: rgba(0, 0, 0, 0.48) !important;
+    font-size: 0.66rem;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .coach-route-map {
+    position: relative;
+    z-index: 4;
+    display: grid;
+    grid-auto-columns: minmax(9.2rem, 1fr);
+    grid-auto-flow: column;
+    gap: 0.55rem;
+    padding: 0.85rem 1.35rem 1rem;
+    overflow-x: auto;
+    background:
+      linear-gradient(180deg, rgba(255, 250, 242, 0.72) 0%, rgba(244, 234, 220, 0.62) 100%);
+    border-bottom: 1px solid rgba(24, 32, 51, 0.1);
+    scrollbar-width: thin;
+  }
+
+  .coach-route-node {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0.55rem;
+    min-height: 3.8rem;
+    padding: 0.72rem 0.78rem;
+    border-radius: 18px;
+    border: 1px solid rgba(24, 32, 51, 0.1);
+    background: rgba(255, 253, 248, 0.72) !important;
+    color: rgba(24, 32, 51, 0.62) !important;
+    box-shadow: none !important;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .coach-route-node:hover {
+    transform: translateY(-2px);
+    border-color: rgba(8, 127, 140, 0.22);
+    background: rgba(255, 253, 248, 0.96) !important;
+  }
+
+  .coach-route-node.is-active {
+    border-color: rgba(24, 32, 51, 0.18);
+    background: #182033 !important;
+    color: #fffaf2 !important;
+    box-shadow: 0 18px 40px rgba(24, 32, 51, 0.18) !important;
+  }
+
+  .coach-route-node.is-active::after {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: -1rem;
+    height: 0.22rem;
+    border-radius: 999px;
+    background: var(--coach-warm);
+  }
+
+  .coach-route-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 1.8rem;
+    border-radius: 999px;
+    background: rgba(24, 32, 51, 0.07);
+    color: rgba(24, 32, 51, 0.5) !important;
+    font-size: 0.66rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+  }
+
+  .coach-route-node.is-active .coach-route-number {
+    background: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 250, 242, 0.82) !important;
+  }
+
+  .coach-route-symbol {
+    display: inline-flex;
+    color: inherit !important;
+  }
+
+  .coach-route-label {
+    overflow: hidden;
+    color: inherit !important;
+    font-size: 0.86rem;
+    font-weight: 850;
+    text-overflow: ellipsis;
+  }
+
+  .coach-command-account {
+    display: grid;
+    align-content: center;
+    gap: 0.1rem;
+    min-width: 0;
+    padding: 0.35rem 0.8rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 18px;
+    background: rgba(0, 0, 0, 0.03);
+  }
+
+  .coach-command-account small {
+    color: rgba(0, 0, 0, 0.52);
+    font-size: 0.66rem;
+    line-height: 1.1;
+  }
+
+  .coach-command-account strong {
+    max-width: 14rem;
+    overflow: hidden;
+    color: #000;
+    font-size: 0.76rem;
+    font-weight: 540;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .coach-auth-shell {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    padding: 2rem;
+    background:
+      radial-gradient(circle at top right, rgba(99, 102, 241, 0.08), transparent 18rem),
+      #f8fafc;
+  }
+
+  .coach-auth-card {
+    width: min(100%, 28rem);
+    display: grid;
+    gap: 1rem;
+    padding: 2rem;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 28px;
+    background: #fff;
+    box-shadow: 0 24px 64px rgba(15, 23, 42, 0.08);
+  }
+
+  .coach-auth-card h1 {
+    color: #0f172a;
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+  }
+
+  .coach-auth-card p,
+  .coach-auth-card span {
+    color: #475569;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .coach-auth-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 18px;
+    background: #111827;
+    color: #fff;
+  }
+
+  .coach-auth-logo.is-warning {
+    background: #fef2f2;
+    color: #dc2626;
+  }
+
+  .coach-auth-status,
+  .coach-auth-note,
+  .coach-auth-error {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    padding: 0.9rem 1rem;
+    border-radius: 18px;
+  }
+
+  .coach-auth-status {
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+  }
+
+  .coach-auth-note {
+    flex-direction: column;
+    background: #f8fafc;
+    border: 1px dashed rgba(15, 23, 42, 0.16);
+  }
+
+  .coach-auth-error {
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid rgba(220, 38, 38, 0.14);
+  }
+
+  .coach-auth-form {
+    display: grid;
+    gap: 0.95rem;
+  }
+
+  .coach-auth-form label {
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .coach-auth-form label span {
+    color: #0f172a;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .coach-auth-form input {
+    min-height: 3rem;
+    padding: 0.8rem 0.95rem;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 16px;
+    background: #fff;
+    color: #0f172a;
+  }
+
+  .coach-auth-form button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-height: 3rem;
+    padding: 0.85rem 1rem;
+    border: 0;
+    border-radius: 16px;
+    background: #111827;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .coach-auth-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .coach-submission-meta {
+    display: grid;
+    gap: 0.85rem;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    margin-top: 1rem;
+  }
+
+  .coach-submission-meta div {
+    display: grid;
+    gap: 0.25rem;
+    padding: 0.95rem 1rem;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 18px;
+    background: #f8fafc;
+  }
+
+  .coach-submission-meta span {
+    color: #64748b;
+    font-size: 0.78rem;
+  }
+
+  .coach-submission-meta strong {
+    color: #0f172a;
+    font-size: 0.96rem;
+    font-weight: 650;
+  }
+
+  .coach-submission-flash {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1rem;
+    padding: 0.95rem 1rem;
+    border-radius: 18px;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .coach-submission-flash.is-success {
+    background: #ecfdf5;
+    color: #166534;
+    border: 1px solid rgba(22, 101, 52, 0.14);
+  }
+
+  .coach-submission-flash.is-error {
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid rgba(185, 28, 28, 0.14);
+  }
+
+  .coach-submission-history {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.2rem;
+  }
+
+  .coach-submission-history-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .coach-submission-history-head h4 {
+    color: #0f172a;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .coach-submission-history-head span {
+    color: #64748b;
+    font-size: 0.82rem;
+  }
+
+  .coach-submission-history-list {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .coach-submission-history-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.05rem;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 18px;
+    background: #fff;
+  }
+
+  .coach-submission-history-title {
+    color: #0f172a;
+    font-size: 0.95rem;
+    font-weight: 650;
+  }
+
+  .coach-submission-history-meta {
+    margin-top: 0.25rem;
+    color: #64748b;
+    font-size: 0.82rem;
+  }
+
+  .coach-submission-history-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2rem;
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    background: #eef2ff;
+    color: #4338ca;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .coach-mobile-tools {
+    display: none;
+    position: relative;
+    z-index: 4;
+    gap: 0.5rem;
+    padding: 0 1rem 0.85rem;
+    overflow-x: auto;
+    background: #ffffff;
+  }
+
+  .coach-body-shell {
+    position: relative;
+    z-index: 3;
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(18.5rem, 22rem);
+    gap: 1.15rem;
+    overflow: hidden;
+    padding: 1.15rem;
+    background: #ffffff;
+  }
+
+  .coach-body-shell .coach-workspace {
+    min-width: 0;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  .coach-track-gate-shell {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.15rem;
+    background: #ffffff;
+  }
+
+  .coach-side-panel {
+    min-width: 0;
+    overflow-y: auto;
+    display: grid;
+    align-content: start;
+    gap: 0.75rem;
+    padding-right: 0.15rem;
+  }
+
+  .coach-side-card {
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: #ffffff;
+    box-shadow: none;
+  }
+
+  .coach-side-current {
+    position: relative;
+    overflow: hidden;
+    padding: 1.2rem;
+    background: #000000;
+    color: #ffffff !important;
+  }
+
+  .coach-side-current::after {
+    content: "";
+    position: absolute;
+    inset: auto -18% -32% 16%;
+    height: 6rem;
+    border-radius: 999px;
+    background: var(--feature-gradient);
+    filter: blur(14px);
+    opacity: 0.85;
+    pointer-events: none;
+  }
+
+  .coach-side-current > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .coach-side-eyebrow {
+    margin: 0 0 0.55rem;
+    color: rgba(255, 255, 255, 0.74) !important;
+    font-size: 0.74rem !important;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .coach-side-current h2 {
+    margin: 0;
+    color: #ffffff !important;
+    font-size: 1.55rem;
+    font-weight: 450;
+    letter-spacing: -0.055em;
+    line-height: 1.05;
+  }
+
+  .coach-side-current > p:not(.coach-side-eyebrow) {
+    margin: 0.7rem 0 0;
+    color: rgba(255, 255, 255, 0.78) !important;
+    font-size: 0.92rem;
+    font-weight: 330;
+    line-height: 1.55;
+  }
+
+  .coach-side-actions {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .coach-side-actions button {
+    min-height: 2.8rem;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 50px;
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 0.88rem;
+    font-weight: 540;
+    box-shadow: none !important;
+  }
+
+  .coach-side-actions .coach-secondary-action {
+    background: rgba(255, 255, 255, 0.16) !important;
+    color: #ffffff !important;
+  }
+
+  .coach-side-current-meta {
+    display: grid;
+    gap: 0.2rem;
+    margin-top: 0.95rem;
+    padding: 0.8rem 0.9rem;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .coach-side-current-meta span {
+    color: rgba(255, 255, 255, 0.62) !important;
+    font-size: 0.68rem;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .coach-side-current-meta strong {
+    color: #ffffff !important;
+    font-size: 0.95rem;
+    font-weight: 540;
+    line-height: 1.35;
+  }
+
+  .coach-side-track-switches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.95rem;
+  }
+
+  .coach-side-switch-chip {
+    min-height: 2.2rem;
+    padding: 0.45rem 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: rgba(255, 255, 255, 0.78) !important;
+    font-size: 0.78rem;
+    font-weight: 540;
+    box-shadow: none !important;
+  }
+
+  .coach-side-switch-chip.is-active {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-color: #ffffff;
+  }
+
+  .coach-side-context-card {
+    display: grid;
+    gap: 0.55rem;
+    padding: 1.05rem;
+  }
+
+  .coach-side-context-card strong {
+    color: #000000 !important;
+    font-size: 1rem;
+    font-weight: 540;
+    letter-spacing: -0.025em;
+    line-height: 1.3;
+  }
+
+  .coach-side-context-card p:not(.coach-side-eyebrow) {
+    margin: 0;
+    color: rgba(0, 0, 0, 0.62) !important;
+    font-size: 0.86rem;
+    font-weight: 330;
+    line-height: 1.55;
+  }
+
+  .coach-side-card:not(.coach-side-current) .coach-side-eyebrow {
+    color: rgba(0, 0, 0, 0.58) !important;
+  }
+
+  .coach-side-tools {
+    display: grid;
+    gap: 0.35rem;
+    padding: 1rem;
+  }
+
+  .coach-side-tool-group {
+    display: grid;
+    gap: 0.28rem;
+  }
+
+  .coach-side-tool-group + .coach-side-tool-group {
+    margin-top: 0.55rem;
+    padding-top: 0.7rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .coach-side-group-title {
+    margin: 0 0 0.18rem;
+    color: rgba(0, 0, 0, 0.46) !important;
+    font-size: 0.68rem;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .coach-side-helper {
+    margin: -0.15rem 0 0.45rem;
+    color: rgba(0, 0, 0, 0.52) !important;
+    font-size: 0.82rem;
+    font-weight: 330;
+    line-height: 1.45;
+  }
+
+  .coach-side-tool {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0.65rem;
+    min-height: 2.75rem;
+    padding: 0.48rem 0.58rem;
+    border: 1px solid transparent;
+    border-radius: 50px;
+    background: transparent !important;
+    color: rgba(0, 0, 0, 0.62) !important;
+    box-shadow: none !important;
+    text-align: left;
+  }
+
+  .coach-side-tool:hover {
+    background: rgba(0, 0, 0, 0.06) !important;
+    color: #000000 !important;
+  }
+
+  .coach-side-tool.is-active {
+    background: #000000 !important;
+    color: #ffffff !important;
+  }
+
+  .coach-side-tool-icon,
+  .coach-side-tool-label {
+    color: inherit !important;
+  }
+
+  .coach-side-tool-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--feature-soft);
+  }
+
+  .coach-side-tool.is-active .coach-side-tool-icon {
+    background: rgba(255, 255, 255, 0.16);
+  }
+
+  .coach-side-tool-label {
+    overflow: hidden;
+    font-size: 0.88rem;
+    font-weight: 450;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .coach-start-panel {
+    position: relative;
+    z-index: 4;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.32fr);
+    gap: 1rem;
+    align-items: stretch;
+    padding: 1.05rem 1.35rem 0.85rem;
+    background: #f7f9fc;
+    border-bottom: 1px solid rgba(25, 31, 40, 0.08);
+  }
+
+  .coach-start-copy {
+    background: #ffffff;
+    border: 1px solid rgba(25, 31, 40, 0.08);
+    box-shadow: 0 14px 34px rgba(25, 31, 40, 0.06);
+  }
+
+  .coach-start-copy {
+    min-height: 10.8rem;
+    padding: 1.4rem 1.55rem;
+    border-radius: 28px;
+  }
+
+  .coach-case-kicker {
+    margin: 0 0 0.6rem;
+    color: var(--coach-accent-dark) !important;
+    font-size: 0.74rem !important;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+  }
+
+  .coach-start-copy h1 {
+    max-width: 46rem;
+    margin: 0;
+    color: #191f28 !important;
+    font-size: clamp(1.85rem, 4vw, 3.35rem);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    line-height: 1.08;
+  }
+
+  .coach-start-copy > p:not(.coach-case-kicker) {
+    max-width: 42rem;
+    margin: 0.75rem 0 0;
+    color: #4e5968 !important;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .coach-start-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 1.15rem;
+  }
+
+  .coach-start-actions button {
+    min-height: 2.8rem;
+    padding: 0.7rem 1.05rem;
+    border: 0;
+    border-radius: 14px;
+    background: #3182f6 !important;
+    color: #ffffff !important;
+    font-size: 0.9rem;
+    font-weight: 800;
+    box-shadow: none !important;
+  }
+
+  .coach-start-actions .coach-secondary-action {
+    background: #eef4ff !important;
+    color: #1b64da !important;
+  }
+
+  .coach-step-tabs {
+    position: relative;
+    z-index: 4;
+    padding: 0.75rem 1.35rem 1rem;
+    background: #f7f9fc;
+    border-bottom: 1px solid rgba(25, 31, 40, 0.08);
+  }
+
+  .coach-step-strip {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.1rem;
+    scrollbar-width: none;
+  }
+
+  .coach-step-strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .coach-step-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 2.85rem;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid rgba(25, 31, 40, 0.08);
+    border-radius: 999px;
+    background: #ffffff !important;
+    color: #4e5968 !important;
+    box-shadow: none !important;
+    white-space: nowrap;
+  }
+
+  .coach-step-pill:hover {
+    border-color: rgba(49, 130, 246, 0.25);
+    background: #f4f8ff !important;
+    color: #191f28 !important;
+  }
+
+  .coach-step-pill.is-active {
+    background: #191f28 !important;
+    color: #ffffff !important;
+    border-color: #191f28;
+  }
+
+  .coach-step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.55rem;
+    height: 1.55rem;
+    border-radius: 999px;
+    background: #f2f4f6;
+    color: inherit !important;
+    font-size: 0.72rem;
+    font-weight: 900;
+  }
+
+  .coach-step-pill.is-active .coach-step-number {
+    background: rgba(255, 255, 255, 0.16);
+  }
+
+  .coach-step-icon,
+  .coach-step-label {
+    color: inherit !important;
+  }
+
+  .coach-step-label {
+    font-size: 0.88rem;
+    font-weight: 800;
+  }
+
+  .coach-case-board {
+    position: relative;
+    z-index: 4;
+    display: grid;
+    grid-template-columns: minmax(19rem, 0.82fr) minmax(0, 1.18fr);
+    gap: 1rem;
+    align-items: stretch;
+    padding: 1rem 1.35rem 1.25rem;
+    background:
+      linear-gradient(120deg, rgba(24, 32, 51, 0.96) 0%, rgba(28, 44, 63, 0.94) 44%, rgba(8, 93, 104, 0.9) 100%),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: auto, 34px 34px, 34px 34px;
+    border-bottom: 1px solid rgba(255, 250, 242, 0.13);
+    box-shadow: 0 26px 70px rgba(24, 32, 51, 0.2);
+  }
+
+  .coach-case-board::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 18% 22%, rgba(217, 111, 67, 0.34), transparent 18rem),
+      radial-gradient(circle at 80% 35%, rgba(42, 169, 184, 0.24), transparent 20rem);
+    pointer-events: none;
+  }
+
+  .coach-case-copy,
+  .coach-mission-grid {
+    position: relative;
+    z-index: 1;
+  }
+
+  .coach-case-copy {
+    display: grid;
+    align-content: center;
+    min-height: 14rem;
+    padding: 1.45rem 1.55rem;
+    border-radius: 30px 10px 30px 30px;
+    background: rgba(255, 250, 242, 0.08);
+    border: 1px solid rgba(255, 250, 242, 0.12);
+    color: rgba(255, 250, 242, 0.78);
+  }
+
+  .coach-case-kicker {
+    margin: 0 0 0.6rem;
+    color: var(--coach-accent-dark) !important;
+    font-size: 0.74rem !important;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+  }
+
+  .coach-case-copy h1 {
+    margin: 0;
+    color: #fffaf2 !important;
+    font-size: clamp(2.8rem, 6vw, 5.9rem);
+    font-weight: 950;
+    letter-spacing: -0.09em;
+    line-height: 0.88;
+  }
+
+  .coach-case-copy > p:not(.coach-case-kicker) {
+    max-width: 40rem;
+    margin: 1rem 0 0;
+    color: rgba(255, 250, 242, 0.72) !important;
+    font-size: 0.98rem;
+    line-height: 1.75;
+  }
+
+  .coach-case-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    align-items: center;
+    margin-top: 1.25rem;
+  }
+
+  .coach-case-actions button {
+    min-height: 2.7rem;
+    padding: 0.65rem 1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 250, 242, 0.18);
+    background: #fffaf2 !important;
+    color: #182033 !important;
+    font-size: 0.84rem;
+    font-weight: 900;
+    box-shadow: none !important;
+  }
+
+  .coach-case-actions span {
+    color: rgba(255, 250, 242, 0.58) !important;
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+
+  .coach-track-gate-board {
+    min-height: calc(100vh - 8rem);
+  }
+
+  .coach-track-gate-copy {
+    min-height: 16rem;
+  }
+
+  .coach-track-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.8rem;
+  }
+
+  .coach-track-card {
+    display: grid;
+    align-content: start;
+    gap: 0.85rem;
+    min-height: 19rem;
+    padding: 1rem;
+    border: 1px solid rgba(255, 250, 242, 0.14);
+    border-radius: 28px;
+    background: rgba(255, 250, 242, 0.08) !important;
+    color: rgba(255, 250, 242, 0.82) !important;
+    box-shadow: none !important;
+    text-align: left;
+    transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+  }
+
+  .coach-track-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 250, 242, 0.26);
+    background: rgba(255, 250, 242, 0.12) !important;
+  }
+
+  .coach-track-card.is-active {
+    background: #fffaf2 !important;
+    color: #182033 !important;
+    border-color: rgba(255, 250, 242, 0.78);
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .coach-track-card-head,
+  .coach-track-card-title,
+  .coach-track-card-action,
+  .coach-track-card-badge,
+  .coach-track-card-list li,
+  .coach-track-card p,
+  .coach-track-card strong,
+  .coach-track-card-icon,
+  .coach-track-card-index {
+    color: inherit !important;
+  }
+
+  .coach-track-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+  }
+
+  .coach-track-card-index {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.2rem;
+    height: 1.75rem;
+    padding: 0 0.45rem;
+    border-radius: 999px;
+    background: rgba(255, 250, 242, 0.12);
+    font-size: 0.68rem;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .coach-track-card.is-active .coach-track-card-index {
+    background: rgba(24, 32, 51, 0.08);
+  }
+
+  .coach-track-card-badge {
+    font-size: 0.68rem;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.72;
+  }
+
+  .coach-track-card-title {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .coach-track-card-title strong {
+    font-size: 1.28rem;
+    font-weight: 540;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+  }
+
+  .coach-track-card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.45rem;
+    height: 2.45rem;
+    border-radius: 50%;
+    background: rgba(255, 250, 242, 0.12);
+  }
+
+  .coach-track-card.is-active .coach-track-card-icon {
+    background: rgba(24, 32, 51, 0.08);
+  }
+
+  .coach-track-card p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    opacity: 0.82;
+  }
+
+  .coach-track-card-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .coach-track-card-list li {
+    position: relative;
+    padding-left: 0.9rem;
+    font-size: 0.84rem;
+    line-height: 1.55;
+    opacity: 0.82;
+  }
+
+  .coach-track-card-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.58rem;
+    width: 0.32rem;
+    height: 0.32rem;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.7;
+  }
+
+  .coach-track-card-action {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.84rem;
+    font-weight: 540;
+  }
+
+  .coach-mission-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-auto-rows: minmax(4.8rem, auto);
+    gap: 0.65rem;
+  }
+
+  .coach-mission-node {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+      "number symbol"
+      "label label";
+    gap: 0.45rem 0.6rem;
+    align-content: space-between;
+    padding: 0.82rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 250, 242, 0.13);
+    border-radius: 50px;
+    background: rgba(255, 250, 242, 0.085) !important;
+    color: rgba(255, 250, 242, 0.72) !important;
+    box-shadow: none !important;
+    text-align: left;
+  }
+
+  .coach-mission-node:nth-child(1),
+  .coach-mission-node:nth-child(4),
+  .coach-mission-node:nth-child(7) {
+    grid-column: span 2;
+  }
+
+  .coach-mission-node:nth-child(2),
+  .coach-mission-node:nth-child(3),
+  .coach-mission-node:nth-child(5),
+  .coach-mission-node:nth-child(6),
+  .coach-mission-node:nth-child(8),
+  .coach-mission-node:nth-child(9) {
+    grid-column: span 2;
+  }
+
+  .coach-mission-node:hover {
+    transform: translateY(-3px) rotate(-0.4deg);
+    border-color: rgba(255, 250, 242, 0.26);
+    background: rgba(255, 250, 242, 0.13) !important;
+  }
+
+  .coach-mission-node.is-active {
+    background: #fffaf2 !important;
+    color: #182033 !important;
+    border-color: rgba(255, 250, 242, 0.7);
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.22) !important;
+    transform: translateY(-4px) rotate(0.6deg);
+  }
+
+  .coach-mission-node.is-active::before {
+    content: "";
+    position: absolute;
+    right: -1.8rem;
+    top: -1.8rem;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 999px;
+    background: rgba(217, 111, 67, 0.2);
+  }
+
+  .coach-mission-number {
+    grid-area: number;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 1.75rem;
+    border-radius: 999px;
+    background: rgba(255, 250, 242, 0.12);
+    color: inherit !important;
+    font-size: 0.66rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+  }
+
+  .coach-mission-symbol {
+    grid-area: symbol;
+    justify-self: end;
+    color: inherit !important;
+  }
+
+  .coach-mission-label {
+    grid-area: label;
+    color: inherit !important;
+    font-size: 0.92rem;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+  }
+
+  .coach-shell .coach-rail {
+    width: 17.5rem;
+    background:
+      linear-gradient(90deg, rgba(24, 32, 51, 0.98) 0 0.55rem, transparent 0.55rem),
+      linear-gradient(180deg, #fffaf0 0%, #f1e6d4 100%) !important;
+    color: var(--coach-ink) !important;
+    border-right: 1px solid rgba(42, 50, 66, 0.14);
+    box-shadow: 18px 0 60px rgba(50, 41, 29, 0.11) !important;
+    backdrop-filter: none;
+  }
+
+  .coach-shell .coach-brandbar {
+    min-height: 7.25rem;
+    padding: 1.45rem 1.2rem 1.2rem 1.65rem !important;
+    border-bottom-color: rgba(42, 50, 66, 0.12) !important;
+  }
+
+  .coach-shell .apple-brandmark {
+    border-radius: 50% !important;
+    background: #000000 !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+  }
+
+  .coach-shell .apple-brandcopy h1 {
+    color: var(--coach-ink) !important;
+    font-size: 1.18rem;
+    font-weight: 850;
+    letter-spacing: -0.05em;
+  }
+
+  .coach-shell .apple-brandcopy p {
+    color: var(--coach-accent-dark) !important;
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+  }
+
+  .coach-shell .apple-nav {
+    padding-top: 1.25rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  .coach-shell .apple-nav-list {
+    gap: 0.38rem;
+    padding-left: 1.15rem !important;
+    padding-right: 0.85rem !important;
+  }
+
+  .coach-shell .coach-nav-button {
+    position: relative;
+    min-height: 3.25rem;
+    border-radius: 16px 24px 24px 16px !important;
+    border: 1px solid transparent;
+    background: transparent !important;
+    color: rgba(24, 32, 51, 0.72) !important;
+    box-shadow: none !important;
+    backdrop-filter: none;
+  }
+
+  .coach-shell .coach-nav-button:hover {
+    background: rgba(8, 127, 140, 0.08) !important;
+    border-color: rgba(8, 127, 140, 0.14);
+    color: var(--coach-ink) !important;
+    transform: translateX(2px);
+  }
+
+  .coach-shell .coach-nav-button.bg-indigo-600 {
+    background: linear-gradient(135deg, #172033 0%, #223049 100%) !important;
+    color: #ffffff !important;
+    border-color: rgba(24, 32, 51, 0.2) !important;
+    box-shadow: 0 18px 36px rgba(24, 32, 51, 0.18) !important;
+  }
+
+  .coach-shell .coach-nav-button.bg-indigo-600::before {
+    content: "";
+    position: absolute;
+    left: -0.38rem;
+    top: 0.65rem;
+    bottom: 0.65rem;
+    width: 0.24rem;
+    border-radius: 999px;
+    background: var(--coach-warm);
+  }
+
+  .coach-shell .coach-nav-index {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    height: 1.7rem;
+    border-radius: 999px;
+    background: rgba(24, 32, 51, 0.07);
+    color: rgba(24, 32, 51, 0.48) !important;
+    font-size: 0.64rem;
+    font-weight: 850;
+    letter-spacing: 0.08em;
+  }
+
+  .coach-shell .coach-nav-button.bg-indigo-600 .coach-nav-index {
+    background: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.78) !important;
+  }
+
+  .coach-shell .coach-nav-button svg,
+  .coach-shell .coach-nav-button span {
+    color: inherit !important;
+  }
+
+  .coach-shell .apple-sidebar .text-slate-400,
+  .coach-shell .apple-sidebar .text-slate-500,
+  .coach-shell .apple-sidebar .text-slate-600 {
+    color: rgba(24, 32, 51, 0.68) !important;
+  }
+
+  .coach-shell .apple-sidebar .hover\:text-slate-200:hover,
+  .coach-shell .apple-sidebar .hover\:text-slate-700:hover {
+    color: var(--coach-ink) !important;
+  }
+
+  .coach-rail-note {
+    margin: 0 0.85rem 1rem 1.15rem;
+    padding: 1rem 1rem 1rem 1.15rem;
+    border-radius: 22px;
+    background: rgba(24, 32, 51, 0.06);
+    border: 1px solid rgba(24, 32, 51, 0.09);
+  }
+
+  .coach-rail-note span {
+    display: block;
+    margin-bottom: 0.38rem;
+    color: var(--coach-accent-dark) !important;
+    font-size: 0.68rem;
+    font-weight: 850;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .coach-rail-note strong {
+    display: block;
+    color: #000000;
+    font-size: 1.05rem;
+    letter-spacing: -0.03em;
+  }
+
+  .coach-rail-note p {
+    margin: 0.32rem 0 0;
+    color: rgba(24, 32, 51, 0.58);
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+  .coach-shell .coach-workspace {
+    background: #ffffff !important;
+  }
+
+  .coach-shell .coach-stage {
+    width: min(100%, 1280px);
+    max-width: 1280px !important;
+    padding-top: 0;
+  }
+
+  .coach-workbench-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1.25rem;
+    align-items: end;
+    margin-bottom: 1.35rem;
+    padding: 1.15rem 0 1.45rem;
+    border-bottom: 1px solid rgba(24, 32, 51, 0.12);
+  }
+
+  .coach-overline {
+    margin: 0 0 0.5rem;
+    color: rgba(0, 0, 0, 0.56) !important;
+    font-size: 0.72rem !important;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .coach-workbench-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .coach-workbench-heading h2 {
+    margin: 0;
+    color: var(--coach-ink) !important;
+    font-size: clamp(2.25rem, 4vw, 4.2rem);
+    font-weight: 400;
+    letter-spacing: -0.065em;
+    line-height: 1;
+  }
+
+  .coach-workbench-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: #000000;
+    color: #fff !important;
+    box-shadow: none;
+  }
+
+  .coach-workbench-title > p:last-child {
+    max-width: 44rem;
+    margin: 0.7rem 0 0;
+    color: rgba(0, 0, 0, 0.62) !important;
+    font-size: 0.98rem;
+    font-weight: 330;
+    line-height: 1.65;
+  }
+
+  .coach-workbench-meta {
+    display: grid;
+    grid-template-columns: repeat(2, auto) auto;
+    gap: 0.65rem;
+    align-items: stretch;
+  }
+
+  .coach-workbench-meta div,
+  .coach-workbench-meta button {
+    min-width: 8.25rem;
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: #ffffff !important;
+    box-shadow: none !important;
+  }
+
+  .coach-workbench-meta span {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: rgba(0, 0, 0, 0.5) !important;
+    font-size: 0.65rem;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .coach-workbench-meta strong {
+    display: block;
+    color: #000000;
+    font-size: 0.92rem;
+    line-height: 1.3;
+  }
+
+  .coach-workbench-meta button {
+    min-width: 9.5rem;
+    color: #ffffff !important;
+    background: #000000 !important;
+    border-color: #000000;
+    border-radius: 50px;
+    font-weight: 540;
+  }
+
+  .coach-shell .coach-stage {
+    position: relative;
+    margin-top: 0;
+    padding: 0 0 5rem !important;
+    border-radius: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .coach-shell .coach-stage::before {
+    content: none;
+  }
+
+  .coach-dossier-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    min-height: 8.5rem;
+    padding: 1.35rem;
+    border-radius: 18px;
+    background:
+      linear-gradient(90deg, rgba(255, 255, 255, 0.94) 0 38%, rgba(255, 255, 255, 0.16) 38%),
+      var(--feature-gradient);
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    box-shadow: none;
+  }
+
+  .coach-dossier-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    min-width: 0;
+  }
+
+  .coach-dossier-copy {
+    min-width: 0;
+  }
+
+  .coach-dossier-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .coach-dossier-tab h2 {
+    margin: 0.15rem 0 0;
+    color: #000000 !important;
+    font-size: clamp(1.8rem, 3.1vw, 3.25rem);
+    font-weight: 400;
+    letter-spacing: -0.07em;
+    line-height: 1;
+  }
+
+  .coach-dossier-copy > p:last-of-type {
+    max-width: 52rem;
+    margin: 0.85rem 0 0;
+    color: rgba(0, 0, 0, 0.68) !important;
+    font-size: 0.98rem;
+    font-weight: 330;
+    line-height: 1.6;
+  }
+
+  .coach-track-pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0.28rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.78);
+    color: #000000 !important;
+    font-size: 0.76rem;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .coach-dossier-notes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 1rem;
+  }
+
+  .coach-dossier-notes span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.1rem;
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    color: rgba(0, 0, 0, 0.72) !important;
+    font-size: 0.8rem;
+    font-weight: 450;
+    line-height: 1.4;
+  }
+
+  .coach-content-brief {
+    display: none;
+  }
+
+  .coach-content-brief div {
+    display: grid;
+    min-width: 10rem;
+    padding-right: 1rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .coach-content-brief span {
+    color: rgba(0, 0, 0, 0.48) !important;
+    font-size: 0.65rem;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .coach-content-brief strong {
+    margin-top: 0.15rem;
+    color: #000000;
+    font-size: 1rem;
+  }
+
+  .coach-content-brief p {
+    margin: 0;
+    color: rgba(0, 0, 0, 0.62) !important;
+    font-size: 0.9rem;
+    font-weight: 330;
+    line-height: 1.55;
+  }
+
+  .coach-shell .apple-intro,
+  .coach-shell .apple-module-intro .mb-8:first-child,
+  .coach-shell .apple-module-export .mb-8:first-child,
+  .coach-shell .apple-module-result .mb-8:first-child {
+    border-radius: 8px;
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    box-shadow: none !important;
+  }
+
+  .coach-shell .apple-intro::before,
+  .coach-shell .apple-module-intro .mb-8:first-child::before,
+  .coach-shell .apple-module-export .mb-8:first-child::before,
+  .coach-shell .apple-module-result .mb-8:first-child::before {
+    background: none !important;
+  }
+
+  .coach-shell .apple-intro::after {
+    left: 0;
+    width: 0.28rem;
+    background: #000000;
+    clip-path: none;
+    opacity: 1;
+  }
+
+  .coach-shell .apple-intro h2,
+  .coach-shell .apple-module-intro .mb-8:first-child h2,
+  .coach-shell .apple-module-export .mb-8:first-child h2,
+  .coach-shell .apple-module-result .mb-8:first-child h2 {
+    max-width: 20ch;
+    color: #000000 !important;
+    font-weight: 400;
+    letter-spacing: -0.055em;
+  }
+
+  .coach-shell .apple-intro p,
+  .coach-shell .apple-module-intro .mb-8:first-child p,
+  .coach-shell .apple-module-export .mb-8:first-child p,
+  .coach-shell .apple-module-result .mb-8:first-child p {
+    color: rgba(0, 0, 0, 0.62) !important;
+  }
+
+  .coach-shell .bg-white.p-6.rounded-2xl,
+  .coach-shell .bg-white.p-8.rounded-2xl,
+  .coach-shell .bg-white.rounded-2xl,
+  .coach-shell .bg-white.rounded-3xl,
+  .coach-shell .bg-white.rounded-xl {
+    background: #ffffff !important;
+    border-color: rgba(0, 0, 0, 0.12) !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+  }
+
+  .coach-shell .apple-empty-state {
+    background: #ffffff !important;
+    border-color: rgba(0, 0, 0, 0.12) !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+  }
+
+  .coach-shell input,
+  .coach-shell textarea,
+  .coach-shell select {
+    background: #ffffff !important;
+    border-color: rgba(0, 0, 0, 0.18) !important;
+    color: #000000 !important;
+  }
+
+  .coach-shell input:focus,
+  .coach-shell textarea:focus,
+  .coach-shell select:focus {
+    border-color: #000000 !important;
+    box-shadow: none !important;
+  }
+
+  .coach-shell a.bg-indigo-600,
+  .coach-shell button.bg-indigo-600,
+  .coach-shell button.bg-sky-600,
+  .coach-shell button.bg-violet-600,
+  .coach-shell button.bg-purple-600 {
+    background: #000000 !important;
+    box-shadow: none !important;
+  }
+
+  .coach-shell .text-indigo-700,
+  .coach-shell .text-indigo-600,
+  .coach-shell .text-indigo-500,
+  .coach-shell .text-blue-700,
+  .coach-shell .text-blue-600,
+  .coach-shell .text-blue-500,
+  .coach-shell .text-sky-600,
+  .coach-shell .text-sky-700 {
+    color: #000000 !important;
+  }
+
+  .coach-shell .bg-indigo-100,
+  .coach-shell .bg-blue-50,
+  .coach-shell .bg-blue-50\/50,
+  .coach-shell .bg-indigo-50,
+  .coach-shell .bg-sky-50\/70 {
+    background: rgba(0, 0, 0, 0.05) !important;
+  }
+
+  .coach-shell .border-indigo-100,
+  .coach-shell .border-indigo-200,
+  .coach-shell .border-blue-100,
+  .coach-shell .border-blue-200,
+  .coach-shell .border-sky-100 {
+    border-color: rgba(0, 0, 0, 0.12) !important;
+  }
+
+  .coach-shell .personality-hero,
+  .coach-shell .studio-assessment-copy,
+  .coach-shell .studio-readiness-note-muted {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.96) 0%, rgba(30, 41, 59, 0.92) 100%) !important;
+    color: #ffffff !important;
+  }
+
+  .coach-review-page,
+  .coach-portfolio-page {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .coach-review-shell {
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 28px;
+    background: #ffffff;
+    box-shadow: 0 14px 40px rgba(15, 23, 42, 0.05);
+  }
+
+  .coach-review-header {
+    display: grid;
+    gap: 1rem;
+    padding: 1.35rem;
+  }
+
+  .coach-review-header-main {
+    display: grid;
+    gap: 0.6rem;
+    max-width: 46rem;
+  }
+
+  .coach-review-eyebrow {
+    margin: 0;
+    color: rgba(15, 23, 42, 0.48);
+    font-size: 0.72rem;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .coach-review-header-main h2,
+  .coach-review-section-head h3,
+  .coach-review-principle h4,
+  .coach-review-meta-card strong,
+  .coach-review-list-title,
+  .coach-review-empty-title,
+  .coach-review-target-head strong,
+  .coach-history-list-panel h3,
+  .coach-history-compare-panel h3,
+  .coach-history-metric-card strong,
+  .coach-portfolio-signal-panel h4 {
+    margin: 0;
+    color: #0f172a;
+    letter-spacing: -0.04em;
+  }
+
+  .coach-review-header-main h2 {
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    font-weight: 600;
+    line-height: 1.04;
+  }
+
+  .coach-review-header-main > p:last-child,
+  .coach-review-meta-card p,
+  .coach-review-principle p,
+  .coach-review-list-body,
+  .coach-review-empty-body,
+  .coach-history-copy,
+  .coach-history-item p,
+  .coach-review-section-body,
+  .coach-portfolio-github-summary p,
+  .coach-portfolio-signal-panel li {
+    margin: 0;
+    color: rgba(15, 23, 42, 0.68);
+    font-size: 0.95rem;
+    line-height: 1.68;
+  }
+
+  .coach-review-meta-grid {
+    display: grid;
+    gap: 0.85rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .coach-review-meta-card,
+  .coach-review-surface,
+  .coach-history-list-panel,
+  .coach-history-compare-panel {
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 24px;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+  }
+
+  .coach-review-meta-card {
+    display: grid;
+    gap: 0.45rem;
+    padding: 1rem 1.05rem;
+  }
+
+  .coach-review-meta-label,
+  .coach-review-principle-label,
+  .coach-history-item-label,
+  .coach-history-metric-card p,
+  .coach-portfolio-file-label,
+  .coach-review-target-head span {
+    margin: 0;
+    color: rgba(15, 23, 42, 0.52);
+    font-size: 0.72rem;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .coach-review-meta-card strong {
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+
+  .coach-review-chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.1rem;
+  }
+
+  .coach-review-chip-row span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0.3rem 0.72rem;
+    border-radius: 999px;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    color: rgba(15, 23, 42, 0.72);
+    font-size: 0.78rem;
+    font-weight: 500;
+  }
+
+  .coach-review-chip-row .is-muted {
+    color: rgba(15, 23, 42, 0.54);
+  }
+
+  .coach-review-surface {
+    padding: 1.25rem;
+  }
+
+  .coach-review-section-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .coach-review-section-head h3 {
+    font-size: 1.42rem;
+    font-weight: 600;
+    line-height: 1.08;
+  }
+
+  .coach-review-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 2.45rem;
+    padding: 0.52rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: #f8fafc;
+    color: #0f172a;
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .coach-review-badge.is-link {
+    text-decoration: none;
+  }
+
+  .coach-review-principles-grid {
+    display: grid;
+    gap: 0.9rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .coach-review-principle {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.85rem;
+    padding: 1rem;
+    border-radius: 20px;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+  }
+
+  .coach-review-principle-index,
+  .coach-portfolio-queue-index {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    background: #0f172a;
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .coach-review-principle h4 {
+    margin-top: 0.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.34;
+  }
+
+  .coach-review-doc-grid,
+  .coach-review-target-grid,
+  .coach-portfolio-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .coach-review-doc-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .coach-portfolio-grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  }
+
+  .coach-review-target-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 1rem;
+  }
+
+  .coach-review-doc-panel {
+    min-height: 100%;
+  }
+
+  .coach-review-list,
+  .coach-portfolio-queue-list {
+    display: grid;
+    gap: 0.85rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .coach-review-list-row,
+  .coach-portfolio-queue-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.8rem;
+    align-items: flex-start;
+    padding: 0.95rem 0;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+  }
+
+  .coach-review-list-row:first-child,
+  .coach-portfolio-queue-row:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .coach-review-list-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 999px;
+    background: #eff6ff;
+    color: #2563eb;
+    flex-shrink: 0;
+  }
+
+  .coach-review-list-icon.is-blue {
+    background: #eff6ff;
+    color: #2563eb;
+  }
+
+  .coach-review-list-icon.is-violet {
+    background: #f5f3ff;
+    color: #7c3aed;
+  }
+
+  .coach-review-list-icon.is-neutral {
+    background: #f8fafc;
+    color: #0f172a;
+  }
+
+  .coach-review-list-copy,
+  .coach-portfolio-queue-copy {
+    min-width: 0;
+  }
+
+  .coach-review-list-title,
+  .coach-portfolio-queue-title {
+    font-size: 0.98rem;
+    font-weight: 600;
+    line-height: 1.42;
+  }
+
+  .coach-review-empty-inline {
+    color: rgba(15, 23, 42, 0.54);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .coach-review-empty-box {
+    display: grid;
+    gap: 0.35rem;
+    padding: 1rem 1.05rem;
+    border-radius: 20px;
+    background: #f8fafc;
+    border: 1px dashed rgba(15, 23, 42, 0.16);
+  }
+
+  .coach-review-target-card {
+    padding: 1rem;
+    border-radius: 20px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: #ffffff;
+  }
+
+  .coach-review-target-card.is-sky {
+    background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+    border-color: rgba(59, 130, 246, 0.18);
+  }
+
+  .coach-review-target-card.is-emerald {
+    background: linear-gradient(180deg, #f3fff8 0%, #ffffff 100%);
+    border-color: rgba(16, 185, 129, 0.18);
+  }
+
+  .coach-review-target-card.is-amber {
+    background: linear-gradient(180deg, #fffdf4 0%, #ffffff 100%);
+    border-color: rgba(245, 158, 11, 0.18);
+  }
+
+  .coach-review-target-head {
+    display: grid;
+    gap: 0.2rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .coach-history-panel {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .coach-history-list-panel,
+  .coach-history-compare-panel {
+    padding: 1.25rem;
+  }
+
+  .coach-history-list {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .coach-history-item {
+    width: 100%;
+    display: grid;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 20px;
+    background: #f8fafc;
+    text-align: left;
+    transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .coach-history-item:hover {
+    border-color: rgba(15, 23, 42, 0.22);
+    background: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  .coach-history-item.is-selected {
+    border-color: #0f172a;
+    background: #ffffff;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  }
+
+  .coach-history-item-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.8rem;
+  }
+
+  .coach-history-item-head strong {
+    display: block;
+    margin-top: 0.2rem;
+    color: #0f172a;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.38;
+  }
+
+  .coach-history-item-flags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    justify-content: flex-end;
+  }
+
+  .coach-history-item-flags span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.8rem;
+    padding: 0.22rem 0.58rem;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    color: rgba(15, 23, 42, 0.7);
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+
+  .coach-history-item-score {
+    margin: 0;
+    color: rgba(15, 23, 42, 0.54);
+    font-size: 0.82rem;
+    font-weight: 500;
+  }
+
+  .coach-history-metric-grid {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 1rem;
+  }
+
+  .coach-history-metric-card {
+    padding: 0.95rem 1rem;
+    border-radius: 18px;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+  }
+
+  .coach-history-metric-card strong {
+    display: block;
+    margin-top: 0.38rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .coach-history-highlight-box {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 20px;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+  }
+
+  .coach-history-highlight-title {
+    margin: 0 0 0.6rem;
+    color: #0f172a;
+    font-size: 0.92rem;
+    font-weight: 600;
+  }
+
+  .coach-history-highlight-box ul {
+    display: grid;
+    gap: 0.45rem;
+    margin: 0;
+    padding-left: 1rem;
+    color: rgba(15, 23, 42, 0.7);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .coach-history-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+
+  .coach-history-action {
+    min-height: 2.65rem;
+    padding: 0.55rem 0.95rem;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    background: #ffffff;
+    color: #0f172a;
+    font-size: 0.84rem;
+    font-weight: 600;
+  }
+
+  .coach-history-action.is-primary {
+    background: #0f172a;
+    color: #ffffff;
+    border-color: #0f172a;
+  }
+
+  .coach-portfolio-file-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin: 0 0 0.4rem;
+    color: #2563eb;
+    font-size: 0.78rem;
+    font-weight: 500;
+  }
+
+  .coach-portfolio-github-surface {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .coach-portfolio-github-summary {
+    padding: 1rem 1.05rem;
+    border-radius: 20px;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+  }
+
+  .coach-portfolio-signal-grid {
+    display: grid;
+    gap: 0.85rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .coach-portfolio-signal-panel {
+    padding: 1rem;
+    border-radius: 20px;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+  }
+
+  .coach-portfolio-signal-panel h4 {
+    font-size: 0.96rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .coach-portfolio-signal-panel ul {
+    display: grid;
+    gap: 0.45rem;
+    margin: 0.7rem 0 0;
+    padding-left: 1rem;
+  }
+
+  .coach-portfolio-doc-block {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .coach-portfolio-doc-pre {
+    max-height: 28rem;
+    margin: 0;
+    overflow: auto;
+    white-space: pre-wrap;
+    border-radius: 18px;
+    background: #0f172a;
+    padding: 1rem;
+    color: rgba(248, 250, 252, 0.94);
+    font-size: 0.78rem;
+    line-height: 1.78;
+  }
+
+  @media (max-width: 1200px) {
+    .coach-review-meta-grid,
+    .coach-review-principles-grid,
+    .coach-review-target-grid,
+    .coach-history-metric-grid,
+    .coach-portfolio-signal-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .coach-history-panel,
+    .coach-portfolio-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .coach-review-header,
+    .coach-review-surface,
+    .coach-history-list-panel,
+    .coach-history-compare-panel {
+      padding: 1rem;
+    }
+
+    .coach-review-meta-grid,
+    .coach-review-doc-grid,
+    .coach-review-principles-grid,
+    .coach-review-target-grid,
+    .coach-history-metric-grid,
+    .coach-portfolio-signal-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .coach-review-section-head,
+    .coach-history-item-head {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .coach-history-item-flags {
+      justify-content: flex-start;
+    }
+  }
+
+  .coach-interview-page,
+  .coach-readiness-page {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .coach-interview-overview-grid,
+  .coach-readiness-layout-grid,
+  .coach-interview-detail-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .coach-interview-overview-grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  }
+
+  .coach-readiness-layout-grid {
+    grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  }
+
+  .coach-interview-detail-grid {
+    grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  }
+
+  .coach-interview-detail-grid > :last-child {
+    grid-column: 1 / -1;
+  }
+
+  .coach-interview-brief-panel,
+  .coach-readiness-side {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .coach-interview-brief-block,
+  .coach-interview-focus-block {
+    display: grid;
+    gap: 0.45rem;
+    padding: 1rem;
+    border-radius: 20px;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+  }
+
+  .coach-interview-focus-block h4,
+  .coach-interview-question-item h4,
+  .coach-interview-framework-card h4,
+  .coach-readiness-flow-item h4 {
+    margin: 0;
+    color: #0f172a;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.03em;
+  }
+
+  .coach-interview-brief-block p,
+  .coach-interview-focus-block p,
+  .coach-interview-answer-block p,
+  .coach-interview-framework-card p,
+  .coach-readiness-flow-body,
+  .coach-readiness-checklist span {
+    margin: 0;
+    color: rgba(15, 23, 42, 0.68);
+    font-size: 0.94rem;
+    line-height: 1.65;
+  }
+
+  .coach-interview-tab-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .coach-interview-tab-button {
+    display: grid;
+    gap: 0.2rem;
+    min-width: 10rem;
+    padding: 0.8rem 0.95rem;
+    border-radius: 18px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: #f8fafc;
+    text-align: left;
+    transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .coach-interview-tab-button:hover {
+    border-color: rgba(15, 23, 42, 0.22);
+    background: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  .coach-interview-tab-button span {
+    color: rgba(15, 23, 42, 0.52);
+    font-size: 0.72rem;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .coach-interview-tab-button strong {
+    color: #0f172a;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .coach-interview-tab-button.is-active {
+    border-color: #0f172a;
+    background: #ffffff;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  }
+
+  .coach-interview-question-stack,
+  .coach-readiness-flow-list {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .coach-interview-question-item,
+  .coach-readiness-flow-item {
+    display: grid;
+    gap: 0.9rem;
+    padding: 1rem;
+    border-radius: 20px;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+  }
+
+  .coach-interview-question-top,
+  .coach-readiness-flow-head {
+    display: grid;
+    grid-template-columns: auto auto minmax(0, 1fr);
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .coach-readiness-flow-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+
+  .coach-interview-answer-grid {
+    display: grid;
+    gap: 0.85rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .coach-interview-answer-block,
+  .coach-interview-framework-card,
+  .coach-readiness-flow-point {
+    display: grid;
+    gap: 0.45rem;
+    padding: 1rem;
+    border-radius: 18px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: #ffffff;
+  }
+
+  .coach-interview-answer-block.is-danger {
+    border-color: rgba(239, 68, 68, 0.18);
+    background: #fff8f8;
+  }
+
+  .coach-interview-answer-block.is-success {
+    border-color: rgba(34, 197, 94, 0.18);
+    background: #f5fff8;
+  }
+
+  .coach-interview-answer-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: #0f172a;
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
+  .coach-interview-framework-grid {
+    display: grid;
+    gap: 0.85rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 1rem;
+  }
+
+  .coach-readiness-checklist {
+    display: grid;
+    gap: 0.8rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .coach-readiness-checklist li {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: flex-start;
+    gap: 0.65rem;
+  }
+
+  .coach-readiness-checklist li svg {
+    margin-top: 0.15rem;
+    color: #0f172a;
+    flex-shrink: 0;
+  }
+
+  .coach-readiness-flow-points {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .coach-readiness-flow-label {
+    margin: 0;
+    color: rgba(15, 23, 42, 0.52);
+    font-size: 0.72rem;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 1200px) {
+    .coach-interview-overview-grid,
+    .coach-readiness-layout-grid,
+    .coach-interview-detail-grid,
+    .coach-interview-answer-grid,
+    .coach-interview-framework-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .coach-interview-question-top,
+    .coach-readiness-flow-head {
+      grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .coach-readiness-flow-head > .coach-readiness-flow-icon {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .coach-readiness-flow-head > div:last-child {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+    }
+
+    .coach-interview-tab-button {
+      min-width: 100%;
+    }
+  }
+
+  .coach-interview-workspace,
+  .coach-readiness-workspace {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .coach-interview-hero,
+  .coach-readiness-hero {
+    margin-bottom: 0 !important;
+  }
+
+  .coach-interview-overview {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.72fr);
+    gap: 1rem;
+  }
+
+  .coach-interview-card-grid,
+  .coach-readiness-card-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .coach-interview-card,
+  .coach-readiness-card {
+    padding: 1.15rem 1.2rem 1.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 24px;
+    background: #ffffff;
+    box-shadow: none;
+  }
+
+  .coach-interview-card h3,
+  .coach-readiness-card h3,
+  .coach-interview-focus h3,
+  .coach-interview-question-copy h3,
+  .coach-readiness-note h3,
+  .coach-readiness-heading h3 {
+    margin: 0;
+    color: #000000;
+    letter-spacing: -0.04em;
+  }
+
+  .coach-interview-card h3,
+  .coach-readiness-card h3 {
+    margin-bottom: 0.45rem;
+    font-size: 1rem;
+    font-weight: 540;
+    line-height: 1.25;
+  }
+
+  .coach-interview-card p,
+  .coach-readiness-card p,
+  .coach-interview-focus-body,
+  .coach-interview-focus-subsection p,
+  .coach-readiness-note p,
+  .coach-readiness-point-desc {
+    margin: 0;
+    color: rgba(0, 0, 0, 0.66);
+    font-size: 0.93rem;
+    line-height: 1.65;
+  }
+
+  .coach-interview-kicker,
+  .coach-readiness-kicker {
+    margin: 0 0 0.55rem;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 0.7rem;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .coach-interview-strategy {
+    display: grid;
+    align-content: start;
+    gap: 0.75rem;
+    padding: 1.3rem;
+    border-radius: 28px;
+    background:
+      linear-gradient(155deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0)) padding-box,
+      linear-gradient(135deg, rgba(0, 0, 0, 0.92), rgba(15, 23, 42, 0.82), rgba(14, 165, 233, 0.34)) border-box;
+    border: 1px solid transparent;
+    color: #ffffff;
+  }
+
+  .coach-interview-strategy .coach-interview-kicker,
+  .coach-interview-strategy p {
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .coach-interview-strategy h3,
+  .coach-interview-strategy-title {
+    margin: 0;
+    color: #ffffff;
+    letter-spacing: -0.04em;
+  }
+
+  .coach-interview-strategy h3 {
+    font-size: 1.15rem;
+    font-weight: 540;
+    line-height: 1.22;
+  }
+
+  .coach-interview-strategy-divider {
+    display: grid;
+    gap: 0.45rem;
+    margin-top: 0.15rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .coach-interview-strategy-title {
+    font-size: 0.9rem;
+    font-weight: 540;
+  }
+
+  .coach-interview-tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: 0.6rem;
+  }
+
+  .coach-interview-tab {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 0.86rem;
+    font-weight: 540;
+    line-height: 1.25;
+    transition: border-color 160ms ease, background 160ms ease, color 160ms ease, transform 160ms ease;
+  }
+
+  .coach-interview-tab:hover {
+    color: rgba(0, 0, 0, 0.82);
+    border-color: rgba(0, 0, 0, 0.24);
+    transform: translateY(-1px);
+  }
+
+  .coach-interview-tab.is-active {
+    background: #000000;
+    border-color: #000000;
+    color: #ffffff;
+  }
+
+  .coach-interview-detail {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .coach-interview-focus,
+  .coach-interview-tip {
+    padding: 1.25rem 1.3rem;
+    border-radius: 28px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: #ffffff;
+  }
+
+  .coach-interview-focus {
+    display: grid;
+    gap: 0.85rem;
+    background:
+      radial-gradient(circle at top right, rgba(37, 99, 235, 0.08), transparent 32%),
+      linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+  }
+
+  .coach-interview-focus-head {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .coach-interview-focus h3 {
+    font-size: 1.1rem;
+    font-weight: 540;
+    line-height: 1.25;
+  }
+
+  .coach-interview-focus-body {
+    white-space: pre-line;
+  }
+
+  .coach-interview-focus-subsection {
+    display: grid;
+    gap: 0.45rem;
+    padding-top: 0.95rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .coach-interview-focus-subsection h4 {
+    margin: 0;
+    color: #000000;
+    font-size: 0.92rem;
+    font-weight: 540;
+  }
+
+  .coach-interview-question-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .coach-interview-question-card {
+    padding: 1.25rem 1.3rem;
+    border-radius: 28px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: #ffffff;
+  }
+
+  .coach-interview-question-shell {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .coach-interview-question-index {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.06);
+    color: #000000;
+    font-size: 0.92rem;
+    font-weight: 600;
+  }
+
+  .coach-interview-question-copy {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .coach-interview-question-copy h3 {
+    font-size: 1.18rem;
+    font-weight: 540;
+    line-height: 1.28;
+    white-space: pre-line;
+  }
+
+  .coach-interview-answer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .coach-interview-answer-panel {
+    display: grid;
+    gap: 0.45rem;
+    min-height: 100%;
+    padding: 1rem 1rem 1.05rem;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.03);
+  }
+
+  .coach-interview-answer-panel.is-danger {
+    background: rgba(239, 68, 68, 0.06);
+    border-color: rgba(239, 68, 68, 0.16);
+  }
+
+  .coach-interview-answer-panel.is-success {
+    background: rgba(16, 185, 129, 0.07);
+    border-color: rgba(16, 185, 129, 0.18);
+  }
+
+  .coach-interview-answer-title {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: #000000;
+    font-size: 0.9rem;
+    font-weight: 540;
+  }
+
+  .coach-interview-answer-panel p {
+    margin: 0;
+    color: rgba(0, 0, 0, 0.66);
+    font-size: 0.92rem;
+    line-height: 1.62;
+    white-space: pre-line;
+  }
+
+  .coach-interview-tip {
+    display: grid;
+    gap: 0.55rem;
+    background: linear-gradient(180deg, #ffffff 0%, #f3f4f6 100%);
+  }
+
+  .coach-interview-tip strong {
+    color: #000000;
+  }
+
+  .coach-interview-tip > p {
+    margin: 0;
+    color: rgba(0, 0, 0, 0.64);
+    font-size: 0.93rem;
+    line-height: 1.62;
+  }
+
+  .coach-interview-tip-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+    margin-top: 0.25rem;
+  }
+
+  .coach-interview-tip-grid > div {
+    padding: 0.95rem 1rem;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.82);
+    color: rgba(0, 0, 0, 0.66);
+    font-size: 0.9rem;
+    line-height: 1.62;
+  }
+
+  .coach-readiness-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
+    gap: 1rem;
+    padding: 1.35rem;
+    border-radius: 28px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background:
+      radial-gradient(circle at top right, rgba(56, 189, 248, 0.1), transparent 35%),
+      linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+  }
+
+  .coach-readiness-summary {
+    display: grid;
+    gap: 0.75rem;
+    align-content: start;
+  }
+
+  .coach-readiness-stat {
+    padding: 0.9rem 1rem;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  .coach-readiness-card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .coach-readiness-layout {
+    display: grid;
+    grid-template-columns: minmax(17rem, 0.72fr) minmax(0, 1.28fr);
+    gap: 1rem;
+  }
+
+  .coach-readiness-aside,
+  .coach-readiness-flow {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .coach-readiness-note {
+    padding: 1.15rem 1.2rem;
+    border-radius: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: #ffffff;
+  }
+
+  .coach-readiness-note h3 {
+    margin: 0 0 0.55rem;
+    font-size: 1.06rem;
+    font-weight: 540;
+    line-height: 1.22;
+  }
+
+  .coach-readiness-note ul {
+    display: grid;
+    gap: 0.65rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .coach-readiness-note li {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.55rem;
+    align-items: start;
+    color: rgba(0, 0, 0, 0.66);
+    font-size: 0.92rem;
+    line-height: 1.58;
+  }
+
+  .coach-readiness-section {
+    padding: 1.2rem 1.25rem;
+    border-radius: 28px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 249, 252, 0.96));
+  }
+
+  .coach-readiness-section .studio-readiness-kicker,
+  .coach-readiness-section .studio-readiness-point-label {
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  .coach-readiness-section .studio-readiness-heading h3,
+  .coach-readiness-section .studio-readiness-point-label,
+  .coach-readiness-section .studio-readiness-point-desc,
+  .coach-readiness-section .studio-readiness-index {
+    color: #000000;
+  }
+
+  .coach-readiness-section .studio-readiness-point-desc {
+    color: rgba(0, 0, 0, 0.66);
+  }
+
+  .coach-portfolio-workspace {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .coach-portfolio-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
+    gap: 1rem;
+    padding: 1.35rem;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 28px;
+    background:
+      radial-gradient(circle at top right, rgba(139, 92, 246, 0.1), transparent 32%),
+      linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
+  }
+
+  .coach-portfolio-hero-copy h2,
+  .coach-portfolio-section-head h3,
+  .coach-portfolio-github-head h3,
+  .coach-portfolio-doc-head h4,
+  .coach-portfolio-lens-card h4,
+  .coach-portfolio-meta-card strong {
+    margin: 0;
+    color: #000000;
+    letter-spacing: -0.045em;
+  }
+
+  .coach-portfolio-hero-copy h2 {
+    font-size: clamp(1.85rem, 4vw, 3rem);
+    font-weight: 540;
+    line-height: 1.02;
+  }
+
+  .coach-portfolio-hero-copy > p:last-child,
+  .coach-portfolio-meta-card p,
+  .coach-portfolio-lens-card p,
+  .coach-portfolio-review-body,
+  .coach-portfolio-github-head > div > p:last-child {
+    margin: 0;
+    color: rgba(0, 0, 0, 0.62);
+    font-size: 0.94rem;
+    line-height: 1.65;
+  }
+
+  .coach-portfolio-kicker {
+    margin: 0 0 0.5rem;
+    color: rgba(0, 0, 0, 0.52);
+    font-size: 0.72rem;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .coach-portfolio-hero-meta {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .coach-portfolio-meta-card {
+    padding: 1rem 1.05rem;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    background: rgba(255, 255, 255, 0.78);
+  }
+
+  .coach-portfolio-meta-card span,
+  .coach-portfolio-lens-label,
+  .coach-portfolio-review-file,
+  .coach-portfolio-signal-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: rgba(0, 0, 0, 0.52);
+    font-size: 0.72rem;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .coach-portfolio-meta-card strong {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 1.55rem;
+    font-weight: 540;
+    line-height: 1;
+  }
+
+  .coach-portfolio-main-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+    gap: 1rem;
+  }
+
+  .coach-portfolio-lens-panel,
+  .coach-portfolio-review-panel,
+  .coach-portfolio-github {
+    padding: 1.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 28px;
+    background: #ffffff;
+  }
+
+  .coach-portfolio-section-head,
+  .coach-portfolio-github-head,
+  .coach-portfolio-doc-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .coach-portfolio-section-head {
+    margin-bottom: 1rem;
+  }
+
+  .coach-portfolio-section-head h3,
+  .coach-portfolio-github-head h3 {
+    font-size: 1.5rem;
+    font-weight: 540;
+    line-height: 1.08;
+  }
+
+  .coach-portfolio-head-pill,
+  .coach-portfolio-github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 2.55rem;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    background: #000000;
+    color: #ffffff !important;
+    font-size: 0.84rem;
+    font-weight: 540;
+    white-space: nowrap;
+  }
+
+  .coach-portfolio-lens-list,
+  .coach-portfolio-review-list {
+    display: grid;
+    gap: 0.8rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .coach-portfolio-lens-card,
+  .coach-portfolio-review-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.85rem;
+    padding: 1rem;
+    border-radius: 22px;
+    background: #f8fafc;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .coach-portfolio-lens-index,
+  .coach-portfolio-review-index {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    background: #000000;
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .coach-portfolio-lens-card h4,
+  .coach-portfolio-review-title {
+    margin: 0.25rem 0 0;
+    color: #000000;
+    font-size: 1rem;
+    font-weight: 540;
+    line-height: 1.35;
+  }
+
+  .coach-portfolio-review-copy {
+    min-width: 0;
+  }
+
+  .coach-portfolio-review-file {
+    margin-bottom: 0.5rem;
+    color: rgba(37, 99, 235, 0.82);
+  }
+
+  .coach-portfolio-empty {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 1.05rem;
+    border-radius: 18px;
+    background: #f8fafc;
+    color: rgba(0, 0, 0, 0.62);
+    font-size: 0.92rem;
+  }
+
+  .coach-portfolio-github {
+    background:
+      radial-gradient(circle at top right, rgba(59, 130, 246, 0.18), transparent 26%),
+      linear-gradient(180deg, #020617 0%, #0f172a 100%);
+    border-color: rgba(148, 163, 184, 0.22);
+    color: #ffffff;
+  }
+
+  .coach-portfolio-github .coach-portfolio-kicker,
+  .coach-portfolio-github .coach-portfolio-github-head > div > p:last-child,
+  .coach-portfolio-github .coach-portfolio-signal-list li,
+  .coach-portfolio-github .coach-portfolio-doc-head p {
+    color: rgba(226, 232, 240, 0.78);
+  }
+
+  .coach-portfolio-github .coach-portfolio-github-head h3,
+  .coach-portfolio-github .coach-portfolio-doc-head h4 {
+    color: #ffffff;
+  }
+
+  .coach-portfolio-github-link {
+    background: #ffffff;
+    color: #020617 !important;
+  }
+
+  .coach-portfolio-github-summary {
+    margin-top: 1rem;
+    padding: 1rem 1.05rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .coach-portfolio-github-summary p {
+    margin: 0;
+  }
+
+  .coach-portfolio-github-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 1rem;
+  }
+
+  .coach-portfolio-github-chips span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.1rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(226, 232, 240, 0.88);
+    font-size: 0.76rem;
+    font-weight: 450;
+  }
+
+  .coach-portfolio-signal-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+
+  .coach-portfolio-signal-card {
+    padding: 1rem;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .coach-portfolio-signal-title {
+    margin-bottom: 0.75rem;
+  }
+
+  .coach-portfolio-signal-title.is-sky {
+    color: #7dd3fc;
+  }
+
+  .coach-portfolio-signal-title.is-cyan {
+    color: #67e8f9;
+  }
+
+  .coach-portfolio-signal-title.is-emerald {
+    color: #6ee7b7;
+  }
+
+  .coach-portfolio-signal-title.is-indigo {
+    color: #a5b4fc;
+  }
+
+  .coach-portfolio-signal-title.is-lime {
+    color: #bef264;
+  }
+
+  .coach-portfolio-signal-title.is-violet {
+    color: #c4b5fd;
+  }
+
+  .coach-portfolio-signal-title.is-amber {
+    color: #fcd34d;
+  }
+
+  .coach-portfolio-signal-title.is-rose {
+    color: #fda4af;
+  }
+
+  .coach-portfolio-signal-list {
+    margin: 0;
+    padding-left: 1rem;
+    display: grid;
+    gap: 0.45rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .coach-portfolio-doc-shell {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.25);
+  }
+
+  .coach-portfolio-doc-head {
+    margin-bottom: 0.75rem;
+  }
+
+  .coach-portfolio-doc-body {
+    max-height: 26rem;
+    margin: 0;
+    overflow: auto;
+    white-space: pre-wrap;
+    border-radius: 18px;
+    background: rgba(2, 6, 23, 0.78);
+    padding: 1rem;
+    color: rgba(226, 232, 240, 0.92);
+    font-size: 0.76rem;
+    line-height: 1.8;
+  }
+
+  .coach-input-workspace {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .coach-input-shell {
+    background:
+      radial-gradient(circle at top right, rgba(34, 197, 94, 0.08), transparent 22%),
+      linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  }
+
+  .coach-input-summary {
+    align-items: stretch;
+  }
+
+  .coach-input-summary-card {
+    padding: 1rem 1.05rem;
+    border-radius: 22px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #f8fafc;
+  }
+
+  .coach-input-summary-label {
+    margin: 0 0 0.55rem;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 0.72rem;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .coach-input-summary-value {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: #000000;
+  }
+
+  .coach-input-summary-value strong {
+    font-size: 1.05rem;
+    font-weight: 540;
+    letter-spacing: -0.03em;
+  }
+
+  .coach-input-summary-body {
+    margin: 0.6rem 0 0;
+    color: rgba(0, 0, 0, 0.62);
+    font-size: 0.84rem;
+    line-height: 1.55;
+  }
+
+  .coach-input-side {
+    background:
+      radial-gradient(circle at top right, rgba(96, 165, 250, 0.18), transparent 24%),
+      linear-gradient(180deg, #020617 0%, #0f172a 100%);
+  }
+
+  .coach-input-skill-shell {
+    position: relative;
+  }
+
+  .coach-input-section-shell {
+    position: relative;
+  }
+
+  .coach-input-doc-shell,
+  .coach-input-pin-shell {
+    background:
+      radial-gradient(circle at top right, rgba(148, 163, 184, 0.12), transparent 24%),
+      #ffffff;
+  }
+
+  .coach-input-submit-shell {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .coach-feedback-workspace {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .coach-feedback-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    gap: 1rem;
+    padding: 1.35rem;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 28px;
+    background:
+      radial-gradient(circle at top right, rgba(99, 102, 241, 0.12), transparent 28%),
+      linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  }
+
+  .coach-feedback-kicker {
+    margin: 0 0 0.5rem;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 0.72rem;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .coach-feedback-hero-copy h2,
+  .coach-feedback-section-head h3,
+  .coach-feedback-doc-head h3,
+  .coach-feedback-lens-card h4,
+  .coach-feedback-context-card h3,
+  .coach-feedback-custom-head strong {
+    margin: 0;
+    color: #000000;
+    letter-spacing: -0.045em;
+  }
+
+  .coach-feedback-hero-copy h2 {
+    font-size: clamp(1.85rem, 4vw, 3rem);
+    font-weight: 540;
+    line-height: 1.02;
+  }
+
+  .coach-feedback-hero-copy > p:last-child,
+  .coach-feedback-lens-card p,
+  .coach-feedback-doc-body,
+  .coach-feedback-empty-body,
+  .coach-feedback-context-card p:not(.coach-feedback-kicker) {
+    margin: 0;
+    color: rgba(0, 0, 0, 0.62);
+    font-size: 0.94rem;
+    line-height: 1.65;
+  }
+
+  .coach-feedback-hero-context {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .coach-feedback-context-card,
+  .coach-feedback-lens,
+  .coach-feedback-doc-card,
+  .coach-feedback-custom {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 28px;
+    background: #ffffff;
+  }
+
+  .coach-feedback-context-card {
+    padding: 1rem 1.05rem;
+  }
+
+  .coach-feedback-context-card.is-dark {
+    background:
+      radial-gradient(circle at top right, rgba(96, 165, 250, 0.18), transparent 28%),
+      linear-gradient(180deg, #020617 0%, #0f172a 100%);
+    border-color: rgba(148, 163, 184, 0.24);
+  }
+
+  .coach-feedback-context-card.is-dark h3,
+  .coach-feedback-context-card.is-dark p:not(.coach-feedback-kicker),
+  .coach-feedback-context-card.is-dark span {
+    color: #ffffff;
+  }
+
+  .coach-feedback-context-card.is-dark .coach-feedback-kicker {
+    color: rgba(191, 219, 254, 0.8);
+  }
+
+  .coach-feedback-chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.7rem;
+  }
+
+  .coach-feedback-chip-list span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0.32rem 0.72rem;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #f8fafc;
+    color: rgba(0, 0, 0, 0.72);
+    font-size: 0.78rem;
+    font-weight: 450;
+  }
+
+  .coach-feedback-context-card.is-dark .coach-feedback-chip-list span {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  .coach-feedback-chip-list .is-muted {
+    color: rgba(0, 0, 0, 0.56);
+  }
+
+  .coach-feedback-context-card.is-dark .coach-feedback-chip-list .is-muted {
+    color: rgba(226, 232, 240, 0.72);
+  }
+
+  .coach-feedback-lens,
+  .coach-feedback-custom {
+    padding: 1.25rem;
+  }
+
+  .coach-feedback-section-head,
+  .coach-feedback-doc-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .coach-feedback-section-head {
+    margin-bottom: 1rem;
+  }
+
+  .coach-feedback-section-head h3,
+  .coach-feedback-doc-head h3 {
+    font-size: 1.45rem;
+    font-weight: 540;
+    line-height: 1.08;
+  }
+
+  .coach-feedback-lens-grid,
+  .coach-feedback-doc-grid,
+  .coach-feedback-custom-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .coach-feedback-lens-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .coach-feedback-doc-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .coach-feedback-lens-card {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.85rem;
+    padding: 1rem;
+    border-radius: 22px;
+    background: #f8fafc;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .coach-feedback-lens-index {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    background: #000000;
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .coach-feedback-lens-label,
+  .coach-feedback-custom-head span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 0.72rem;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .coach-feedback-doc-card {
+    padding: 1.25rem;
+  }
+
+  .coach-feedback-doc-head h3 {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+
+  .coach-feedback-doc-icon {
+    flex-shrink: 0;
+  }
+
+  .coach-feedback-doc-icon.is-blue {
+    color: #2563eb;
+  }
+
+  .coach-feedback-doc-icon.is-violet {
+    color: #7c3aed;
+  }
+
+  .coach-feedback-doc-list,
+  .coach-feedback-custom-list {
+    display: grid;
+    gap: 0.85rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .coach-feedback-doc-list li,
+  .coach-feedback-custom-list li {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .coach-feedback-doc-title,
+  .coach-feedback-empty-title {
+    margin: 0 0 0.25rem;
+    color: #000000;
+    font-size: 0.96rem;
+    font-weight: 540;
+    line-height: 1.45;
+  }
+
+  .coach-feedback-doc-empty {
+    color: rgba(0, 0, 0, 0.52);
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .coach-feedback-head-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 2.45rem;
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    background: #000000;
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 540;
+    white-space: nowrap;
+  }
+
+  .coach-feedback-empty-panel {
+    padding: 1rem 1.05rem;
+    border-radius: 22px;
+    border: 1px dashed rgba(0, 0, 0, 0.18);
+    background: #f8fafc;
+  }
+
+  .coach-feedback-custom-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 1rem;
+  }
+
+  .coach-feedback-custom-card {
+    padding: 1rem;
+    border-radius: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+  }
+
+  .coach-feedback-custom-card.is-sky {
+    background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%);
+    border-color: rgba(96, 165, 250, 0.28);
+  }
+
+  .coach-feedback-custom-card.is-emerald {
+    background: linear-gradient(180deg, #ecfdf5 0%, #ffffff 100%);
+    border-color: rgba(52, 211, 153, 0.26);
+  }
+
+  .coach-feedback-custom-card.is-amber {
+    background: linear-gradient(180deg, #fffbeb 0%, #ffffff 100%);
+    border-color: rgba(251, 191, 36, 0.28);
+  }
+
+  .coach-feedback-custom-head {
+    display: grid;
+    gap: 0.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .coach-feedback-custom-list li svg {
+    color: #000000;
+  }
+
+  .coach-jobs-kpi-grid,
+  .coach-jobs-overview-grid,
+  .coach-jobs-lens-grid,
+  .coach-jobs-results-shell {
+    position: relative;
+  }
+
+  .coach-jobs-kpi-card {
+    overflow: hidden;
+    background:
+      radial-gradient(circle at top right, rgba(148, 163, 184, 0.14), transparent 30%),
+      #ffffff;
+  }
+
+  .coach-jobs-kpi-card.is-soft-blue {
+    background:
+      radial-gradient(circle at top right, rgba(96, 165, 250, 0.22), transparent 34%),
+      linear-gradient(180deg, #f5fbff 0%, #ffffff 100%);
+  }
+
+  .coach-jobs-kpi-card.is-soft-violet {
+    background:
+      radial-gradient(circle at top right, rgba(167, 139, 250, 0.22), transparent 34%),
+      linear-gradient(180deg, #faf5ff 0%, #ffffff 100%);
+  }
+
+  .coach-jobs-match-shell {
+    background:
+      radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 28%),
+      linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  }
+
+  .coach-jobs-profile-shell {
+    background:
+      radial-gradient(circle at top right, rgba(16, 185, 129, 0.12), transparent 28%),
+      linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  }
+
+  .coach-jobs-profile-shell h3,
+  .coach-jobs-results-shell h3 {
+    color: #000000 !important;
+  }
+
+  .coach-jobs-profile-shell .text-slate-500,
+  .coach-jobs-profile-shell .text-slate-800,
+  .coach-jobs-profile-shell .text-slate-900 {
+    color: inherit;
+  }
+
+  .coach-jobs-lens-grid article {
+    background:
+      linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  }
+
+  .coach-job-analysis .coach-job-meta-pill,
+  .coach-job-analysis .coach-job-stat-card,
+  .coach-job-analysis .coach-job-chart-panel,
+  .coach-job-analysis .coach-job-history-panel,
+  .coach-job-analysis .coach-job-list-card {
+    backdrop-filter: saturate(140%) blur(6px);
+  }
+
+  .coach-job-analysis .coach-job-chart-panel,
+  .coach-job-analysis .coach-job-history-panel,
+  .coach-job-analysis .coach-job-ai-panel,
+  .coach-job-analysis .coach-job-list-panel {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  }
+
+  .coach-job-analysis .coach-job-story-stack {
+    align-content: start;
+  }
+
+  .coach-job-analysis .coach-job-insight-card {
+    border-radius: 24px;
+    background:
+      radial-gradient(circle at top right, rgba(125, 211, 252, 0.16), transparent 24%),
+      linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .coach-job-analysis .coach-job-insight-card h3 {
+    letter-spacing: -0.03em;
+  }
+
+  .coach-job-analysis .coach-job-list-summary > div,
+  .coach-job-analysis .coach-job-list-filters > * {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  }
+
+  .coach-job-analysis .coach-job-list-grid {
+    align-items: stretch;
+  }
+
+  .coach-job-analysis .coach-job-list-card {
+    background:
+      radial-gradient(circle at top right, rgba(96, 165, 250, 0.08), transparent 24%),
+      rgba(2, 6, 23, 0.84);
+  }
+
+  .coach-job-analysis .coach-job-hero {
+    position: relative;
+  }
+
+  .coach-job-analysis .coach-job-tabstrip {
+    padding: 0.15rem;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.04);
+    width: fit-content;
+  }
+
+  .coach-job-analysis .coach-job-ai-panel,
+  .coach-job-analysis .coach-job-list-panel {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .coach-job-analysis .coach-job-ai-panel::before,
+  .coach-job-analysis .coach-job-list-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0.22rem;
+    background: linear-gradient(180deg, #a78bfa 0%, #60a5fa 100%);
+    opacity: 0.95;
+  }
+
+  .coach-job-analysis .coach-job-overview {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .coach-commandbar {
+    grid-template-columns: minmax(14rem, auto) minmax(18rem, 1fr) auto;
+    gap: 0.8rem;
+    padding: 0.9rem 1.15rem;
+    background: rgba(255, 255, 255, 0.96);
+  }
+
+  .coach-command-status {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.75rem;
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.65rem 0.9rem;
+    border-radius: 18px;
+    background: #f8fafc;
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .coach-command-context,
+  .coach-command-meta {
+    display: grid;
+    align-content: center;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+
+  .coach-command-context strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .coach-command-meta {
+    justify-items: end;
+  }
+
+  .coach-command-meta small {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 0.72rem;
+    line-height: 1.2;
+  }
+
+  .coach-side-panel {
+    gap: 0.9rem;
+  }
+
+  .coach-side-current {
+    padding: 1rem;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(248, 250, 252, 1) 100%);
+    color: #000000 !important;
+    border-left: 4px solid var(--feature-accent);
+  }
+
+  .coach-side-current::after {
+    content: none;
+  }
+
+  .coach-side-current-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .coach-side-current h2,
+  .coach-side-current > p:not(.coach-side-eyebrow) {
+    color: inherit !important;
+  }
+
+  .coach-side-eyebrow {
+    color: rgba(0, 0, 0, 0.52) !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.08em;
+  }
+
+  .coach-side-section-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.9rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.94);
+    color: rgba(0, 0, 0, 0.68);
+    font-size: 0.72rem;
+    font-weight: 540;
+    white-space: nowrap;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .coach-side-current-meta {
+    background: rgba(255, 255, 255, 0.84);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .coach-side-current-meta span,
+  .coach-side-current-meta strong {
+    color: inherit !important;
+  }
+
+  .coach-side-switch-chip {
+    border-color: rgba(0, 0, 0, 0.12);
+    background: #f8fafc !important;
+    color: rgba(0, 0, 0, 0.72) !important;
+  }
+
+  .coach-side-switch-chip.is-active {
+    background: var(--feature-accent) !important;
+    color: #ffffff !important;
+    border-color: var(--feature-accent);
+  }
+
+  .coach-side-actions button {
+    border-color: rgba(0, 0, 0, 0.12);
+    background: #f8fafc !important;
+    color: #000000 !important;
+  }
+
+  .coach-side-tools {
+    padding: 0.85rem;
+  }
+
+  .coach-side-tool {
+    min-height: 3rem;
+    padding: 0.55rem 0.65rem;
+    border-radius: 18px;
+  }
+
+  .coach-side-tool.is-active {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-color: rgba(0, 0, 0, 0.12);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+  }
+
+  .coach-side-tool-icon {
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 14px;
+    background: #f8fafc;
+  }
+
+  .coach-side-tool.is-active .coach-side-tool-icon {
+    background: color-mix(in srgb, var(--feature-accent) 12%, white);
+    color: var(--feature-accent);
+  }
+
+  .coach-side-tool-copy {
+    display: grid;
+    gap: 0.08rem;
+    min-width: 0;
+  }
+
+  .coach-side-tool-copy small {
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 0.72rem;
+    line-height: 1.2;
+  }
+
+  .coach-dossier-header {
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.55fr);
+    align-items: stretch;
+    min-height: 0;
+    padding: 1.15rem 1.2rem;
+    border-radius: 24px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0 78%, rgba(248, 250, 252, 1) 78% 100%);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 12px 34px rgba(15, 23, 42, 0.04);
+  }
+
+  .coach-dossier-tab {
+    align-items: flex-start;
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .coach-dossier-tab::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    bottom: 0.1rem;
+    width: 4px;
+    border-radius: 999px;
+    background: var(--feature-accent);
+  }
+
+  .coach-dossier-tab h2 {
+    margin-top: 0;
+    font-size: clamp(1.7rem, 3vw, 2.6rem);
+    font-weight: 540;
+    letter-spacing: -0.05em;
+  }
+
+  .coach-dossier-copy > p:last-of-type {
+    max-width: 40rem;
+    margin-top: 0.55rem;
+    font-size: 0.94rem;
+    color: rgba(0, 0, 0, 0.6) !important;
+  }
+
+  .coach-dossier-meta {
+    display: grid;
+    gap: 0.7rem;
+    align-content: start;
+  }
+
+  .coach-dossier-meta > div {
+    padding: 0.85rem 0.95rem;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #f8fafc;
+  }
+
+  .coach-dossier-meta span {
+    display: block;
+    margin-bottom: 0.28rem;
+    color: rgba(0, 0, 0, 0.45);
+    font-size: 0.65rem;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .coach-dossier-meta strong {
+    display: block;
+    color: #000000;
+    font-size: 0.9rem;
+    font-weight: 540;
+    line-height: 1.45;
+  }
+
+  .coach-track-gate-shell {
+    background: #f5f7fb;
+  }
+
+  .coach-track-gate-board {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+    min-height: auto;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border-bottom: 0;
+  }
+
+  .coach-track-gate-board::before {
+    content: none;
+  }
+
+  .coach-track-gate-copy {
+    min-height: 0;
+    padding: 1.35rem 1.45rem;
+    border-radius: 28px;
+    background: #ffffff;
+    border: 1px solid rgba(25, 31, 40, 0.08);
+    color: rgba(0, 0, 0, 0.68);
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.04);
+  }
+
+  .coach-track-gate-copy h1 {
+    color: #000000 !important;
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    line-height: 0.96;
+  }
+
+  .coach-track-gate-copy > p {
+    max-width: 44rem;
+    color: rgba(0, 0, 0, 0.62) !important;
+  }
+
+  .coach-track-grid {
+    gap: 1rem;
+  }
+
+  .coach-track-card {
+    min-height: 16rem;
+    padding: 1.15rem;
+    border-color: rgba(0, 0, 0, 0.1);
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.03);
+  }
+
+  .coach-track-card:hover {
+    border-color: rgba(0, 0, 0, 0.18);
+    background: #fcfcfd !important;
+  }
+
+  .coach-track-card.is-active {
+    border-color: color-mix(in srgb, var(--feature-accent) 28%, rgba(0, 0, 0, 0.14));
+    background: color-mix(in srgb, var(--feature-accent) 4%, white) !important;
+    box-shadow: 0 14px 36px rgba(15, 23, 42, 0.06) !important;
+  }
+
+  .coach-track-card-index,
+  .coach-track-card-icon {
+    background: color-mix(in srgb, var(--feature-accent) 10%, white);
+  }
+
+  .coach-input-shell {
+    background: #ffffff;
+  }
+
+  .coach-input-main {
+    background: #ffffff;
+  }
+
+  .coach-input-side {
+    background: #f8fafc;
+    color: #000000;
+  }
+
+  .coach-input-section-shell {
+    border-radius: 28px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+  }
+
+  .coach-input-submit-shell > button {
+    border-radius: 18px;
+    background: #000000 !important;
+  }
+
+  .coach-jobs-workspace {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .coach-jobs-kpi-grid {
+    gap: 0.9rem;
+  }
+
+  .coach-jobs-kpi-card {
+    background: #ffffff;
+    border-radius: 20px;
+  }
+
+  .coach-jobs-match-shell,
+  .coach-jobs-profile-shell,
+  .coach-jobs-results-shell {
+    background: #ffffff;
+    border-radius: 28px;
+  }
+
+  .coach-jobs-workflow-card,
+  .coach-jobs-filter-scope {
+    min-height: 100%;
+  }
+
+  .coach-jobs-profile-shell {
+    display: grid;
+    align-content: start;
+  }
+
+  .coach-market-panel,
+  .coach-market-panel-large {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 28px;
+    background: #ffffff;
+  }
+
+  .coach-market-panel {
+    padding: 1.25rem;
+  }
+
+  .coach-market-panel-large {
+    padding: 1.35rem;
+  }
+
+  .coach-market-panel-empty {
+    padding: 1.35rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 28px;
+    background: #ffffff;
+    color: rgba(0, 0, 0, 0.52);
+  }
+
+  .coach-market-kicker {
+    margin: 0;
+    color: rgba(0, 0, 0, 0.46);
+    font-size: 0.68rem;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .coach-market-title,
+  .coach-market-section-title {
+    margin: 0.15rem 0 0;
+    color: #000000;
+    letter-spacing: -0.04em;
+  }
+
+  .coach-market-title {
+    font-size: 1.1rem;
+    font-weight: 540;
+  }
+
+  .coach-market-section-title {
+    font-size: 1.9rem;
+    font-weight: 540;
+    line-height: 1.08;
+  }
+
+  .coach-market-copy {
+    margin: 0.55rem 0 0;
+    color: rgba(0, 0, 0, 0.62);
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .coach-market-pill {
+    padding: 0.95rem 1rem;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #f8fafc;
+  }
+
+  .coach-market-pill p,
+  .coach-market-record-stat p,
+  .coach-market-stat-head p {
+    margin: 0;
+    color: rgba(0, 0, 0, 0.46);
+    font-size: 0.66rem;
+    font-family: figmaMono, "SF Mono", Menlo, monospace;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .coach-market-pill strong {
+    display: block;
+    margin-top: 0.45rem;
+    color: #000000;
+    font-size: 0.9rem;
+    font-weight: 540;
+    line-height: 1.4;
+  }
+
+  .coach-market-stat {
+    padding: 1rem 1.05rem;
+    border-radius: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .coach-market-stat-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  .coach-market-stat strong {
+    display: block;
+    margin-top: 0.9rem;
+    color: #000000;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+  }
+
+  .coach-market-stat-delta {
+    margin: 0.35rem 0 0;
+    color: #1d4ed8;
+    font-size: 0.8rem;
+    font-weight: 540;
+  }
+
+  .coach-market-stat-helper {
+    margin: 0.25rem 0 0;
+    color: rgba(0, 0, 0, 0.58);
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+
+  .coach-market-inline-chip,
+  .coach-market-count,
+  .coach-status-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    color: rgba(0, 0, 0, 0.68);
+    font-size: 0.76rem;
+    font-weight: 540;
+  }
+
+  .coach-market-count {
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .coach-market-count.is-filled {
+    background: #000000;
+    border-color: #000000;
+    color: #ffffff;
+  }
+
+  .coach-status-chip.is-success {
+    border-color: rgba(16, 185, 129, 0.22);
+    background: rgba(16, 185, 129, 0.08);
+    color: #047857;
+  }
+
+  .coach-status-chip.is-warning {
+    border-color: rgba(245, 158, 11, 0.22);
+    background: rgba(245, 158, 11, 0.08);
+    color: #b45309;
+  }
+
+  .coach-status-chip.is-danger {
+    border-color: rgba(244, 63, 94, 0.22);
+    background: rgba(244, 63, 94, 0.08);
+    color: #be123c;
+  }
+
+  .coach-status-chip.is-neutral {
+    border-color: rgba(0, 0, 0, 0.08);
+    background: #f8fafc;
+    color: rgba(0, 0, 0, 0.62);
+  }
+
+  .coach-market-tab {
+    border-color: rgba(0, 0, 0, 0.12);
+    background: #ffffff;
+    color: rgba(0, 0, 0, 0.62);
+  }
+
+  .coach-market-tab:hover {
+    border-color: rgba(0, 0, 0, 0.24);
+    color: #000000;
+  }
+
+  .coach-market-tab.is-active {
+    border-color: #000000;
+    background: #000000;
+    color: #ffffff;
+  }
+
+  .coach-market-action {
+    background: #000000;
+    color: #ffffff;
+  }
+
+  .coach-market-action.is-disabled {
+    background: #e5e7eb;
+    color: #6b7280;
+  }
+
+  .coach-market-analysis-body {
+    margin-top: 1rem;
+    padding: 1rem 1.05rem;
+    border-radius: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #f8fafc;
+  }
+
+  .coach-market-legend {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.95rem;
+    padding: 0.3rem 0.72rem;
+    border-radius: 999px;
+    font-weight: 540;
+  }
+
+  .coach-market-legend.is-blue {
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.18);
+    color: #1d4ed8;
+  }
+
+  .coach-market-legend.is-violet {
+    background: rgba(139, 92, 246, 0.08);
+    border: 1px solid rgba(139, 92, 246, 0.18);
+    color: #6d28d9;
+  }
+
+  .coach-market-record {
+    padding: 0.95rem 1rem;
+    border-radius: 22px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #f8fafc;
+  }
+
+  .coach-market-record-stat {
+    padding: 0.75rem 0.85rem;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+  }
+
+  .coach-market-record-stat strong {
+    display: block;
+    margin-top: 0.28rem;
+    color: #000000;
+    font-size: 0.92rem;
+    font-weight: 540;
+  }
+
+  .coach-market-search,
+  .coach-market-select {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    background: #f8fafc;
+    color: #000000;
+  }
+
+  .coach-market-search {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.95rem 1rem;
+  }
+
+  .coach-market-select {
+    width: 100%;
+    padding: 0.95rem 1rem;
+    font-size: 0.92rem;
+    outline: none;
+  }
+
+  .coach-market-keyword,
+  .coach-market-mini-chip,
+  .coach-market-tag {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .coach-market-keyword,
+  .coach-market-tag {
+    padding: 0.35rem 0.75rem;
+  }
+
+  .coach-market-mini-chip {
+    padding: 0.3rem 0.62rem;
+  }
+
+  .coach-market-keyword.is-primary,
+  .coach-market-tag.is-role {
+    background: rgba(59, 130, 246, 0.08);
+    border-color: rgba(59, 130, 246, 0.18);
+    color: #1d4ed8;
+  }
+
+  .coach-market-tag.is-career {
+    background: rgba(16, 185, 129, 0.08);
+    border-color: rgba(16, 185, 129, 0.18);
+    color: #047857;
+  }
+
+  .coach-market-tag.is-employment,
+  .coach-market-mini-chip.is-keyword {
+    background: rgba(139, 92, 246, 0.08);
+    border-color: rgba(139, 92, 246, 0.18);
+    color: #6d28d9;
+  }
+
+  .coach-market-keyword.is-muted {
+    background: #f8fafc;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .coach-market-table thead tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    color: rgba(0, 0, 0, 0.48);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .coach-market-table tbody tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .coach-market-list-card {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 24px;
+    background: #ffffff;
+    padding: 1.1rem;
+    transition: border-color 160ms ease, transform 160ms ease, background 160ms ease;
+  }
+
+  .coach-market-list-card:hover {
+    border-color: rgba(0, 0, 0, 0.18);
+    background: #fcfcfd;
+    transform: translateY(-1px);
+  }
+
+  .coach-market-date-pill {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #f8fafc;
+    padding: 0.35rem 0.7rem;
+    color: rgba(0, 0, 0, 0.58);
+    font-size: 0.76rem;
+  }
+
+  .coach-market-link-button {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.2rem;
+    padding: 0.5rem 0.95rem;
+    border-radius: 999px;
+    background: #000000;
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 540;
+  }
+
+  .coach-job-hero {
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 32px;
+    background:
+      radial-gradient(circle at top right, rgba(59, 130, 246, 0.1), transparent 28%),
+      linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  }
+
+  .coach-pdf-page {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .coach-pdf-status-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .coach-pdf-status-card {
+    display: grid;
+    gap: 0.45rem;
+    border-radius: 24px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: #f8fafc;
+    padding: 1rem 1.05rem;
+  }
+
+  .coach-pdf-status-card.is-ready {
+    background: #f0fdf4;
+    border-color: rgba(34, 197, 94, 0.18);
+  }
+
+  .coach-pdf-status-card.is-pending {
+    background: #fff7ed;
+    border-color: rgba(245, 158, 11, 0.18);
+  }
+
+  .coach-pdf-status-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.35rem;
+    height: 2.35rem;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.08);
+    color: #0f172a;
+  }
+
+  .coach-pdf-status-card.is-ready .coach-pdf-status-icon {
+    background: rgba(34, 197, 94, 0.14);
+    color: #15803d;
+  }
+
+  .coach-pdf-status-card.is-pending .coach-pdf-status-icon {
+    background: rgba(245, 158, 11, 0.14);
+    color: #c2410c;
+  }
+
+  .coach-pdf-status-card strong {
+    color: #0f172a;
+    font-size: 0.98rem;
+    font-weight: 800;
+    line-height: 1.35;
+  }
+
+  .coach-pdf-status-card p {
+    margin: 0;
+    color: rgba(15, 23, 42, 0.7);
+    font-size: 0.89rem;
+    line-height: 1.6;
+  }
+
+  .coach-pdf-instructor-list {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .coach-pdf-instructor-row {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 0.9rem;
+    align-items: start;
+    padding: 0.95rem 1rem;
+    border-radius: 22px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: rgba(248, 250, 252, 0.92);
+  }
+
+  .coach-pdf-instructor-row span {
+    color: rgba(15, 23, 42, 0.48);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .coach-pdf-instructor-row p {
+    margin: 0;
+    color: rgba(15, 23, 42, 0.74);
+    font-size: 0.92rem;
+    line-height: 1.65;
+    word-break: keep-all;
+  }
+
+  .coach-pdf-export-box {
+    display: grid;
+    gap: 1rem;
+  }
+
+  @media (max-width: 1024px) {
+    .coach-commandbar {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .coach-command-status,
+    .coach-command-tools {
+      justify-self: start;
+    }
+
+    .coach-body-shell {
+      grid-template-columns: 1fr;
+      overflow-y: auto;
+    }
+
+    .coach-dossier-header {
+      grid-template-columns: 1fr;
+    }
+
+    .coach-track-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .coach-portfolio-hero,
+    .coach-feedback-hero,
+    .coach-interview-overview,
+    .coach-readiness-hero,
+    .coach-readiness-layout,
+    .coach-jobs-overview-grid,
+    .coach-input-shell-grid,
+    .coach-portfolio-main-grid,
+    .coach-portfolio-signal-grid,
+    .coach-feedback-doc-grid,
+    .coach-feedback-custom-grid,
+    .coach-feedback-lens-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .coach-interview-card-grid,
+    .coach-readiness-card-grid,
+    .coach-interview-answer-grid,
+    .coach-interview-tip-grid,
+    .coach-pdf-status-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .coach-body-shell .coach-workspace,
+    .coach-side-panel {
+      overflow: visible;
+    }
+
+    .coach-case-board {
+      grid-template-columns: 1fr;
+    }
+
+    .coach-mission-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .coach-mission-node:nth-child(n) {
+      grid-column: span 1;
+    }
+
+    .coach-workbench-header,
+    .coach-dossier-header,
+    .coach-workbench-meta {
+      grid-template-columns: 1fr;
+    }
+
+    .coach-workbench-meta {
+      display: grid;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .coach-commandbar {
+      padding: 0.85rem 1rem;
+    }
+
+    .coach-command-tools {
+      display: none;
+    }
+
+    .coach-command-status {
+      width: 100%;
+      grid-template-columns: 1fr;
+      border-radius: 18px;
+    }
+
+    .coach-command-meta {
+      justify-items: start;
+    }
+
+    .coach-case-board {
+      padding: 0.85rem 1rem 1rem;
+    }
+
+    .coach-case-copy {
+      min-height: 0;
+      padding: 1.1rem;
+    }
+
+    .coach-case-copy h1 {
+      font-size: clamp(2.4rem, 16vw, 4rem);
+    }
+
+    .coach-mission-grid {
+      display: flex;
+      overflow-x: auto;
+      padding-bottom: 0.2rem;
+    }
+
+    .coach-mission-node {
+      min-width: 9.4rem;
+    }
+
+    .coach-mobile-tools {
+      display: flex;
+    }
+
+    .coach-body-shell {
+      padding: 0.85rem 1rem 1.25rem;
+    }
+
+    .coach-track-gate-shell {
+      padding: 0.85rem 1rem 1.25rem;
+    }
+
+    .coach-shell .coach-rail {
+      width: 100%;
+      background: linear-gradient(180deg, #fffaf0 0%, #f1e6d4 100%) !important;
+    }
+
+    .coach-shell .apple-nav-list {
+      grid-template-columns: 1fr;
+    }
+
+    .coach-rail-note {
+      display: none;
+    }
+
+    .coach-workbench-heading h2 {
+      font-size: clamp(2rem, 11vw, 3rem);
+    }
+
+    .coach-dossier-header {
+      align-items: stretch;
+    }
+
+    .coach-dossier-meta {
+      grid-template-columns: 1fr;
+    }
+
+    .coach-portfolio-section-head,
+    .coach-portfolio-github-head,
+    .coach-portfolio-doc-head,
+    .coach-feedback-section-head,
+    .coach-feedback-doc-head {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .coach-dossier-heading {
+      align-items: flex-start;
+    }
+
+    .coach-dossier-notes {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .coach-pdf-instructor-row {
+      grid-template-columns: 1fr;
+    }
+
+    .coach-content-brief {
+      grid-template-columns: 1fr;
+    }
+
+    .coach-content-brief div {
+      padding-right: 0;
+      padding-bottom: 0.75rem;
+      border-right: 0;
+      border-bottom: 1px solid rgba(24, 32, 51, 0.11);
+    }
+
+    .coach-jobs-kpi-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .coach-interview-question-shell {
+      grid-template-columns: 1fr;
+    }
+
+    .coach-interview-question-index {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+
+    .coach-interview-tabs {
+      grid-template-columns: 1fr;
+    }
+
+    .coach-workbench-meta div,
+    .coach-workbench-meta button {
+      min-width: 0;
+    }
+  }

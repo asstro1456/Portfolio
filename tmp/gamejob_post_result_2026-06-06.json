@@ -1,0 +1,5 @@
+{
+  "ok": true,
+  "status": 200,
+  "text": "{\"ok\":true,\"spreadsheetUrl\":\"https://docs.google.com/spreadsheets/d/1FJ-q13akZExmQUzZ3Tj8vHLoAWz7WxkdUjpBB1iVWUA/edit\",\"기준일\":\"2026-06-06\",\"weekly\":{\"inserted\":1,\"updated\":0,\"skipped\":0},\"jobs\":{\"inserted\":196,\"updated\":0,\"skipped\":0},\"excluded\":{\"inserted\":248,\"updated\":0,\"skipped\":0},\"manualExperience\":{\"preservedManual\":40,\"reclassified\":22,\"recordedExcluded\":8,\"ambiguousManual\":0,\"staleManual\":0,\"unmatchedManual\":1},\"manualWeekly\":{\"updated\":3,\"inserted\":0},\"gameReferences\":{\"inserted\":0,\"updated\":0,\"skipped\":0},\"companyMonitor\":{\"inserted\":0,\"updated\":0,\"skipped\":0},\"industryMaterials\":{\"inserted\":0,\"updated\":0,\"skipped\":0},\"importedGameReferences\":{\"inserted\":0,\"updated\":0,\"skipped\":0}}"
+}
