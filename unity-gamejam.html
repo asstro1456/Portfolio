@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Unity AI Game Jam 제출용 게임 기획 포트폴리오. 기획 의도, 구현 및 검증 사례를 소개합니다.">
+<title>Unity AI Game Jam | 게임 기획 포트폴리오</title>
+<style>
+:root{color-scheme:dark;--bg:#11151d;--panel:#1b222e;--line:#343d4c;--text:#eff2f7;--muted:#bbc5d2;--accent:#9cc9eb}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 system-ui,-apple-system,"Malgun Gothic",sans-serif}
+.wrap{width:min(1050px,calc(100% - 40px));margin:auto}
+header{border-bottom:1px solid var(--line);padding:18px 0}header .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px}
+a{color:var(--accent)}nav a{margin-left:16px;text-decoration:none}nav a:hover{text-decoration:underline}
+.hero{padding:75px 0 65px}h1{font-size:clamp(32px,5vw,56px);line-height:1.2;margin:12px 0 24px}h2{font-size:27px;margin:0 0 12px}h3{font-size:23px;margin:0 0 8px}
+.kicker{letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-size:13px;font-weight:700}
+.lead{color:var(--muted);font-size:19px;max-width:760px}
+section{padding-bottom:64px}.section-intro{color:var(--muted);margin:0 0 25px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.card{border:1px solid var(--line);border-radius:14px;background:var(--panel);overflow:hidden}
+.card img{width:100%;height:230px;object-fit:cover;display:block;background:#2a3444}
+.card-content{padding:22px}.tag{color:var(--accent);font-size:13px;font-weight:700}.card p{color:var(--muted);margin:10px 0 0}
+.method{padding:25px;background:var(--panel);border:1px solid var(--line);border-radius:14px}
+.method p{margin:0;color:var(--muted)}
+footer{padding:25px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}nav a{margin-left:8px}.hero{padding:48px 0} .card img{height:200px}}
+</style>
+</head>
+<body id="top">
+<header><div class="wrap"><strong>게임 기획 포트폴리오</strong><nav><a href="#projects">프로젝트</a><a href="#approach">제작 방식</a></nav></div></header>
+<main>
+<section class="hero wrap">
+<div class="kicker">Unity AI Game Jam · 공개용 포트폴리오</div>
+<h1>플레이 규칙을 설계하고<br>구현 결과로 검증합니다.</h1>
+<p class="lead">플레이어가 무엇을 보고 어떤 선택을 하게 할지 생각하며 규칙과 화면의 동작 조건을 정리합니다. 프로토타입을 제작하고 실제 결과를 확인하며 기획을 수정합니다.</p>
+</section>
+<section class="wrap" id="projects">
+<h2>대표 프로젝트</h2><p class="section-intro">기획 의도, 구현 범위, 피드백에 따른 변경 경험을 중심으로 정리했습니다.</p>
+<div class="grid">
+<article class="card"><img src="assets/images/rune-trace-prototype.png" alt="Rune Trace 퍼즐 프로토타입"><div class="card-content"><div class="tag">개인 프로젝트 · 2026.07</div><h3>Rune Trace</h3><p>경로를 고민할 시간을 주기 위해 실시간 디펜스를 턴제 퍼즐로 변경했습니다. 웹 프로토타입의 플레이 로그를 살피며 입력에 어려움을 겪는 구간을 확인하고 다음 테스트 기준을 정리했습니다.</p></div></article>
+<article class="card"><img src="assets/images/nyannyanstar-keyart.png" alt="냥냥스타 대표 이미지"><div class="card-content"><div class="tag">기업 협업 · 2026.05–07</div><h3>냥냥스타</h3><p>이미지 공유 기능을 제안하고 제작 여건에 맞춰 범위를 조정했습니다. 글로 전달하기 어려운 조작을 프로토타입으로 보여주고 구현 결과의 차이를 QA로 추적했습니다.</p></div></article>
+<article class="card"><img src="assets/images/ut-maintenance-ui.png" alt="Project UT 정비 공간 UI"><div class="card-content"><div class="tag">팀 프로젝트 · 2026.04~</div><h3>Project UT</h3><p>UI/UX 및 내러티브 연출을 기획하고 Unity에서 UI, 애니메이션, VFX 제작에 참여했습니다. 기능 조건과 입력 우선순위를 정리하고 개발팀과 구현·수정 사항을 조율했습니다.</p></div></article>
+<article class="card"><img src="assets/images/project-bb-thumbnail.png" alt="Project BB 대표 이미지"><div class="card-content"><div class="tag">팀 프로젝트 · 2026.03–04</div><h3>Project BB</h3><p>무작위 맵 생성, 공간 배치, 방 진행 규칙을 나눠 설계했습니다. Unity에서 실제 플레이 공간을 확인하며 입구 세이프 존을 적용했습니다.</p></div></article>
+<article class="card"><img src="assets/images/naringarak-gwishin.png" alt="나린가락 게임 장면"><div class="card-content"><div class="tag">팀 프로젝트 · 2026.02–03</div><h3>나린가락</h3><p>힐링 감성과 제작 일정을 함께 고려해 시나리오 분량을 조정하고 팀 역할 및 진행 상황을 공유해 5개 스테이지의 게임으로 완성했습니다.</p></div></article>
+<article class="card"><img src="assets/images/exit-value-erd-display.png" alt="Exit Value 데이터 관계도"><div class="card-content"><div class="tag">팀 프로젝트 · 2026.01</div><h3>Exit Value</h3><p>시나리오를 데이터 테이블과 관계도로 정리해 기능과 연결했습니다. 엔진 적용 중 발생한 문제를 구조 개선 방향에 반영했습니다.</p></div></article>
+</div></section>
+<section class="wrap" id="approach"><h2>제작 방식</h2><div class="method"><p>아이디어를 전달할 때 기대하는 플레이 경험과 구현 규칙을 함께 정리합니다. 애매한 입력과 예외 상황은 명세로 구분하고, 설명만으로 부족한 조작은 프로토타입으로 보여줍니다. Unity 및 AI 개발 도구를 활용할 때에도 결과를 직접 확인하고 수정합니다.</p></div></section>
+</main><footer><div class="wrap">게임 기획 프로젝트 기록 · Unity AI Game Jam 제출용 공개 페이지</div></footer>
+</body></html>
