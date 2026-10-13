@@ -1,49 +1,75 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Unity AI Game Jam 제출용 게임 기획 포트폴리오. 기획 의도, 구현 및 검증 사례를 소개합니다.">
-<title>Unity AI Game Jam | 게임 기획 포트폴리오</title>
-<style>
-:root{color-scheme:dark;--bg:#11151d;--panel:#1b222e;--line:#343d4c;--text:#eff2f7;--muted:#bbc5d2;--accent:#9cc9eb}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 system-ui,-apple-system,"Malgun Gothic",sans-serif}
-.wrap{width:min(1050px,calc(100% - 40px));margin:auto}
-header{border-bottom:1px solid var(--line);padding:18px 0}header .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px}
-a{color:var(--accent)}nav a{margin-left:16px;text-decoration:none}nav a:hover{text-decoration:underline}
-.hero{padding:75px 0 65px}h1{font-size:clamp(32px,5vw,56px);line-height:1.2;margin:12px 0 24px}h2{font-size:27px;margin:0 0 12px}h3{font-size:23px;margin:0 0 8px}
-.kicker{letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-size:13px;font-weight:700}
-.lead{color:var(--muted);font-size:19px;max-width:760px}
-section{padding-bottom:64px}.section-intro{color:var(--muted);margin:0 0 25px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
-.card{border:1px solid var(--line);border-radius:14px;background:var(--panel);overflow:hidden}
-.card img{width:100%;height:230px;object-fit:cover;display:block;background:#2a3444}
-.card-content{padding:22px}.tag{color:var(--accent);font-size:13px;font-weight:700}.card p{color:var(--muted);margin:10px 0 0}
-.method{padding:25px;background:var(--panel);border:1px solid var(--line);border-radius:14px}
-.method p{margin:0;color:var(--muted)}
-footer{padding:25px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
-@media(max-width:700px){.grid{grid-template-columns:1fr}nav a{margin-left:8px}.hero{padding:48px 0} .card img{height:200px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="유니티 게임잼 참가용 이동현 포트폴리오. 시스템과 콘텐츠 기획, Unity UI 상태 확인, 프로토타입과 협업 경험을 소개합니다.">
+  <title>이동현 | 유니티 게임잼 포트폴리오</title>
+  <link rel="stylesheet" href="css/resume-showcase.css">
 </head>
-<body id="top">
-<header><div class="wrap"><strong>게임 기획 포트폴리오</strong><nav><a href="#projects">프로젝트</a><a href="#approach">제작 방식</a></nav></div></header>
-<main>
-<section class="hero wrap">
-<div class="kicker">Unity AI Game Jam · 공개용 포트폴리오</div>
-<h1>플레이 규칙을 설계하고<br>구현 결과로 검증합니다.</h1>
-<p class="lead">플레이어가 무엇을 보고 어떤 선택을 하게 할지 생각하며 규칙과 화면의 동작 조건을 정리합니다. 프로토타입을 제작하고 실제 결과를 확인하며 기획을 수정합니다.</p>
-</section>
-<section class="wrap" id="projects">
-<h2>대표 프로젝트</h2><p class="section-intro">기획 의도, 구현 범위, 피드백에 따른 변경 경험을 중심으로 정리했습니다.</p>
-<div class="grid">
-<article class="card"><img src="assets/images/rune-trace-prototype.png" alt="Rune Trace 퍼즐 프로토타입"><div class="card-content"><div class="tag">개인 프로젝트 · 2026.07</div><h3>Rune Trace</h3><p>경로를 고민할 시간을 주기 위해 실시간 디펜스를 턴제 퍼즐로 변경했습니다. 웹 프로토타입의 플레이 로그를 살피며 입력에 어려움을 겪는 구간을 확인하고 다음 테스트 기준을 정리했습니다.</p></div></article>
-<article class="card"><img src="assets/images/nyannyanstar-keyart.png" alt="냥냥스타 대표 이미지"><div class="card-content"><div class="tag">기업 협업 · 2026.05–07</div><h3>냥냥스타</h3><p>이미지 공유 기능을 제안하고 제작 여건에 맞춰 범위를 조정했습니다. 글로 전달하기 어려운 조작을 프로토타입으로 보여주고 구현 결과의 차이를 QA로 추적했습니다.</p></div></article>
-<article class="card"><img src="assets/images/ut-maintenance-ui.png" alt="Project UT 정비 공간 UI"><div class="card-content"><div class="tag">팀 프로젝트 · 2026.04~</div><h3>Project UT</h3><p>UI/UX 및 내러티브 연출을 기획하고 Unity에서 UI, 애니메이션, VFX 제작에 참여했습니다. 기능 조건과 입력 우선순위를 정리하고 개발팀과 구현·수정 사항을 조율했습니다.</p></div></article>
-<article class="card"><img src="assets/images/project-bb-thumbnail.png" alt="Project BB 대표 이미지"><div class="card-content"><div class="tag">팀 프로젝트 · 2026.03–04</div><h3>Project BB</h3><p>무작위 맵 생성, 공간 배치, 방 진행 규칙을 나눠 설계했습니다. Unity에서 실제 플레이 공간을 확인하며 입구 세이프 존을 적용했습니다.</p></div></article>
-<article class="card"><img src="assets/images/naringarak-gwishin.png" alt="나린가락 게임 장면"><div class="card-content"><div class="tag">팀 프로젝트 · 2026.02–03</div><h3>나린가락</h3><p>힐링 감성과 제작 일정을 함께 고려해 시나리오 분량을 조정하고 팀 역할 및 진행 상황을 공유해 5개 스테이지의 게임으로 완성했습니다.</p></div></article>
-<article class="card"><img src="assets/images/exit-value-erd-display.png" alt="Exit Value 데이터 관계도"><div class="card-content"><div class="tag">팀 프로젝트 · 2026.01</div><h3>Exit Value</h3><p>시나리오를 데이터 테이블과 관계도로 정리해 기능과 연결했습니다. 엔진 적용 중 발생한 문제를 구조 개선 방향에 반영했습니다.</p></div></article>
-</div></section>
-<section class="wrap" id="approach"><h2>제작 방식</h2><div class="method"><p>아이디어를 전달할 때 기대하는 플레이 경험과 구현 규칙을 함께 정리합니다. 애매한 입력과 예외 상황은 명세로 구분하고, 설명만으로 부족한 조작은 프로토타입으로 보여줍니다. Unity 및 AI 개발 도구를 활용할 때에도 결과를 직접 확인하고 수정합니다.</p></div></section>
-</main><footer><div class="wrap">게임 기획 프로젝트 기록 · Unity AI Game Jam 제출용 공개 페이지</div></footer>
-</body></html>
+<body id="top" class="detail-page">
+  <a class="skip" href="#main">본문으로 건너뛰기</a>
+  <header class="topbar"><div class="wrap header-inner">
+    <a class="brand" href="#top">이동현<span>게임 콘텐츠 기획자</span></a>
+    <nav class="nav" aria-label="페이지 목차"><a href="#top">소개</a><a href="#role">참여 역할</a><a href="#projects">프로젝트</a><a href="#contact">연락</a></nav>
+  </div></header>
+  <main id="main">
+    <article class="case" aria-labelledby="intro-title"><div class="wrap">
+      <div class="case-kicker"><p class="case-number">유니티 게임잼 / 참가용 포트폴리오</p><p class="case-status">시스템과 콘텐츠 기획</p></div>
+      <div class="case-heading">
+        <h1 id="intro-title">이동현</h1>
+        <p class="subtitle">아이디어를 플레이 규칙과 화면의 동작 조건으로 정리합니다.</p>
+        <p class="intro">플레이어가 무엇을 보고 어떤 선택을 하게 할지 생각하며 시스템과 콘텐츠를 기획합니다. 팀 프로젝트에서는 규칙과 예외를 문서로 전달하고, Unity에서 실제 공간과 UI 상태를 확인했습니다. 개인 프로젝트에서는 웹 프로토타입을 만들어 규칙을 시험하고 플레이 기록을 살폈습니다.</p>
+      </div>
+      <div class="actions"><a class="button primary" href="#projects">작업 사례 보기 <span aria-hidden="true">↓</span></a><a class="button" href="mailto:ug777070@gmail.com">이메일 연락 <span aria-hidden="true">↗</span></a></div>
+      <dl class="facts">
+        <div><dt>주요 역할</dt><dd>시스템과 콘텐츠 기획</dd></div>
+        <div><dt>Unity 작업 경험</dt><dd>uGUI 시안 배치<br>화면 상태와 공간 수치 확인</dd></div>
+        <div><dt>협업 자료</dt><dd>규칙과 데이터 테이블<br>상태 전환 명세</dd></div>
+        <div><dt>검토 방식</dt><dd>프로토타입<br>플레이 기록과 QA</dd></div>
+      </dl>
+
+      <section class="chapter" id="role" aria-labelledby="role-title">
+        <div class="chapter-heading">
+          <div class="chapter-intro"><div class="chapter-label">게임잼에서 맡고 싶은 역할</div><h2 id="role-title">핵심 규칙과 제작 범위를<br>팀과 함께 정하고 싶습니다.</h2></div>
+          <div class="chapter-copy"><p>게임잼에서는 제한된 시간 안에 어떤 경험을 먼저 완성할지 정하는 일이 필요하다고 생각합니다. 기획 역할로 참여해 핵심 플레이 흐름과 조작, 성공과 실패 조건을 정리하고, 팀이 구현할 범위를 함께 맞추고 싶습니다.</p><p>설명이 다르게 해석될 수 있는 부분은 입력 조건과 예외로 구분하겠습니다. 글만으로 전달하기 어려운 조작은 작은 프로토타입으로 확인하고, 구현 결과를 함께 보며 수정할 항목을 정리하겠습니다.</p></div>
+        </div>
+      </section>
+
+      <section class="chapter" id="projects" aria-labelledby="ut-title">
+        <div class="chapter-heading">
+          <div class="chapter-intro"><div class="chapter-label"><span>01</span>팀 프로젝트 / Project UT</div><h2 id="ut-title">화면 시안에<br>동작 조건을 함께 붙였습니다.</h2></div>
+          <div class="chapter-copy"><p>비주얼 노벨 카드 게임의 전투 HUD와 갤러리, 내러티브, 정비 공간을 기획했습니다. 시안만으로는 어떤 입력을 받았을 때 화면이 바뀌는지까지 전달하기 어려워, 선택과 취소, 패널 전환, 입력 우선순위를 함께 정리했습니다.</p><p>데이터가 누락되거나 입력이 겹칠 때의 처리도 명세에 포함했습니다. 정리한 화면 상태는 Figma 프로토타입과 Unity에서 전환을 확인하고, 시안을 uGUI에 배치하며 앵커를 조절했습니다.</p></div>
+        </div>
+        <figure class="evidence"><img src="assets/images/ut-maintenance-ui.png" alt="Project UT의 바 콘셉트 정비 공간 UI 시안" loading="lazy"><figcaption>Project UT / 정비 공간 UI 시안</figcaption></figure>
+      </section>
+
+      <section class="chapter" aria-labelledby="bb-title">
+        <div class="chapter-heading">
+          <div class="chapter-intro"><div class="chapter-label"><span>02</span>팀 프로젝트 / Project BB</div><h2 id="bb-title">무작위 공간의 규칙을<br>실제 수치로 확인했습니다.</h2></div>
+          <div class="chapter-copy"><p>플레이어 조작과 몬스터 행동, 성장, 방 진행, 상점의 시스템 규칙을 정리했습니다. 방과 문, 복도가 무작위로 만들어지며 예외가 많아져, 맵 생성과 방 배치, 방 진행을 나눠 각 단계의 조건을 전달했습니다.</p><p>방에 들어오자마자 공격받는 상황을 줄이기 위해 Unity에서 실제 방 크기와 반경을 확인했습니다. 이를 바탕으로 반지름 4의 원형 입구 세이프 존을 적용했습니다. 문서의 수치와 실제 플레이 공간을 함께 확인한 경험입니다.</p></div>
+        </div>
+        <figure class="evidence"><img src="assets/images/bb-room-placement-display.png" alt="Project BB의 스폰 방, 보스 방, 정비 방 배치 규칙 흐름도" loading="lazy"><figcaption>Project BB / 방 배치 규칙</figcaption></figure>
+      </section>
+
+      <section class="chapter" aria-labelledby="rune-title">
+        <div class="chapter-heading">
+          <div class="chapter-intro"><div class="chapter-label"><span>03</span>개인 프로젝트 / Rune Trace</div><h2 id="rune-title">규칙을 프로토타입으로 만들고<br>입력 기록을 살폈습니다.</h2></div>
+          <div class="chapter-copy"><p>경로를 연결하는 퍼즐에 로그라이크 요소를 결합한 웹 프로토타입입니다. 경로를 판단할 시간을 주기 위해 실시간 디펜스에서 턴제로 바꾸고, 적을 처치한 경로에 흔적이 남아 다음 턴에 쓸 공간이 줄어들도록 규칙을 정했습니다.</p><p>처음 플레이한 외부 사용자의 로그에서 무효 입력이 반복되는 구간을 확인했습니다. 실패한 결과만으로 원인을 확정하지 않고, 입력 유형과 플로어, 재시도를 나눠 다음 테스트에서 비교할 항목을 정리했습니다. 이 프로젝트는 Unity 구현 사례가 아니라 규칙 설계와 프로토타입 검토 사례입니다.</p></div>
+        </div>
+        <figure class="evidence"><img src="assets/images/rune-trace-prototype.png" alt="Rune Trace 웹 프로토타입의 경로 연결 퍼즐 플레이 화면" loading="lazy"><figcaption>Rune Trace / 웹 프로토타입 플레이 화면</figcaption></figure>
+        <div class="actions"><a class="button primary" href="https://asstro1456.github.io/Prototype_Casual_Rogue/rune-trace/index.html" target="_blank" rel="noopener noreferrer">프로토타입 플레이 <span aria-hidden="true">↗</span></a></div>
+      </section>
+
+      <section class="chapter" id="contact" aria-labelledby="contact-title">
+        <div class="chapter-heading">
+          <div class="chapter-intro"><div class="chapter-label">연락</div><h2 id="contact-title">참여 역할과 작업 경험에 관해<br>이야기 나누고 싶습니다.</h2></div>
+          <div class="chapter-copy"><p>게임잼에서 함께 만들 게임이나 제가 맡을 기획 범위에 관해 궁금한 점이 있다면 이메일로 연락해 주세요.</p><div class="actions"><a class="button" href="mailto:ug777070@gmail.com">ug777070@gmail.com <span aria-hidden="true">↗</span></a></div></div>
+        </div>
+      </section>
+    </div></article>
+  </main>
+  <footer class="wrap footer"><span>이동현 / 유니티 게임잼 포트폴리오</span><a href="#top">맨 위로 ↑</a></footer>
+</body>
+</html>
