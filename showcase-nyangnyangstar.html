@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="게임 콘텐츠 기획자 이동현의 냥냥스타 프로젝트. 피드 콘텐츠의 범위를 조정한 이유와 조작 기준을 전달한 과정을 소개합니다.">
+  <title>냥냥스타 | 이동현 포트폴리오</title>
+  <link rel="stylesheet" href="css/resume-showcase.css">
+</head>
+<body id="top" class="detail-page">
+  <a class="skip" href="#main">본문으로 건너뛰기</a>
+  <header class="topbar"><div class="wrap header-inner">
+    <a class="brand" href="resume-showcase.html#top">이동현<span>게임 콘텐츠 기획자</span></a>
+    <nav class="nav" aria-label="페이지 목차"><a href="resume-showcase.html#top">처음</a><a href="resume-showcase.html#projects">프로젝트</a><a href="resume-showcase.html#about">소개</a><a class="resume-link" href="print.html" target="_blank" rel="noopener">이력서 ↗</a></nav>
+  </div></header>
+  <main id="main">
+    <article class="case" id="nyangnyangstar" aria-labelledby="nyan-title"><div class="wrap">
+      <div class="case-kicker"><p class="case-number">02 / 콘텐츠 제안과 협업</p><div class="case-context"><p class="case-status">기업 협업 / 추가 콘텐츠 제안</p><a href="resume-showcase.html#projects">프로젝트 목록 ↗</a></div></div>
+      <div class="case-heading"><div><h1 id="nyan-title">냥냥스타</h1><p class="subtitle">유저마다 다른 피드를 만들 수 있도록 콘텐츠를 제안했습니다.</p></div><p class="intro">스토리를 전달하는 피드에 유저마다 다른 콘텐츠가 쌓이도록, 이미지를 편집하고 공유하는 기능을 제안했습니다. 기업 요구와 제작 여건에 맞춰 다룰 이미지의 범위를 조정하고, 코멘트는 기존 머지 게임의 드래그 조작을 활용해 구성했습니다. 조작 의도를 글로만 전달하기 어려운 부분은 프로토타입으로 보여주고, 구현 결과와 차이가 나는 동작은 QA 자료로 추적했습니다.</p></div>
+      <div class="actions"><a class="button primary" href="https://eloquent-flan-e1c648.netlify.app" target="_blank" rel="noopener noreferrer">코멘트 블록 체험 <span aria-hidden="true">↗</span></a><a class="button" href="https://drive.google.com/drive/folders/1pGSsvktHySAXuNBYHtdjqWJ155dcZPvR" target="_blank" rel="noopener noreferrer">기획과 QA 자료 <span aria-hidden="true">↗</span></a></div>
+      <div class="nyan-layout"><figure><a href="assets/images/nyannyanstar-feed-display.jpg" target="_blank" rel="noopener" aria-label="냥냥스타 피드 화면 원본 확대"><img src="assets/images/nyannyanstar-feed-display.jpg" alt="고양이 CG가 게시물 형태로 배치된 냥냥스타 피드 콘텐츠 화면" loading="lazy"></a><figcaption>CG를 편집해 게시하는 피드 제안 화면</figcaption></figure><div><p class="eyebrow">피드 콘텐츠와 조작 방식</p><h3>이미지는 편집하고,<br>코멘트는 블록으로 조합합니다.</h3><p>코멘트를 자유롭게 입력하게 하면 금지어 처리 부담이 커질 수 있다고 봤습니다. 그래서 단어 블록을 조합하는 방식을 제안하고, 기존 머지 게임에서 사용하는 드래그 조작을 활용하도록 설계했습니다.</p><figure class="prototype"><a href="assets/images/nyan-comment-block-prototype.png" target="_blank" rel="noopener" aria-label="코멘트 블록 프로토타입 화면 원본 확대"><img src="assets/images/nyan-comment-block-prototype.png" alt="단어 블록을 슬롯으로 드래그해 코멘트를 조합하는 프로토타입 화면" loading="lazy"></a><figcaption>제안 검토용 코멘트 블록 프로토타입</figcaption></figure></div></div>
+      <dl class="facts"><div><dt>참여 기간</dt><dd>2026.05.04–07.16</dd></div><div><dt>내 역할</dt><dd>시스템 기획</dd></div><div><dt>협업 규모</dt><dd>기획 8명, 개발 4명</dd></div><div><dt>결과물의 성격</dt><dd>추가 콘텐츠 제안서<br>검토용 프로토타입, QA 자료</dd></div></dl>
+      <section class="chapter"><div class="chapter-heading"><div class="chapter-intro"><div class="chapter-label"><span>02—1</span>범위 조정</div><h2>공유할 이미지를 게임에서 얻은 CG로 좁혔습니다.</h2></div><div class="chapter-copy"><p>냥냥스타에는 머지 플레이와 골드를 사용하는 건설 요소가 있었지만, 스토리를 전달하는 피드의 콘텐츠는 부족했습니다. 유저마다 다른 피드를 볼 수 있게 하고자 자유롭게 스크린샷을 공유하는 기능을 구상했습니다. 다만 기업 요구와 서버 비용, 개발 난이도를 함께 고려했을 때 공유할 이미지의 범위를 조정할 필요가 있었습니다.</p><p>그래서 <strong>게임에서 얻은 CG를 편집해 업로드하는 방식으로 범위를 줄였습니다.</strong> 다룰 이미지는 제한하되, 유저가 편집한 이미지를 다른 유저도 볼 수 있는 구조는 유지했습니다. 자유롭게 올릴 수 있는 이미지의 종류보다, 각자 다른 게시물을 만들고 공유한다는 목적을 남기는 쪽으로 제안을 조정했습니다.</p></div></div><div class="decision-pair"><div><small>초기 구상</small><h4>자유 스크린샷 공유</h4><p>공유할 이미지의 자유도는 높지만, 서버 비용과 개발 부담을 함께 고려해야 했습니다.</p></div><div><small>조정한 제안</small><h4>획득 CG 편집과 업로드</h4><p>게임에서 얻은 CG로 범위를 좁히고, 편집한 이미지를 공유하는 구조는 유지했습니다.</p></div></div></section>
+      <section class="chapter"><div class="chapter-heading"><div class="chapter-intro"><div class="chapter-label"><span>02—2</span>구현 기준 전달</div><h2>조작 의도를 프로토타입과 명세로 전달했습니다.</h2></div><div class="chapter-copy"><p>코멘트 블록의 조작을 글로만 설명하기는 어려웠습니다. 블록을 드래그한다는 설명 외에도 어떻게 배열되는지, 같은 블록을 중복해서 넣을 수 있는지, 드래그를 취소하면 어떻게 처리되는지를 전달할 필요가 있었습니다. 이를 보여주기 위해 <strong>HTML 프로토타입을 만들고 세부 동작을 검수 기준으로 정리했습니다.</strong></p><p>블록 배열과 중복 제한, 드래그 취소, 자동 스크롤을 기준으로 구현 결과를 확인했습니다. 일부 조작과 UI가 의도한 방식으로 나오지 않아, 차이가 나는 동작은 QA 이슈로 남기고 드래그 오류를 반복해서 추적했습니다.</p></div></div><figure class="evidence"><a href="assets/images/google-sheets-qa-dashboard.png" target="_blank" rel="noopener" aria-label="냥냥스타 QA 자료 원본 확대"><img src="assets/images/google-sheets-qa-dashboard.png" alt="테스트 케이스와 재현 절차를 관리한 냥냥스타 제안 검토용 QA 시트" loading="lazy"></a><figcaption><span>제안 검토 과정에서 작성한 QA 자료</span><a href="assets/images/google-sheets-qa-dashboard.png" target="_blank" rel="noopener">원본 확대 ↗</a></figcaption></figure><details><summary>피드 게시 흐름과 검토 자료 펼치기</summary><div class="detail-content"><figure class="evidence"><a href="assets/images/nyan-feed-upload-flow.png" target="_blank" rel="noopener" aria-label="피드 게시 흐름도 원본 확대"><img src="assets/images/nyan-feed-upload-flow.png" alt="CG 선택부터 편집과 게시로 이어지는 냥냥스타 피드 게시 흐름도" loading="lazy"></a></figure><div class="source-list"><a href="https://drive.google.com/file/d/1m_EC1gi4IoJCsddzPioz7D6WqbbiJ7Xu/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">흐름도 원본 ↗</a><a href="https://drive.google.com/file/d/17sQyBsL5veuRbrOfTYh7qv4g9h3CYbMw/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">QA 자료 원본 ↗</a></div></div></details><div class="note"><span class="note-label">결과와 회고</span><p>상세 명세를 늦게 전달한 점은 제 작업에서 보완해야 할 부분이었습니다. 여기에 기업 피드백도 예정보다 이틀 늦어지면서 시스템 절반을 다시 설계했고, 초기 기능 일부는 범위에서 제외됐습니다. 다음에는 <strong>핵심 규칙과 예외, UI를 그렇게 설계한 이유를 먼저 정리해 전달하고, 외부 피드백을 반영할 시간을 일정에 확보할 계획입니다.</strong> 조작을 보여주는 프로토타입과 함께 구현에 필요한 조건도 제때 전달하려고 합니다. 이 자료는 정식 업데이트가 아닌 추가 콘텐츠 제안입니다.</p></div></section>
+      <div class="case-bottom"><a class="case-next" href="showcase-project-ut.html"><span>다음 프로젝트</span><strong>Project UT →</strong></a></div>
+    </div></article>
+  </main>
+  <footer class="wrap footer"><span>이동현 / 기획과 구현의 기록 / 2026</span><a href="#top">맨 위로 ↑</a></footer>
+</body>
+</html>

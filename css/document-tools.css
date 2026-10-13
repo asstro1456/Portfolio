@@ -1,0 +1,20 @@
+@media screen and (max-width: 820px) {
+  body.document-responsive { min-width: 0; overflow-wrap: anywhere; }
+  .document-responsive .document-stack { width: 100%; margin: 0; }
+  .document-responsive .document-sheet { width: 100%; min-height: 0; padding: 24px 20px; }
+  .document-responsive .resume-page::after { display: none; }
+  .document-responsive .document-tools { position: static; padding: 12px; }
+  .document-responsive .evidence-link-slots { flex-wrap: wrap; }
+  .document-responsive .stacked-evidence-links a { white-space: normal; }
+}
+@media screen and (max-width: 650px) {
+  .document-responsive .profile-table dl>div { grid-template-columns: 88px minmax(0, 1fr); }
+  .document-responsive .credential-row { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) auto; gap: 8px; }
+}
+@media screen {
+  .document-responsive .document-sheet { height: auto; overflow: visible; }
+  .document-tools { flex-wrap: wrap; align-items: center; }
+  .document-tools .pdf-download { background: #175cd3; border-color: #175cd3; font-weight: 700; }
+  .document-tools :is(a,button):focus-visible { outline: 3px solid #8bc1ff; outline-offset: 3px; }
+  .document-tools :is(a,button):hover { background: #364153; }
+}
