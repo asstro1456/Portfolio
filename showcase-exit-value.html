@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="이동현의 Exit Value 작업 기록. 시나리오 데이터와 선택지, 저장 및 연출 기능을 연결하고 이후 구조 개선을 구상한 과정을 소개합니다.">
+<title>Exit Value | 이동현 포트폴리오</title>
+<link rel="stylesheet" href="css/resume-showcase.css">
+</head>
+<body id="top" class="detail-page">
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="topbar"><div class="wrap header-inner"><a class="brand" href="resume-showcase.html#top">이동현<span>게임 콘텐츠 기획자</span></a><nav class="nav" aria-label="사이트 메뉴"><a href="resume-showcase.html#top">홈</a><a href="resume-showcase.html#projects">대표 프로젝트</a><a href="resume-showcase.html#about">기획 방식</a><a class="tutorial-chip" href="https://portfoliohub-web.ug777070.chatgpt.site" target="_blank" rel="noopener">포트폴리오 체험 ↗</a><a href="planning-hub.html">기획서 목록</a><a class="resume-link" href="output/pdf/이동현_이력서.pdf" download="이동현_이력서.pdf">이력서 다운로드 ↓</a></nav></div></header>
+<main id="main"><article class="case" id="exit-value" aria-labelledby="case-title"><div class="wrap">
+<div class="case-kicker"><p class="case-number">06 / 데이터 구조와 기능 연결</p><div class="case-context"><p class="case-status">팀 프로젝트 / MapleStory Worlds</p><a href="resume-showcase.html#projects">프로젝트 목록 ↗</a></div></div>
+<div class="case-heading"><h1 id="case-title">Exit Value</h1><p class="subtitle">시나리오를 테이블과 기능의 관계로 정리했습니다.</p><p class="intro">짧은 제작 일정 안에서 시나리오 데이터와 선택지, 연출 기능을 연결한 프로젝트입니다. 데이터 테이블을 정규화하고 관계도를 만들며, 각 데이터가 어떤 장면과 기능을 호출하는지 정리했습니다. AI가 작성한 코드는 엔진에서 참조와 동작을 확인하며 적용했습니다.</p></div>
+<div class="actions"><a class="button primary" href="https://maplestoryworlds.nexon.com/ko/play/bcc7d92c1f344d06b92758220ad02ca7/" target="_blank" rel="noopener noreferrer">출시 페이지 <span aria-hidden="true">↗</span></a><a class="button" href="https://youtu.be/4-_KdueEEmo?si=8HkcAocCV5Q4Ey22" target="_blank" rel="noopener noreferrer">엔딩 곡 영상 <span aria-hidden="true">↗</span></a><a class="button" href="planning-hub.html#exit-value">기획서 목록 <span aria-hidden="true">→</span></a></div>
+<figure class="case-media"><a class="image-link" href="assets/images/exit-value-erd-display.png" target="_blank" rel="noopener" aria-label="시나리오, 대사, 선택지와 리소스 테이블의 참조 관계도 원본 확대"><img src="assets/images/exit-value-erd-display.png" alt="시나리오, 대사, 선택지와 리소스 테이블의 참조 관계도" loading="lazy"></a><figcaption><span>시나리오 데이터 테이블의 관계를 정리한 ERD</span><a href="assets/images/exit-value-erd-display.png" target="_blank" rel="noopener">원본 확대 ↗</a></figcaption></figure>
+<dl class="facts"><div><dt>제작 기간</dt><dd>2026.01.18–01.21</dd></div><div><dt>내 역할</dt><dd>데이터와 기능 구조 기획<br>엔진 적용</dd></div><div><dt>사용 도구</dt><dd>MapleStory Worlds Editor<br>Google Sheets, ChatGPT</dd></div><div><dt>주요 산출물</dt><dd>정규화 테이블과 ERD<br>선택지, 저장, 연출 기능</dd></div></dl>
+<section class="chapter"><div class="chapter-heading"><div class="chapter-intro"><div class="chapter-label"><span>06—1</span>데이터 관계 정리</div><h2>각 데이터가 호출할 장면과 기능을 구분했습니다.</h2></div><div class="chapter-copy"><p>시나리오의 값과 참조 관계를 정리하며 테이블을 정규화하고 ERD를 작성했습니다. 대사와 인물, 배경, 사운드, 선택지가 어떤 관계로 연결되는지 문서에서 확인할 수 있도록 정리했습니다.</p><p>이 관계를 기준으로 시나리오 데이터를 연결하고 선택지와 저장, 연출 기능을 적용했습니다. <strong>이야기의 진행을 데이터와 기능의 연결로 옮기는 작업</strong>이었습니다.</p></div></div></section>
+<section class="chapter"><div class="chapter-heading"><div class="chapter-intro"><div class="chapter-label"><span>06—2</span>엔진 적용과 확인</div><h2>AI가 작성한 코드도 엔진에서 직접 확인했습니다.</h2></div><div class="chapter-copy"><p>AI가 작성한 MLua 코드의 참조 관계와 동작을 엔진에서 확인하며 오류를 수정했습니다. 코드와 엔진 경험이 적었던 만큼, 결과물을 어디에 적용해야 하고 어떤 데이터를 참조하는지 직접 찾아보는 데 시간이 들었습니다.</p><p>ERD와 테이블을 기준으로 기능을 연결했지만 디버깅 비용이 컸습니다. 엔딩 곡 영상은 Suno AI와 CapCut으로 제작했습니다. 이 작업을 통해 <strong>기능을 한꺼번에 연결하기 전에 작은 단위로 동작을 확인</strong>할 필요를 느꼈습니다.</p></div></div><div class="note"><span class="note-label">구현 과정에서 남긴 과제</span><p>데이터 관계와 판정 조건을 먼저 문서화하고, 작은 기능부터 엔진에서 확인하는 순서로 작업하려고 합니다. AI가 만든 코드도 참조와 실행 위치를 이해한 뒤 적용해야 한다는 기준을 남겼습니다.</p></div></section>
+<section class="chapter"><div class="chapter-heading"><div class="chapter-intro"><div class="chapter-label"><span>06—3</span>이후의 구조 개선 구상</div><h2>한 스크립트에 모인 책임을 나누는 설계를 구상했습니다.</h2></div><div class="chapter-copy"><p>메커톤을 준비하며 2,235줄과 72개 함수가 한 스크립트에 모인 VNScene을 다시 분석했습니다. 첫 구현에서 겪은 디버깅 부담을 바탕으로 VNHub를 중심에 두고, 스토리와 데이터, UI, 선택지, 상태, 저장, 연출의 책임을 나누는 아키텍처를 구상했습니다.</p><p>이 자료는 <strong>이후의 구조 개선을 위한 설계 구상</strong>입니다. 초기 게임에 적용한 기능과 구분해, 첫 구현에서 드러난 문제를 다음 설계에 어떻게 반영하려 했는지 보여줍니다.</p></div></div><div class="actions"><a class="button" href="https://drive.google.com/file/d/1sHnmC5mY6vbJCqMVcxafJAAPDUYBlz-f/view" target="_blank" rel="noopener noreferrer">VNScene 리팩터링 구상 <span aria-hidden="true">↗</span></a></div></section>
+<div class="case-bottom"><a class="case-next" href="resume-showcase.html#projects"><span>전체 프로젝트</span><strong>프로젝트 목록으로 →</strong></a></div>
+</div></article></main>
+<footer class="wrap footer"><span>이동현 / 기획과 구현의 기록 / 2026</span><a href="#top">맨 위로 ↑</a></footer>
+</body>
+</html>
