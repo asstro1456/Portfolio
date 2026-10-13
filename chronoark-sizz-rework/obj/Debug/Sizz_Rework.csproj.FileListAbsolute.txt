@@ -1,0 +1,6 @@
+C:\Users\User\Documents\Portfolio\chronoark-sizz-rework\obj\Debug\Sizz_Rework.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\Portfolio\chronoark-sizz-rework\bin\Debug\Sizz_Rework.dll
+C:\Users\User\Documents\Portfolio\chronoark-sizz-rework\bin\Debug\Sizz_Rework.pdb
+C:\Users\User\Documents\Portfolio\chronoark-sizz-rework\bin\Debug\System.Core.dll
+C:\Users\User\Documents\Portfolio\chronoark-sizz-rework\obj\Debug\Sizz_Rework.dll
+C:\Users\User\Documents\Portfolio\chronoark-sizz-rework\obj\Debug\Sizz_Rework.pdb

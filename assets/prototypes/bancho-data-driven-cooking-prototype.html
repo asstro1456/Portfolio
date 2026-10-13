@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BANCHO — 데이터 구동 조리 실행 데모</title>
+  <style>
+    :root{--ink:#211713;--cream:#fff8ee;--paper:#f5e6cf;--wood:#6b3922;--line:rgba(68,35,18,.2);--gold:#e1a847;--ok:#2f704d;--muted:#765d4b;--panel:rgba(255,249,240,.9)}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 18% 0,#fff6e7,#e5c49f 54%,#b97955);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}main{width:min(1180px,calc(100% - 32px));margin:auto;padding:30px 0 58px}h1{margin:0;font-size:clamp(26px,4vw,42px);letter-spacing:-.05em}.lead{margin:8px 0 22px;color:var(--muted);max-width:700px}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 44px rgba(72,39,18,.12)}.runbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 17px}.eyebrow{font-size:12px;color:var(--muted)}.runbar strong{font-size:18px}.runbar button,.passive button,.finish button{border:1px solid #65391f;border-radius:10px;background:#62351e;color:#fff9ed;padding:9px 12px;font:inherit;font-weight:800;cursor:pointer}.runbar button:hover,.passive button:hover,.finish button:hover{background:#79462a}.layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:16px;margin-top:16px}.queue{padding:16px}.queue h2,.source h2{margin:0 0 12px;font-size:15px}.recipe{padding:10px;border-radius:11px;border:1px solid var(--line);margin-bottom:8px;background:#fffaf2}.recipe.active{border-color:var(--gold);box-shadow:0 0 0 3px rgba(225,168,71,.18)}.recipe.complete{background:#edf8ef;border-color:#9bcba9}.recipe small,.ingredient small,.source small{display:block;color:var(--muted);font-size:11px}.recipe b{display:block;margin:2px 0}.step{display:flex;gap:8px;align-items:center;font-size:13px;color:#725a49;padding:4px 0}.dot{width:8px;height:8px;border-radius:50%;background:#cdbca8}.dot.active{background:var(--gold);box-shadow:0 0 0 3px rgba(225,168,71,.2)}.dot.complete{background:var(--ok)}.stage{overflow:hidden}.stage-head{display:flex;justify-content:space-between;gap:12px;padding:15px 17px;border-bottom:1px solid var(--line)}.stage-head strong{display:block;font-size:18px}.stage-head span{color:var(--muted);font-size:12px}.ingredients{display:flex;flex-wrap:wrap;gap:8px;padding:13px 16px;border-bottom:1px solid var(--line);background:rgba(245,230,207,.48)}.ingredient{display:flex;gap:7px;align-items:center;padding:7px 9px;border-radius:999px;background:#fffaf1;border:1px solid rgba(107,57,34,.16);font-size:13px}.ingredient i{width:9px;height:9px;border-radius:50%;background:#bc564c}.ingredient[data-type="VEGETABLE"] i{background:#71944a}.ingredient[data-type="SAUCE"] i{background:#7c4b32}.playfield{min-height:560px;background:linear-gradient(90deg,rgba(91,47,23,.07) 1px,transparent 1px) 0 0/30px 30px,linear-gradient(#b8754a,#864324);padding:14px}.tool-frame{display:block;width:100%;height:530px;border:0;border-radius:13px;background:#f6e7d0}.passive{min-height:500px;display:grid;place-items:center;text-align:center;color:#fff8ee}.passive div{max-width:360px;padding:24px;border-radius:18px;background:rgba(34,18,10,.67);box-shadow:0 14px 28px rgba(0,0,0,.18)}.passive h2{margin:0 0 8px}.passive p{margin:0 0 16px;color:#f0d8bb}.passive button{background:var(--gold);color:#38200e;border-color:#b87c23}.finish{min-height:500px;display:grid;place-items:center;text-align:center;color:#fff8ee}.finish div{padding:30px;border-radius:20px;background:rgba(33,80,51,.82);box-shadow:0 14px 28px rgba(0,0,0,.18)}.finish h2{margin:0 0 7px;font-size:30px}.source{margin-top:16px;padding:16px}.source-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.source-item{padding:10px;border-radius:11px;background:#f6ead9;border:1px solid var(--line);font-size:12px}.source-item b{display:block;margin-top:2px;font-size:13px}.dev{position:fixed;z-index:10;right:18px;top:18px;width:min(330px,calc(100vw - 36px));border:1px solid rgba(255,255,255,.32);border-radius:16px;background:rgba(35,23,16,.94);box-shadow:0 18px 42px rgba(0,0,0,.3);color:#fff8ef;overflow:hidden}.dev summary{padding:12px 14px;cursor:pointer;font-weight:850;list-style:none}.dev summary::-webkit-details-marker{display:none}.dev summary::after{content:"개발자 패널";float:right;color:#f3c96d;font-size:12px}.dev-body{padding:0 14px 14px;border-top:1px solid rgba(255,255,255,.13)}.dev label{display:block;margin-top:12px;font-size:12px;color:#e6cfb0}.dev select{width:100%;margin-top:5px;border:1px solid rgba(255,255,255,.25);border-radius:8px;background:#fff8ee;color:var(--ink);padding:8px;font:inherit}.recipe-toggles,.ingredient-editor{display:grid;gap:6px;margin-top:6px}.toggle{display:flex!important;gap:7px;align-items:center;margin:0!important;padding:7px 8px;border-radius:8px;background:rgba(255,255,255,.08);color:#fff8ef!important;font-size:12px!important}.dev hr{border:0;border-top:1px solid rgba(255,255,255,.13);margin:12px 0}.dev button{width:100%;margin-top:13px;border:0;border-radius:9px;background:#e1a847;color:#38200e;padding:10px;font:inherit;font-weight:850;cursor:pointer}.dev-note{margin:9px 0 0;color:#d9c0a0;font-size:11px}@media(max-width:850px){.layout{grid-template-columns:1fr}.queue{display:none}.dev{position:static;width:auto;margin:0 0 14px}.playfield{min-height:460px}.tool-frame{height:450px}.source-grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){main{width:min(100% - 20px,1180px);padding-top:18px}.stage-head{display:block}.stage-head span{display:block;margin-top:4px}.source-grid{grid-template-columns:1fr}.tool-frame{height:430px}}
+  </style>
+</head>
+<body>
+  <main>
+    <details class="dev" open>
+      <summary>실행 데이터 변경</summary>
+      <div class="dev-body">
+        <label>메뉴<select id="menuSelect"></select></label>
+        <label>메뉴에 연결할 조리법</label><div class="recipe-toggles" id="recipeToggles"></div>
+        <hr />
+        <label>재료 변경 대상 조리법<select id="bindingRecipe"></select></label>
+        <label>재료 슬롯 재정의</label><div class="ingredient-editor" id="ingredientEditor"></div>
+        <button id="applyData" type="button">데이터 반영 후 처음부터 실행</button>
+        <p class="dev-note">메뉴·조리법·재료 변경은 메모리에서만 적용됩니다. 원본 테이블은 수정하지 않습니다.</p>
+      </div>
+    </details>
+    <h1>돈테키 · 데이터 구동 조리 실행</h1>
+    <p class="lead">선택 메뉴의 관계 테이블을 따라 재료와 조리 공정을 구성합니다. 절단·굽기는 기존 조작 검증 프로토타입을 그대로 불러오며, 완료 결과가 이 실행 화면의 다음 공정으로 전달됩니다.</p>
+    <section class="card runbar"><div><div class="eyebrow">주문 슬롯 01 · 자동 재료 세팅</div><strong id="menuTitle">돈테키</strong></div><button id="restartButton" type="button">현재 데이터로 다시 시작</button></section>
+    <div class="layout">
+      <aside class="card queue"><h2>전체 조리 공정</h2><div id="recipeQueue"></div></aside>
+      <section class="card stage">
+        <div class="stage-head"><div><span id="recipeName">재료 손질</span><strong id="stepTitle">리듬 절단</strong></div><span id="stepMeta">RecipeStep · RCP_PREP / 1</span></div>
+        <div class="ingredients" id="ingredientList"></div>
+        <div class="playfield" id="playfield"></div>
+      </section>
+    </div>
+    <section class="card source"><h2>현재 화면을 만든 데이터</h2><div class="source-grid" id="sourceGrid"></div></section>
+  </main>
+  <script>
+    (() => {
+      const data = {
+        text:{TXT_MENU_DONTEKI:'돈테키',TXT_RECIPE_PREP:'재료 손질',TXT_RECIPE_GRILL:'팬 굽기',TXT_RECIPE_PLATE:'플레이팅',TXT_PREP_RHYTHM:'리듬 절단',TXT_PREP_FAST:'빠른 채썰기',TXT_PREP_MIX:'소스 혼합',TXT_ING_PORK:'돼지고기',TXT_ING_CABBAGE:'양배추',TXT_ING_SAUCE:'돈테키 소스'},
+        menus:[{MenuID:'MENU_DONTEKI',Name:'TXT_MENU_DONTEKI',Price:1200,Exp:100}],
+        recipes:[{RecipeID:'RCP_PREP',Name:'TXT_RECIPE_PREP'},{RecipeID:'RCP_GRILL',Name:'TXT_RECIPE_GRILL'},{RecipeID:'RCP_PLATE',Name:'TXT_RECIPE_PLATE'}],
+        menuRecipes:[{MenuRecipeID:'MR_DONTEKI_PREP',MenuID:'MENU_DONTEKI',RecipeID:'RCP_PREP',RecipeOrder:1},{MenuRecipeID:'MR_DONTEKI_GRILL',MenuID:'MENU_DONTEKI',RecipeID:'RCP_GRILL',RecipeOrder:2},{MenuRecipeID:'MR_DONTEKI_PLATE',MenuID:'MENU_DONTEKI',RecipeID:'RCP_PLATE',RecipeOrder:3}],
+        steps:[{RecipeID:'RCP_PREP',StepOrder:1,SlotCode:'MAIN',TargetMin:70,TargetMax:90,ActionType:'CUT'},{RecipeID:'RCP_PREP',StepOrder:2,SlotCode:'GARNISH',TargetMin:60,TargetMax:80,ActionType:'CUT'},{RecipeID:'RCP_GRILL',StepOrder:1,SlotCode:'MAIN',TargetMin:70,TargetMax:90,ActionType:'HEAT'},{RecipeID:'RCP_GRILL',StepOrder:2,SlotCode:'MAIN',TargetMin:40,TargetMax:60,ActionType:'FLIP'},{RecipeID:'RCP_PLATE',StepOrder:1,SlotCode:'MAIN',TargetMin:1,TargetMax:1,ActionType:'PLACE'},{RecipeID:'RCP_PLATE',StepOrder:2,SlotCode:'GARNISH',TargetMin:1,TargetMax:1,ActionType:'PLACE'},{RecipeID:'RCP_PLATE',StepOrder:3,SlotCode:'SAUCE',TargetMin:30,TargetMax:50,ActionType:'POUR'}],
+        ingredients:[{IngredientID:'ING_PORK',Name:'TXT_ING_PORK',Type:'MEAT'},{IngredientID:'ING_CABBAGE',Name:'TXT_ING_CABBAGE',Type:'VEGETABLE'},{IngredientID:'ING_DONTEKI_SAUCE',Name:'TXT_ING_SAUCE',Type:'SAUCE'}],
+        bindings:[{MenuRecipeID:'MR_DONTEKI_PREP',SlotCode:'MAIN',PreprocessID:'PREP_RHYTHM_CUT',IngredientID:'ING_PORK',RequiredAmount:1},{MenuRecipeID:'MR_DONTEKI_PREP',SlotCode:'GARNISH',PreprocessID:'PREP_FAST_SLICE',IngredientID:'ING_CABBAGE',RequiredAmount:50},{MenuRecipeID:'MR_DONTEKI_GRILL',SlotCode:'MAIN',PreprocessID:null,IngredientID:'ING_PORK',RequiredAmount:1},{MenuRecipeID:'MR_DONTEKI_PLATE',SlotCode:'MAIN',PreprocessID:null,IngredientID:'ING_PORK',RequiredAmount:1},{MenuRecipeID:'MR_DONTEKI_PLATE',SlotCode:'GARNISH',PreprocessID:null,IngredientID:'ING_CABBAGE',RequiredAmount:50},{MenuRecipeID:'MR_DONTEKI_PLATE',SlotCode:'SAUCE',PreprocessID:'PREP_MIX_SAUCE',IngredientID:'ING_DONTEKI_SAUCE',RequiredAmount:30}]
+      };
+      const $ = (id) => document.querySelector('#' + id);
+      const state = { menuID:'MENU_DONTEKI', enabled:new Set(data.menuRecipes.map((row) => row.MenuRecipeID)), overrides:new Map(), editorRecipeID:'MR_DONTEKI_PREP', current:0, completed:[], run:0 };
+      const text = (id) => data.text[id] || id;
+      const recipe = (id) => data.recipes.find((row) => row.RecipeID === id);
+      const ingredient = (id) => data.ingredients.find((row) => row.IngredientID === id);
+      const keyFor = (menuRecipeID, slot) => menuRecipeID + ':' + slot;
+      const activeRecipes = () => data.menuRecipes.filter((row) => row.MenuID === state.menuID && state.enabled.has(row.MenuRecipeID)).sort((a,b) => a.RecipeOrder - b.RecipeOrder);
+      const plan = () => activeRecipes().flatMap((menuRecipe) => data.steps.filter((step) => step.RecipeID === menuRecipe.RecipeID).sort((a,b) => a.StepOrder - b.StepOrder).map((step) => ({ menuRecipe, step })));
+      const ingredientFor = (menuRecipeID, slot) => ingredient(state.overrides.get(keyFor(menuRecipeID,slot)) || data.bindings.find((row) => row.MenuRecipeID === menuRecipeID && row.SlotCode === slot)?.IngredientID);
+      function setPanel() {
+        $('menuSelect').innerHTML = data.menus.map((row) => '<option value="' + row.MenuID + '">' + text(row.Name) + ' · ' + row.MenuID + '</option>').join('');
+        $('menuSelect').value = state.menuID;
+        const menuRecipes = data.menuRecipes.filter((row) => row.MenuID === state.menuID).sort((a,b)=>a.RecipeOrder-b.RecipeOrder);
+        $('recipeToggles').innerHTML = menuRecipes.map((row) => '<label class="toggle"><input type="checkbox" value="' + row.MenuRecipeID + '" ' + (state.enabled.has(row.MenuRecipeID) ? 'checked' : '') + '> ' + row.RecipeOrder + '. ' + text(recipe(row.RecipeID).Name) + '</label>').join('');
+        if (!menuRecipes.some((row) => row.MenuRecipeID === state.editorRecipeID)) state.editorRecipeID = menuRecipes[0]?.MenuRecipeID || '';
+        $('bindingRecipe').innerHTML = menuRecipes.map((row) => '<option value="' + row.MenuRecipeID + '">' + row.RecipeOrder + '. ' + text(recipe(row.RecipeID).Name) + '</option>').join('');
+        $('bindingRecipe').value = state.editorRecipeID;
+        $('ingredientEditor').innerHTML = data.bindings.filter((row) => row.MenuRecipeID === state.editorRecipeID).map((row) => {
+          const current = state.overrides.get(keyFor(row.MenuRecipeID,row.SlotCode)) || row.IngredientID;
+          return '<label>' + row.MenuRecipeID.replace('MR_DONTEKI_','') + ' · ' + row.SlotCode + '<select data-binding="' + keyFor(row.MenuRecipeID,row.SlotCode) + '">' + data.ingredients.map((item) => '<option value="' + item.IngredientID + '" ' + (item.IngredientID === current ? 'selected' : '') + '>' + text(item.Name) + '</option>').join('') + '</select></label>';
+        }).join('');
+        $('bindingRecipe').addEventListener('change',(event) => { state.editorRecipeID = event.target.value; setPanel(); });
+      }
+      function applyPanel() {
+        state.menuID = $('menuSelect').value;
+        state.enabled = new Set([...document.querySelectorAll('#recipeToggles input:checked')].map((input) => input.value));
+        const overrides = new Map(state.overrides); document.querySelectorAll('#ingredientEditor select').forEach((select) => overrides.set(select.dataset.binding,select.value)); state.overrides = overrides;
+        state.current = 0; state.completed = []; state.run += 1; setPanel(); render();
+      }
+      function sourceItem(label,value) { return '<div class="source-item"><small>' + label + '</small><b>' + value + '</b></div>'; }
+      function renderQueue(items) {
+        $('recipeQueue').innerHTML = activeRecipes().map((menuRecipe) => {
+          const steps = items.filter((item) => item.menuRecipe === menuRecipe);
+          const active = steps.some((item) => items.indexOf(item) === state.current);
+          const done = steps.length && steps.every((item) => items.indexOf(item) < state.current);
+          return '<article class="recipe ' + (active ? 'active ' : '') + (done ? 'complete' : '') + '"><small>' + menuRecipe.MenuRecipeID + '</small><b>' + text(recipe(menuRecipe.RecipeID).Name) + '</b>' + steps.map((item) => '<div class="step"><i class="dot ' + (items.indexOf(item) === state.current ? 'active' : '') + (items.indexOf(item) < state.current ? 'complete' : '') + '"></i>' + item.step.ActionType + ' · ' + item.step.SlotCode + '</div>').join('') + '</article>';
+        }).join('') || '<p>활성 조리법이 없습니다.</p>';
+      }
+      function finishStep(result) {
+        const item = plan()[state.current]; if (!item) return;
+        state.completed.push({ action:item.step.ActionType, result }); state.current += 1; state.run += 1; render();
+      }
+      function renderTool(item) {
+        const action = item.step.ActionType;
+        if (action === 'CUT') return '<iframe class="tool-frame" title="기존 왕복 절단 조작 프로토타입" src="bancho-reciprocal-cut-prototype.html?run=' + state.run + '"></iframe>';
+        if (action === 'HEAT' || action === 'FLIP') return '<iframe class="tool-frame" title="기존 집게 굽기 조작 프로토타입" src="bancho-tongs-grill-prototype.html?run=' + state.run + '"></iframe>';
+        const label = action === 'POUR' ? '소스를 올립니다' : '재료를 접시에 배치합니다';
+        return '<section class="passive"><div><h2>' + label + '</h2><p>' + action + ' 공정은 조작 프로토타입이 아직 없으므로, 현재는 데이터가 지정한 슬롯과 기준값을 표시하는 연출 단계입니다.</p><button id="passiveComplete" type="button">연출 완료</button></div></section>';
+      }
+      function render() {
+        const menu = data.menus.find((row) => row.MenuID === state.menuID);
+        const items = plan(); const item = items[state.current];
+        $('menuTitle').textContent = text(menu.Name) + ' · ' + menu.MenuID;
+        renderQueue(items);
+        if (!item) {
+          $('recipeName').textContent = '서빙 완료'; $('stepTitle').textContent = '돈테키 정식'; $('stepMeta').textContent = '완료 공정 ' + state.completed.length + '개';
+          $('ingredientList').innerHTML = '<span class="ingredient"><i></i>손님에게 전달</span>';
+          $('playfield').innerHTML = '<section class="finish"><div><h2>🍽️ 제공 완료</h2><p>이 결과는 현재 개발자 패널에서 선택한 메뉴·조리법·재료 조합으로 만든 것입니다.</p><button id="finishRestart" type="button">같은 데이터로 다시 실행</button></div></section>';
+          $('sourceGrid').innerHTML = sourceItem('Menu','Menu · ' + menu.MenuID) + sourceItem('완료된 공정',state.completed.map((row)=>row.action).join(' → ') || '없음') + sourceItem('재료 재정의',state.overrides.size + '개') + sourceItem('실행 상태','SERVE');
+          $('finishRestart').addEventListener('click',()=>{state.current=0;state.completed=[];state.run+=1;render();}); return;
+        }
+        const currentRecipe = recipe(item.menuRecipe.RecipeID); const currentIngredient = ingredientFor(item.menuRecipe.MenuRecipeID,item.step.SlotCode);
+        $('recipeName').textContent = text(currentRecipe.Name); $('stepTitle').textContent = item.step.ActionType + ' · ' + (currentIngredient ? text(currentIngredient.Name) : item.step.SlotCode); $('stepMeta').textContent = 'RecipeStep · ' + item.step.RecipeID + ' / ' + item.step.StepOrder;
+        $('ingredientList').innerHTML = data.bindings.filter((binding) => binding.MenuRecipeID === item.menuRecipe.MenuRecipeID).map((binding) => { const itemIngredient = ingredientFor(binding.MenuRecipeID,binding.SlotCode); return '<span class="ingredient" data-type="' + (itemIngredient?.Type || '') + '"><i></i>' + binding.SlotCode + ' · ' + (itemIngredient ? text(itemIngredient.Name) : '누락 재료') + ' × ' + binding.RequiredAmount + '</span>'; }).join('');
+        $('playfield').innerHTML = renderTool(item);
+        $('sourceGrid').innerHTML = sourceItem('Menu','Menu · ' + menu.MenuID) + sourceItem('MenuRecipe','MenuRecipe · ' + item.menuRecipe.MenuRecipeID) + sourceItem('RecipeStep','RecipeStep · ' + item.step.RecipeID + ' / ' + item.step.StepOrder) + sourceItem('Ingredient','Ingredient · ' + (currentIngredient?.IngredientID || '없음'));
+        $('passiveComplete')?.addEventListener('click',()=>finishStep({ mode:'passive' }));
+      }
+      window.addEventListener('message',(event) => {
+        const message = event.data; const item = plan()[state.current];
+        if (!item || message?.type !== 'bancho-action-complete') return;
+        const valid = (item.step.ActionType === 'CUT' && message.action === 'CUT') || (['HEAT','FLIP'].includes(item.step.ActionType) && message.action === 'GRILL');
+        if (valid) finishStep(message);
+      });
+      $('menuSelect').addEventListener('change',(event)=>{state.menuID=event.target.value;state.editorRecipeID='';setPanel();}); $('applyData').addEventListener('click',applyPanel); $('restartButton').addEventListener('click',()=>{state.current=0;state.completed=[];state.run+=1;render();});
+      setPanel(); render();
+    })();
+  </script>
+</body>
+</html>

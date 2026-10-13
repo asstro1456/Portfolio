@@ -1,0 +1,142 @@
+{
+  "document": {
+    "title": "[작성 필요]",
+    "subtitle": "[작성 필요]",
+    "profile": "system",
+    "status": "검토 중",
+    "version": "0.1",
+    "date": "2026-09-06",
+    "language": "ko",
+    "scope": {
+      "mode": "filtered",
+      "facets": [
+        "data",
+        "states",
+        "exceptions",
+        "scenarios",
+        "telemetry",
+        "flow",
+        "result-feedback"
+      ],
+      "sections": [
+        "definition",
+        "flow",
+        "rules",
+        "data",
+        "exceptions",
+        "balance",
+        "qa"
+      ]
+    },
+    "kind": "monster-boss"
+  },
+  "project_meta": [
+    {
+      "label": "장르·플랫폼",
+      "value": "[작성 필요]"
+    }
+  ],
+  "summary": "[작성 필요]",
+  "sections": [
+    {
+      "id": "definition",
+      "number": "01",
+      "title": "정의와 범위",
+      "subtitle": "목적, 사용자 가치, 인·아웃 스코프, 용어",
+      "blocks": [
+        {
+          "type": "callout",
+          "title": "작성 필요",
+          "text": "[작성 필요]",
+          "tone": "tbd"
+        }
+      ]
+    },
+    {
+      "id": "flow",
+      "number": "02",
+      "title": "사용자·상태 흐름",
+      "subtitle": "진입, 성공, 실패, 취소, 재진입 Mermaid",
+      "blocks": [
+        {
+          "type": "callout",
+          "title": "작성 필요",
+          "text": "[작성 필요]",
+          "tone": "tbd"
+        }
+      ]
+    },
+    {
+      "id": "rules",
+      "number": "03",
+      "title": "상세 규칙",
+      "subtitle": "발동 조건, 입력 의미, 우선순위, 상태 변화, 관찰 결과",
+      "blocks": [
+        {
+          "type": "callout",
+          "title": "작성 필요",
+          "text": "[작성 필요]",
+          "tone": "tbd"
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "number": "04",
+      "title": "상태와 기획 데이터",
+      "subtitle": "상태 전이, 데이터 항목 의미, 단위·기본값·범위, 갱신·복구 조건",
+      "blocks": [
+        {
+          "type": "callout",
+          "title": "작성 필요",
+          "text": "[작성 필요]",
+          "tone": "tbd"
+        }
+      ]
+    },
+    {
+      "id": "exceptions",
+      "number": "05",
+      "title": "예외와 악용 방지",
+      "subtitle": "조건→시스템 반응→사용자 피드백 5개 이상",
+      "blocks": [
+        {
+          "type": "callout",
+          "title": "작성 필요",
+          "text": "[작성 필요]",
+          "tone": "tbd"
+        }
+      ]
+    },
+    {
+      "id": "balance",
+      "number": "06",
+      "title": "파라미터와 조정",
+      "subtitle": "공식, 변수 의미, 기본값, 범위, 상·하한, 조정 기준",
+      "blocks": [
+        {
+          "type": "callout",
+          "title": "작성 필요",
+          "text": "[작성 필요]",
+          "tone": "tbd"
+        }
+      ]
+    },
+    {
+      "id": "qa",
+      "number": "07",
+      "title": "QA·텔레메트리",
+      "subtitle": "수용 조건, 테스트 케이스, 관찰 이벤트, 성공·실패 기준",
+      "blocks": [
+        {
+          "type": "callout",
+          "title": "작성 필요",
+          "text": "[작성 필요]",
+          "tone": "tbd"
+        }
+      ]
+    }
+  ],
+  "decisions": [],
+  "sources": []
+}

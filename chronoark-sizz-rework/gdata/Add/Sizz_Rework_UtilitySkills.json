@@ -1,0 +1,30 @@
+{
+  "S_SizzRework_MoveEve": {
+    "_gdeSchema": "Skill",
+    "KeyID": "S_SizzRework_MoveEve",
+    "Name": "이브 이동",
+    "Description": "턴 시작 시 이브를 자신 또는 대상 아군에게 이동시킵니다.",
+    "User": "Sizz_Rework_Sizz",
+    "Target": "ally",
+    "UseAp": 0,
+    "HealSkill": true,
+    "NoDrop": true,
+    "NotCount": false,
+    "Disposable": true,
+    "Particle": "Particle/Buff"
+  },
+  "S_SizzRework_BorrowSkill": {
+    "_gdeSchema": "Skill",
+    "KeyID": "S_SizzRework_BorrowSkill",
+    "Name": "공용 전술 배치",
+    "Description": "대상 아군이 사용할 수 있는 모든 스킬(희귀 스킬 포함) 중 하나를 선택해 손으로 가져옵니다. 사용 후 이 카드는 손으로 돌아옵니다.",
+    "User": "Sizz_Rework_Sizz",
+    "Target": "ally",
+    "UseAp": 0,
+    "HealSkill": true,
+    "NoDrop": true,
+    "NotCount": true,
+    "Disposable": true,
+    "Particle": "Particle/Buff"
+  }
+}

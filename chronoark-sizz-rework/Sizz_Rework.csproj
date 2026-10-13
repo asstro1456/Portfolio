@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Sizz_Rework</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <OutputPath>bin\Debug\</OutputPath>
+    <ReferencePath>D:\SteamLibrary\steamapps\common\Chrono Ark\ChronoArk_Data\Managed</ReferencePath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp"><Private>False</Private></Reference>
+    <Reference Include="System"><Private>False</Private></Reference>
+    <Reference Include="System.Core"><Private>False</Private></Reference>
+    <Reference Include="Newtonsoft.Json"><Private>False</Private></Reference>
+    <Reference Include="netstandard"><Private>False</Private></Reference>
+    <Reference Include="UnityEngine"><Private>False</Private></Reference>
+    <Reference Include="UnityEngine.CoreModule"><Private>False</Private></Reference>
+    <Reference Include="UnityEngine.UI"><Private>False</Private></Reference>
+    <Reference Include="UnityEngine.InputModule"><Private>False</Private></Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sizz_Rework_ModDefinition.cs" />
+    <Compile Include="P_SizzRework.cs" />
+    <Compile Include="S_SizzRework_DeployEve.cs" />
+    <Compile Include="S_SizzRework_BorrowSkill.cs" />
+    <Compile Include="Sizz_Rework_Plugin.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -14,3 +14,6 @@ output/
 Portfolio-Coach/
 chat_summaries/
 .codex-skill-staging/
+
+# Local-only application documents (contains personal contact information)
+/print.html

@@ -1,0 +1,467 @@
+{
+  "checked": "2026-09-06",
+  "files": [
+    {
+      "id": "1O2uflNG-3gCs9V4Opbp0NS3aOkCFYjjh_-LaWdZS_rg",
+      "title": "UT_UI_설정·저장로드_기획서_v1.0.0",
+      "url": "https://docs.google.com/presentation/d/1O2uflNG-3gCs9V4Opbp0NS3aOkCFYjjh_-LaWdZS_rg/edit?usp=drivesdk",
+      "modified": "2026-09-04T05:04:05.452Z",
+      "public": true
+    },
+    {
+      "id": "1Woii8lXA78ynmsr-A_S0URf-jEuLH-nFtEVqyRhLOLE",
+      "title": "UT_UI_규격_리소스관리_v2",
+      "url": "https://docs.google.com/spreadsheets/d/1Woii8lXA78ynmsr-A_S0URf-jEuLH-nFtEVqyRhLOLE/edit?usp=drivesdk",
+      "modified": "2026-09-01T11:21:18.220Z",
+      "public": true
+    },
+    {
+      "id": "17JE-Chxln2fWawmZN423L3WJ6sQImjx3NsaeqvPmwcA",
+      "title": "UT_연출_기획서_v0.0.1",
+      "url": "https://docs.google.com/presentation/d/17JE-Chxln2fWawmZN423L3WJ6sQImjx3NsaeqvPmwcA/edit?usp=drivesdk",
+      "modified": "2026-08-26T11:41:22.103Z",
+      "public": true
+    },
+    {
+      "id": "1ot3vNnxstYXr_QblFPwYt8w4J0MKejgmHcGYSVzTDA4",
+      "title": "UT_UI_로비_기획서_v0.0.1",
+      "url": "https://docs.google.com/presentation/d/1ot3vNnxstYXr_QblFPwYt8w4J0MKejgmHcGYSVzTDA4/edit?usp=drivesdk",
+      "modified": "2026-08-26T09:36:29.648Z",
+      "public": true
+    },
+    {
+      "id": "1w88NfQ1SMdbtZWWkr_QMPtLJsYtKDdB7TvqeBg27gNc",
+      "title": "UT_UI_내러티브_기획서_v0.0.10",
+      "url": "https://docs.google.com/presentation/d/1w88NfQ1SMdbtZWWkr_QMPtLJsYtKDdB7TvqeBg27gNc/edit?usp=drivesdk",
+      "modified": "2026-08-20T09:35:42.867Z",
+      "public": true
+    },
+    {
+      "id": "1bEzVazYr0LHogwPDMvE-DjndH5AqTKea2_qAs3zBw5Q",
+      "title": "UT_UI_내러티브_v0.0.10_명세표",
+      "url": "https://docs.google.com/spreadsheets/d/1bEzVazYr0LHogwPDMvE-DjndH5AqTKea2_qAs3zBw5Q/edit?usp=drivesdk",
+      "modified": "2026-08-20T09:33:11.870Z",
+      "public": true
+    },
+    {
+      "id": "12ASTWpV5ELXlrAgyPfPqiNBgYnlN8fF9Y0OzohQ74_Q",
+      "title": "UT_UI_아트스타일가이드_v0.0.2",
+      "url": "https://docs.google.com/presentation/d/12ASTWpV5ELXlrAgyPfPqiNBgYnlN8fF9Y0OzohQ74_Q/edit?usp=drivesdk",
+      "modified": "2026-08-20T08:57:52.005Z",
+      "public": true
+    },
+    {
+      "id": "1fy6SelUJfA2LYT54Pjz6dBNsxKQIbEhXOdgR0rLn_vw",
+      "title": "UT_UI_갤러리_기획서_v0.0.7",
+      "url": "https://docs.google.com/presentation/d/1fy6SelUJfA2LYT54Pjz6dBNsxKQIbEhXOdgR0rLn_vw/edit?usp=drivesdk",
+      "modified": "2026-08-20T07:09:55.965Z",
+      "public": true
+    },
+    {
+      "id": "1yYOu09ImhCFYOeJQ3emCWzjZ5_e3mvEBfl3g-RcgV6M",
+      "title": "UT_UI_정비 공간_기획서_v0.0.3",
+      "url": "https://docs.google.com/presentation/d/1yYOu09ImhCFYOeJQ3emCWzjZ5_e3mvEBfl3g-RcgV6M/edit?usp=drivesdk",
+      "modified": "2026-07-21T10:37:21.897Z",
+      "public": true
+    },
+    {
+      "id": "1lwV-3qPdhydD07mhpmWid5qywPGg5U5hTevnI710Im0",
+      "title": "UT_UI_전투 진입 화면_기획서_v0.0.2",
+      "url": "https://docs.google.com/presentation/d/1lwV-3qPdhydD07mhpmWid5qywPGg5U5hTevnI710Im0/edit?usp=drivesdk",
+      "modified": "2026-07-19T13:31:32.047Z",
+      "public": true
+    },
+    {
+      "id": "12yc3V6LT8joKZV8nnvG_zyTInMcm2Y6UCtUWbpQryVc",
+      "title": "UT_UI_전투HUD_기획서_v0.0.5",
+      "url": "https://docs.google.com/presentation/d/12yc3V6LT8joKZV8nnvG_zyTInMcm2Y6UCtUWbpQryVc/edit?usp=drivesdk",
+      "modified": "2026-06-06T10:37:44.088Z",
+      "public": true
+    },
+    {
+      "id": "1F9Kg0iXtNcTz7WHQetZ6xl-NLhALZ--9ecCyzOPaehg",
+      "title": "04_인게임흐름구현_시스템기획서_v1.0.1",
+      "url": "https://docs.google.com/spreadsheets/d/1F9Kg0iXtNcTz7WHQetZ6xl-NLhALZ--9ecCyzOPaehg/edit?usp=drivesdk",
+      "modified": "2026-08-24T03:04:54.659Z",
+      "public": true
+    },
+    {
+      "id": "1F1OK87UZRjX7EywIvOkHrTTo6utoKsjOH4z2DPLFk2A",
+      "title": "04_피드구성_시스템기획서_v2.0.0",
+      "url": "https://docs.google.com/spreadsheets/d/1F1OK87UZRjX7EywIvOkHrTTo6utoKsjOH4z2DPLFk2A/edit?usp=drivesdk",
+      "modified": "2026-08-24T03:04:41.323Z",
+      "public": true
+    },
+    {
+      "id": "1gkqHZ0f0il5Wz9qeoUeXXbAaKHi1B0SYdB_GTcOqjBs",
+      "title": "04_서버송수신_시스템기획서_v1.1.3",
+      "url": "https://docs.google.com/spreadsheets/d/1gkqHZ0f0il5Wz9qeoUeXXbAaKHi1B0SYdB_GTcOqjBs/edit?usp=drivesdk",
+      "modified": "2026-08-24T03:04:31.446Z",
+      "public": true
+    },
+    {
+      "id": "1CsnJYG9Qc_winDYtcZq6rW0KyaDd9LzWFpWJeOuQS4U",
+      "title": "03_방진행_미니맵_시스템기획서_v1.1.1",
+      "url": "https://docs.google.com/document/d/1CsnJYG9Qc_winDYtcZq6rW0KyaDd9LzWFpWJeOuQS4U/edit?usp=drivesdk",
+      "modified": "2026-08-24T03:02:18.135Z",
+      "public": true
+    },
+    {
+      "id": "1ESv8t5GzD3F2cYELw1Fb6we3llg6O7R9Pet4wq_dyYg",
+      "title": "07_상점_정의_규칙_v1.1.1",
+      "url": "https://docs.google.com/document/d/1ESv8t5GzD3F2cYELw1Fb6we3llg6O7R9Pet4wq_dyYg/edit?usp=drivesdk",
+      "modified": "2026-08-24T03:28:51.897Z",
+      "public": true
+    },
+    {
+      "id": "1S2lohfmq0Z7zK-sRqGYzfblXPp7yaZRaCU61hjm2dUY",
+      "title": "05_장비_강화_시스템기획서_v1.1.4",
+      "url": "https://docs.google.com/document/d/1S2lohfmq0Z7zK-sRqGYzfblXPp7yaZRaCU61hjm2dUY/edit?usp=drivesdk",
+      "modified": "2026-08-24T03:29:20.861Z",
+      "public": true
+    },
+    {
+      "id": "1XEW2T9OuppCtBBy7dPY2bnA1GqTJna4SisFFDnN9Cac",
+      "title": "04_레벨업_시스템기획서_v1.1.3",
+      "url": "https://docs.google.com/document/d/1XEW2T9OuppCtBBy7dPY2bnA1GqTJna4SisFFDnN9Cac/edit?usp=drivesdk",
+      "modified": "2026-08-24T03:28:30.191Z",
+      "public": true
+    },
+    {
+      "id": "1C6rm2HF83otNz_guoQaaIa3Myrt81zDTwB3Qgi9IVbs",
+      "title": "03_몬스터_행동_알고리즘_v1.1.1",
+      "url": "https://docs.google.com/document/d/1C6rm2HF83otNz_guoQaaIa3Myrt81zDTwB3Qgi9IVbs/edit?usp=drivesdk",
+      "modified": "2026-08-24T03:28:19.667Z",
+      "public": true
+    },
+    {
+      "id": "1x2UQf4HSyH-PyUz5mSaq-U7Wu6r_L20iiTShwkMYUIM",
+      "title": "02_플레이어_조작_판정_v1.1.3",
+      "url": "https://docs.google.com/document/d/1x2UQf4HSyH-PyUz5mSaq-U7Wu6r_L20iiTShwkMYUIM/edit?usp=drivesdk",
+      "modified": "2026-08-24T03:29:10.647Z",
+      "public": true
+    },
+    {
+      "id": "1I-1b-L22suzJDPDIOw3z2JYxXoyXigsEdQQlz37i0Bw",
+      "title": "01_공통_용어집_v1.4.1",
+      "url": "https://docs.google.com/document/d/1I-1b-L22suzJDPDIOw3z2JYxXoyXigsEdQQlz37i0Bw/edit?usp=drivesdk",
+      "modified": "2026-08-24T03:29:01.168Z",
+      "public": true
+    },
+    {
+      "id": "1FcrrTHCGR840GphYaYvy_onhZB2eIe7Od6-vJfFtXQ0",
+      "title": "08_데이터테이블_260325",
+      "url": "https://docs.google.com/spreadsheets/d/1FcrrTHCGR840GphYaYvy_onhZB2eIe7Od6-vJfFtXQ0/edit?usp=drivesdk",
+      "modified": "2026-08-24T03:29:35.937Z",
+      "public": true
+    },
+    {
+      "id": "1x90VQ3GGuAjuj0W_Tk2kF_h9gucnyQOG",
+      "title": "02_나린가락_시나리오기획서_최종",
+      "url": "https://drive.google.com/file/d/1x90VQ3GGuAjuj0W_Tk2kF_h9gucnyQOG/view?usp=drivesdk",
+      "modified": "2026-08-24T03:01:51.611Z",
+      "public": true
+    },
+    {
+      "id": "1v4AFneJW-R6c6MMhlwOi1M1axep-GV6h",
+      "title": "02_나린가락_사운드기획서",
+      "url": "https://drive.google.com/file/d/1v4AFneJW-R6c6MMhlwOi1M1axep-GV6h/view?usp=drivesdk",
+      "modified": "2026-08-24T03:01:45.829Z",
+      "public": true
+    },
+    {
+      "id": "1SC_0v29CBL422wNRuv9S0JosgjW5gi-0",
+      "title": "이동현_포트폴리오_룬트레이스_v0.5.pdf",
+      "url": "https://drive.google.com/file/d/1SC_0v29CBL422wNRuv9S0JosgjW5gi-0/view?usp=drivesdk",
+      "modified": "2026-08-05T03:02:49.000Z",
+      "public": true
+    },
+    {
+      "id": "1AMNpa1iYpicjN7Q29aR20juIzjpV2eo6oDVXtOPeARI",
+      "title": "이동현_(림버스컴퍼니)업데이트제안서",
+      "url": "https://docs.google.com/document/d/1AMNpa1iYpicjN7Q29aR20juIzjpV2eo6oDVXtOPeARI/edit?usp=drivesdk",
+      "modified": "2026-01-08T07:10:40.565Z",
+      "public": false
+    },
+    {
+      "id": "10bZz3GqJNRBNUl-WZ-T5Ao6Y5wlJc0eejuvjF-nbv0w",
+      "title": "이동현_리버스1999_이벤트시스템",
+      "url": "https://docs.google.com/presentation/d/10bZz3GqJNRBNUl-WZ-T5Ao6Y5wlJc0eejuvjF-nbv0w/edit?usp=drivesdk",
+      "modified": "2025-12-29T07:18:08.468Z",
+      "public": true
+    },
+    {
+      "id": "1sHnmC5mY6vbJCqMVcxafJAAPDUYBlz-f",
+      "title": "02_VNScene_리팩터링_아키텍처_구상.md",
+      "url": "https://drive.google.com/file/d/1sHnmC5mY6vbJCqMVcxafJAAPDUYBlz-f/view?usp=drivesdk",
+      "modified": "2026-08-24T03:42:08.423Z",
+      "public": true
+    },
+    {
+      "id": "1TF7nsApPqxOPODJl_T5LjW88yLHirYEBjxSQLCtjfi8",
+      "title": "UT_UI_설정·저장로드_기획서_v0.0.3",
+      "url": "https://docs.google.com/presentation/d/1TF7nsApPqxOPODJl_T5LjW88yLHirYEBjxSQLCtjfi8/edit?usp=drivesdk",
+      "modified": "2026-08-30T12:28:25.153Z",
+      "public": true
+    },
+    {
+      "id": "1AeHregesbEBgyuYy5zR66iuLDd9AwbcPRlbnvrGE1w8",
+      "title": "UT_UI_설정·저장로드_기획서_v0.0.2",
+      "url": "https://docs.google.com/presentation/d/1AeHregesbEBgyuYy5zR66iuLDd9AwbcPRlbnvrGE1w8/edit?usp=drivesdk",
+      "modified": "2026-08-30T11:51:05.114Z",
+      "public": true
+    },
+    {
+      "id": "1gQdNyb1KXiHDGEq6qmxuTkvwUK8zdKdcAB7mkCE3DRk",
+      "title": "UT_UI_설정·저장로드_기획서_v0.0.1",
+      "url": "https://docs.google.com/presentation/d/1gQdNyb1KXiHDGEq6qmxuTkvwUK8zdKdcAB7mkCE3DRk/edit?usp=drivesdk",
+      "modified": "2026-08-30T09:06:01.712Z",
+      "public": true
+    },
+    {
+      "id": "1KXH-CuX986ZPM0bgsjhWUY5OF0NImQXRMgrCaO3r0aA",
+      "title": "UT_UI_설정_기획서_v0.0.1_초안",
+      "url": "https://docs.google.com/presentation/d/1KXH-CuX986ZPM0bgsjhWUY5OF0NImQXRMgrCaO3r0aA/edit?usp=drivesdk",
+      "modified": "2026-08-27T07:29:44.651Z",
+      "public": true
+    },
+    {
+      "id": "1qnneyaHi7kF28Tq7wrm8vsVOqybMsIap2jjrgw2cJvU",
+      "title": "UT_UI_내러티브_기획서_v0.0.9",
+      "url": "https://docs.google.com/presentation/d/1qnneyaHi7kF28Tq7wrm8vsVOqybMsIap2jjrgw2cJvU/edit?usp=drivesdk",
+      "modified": "2026-07-29T11:55:39.001Z",
+      "public": true
+    },
+    {
+      "id": "117_w65E7R1GyxVlqv5RnX93vSI7UwJTsftPSoCoPKww",
+      "title": "UT_UI_갤러리_기획서_v0.0.6",
+      "url": "https://docs.google.com/presentation/d/117_w65E7R1GyxVlqv5RnX93vSI7UwJTsftPSoCoPKww/edit?usp=drivesdk",
+      "modified": "2026-07-04T01:47:59.690Z",
+      "public": true
+    },
+    {
+      "id": "1ICp31XeSPrtBWdBoRsxDTlXPGaKXXWNU8YiEtG4YwUQ",
+      "title": "UT_UI_내러티브_기획서_v0.0.8",
+      "url": "https://docs.google.com/presentation/d/1ICp31XeSPrtBWdBoRsxDTlXPGaKXXWNU8YiEtG4YwUQ/edit?usp=drivesdk",
+      "modified": "2026-07-25T11:04:09.704Z",
+      "public": true
+    },
+    {
+      "id": "14dc0QJDmzs46f1uzCQDFc0FbdZDlNXnkXTsVEi32FB0",
+      "title": "UT_UI_내러티브_기획서_v0.0.7",
+      "url": "https://docs.google.com/presentation/d/14dc0QJDmzs46f1uzCQDFc0FbdZDlNXnkXTsVEi32FB0/edit?usp=drivesdk",
+      "modified": "2026-07-25T09:05:18.168Z",
+      "public": true
+    },
+    {
+      "id": "1BEOmb6ykKk9lWWtKEvTJrFW_lcMQf8MzzLnkNUT292U",
+      "title": "UT_UI_내러티브_기획서_v0.0.6",
+      "url": "https://docs.google.com/presentation/d/1BEOmb6ykKk9lWWtKEvTJrFW_lcMQf8MzzLnkNUT292U/edit?usp=drivesdk",
+      "modified": "2026-07-22T16:23:25.559Z",
+      "public": true
+    },
+    {
+      "id": "1PImqqlTkrJL-pOrmq18rU_IeHzlJB_Jf8-2RLNBJR8M",
+      "title": "UT_UI_내러티브_기획서_v0.0.5",
+      "url": "https://docs.google.com/presentation/d/1PImqqlTkrJL-pOrmq18rU_IeHzlJB_Jf8-2RLNBJR8M/edit?usp=drivesdk",
+      "modified": "2026-07-22T14:00:28.255Z",
+      "public": true
+    },
+    {
+      "id": "16KkvATIWKdsVSvNDh_DtWY2OFvNgOyeK78tJJGMebhQ",
+      "title": "UT_UI_내러티브_기획서_v0.0.4_초안",
+      "url": "https://docs.google.com/presentation/d/16KkvATIWKdsVSvNDh_DtWY2OFvNgOyeK78tJJGMebhQ/edit?usp=drivesdk",
+      "modified": "2026-07-22T12:37:47.148Z",
+      "public": true
+    },
+    {
+      "id": "1EjoBoL7ohOT3_oUXO0903iaOSDgpvPZJ0Qfu-q0iEvQ",
+      "title": "UT_UI_정비 공간_기획서_v0.0.1_초안",
+      "url": "https://docs.google.com/presentation/d/1EjoBoL7ohOT3_oUXO0903iaOSDgpvPZJ0Qfu-q0iEvQ/edit?usp=drivesdk",
+      "modified": "2026-07-19T12:17:24.461Z",
+      "public": true
+    },
+    {
+      "id": "1t0oF2AW0RY0DuZ-9ZDT2ejky8JnTjWOj_09UnkiaYd0",
+      "title": "UT_UI_정비 공간_기획서_v0.0.2",
+      "url": "https://docs.google.com/presentation/d/1t0oF2AW0RY0DuZ-9ZDT2ejky8JnTjWOj_09UnkiaYd0/edit?usp=drivesdk",
+      "modified": "2026-07-20T14:07:59.769Z",
+      "public": true
+    },
+    {
+      "id": "1jn-QOGTpP8RqeYgH2DHLM7lMiFGfRjcJ5sHG8jRL6HM",
+      "title": "UT_UI_내러티브_기획서_v0.0.3",
+      "url": "https://docs.google.com/presentation/d/1jn-QOGTpP8RqeYgH2DHLM7lMiFGfRjcJ5sHG8jRL6HM/edit?usp=drivesdk",
+      "modified": "2026-07-14T13:14:25.567Z",
+      "public": true
+    },
+    {
+      "id": "1ZpKyEL5NuhGTDo7AnphUxlrIHnsk0USB1Udh-_jC-hg",
+      "title": "UT_UI_전투 진입 화면_기획서_v0.0.1",
+      "url": "https://docs.google.com/presentation/d/1ZpKyEL5NuhGTDo7AnphUxlrIHnsk0USB1Udh-_jC-hg/edit?usp=drivesdk",
+      "modified": "2026-07-19T13:16:29.178Z",
+      "public": true
+    },
+    {
+      "id": "1XIytwYvAnJu6OsqyqLW9fzOevfoKDscfVkc0SuDWIoI",
+      "title": "UT_UI_갤러리_기획서_v0.0.5",
+      "url": "https://docs.google.com/presentation/d/1XIytwYvAnJu6OsqyqLW9fzOevfoKDscfVkc0SuDWIoI/edit?usp=drivesdk",
+      "modified": "2026-07-03T10:21:38.153Z",
+      "public": true
+    },
+    {
+      "id": "1AS234Pr_cqX_cHtW2Dg1EDRXeDwMrC1BxTK5r9y-qXE",
+      "title": "UT_UI_내러티브_기획서_v0.0.2",
+      "url": "https://docs.google.com/presentation/d/1AS234Pr_cqX_cHtW2Dg1EDRXeDwMrC1BxTK5r9y-qXE/edit?usp=drivesdk",
+      "modified": "2026-07-14T09:57:27.763Z",
+      "public": true
+    },
+    {
+      "id": "1vc2vduHCUyzcpoVurbbjOs7NLR2RRRoGYIDWcHid_7c",
+      "title": "UT_UI_내러티브_기획서_v0.0.1",
+      "url": "https://docs.google.com/presentation/d/1vc2vduHCUyzcpoVurbbjOs7NLR2RRRoGYIDWcHid_7c/edit?usp=drivesdk",
+      "modified": "2026-05-26T13:55:56.161Z",
+      "public": true
+    },
+    {
+      "id": "1HTkFs5H_CTvaXuQkEA_UKP3vlrLByQnbvcRJa_eUuhg",
+      "title": "UT_UI_갤러리_기획서_v0.0.4",
+      "url": "https://docs.google.com/presentation/d/1HTkFs5H_CTvaXuQkEA_UKP3vlrLByQnbvcRJa_eUuhg/edit?usp=drivesdk",
+      "modified": "2026-07-01T14:25:00.108Z",
+      "public": true
+    },
+    {
+      "id": "1QF7geR87pcBJLsbALCP9DEFYYdcDYdtgLqgVrbrg7OM",
+      "title": "UT_UI_갤러리_기획서_v0.0.3",
+      "url": "https://docs.google.com/presentation/d/1QF7geR87pcBJLsbALCP9DEFYYdcDYdtgLqgVrbrg7OM/edit?usp=drivesdk",
+      "modified": "2026-07-01T11:40:56.914Z",
+      "public": true
+    },
+    {
+      "id": "1AgwvYaPJOUMGsTGSm5UHbxmYAR8cllM3LT6vTvrVTTA",
+      "title": "UT_UI_갤러리_기획서_v0.0.2",
+      "url": "https://docs.google.com/presentation/d/1AgwvYaPJOUMGsTGSm5UHbxmYAR8cllM3LT6vTvrVTTA/edit?usp=drivesdk",
+      "modified": "2026-06-29T16:19:14.344Z",
+      "public": true
+    },
+    {
+      "id": "1hdfmSreRX7A8qP7-nCimXLnZRU9gXaAHoGeUsaATtz8",
+      "title": "UT_UI_갤러리_기획서_v0.0.1",
+      "url": "https://docs.google.com/presentation/d/1hdfmSreRX7A8qP7-nCimXLnZRU9gXaAHoGeUsaATtz8/edit?usp=drivesdk",
+      "modified": "2026-06-29T10:02:26.820Z",
+      "public": true
+    },
+    {
+      "id": "1Jci7kDUp44Fy_8AgHhbxXLmQl5RkiubDFpdzbjc841c",
+      "title": "UT_UI_전투HUD_기획서_v0.0.3",
+      "url": "https://docs.google.com/presentation/d/1Jci7kDUp44Fy_8AgHhbxXLmQl5RkiubDFpdzbjc841c/edit?usp=drivesdk",
+      "modified": "2026-05-05T08:50:10.557Z",
+      "public": true
+    },
+    {
+      "id": "1C2yoGbkDiquj1ONtii0sZjWXtrg4sFnicO5X3MhhMjc",
+      "title": "UT_UI_전투HUD_기획서_v0.0.4",
+      "url": "https://docs.google.com/presentation/d/1C2yoGbkDiquj1ONtii0sZjWXtrg4sFnicO5X3MhhMjc/edit?usp=drivesdk",
+      "modified": "2026-05-05T11:07:16.843Z",
+      "public": true
+    },
+    {
+      "id": "1mgjRBkBtAeXGLigGPf4T8TDXfk9LcO9YpDpq1h-dgJo",
+      "title": "UT_UI_전투HUD_기획서_v0.0.2",
+      "url": "https://docs.google.com/presentation/d/1mgjRBkBtAeXGLigGPf4T8TDXfk9LcO9YpDpq1h-dgJo/edit?usp=drivesdk",
+      "modified": "2026-05-05T04:09:39.487Z",
+      "public": true
+    },
+    {
+      "id": "1nLCAVJK0ypn0JCt2fGsBVltUYQrhdzetqGCVrqg6oMA",
+      "title": "UT_UI_전투HUD_기획서_v0.0.1",
+      "url": "https://docs.google.com/presentation/d/1nLCAVJK0ypn0JCt2fGsBVltUYQrhdzetqGCVrqg6oMA/edit?usp=drivesdk",
+      "modified": "2026-04-30T13:23:38.323Z",
+      "public": true
+    },
+    {
+      "id": "1qsZzUj7QOk1sg7ZS77h6UhL__bYJPP3BeFKLOr3c3qc",
+      "title": "UT_UI_아트스타일가이드_v0.0.1",
+      "url": "https://docs.google.com/presentation/d/1qsZzUj7QOk1sg7ZS77h6UhL__bYJPP3BeFKLOr3c3qc/edit?usp=drivesdk",
+      "modified": "2026-08-20T07:14:54.301Z",
+      "public": true
+    },
+    {
+      "id": "1i_FP2g_JfRE9hrwuJpTwiDLMoWz-SSb2hdgHi9mf-PY",
+      "title": "이동현_시스템_피드구성_1.2.1",
+      "url": "https://docs.google.com/spreadsheets/d/1i_FP2g_JfRE9hrwuJpTwiDLMoWz-SSb2hdgHi9mf-PY/edit?usp=drivesdk",
+      "modified": "2026-06-25T09:19:19.242Z",
+      "public": true
+    },
+    {
+      "id": "15n0JakICKfmD77ZYZry7tffCTmAqKMvFbf_ksD35i8Q",
+      "title": "이동현_시스템_피드구성_1.1.1",
+      "url": "https://docs.google.com/spreadsheets/d/15n0JakICKfmD77ZYZry7tffCTmAqKMvFbf_ksD35i8Q/edit?usp=drivesdk",
+      "modified": "2026-05-26T09:55:28.751Z",
+      "public": true
+    },
+    {
+      "id": "1lKBnjIlJzTK0TBmZEHOw0C78gprMKnnuMeED3gVFM1E",
+      "title": "이동현_시스템_피드구성_1.1.0",
+      "url": "https://docs.google.com/spreadsheets/d/1lKBnjIlJzTK0TBmZEHOw0C78gprMKnnuMeED3gVFM1E/edit?usp=drivesdk",
+      "modified": "2026-05-22T03:54:49.176Z",
+      "public": true
+    },
+    {
+      "id": "1-ehPfICdk0XdaIyh5vbHKlOTinWZ8LuKJUCfWwzqUaQ",
+      "title": "이동현_시스템_서버송수신_1.1.2",
+      "url": "https://docs.google.com/spreadsheets/d/1-ehPfICdk0XdaIyh5vbHKlOTinWZ8LuKJUCfWwzqUaQ/edit?usp=drivesdk",
+      "modified": "2026-05-22T05:52:15.603Z",
+      "public": true
+    },
+    {
+      "id": "1IXBZg4xycGZ06VYrddKdWO8xaOh4wdS_jyBvWrwUZKE",
+      "title": "이동현_시스템_서버송수신_1.1.1",
+      "url": "https://docs.google.com/spreadsheets/d/1IXBZg4xycGZ06VYrddKdWO8xaOh4wdS_jyBvWrwUZKE/edit?usp=drivesdk",
+      "modified": "2026-06-14T18:16:25.133Z",
+      "public": true
+    },
+    {
+      "id": "1JFLU7S463kaSz6RWkH8jzJmkYcFl78Ftjb3BtVc74ek",
+      "title": "이동현_시스템_서버송수신_1.1.0",
+      "url": "https://docs.google.com/spreadsheets/d/1JFLU7S463kaSz6RWkH8jzJmkYcFl78Ftjb3BtVc74ek/edit?usp=drivesdk",
+      "modified": "2026-05-18T03:10:21.093Z",
+      "public": true
+    },
+    {
+      "id": "12VfcC5gh88BvUsTj1Mxypg0rMVkC8Ktd11AUV53N9KY",
+      "title": "이동현_시스템_피드구성_1.0.0",
+      "url": "https://docs.google.com/spreadsheets/d/12VfcC5gh88BvUsTj1Mxypg0rMVkC8Ktd11AUV53N9KY/edit?usp=drivesdk",
+      "modified": "2026-05-18T08:45:44.153Z",
+      "public": true
+    },
+    {
+      "id": "1kqghMlNU59XvrZhvIO-PjvdKfj8Xc6829WD4cQ7Xr1E",
+      "title": "이동현_시스템_서버송수신_0.0.1",
+      "url": "https://docs.google.com/spreadsheets/d/1kqghMlNU59XvrZhvIO-PjvdKfj8Xc6829WD4cQ7Xr1E/edit?usp=drivesdk",
+      "modified": "2026-05-15T01:13:27.791Z",
+      "public": true
+    },
+    {
+      "id": "1OFiXLkCCEB8KsFTc0AdZpQ4nnwlWGdbH3riRkcuvRTc",
+      "title": "이동현_시스템_서버송수신_1.0.0",
+      "url": "https://docs.google.com/spreadsheets/d/1OFiXLkCCEB8KsFTc0AdZpQ4nnwlWGdbH3riRkcuvRTc/edit?usp=drivesdk",
+      "modified": "2026-05-16T09:03:50.694Z",
+      "public": true
+    },
+    {
+      "id": "17PmCq7WFWYiX2-I3eZqtti4SJIHyHXVarghDhNXWHWU",
+      "title": "이동현_시스템_피드구성_0.0.1",
+      "url": "https://docs.google.com/spreadsheets/d/17PmCq7WFWYiX2-I3eZqtti4SJIHyHXVarghDhNXWHWU/edit?usp=drivesdk",
+      "modified": "2026-05-18T08:29:11.226Z",
+      "public": true
+    },
+    {
+      "id": "1nmgY3fcpOPcjCb9pWuqQl7KtHCz3FSp3",
+      "title": "02_나린가락_시나리오기획서_폐기본",
+      "url": "https://drive.google.com/file/d/1nmgY3fcpOPcjCb9pWuqQl7KtHCz3FSp3/view?usp=drivesdk",
+      "modified": "2026-08-24T03:01:38.122Z",
+      "public": true
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "BattleTestPreset2": {
+    "_gdeSchema": "Preset",
+    "Party": ["Sizz", "LucyC"],
+    "PartyBasicSkill": ["S_Sizz_2", "S_LucyC_2"],
+    "PartySkills": [
+      ["S_Sizz_0", "S_Sizz_2", "S_Sizz_3", "S_Sizz_5", "S_Sizz_6", "S_Sizz_11", "S_SizzRework_BorrowSkill"],
+      ["S_DebugSkill"]
+    ],
+    "PartyEquip": [[], []]
+  }
+}

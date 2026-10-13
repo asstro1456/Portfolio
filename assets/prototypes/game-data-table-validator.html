@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>게임 데이터 테이블 검사기</title>
+  <style>
+    :root{--ink:#1f2933;--muted:#64748b;--paper:#f8fafc;--line:#d8e1eb;--panel:#fff;--accent:#2563eb;--good:#16734a;--warn:#a86700;--bad:#b42318}*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#eff6ff,#f8fafc 46%,#ecfdf5);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}main{width:min(1120px,calc(100% - 32px));margin:auto;padding:42px 0 60px}h1{margin:0;font-size:clamp(28px,4vw,43px);letter-spacing:-.05em}.lead{max-width:720px;margin:10px 0 26px;color:var(--muted)}.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}.card{background:rgba(255,255,255,.93);border:1px solid var(--line);border-radius:18px;box-shadow:0 14px 36px rgba(15,23,42,.08);padding:20px}h2{margin:0 0 12px;font-size:18px}.upload{display:grid;place-items:center;min-height:164px;border:2px dashed #93b6e7;border-radius:14px;background:#f8fbff;text-align:center;padding:18px}.upload strong{display:block;font-size:17px}.upload p{margin:6px 0 13px;color:var(--muted)}button,.file-label{border:0;border-radius:10px;background:var(--accent);color:#fff;padding:10px 13px;font:inherit;font-weight:800;cursor:pointer}.file-label{display:inline-block}input[type=file]{display:none}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.secondary{background:#eaf1fb;color:#214a82}.module-list{display:grid;gap:8px}.module{display:flex;gap:10px;align-items:flex-start;padding:11px;border:1px solid var(--line);border-radius:11px}.module input{margin-top:4px}.module b,.module small{display:block}.module small{color:var(--muted)}.tables{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}.tag{padding:5px 8px;border-radius:999px;background:#eaf1fb;color:#214a82;font-size:12px;font-weight:750}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:18px 0}.metric{padding:12px;border-radius:12px;background:#f8fafc;border:1px solid var(--line)}.metric span{display:block;color:var(--muted);font-size:12px}.metric strong{font-size:23px}.ready{padding:14px;border-radius:12px;background:#eefbf4;color:var(--good);font-weight:800}.ready.blocked{background:#fff1f0;color:var(--bad)}.report{margin-top:14px;display:grid;gap:8px}.issue{display:grid;grid-template-columns:70px 1fr;gap:9px;padding:11px;border-left:4px solid var(--line);border-radius:8px;background:#fbfdff}.issue.error{border-color:var(--bad)}.issue.warning{border-color:var(--warn)}.issue.info{border-color:var(--accent)}.level{font-size:12px;font-weight:850}.error .level{color:var(--bad)}.warning .level{color:var(--warn)}.info .level{color:var(--accent)}.issue p{margin:0}.empty{color:var(--muted);padding:12px 0}.how{margin-top:18px}.how code{display:block;white-space:pre-wrap;background:#0f172a;color:#dbeafe;padding:13px;border-radius:10px;font-size:12px}.scenario{margin-top:18px;display:grid;grid-template-columns:1fr 1fr auto;gap:8px}.scenario select{min-width:0;border:1px solid var(--line);border-radius:10px;background:#fff;padding:10px;font:inherit}.scenario-result{margin:10px 0 0;color:var(--muted)}@media(max-width:780px){.grid{grid-template-columns:1fr}.summary{grid-template-columns:1fr 1fr}.scenario{grid-template-columns:1fr}main{padding-top:24px}}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>게임 데이터 테이블 검사기</h1>
+    <p class="lead">여러 CSV를 넣으면 키·참조 무결성과 선택한 장르 규칙을 검사해, 현재 데이터가 플레이 흐름을 만들 수 있는지 알려줍니다. 파일명은 테이블명으로 사용합니다. 예: <code>Menu.csv</code>, <code>RecipeStep.csv</code>.</p>
+    <div class="grid">
+      <section class="card">
+        <h2>1. CSV 불러오기</h2>
+        <div class="upload" id="dropZone">
+          <div><strong>CSV 테이블을 여러 개 선택</strong><p>헤더 행이 필요합니다. 파일을 이곳에 끌어놓아도 됩니다.</p><label class="file-label" for="csvInput">CSV 선택</label><input id="csvInput" type="file" accept=".csv,text/csv" multiple /></div>
+        </div>
+        <div class="actions"><button id="sampleButton" class="secondary" type="button">조리 샘플 불러오기</button><button id="schemaExportButton" class="secondary" type="button" disabled>스키마 JSON 저장</button><label class="file-label secondary" for="schemaInput">스키마 JSON 불러오기</label><input id="schemaInput" type="file" accept=".json,application/json" /><button id="schemaClearButton" class="secondary" type="button" disabled>스키마 해제</button><button id="exportButton" class="secondary" type="button" disabled>보고서 JSON 저장</button></div>
+        <div class="tables" id="tableList"><span class="tag">불러온 테이블 없음</span></div>
+      </section>
+      <section class="card">
+        <h2>2. 장르 규칙</h2>
+        <div class="module-list" id="moduleList"></div>
+        <div class="how"><h2>확장 방식</h2><code>modules.myGenre = {
+  label: '내 장르 규칙',
+  inspect(context) { return [{ level, message }]; }
+};</code></div>
+      </section>
+    </div>
+    <section class="card" style="margin-top:18px" aria-live="polite">
+      <h2>3. 플레이 준비도</h2>
+      <div class="summary"><div class="metric"><span>오류</span><strong id="errorCount">0</strong></div><div class="metric"><span>주의</span><strong id="warningCount">0</strong></div><div class="metric"><span>검사 테이블</span><strong id="tableCount">0</strong></div></div>
+      <div class="ready" id="readiness">CSV를 불러오면 준비도를 계산합니다.</div>
+      <div class="report" id="report"><p class="empty">아직 검사할 데이터가 없습니다.</p></div>
+      <div class="scenario"><select id="scenarioTable" aria-label="시나리오 시작 테이블" disabled></select><select id="scenarioRow" aria-label="시나리오 시작 행" disabled></select><button id="scenarioButton" type="button" disabled>플레이 경로 검사</button></div>
+      <p class="scenario-result" id="scenarioResult">시작 테이블과 행을 선택하면 연결된 플레이 데이터를 추적합니다.</p>
+    </section>
+  </main>
+  <script>
+    (() => {
+      const $ = (id) => document.querySelector(`#${id}`);
+      const normal = (value) => String(value || '').replace(/[\s_\-]/g, '').toLowerCase();
+      const tableKey = (value) => normal(String(value || '').split(' - ').at(-1));
+      const modules = {
+        cooking: {
+          label: '조리 게임',
+          detail: 'Menu · Recipe · RecipeStep · Ingredient 관계와 조리 순서를 확인합니다.',
+          inspect(context) {
+            const menu = context.byName('menu'); const recipe = context.byName('recipe'); const step = context.byName('recipestep'); const ingredient = context.byName('ingredient');
+            if (![menu, recipe, step, ingredient].some(Boolean)) return [{ level:'info', message:'조리 테이블을 찾지 못해 조리 모듈 검사를 건너뛰었습니다.' }];
+            const issues = []; const recipePk = context.primaryKey(recipe); const stepRecipe = context.column(step, 'recipeid'); const stepOrder = context.column(step, 'steporder') || context.column(step, 'order');
+            if (!menu || !recipe || !step || !ingredient) issues.push({ level:'error', message:'조리 플레이 검증에는 Menu, Recipe, RecipeStep, Ingredient 테이블이 모두 필요합니다.' });
+            if (recipe && step && recipePk && stepRecipe) {
+              const recipeIds = new Set(recipe.rows.map((row) => row[recipePk]));
+              recipeIds.forEach((id) => {
+                const steps = step.rows.filter((row) => row[stepRecipe] === id);
+                if (!steps.length) issues.push({ level:'error', message:`Recipe '${id}'에 조리 단계가 없습니다.` });
+                if (stepOrder && steps.length) {
+                  const orders = steps.map((row) => Number(row[stepOrder])).sort((a,b) => a-b);
+                  if (orders.some((order, index) => !Number.isFinite(order) || order !== index + 1)) issues.push({ level:'warning', message:`Recipe '${id}'의 StepOrder가 1부터 연속적이지 않습니다.` });
+                }
+              });
+            }
+            const directRoutes = context.relations.filter((relation) => tableKey(relation.from.name) === 'menu' && tableKey(relation.to.name) === 'recipe').length;
+            const junction = context.byName('menurecipe');
+            const hasJunctionRoute = junction && context.relations.some((relation) => relation.from === junction && tableKey(relation.to.name) === 'menu') && context.relations.some((relation) => relation.from === junction && tableKey(relation.to.name) === 'recipe');
+            const routes = directRoutes || (hasJunctionRoute ? junction.rows.length : 0);
+            return issues.concat({ level:'info', message:`조리 모듈: Menu→Recipe 연결 ${routes}개를 발견했습니다.`, routes });
+          }
+        }
+      };
+      let tables = []; let schema = null; let lastReport = null;
+
+      function parseCsv(text) {
+        const rows = []; let row = []; let cell = ''; let quoted = false;
+        for (let index = 0; index < text.length; index += 1) {
+          const char = text[index]; const next = text[index + 1];
+          if (char === '"' && quoted && next === '"') { cell += '"'; index += 1; }
+          else if (char === '"') quoted = !quoted;
+          else if (char === ',' && !quoted) { row.push(cell.trim()); cell = ''; }
+          else if ((char === '\n' || char === '\r') && !quoted) { if (char === '\r' && next === '\n') index += 1; row.push(cell.trim()); if (row.some(Boolean)) rows.push(row); row = []; cell = ''; }
+          else cell += char;
+        }
+        row.push(cell.trim()); if (row.some(Boolean)) rows.push(row);
+        const [headers = [], ...data] = rows;
+        const cleanHeaders = headers.map((header) => header.replace(/^\uFEFF/, ''));
+        const records = data.map((values, rowIndex) => ({ __row:rowIndex + 2, ...Object.fromEntries(cleanHeaders.map((header, columnIndex) => [header, values[columnIndex] ?? ''])) }));
+        return { headers:cleanHeaders, rows:records };
+      }
+      function primaryKey(table) {
+        if (!table) return null;
+        if (tableKey(table.name) === 'ingredientslot') return column(table, 'slotcode');
+        const exact = table.headers.find((header) => normal(header) === `${tableKey(table.name)}id`) || table.headers.find((header) => normal(header) === 'id');
+        return exact || table.headers.find((header) => /id$/i.test(header)) || null;
+      }
+      function column(table, wanted) { return table?.headers.find((header) => normal(header) === normal(wanted)) || null; }
+      function keyFields(table) {
+        const saved = schema?.tables?.find((expected) => tableKey(expected.name) === tableKey(table?.name))?.primaryKey;
+        if (saved) return (Array.isArray(saved) ? saved : [saved]).map((header) => column(table, header)).filter(Boolean);
+        const composite = { recipestep:['recipeid','steporder'], menurecipeingredient:['menurecipeid','slotcode'] }[tableKey(table?.name)];
+        return composite ? composite.map((header) => column(table, header)).filter(Boolean) : [primaryKey(table)].filter(Boolean);
+      }
+      function keyValue(row, fields) { return fields.map((field) => row[field]).join('\u001f'); }
+      function byName(name) { return tables.find((table) => tableKey(table.name) === tableKey(name)) || null; }
+      function buildRelations() {
+        const inferred = tables.flatMap((from) => from.headers.filter((header) => /id$/i.test(header)).map((columnName) => {
+          const target = byName(columnName.replace(/id$/i, ''));
+          return target && !(target === from && keyFields(from).includes(columnName)) ? { from, to:target, columnName, targetKey:primaryKey(target) } : null;
+        }).filter(Boolean));
+        const slotRelations = [['recipestep','slotcode','ingredientslot'], ['menurecipeingredient','slotcode','ingredientslot']].map(([fromName, columnName, toName]) => {
+          const from = byName(fromName); const to = byName(toName); const field = column(from, columnName);
+          return from && to && field ? { from, to, columnName:field, targetKey:primaryKey(to) } : null;
+        }).filter(Boolean);
+        return [...inferred, ...slotRelations].filter((relation, index, all) => all.findIndex((other) => other.from === relation.from && other.to === relation.to && other.columnName === relation.columnName) === index);
+      }
+      function schemaFromTables() {
+        const relations = buildRelations();
+        return { version:1, tables:tables.map((table) => ({ name:table.name, primaryKey:keyFields(table), requiredColumns:table.headers })), relations:relations.map((relation) => ({ from:relation.from.name, column:relation.columnName, to:relation.to.name, targetKey:relation.targetKey })) };
+      }
+      function checkSchema(issues) {
+        if (!schema) return;
+        if (!Array.isArray(schema.tables) || !Array.isArray(schema.relations)) { issues.push({ level:'error', message:'스키마 JSON에는 tables와 relations 배열이 필요합니다.' }); return; }
+        schema.tables.forEach((expected) => {
+          const table = byName(expected.name);
+          if (!table) { issues.push({ level:'error', message:`스키마 필수 테이블 '${expected.name}'을 찾지 못했습니다.` }); return; }
+          (expected.requiredColumns || []).forEach((header) => { if (!column(table, header)) issues.push({ level:'error', message:`${table.name}: 스키마 필수 열 '${header}'이 없습니다.` }); });
+          (Array.isArray(expected.primaryKey) ? expected.primaryKey : [expected.primaryKey]).filter(Boolean).forEach((header) => { if (!column(table, header)) issues.push({ level:'error', message:`${table.name}: 스키마 기본 키 열 '${header}'이 없습니다.` }); });
+        });
+        schema.relations.forEach((expected) => {
+          const from = byName(expected.from); const to = byName(expected.to);
+          if (from && to && !column(from, expected.column)) issues.push({ level:'error', message:`${from.name}: 스키마 참조 열 '${expected.column}'이 없습니다.` });
+        });
+      }
+      function check() {
+        const issues = []; const relations = buildRelations();
+        tables.forEach((table) => {
+          if (!table.headers.length) issues.push({ level:'error', message:`${table.name}: 헤더 행이 없습니다.` });
+          const keys = keyFields(table);
+          if (!keys.length) { issues.push({ level:'warning', message:`${table.name}: 기본 키 후보를 찾지 못했습니다. 스키마 JSON에서 기본 키를 지정하세요.` }); return; }
+          const seen = new Set();
+          table.rows.forEach((row) => {
+            const missing = keys.filter((key) => !row[key]); const value = keyValue(row, keys);
+            if (missing.length) issues.push({ level:'error', message:`${table.name} ${row.__row}행: 기본 키 ${missing.join(', ')}가 비어 있습니다.` });
+            else if (seen.has(value)) issues.push({ level:'error', message:`${table.name} ${row.__row}행: 복합 키 ${keys.map((key) => `${key} '${row[key]}'`).join(', ')}가 중복됩니다.` });
+            else seen.add(value);
+          });
+        });
+        relations.forEach((relation) => {
+          if (!relation.targetKey) { issues.push({ level:'warning', message:`${relation.to.name}: ${relation.columnName}의 참조 키를 확인할 수 없습니다.` }); return; }
+          const values = new Set(relation.to.rows.map((row) => row[relation.targetKey]));
+          relation.from.rows.forEach((row) => { if (row[relation.columnName] && !values.has(row[relation.columnName])) issues.push({ level:'error', message:`${relation.from.name} ${row.__row}행: ${relation.columnName} '${row[relation.columnName]}'의 대상 행이 없습니다.` }); });
+        });
+        checkSchema(issues);
+        let routes = 0;
+        [...document.querySelectorAll('[data-module]:checked')].forEach((input) => modules[input.dataset.module].inspect({ byName, primaryKey, column, relations }).forEach((issue) => { routes += issue.routes || 0; issues.push(issue); }));
+        const errors = issues.filter((issue) => issue.level === 'error').length; const warnings = issues.filter((issue) => issue.level === 'warning').length;
+        lastReport = { checkedAt:new Date().toISOString(), schemaLoaded:Boolean(schema), tables:tables.map(({ name, headers, rows }) => ({ name, headers, rowCount:rows.length })), errors, warnings, routes, issues };
+        render();
+      }
+      function escapeHtml(value) { return String(value).replace(/[&<>'"]/g, (char) => ({ '&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;' })[char]); }
+      function populateScenario() {
+        const tableSelect = $('scenarioTable'); const rowSelect = $('scenarioRow'); const active = tables.length > 0;
+        tableSelect.disabled = !active; rowSelect.disabled = !active; $('scenarioButton').disabled = !active;
+        tableSelect.innerHTML = tables.map((table) => `<option value="${escapeHtml(table.name)}">${escapeHtml(table.name)}</option>`).join('');
+        populateScenarioRows();
+      }
+      function populateScenarioRows() {
+        const table = byName($('scenarioTable').value); const key = primaryKey(table); const rowSelect = $('scenarioRow');
+        rowSelect.innerHTML = table?.rows.map((row) => `<option value="${escapeHtml(row[key] || row.__row)}">${escapeHtml(row[key] || `${row.__row}행`)}</option>`).join('') || '';
+      }
+      function inspectScenario() {
+        const start = byName($('scenarioTable').value); const key = primaryKey(start); const startRow = start?.rows.find((row) => String(row[key] || row.__row) === $('scenarioRow').value);
+        if (!start || !key || !startRow) return;
+        const relations = buildRelations(); const seen = new Set(); const queue = [{ table:start, row:startRow }];
+        while (queue.length) {
+        const current = queue.shift(); const currentKey = primaryKey(current.table); const id = `${current.table.name}:${current.row[currentKey] || current.row.__row}`;
+          if (seen.has(id)) continue; seen.add(id);
+          relations.forEach((relation) => {
+            if (relation.from === current.table) {
+              const target = relation.to.rows.find((row) => row[relation.targetKey] === current.row[relation.columnName]);
+              if (target) queue.push({ table:relation.to, row:target });
+            }
+            if (relation.to === current.table) relation.from.rows.filter((row) => row[relation.columnName] === current.row[relation.targetKey]).forEach((row) => queue.push({ table:relation.from, row }));
+          });
+        }
+        const reached = new Set([...seen].map((value) => value.split(':')[0]));
+        const missing = $('cooking').checked ? ['Menu','Recipe','RecipeStep','Ingredient'].filter((name) => ![...reached].some((tableName) => tableKey(tableName) === tableKey(name))) : [];
+        $('scenarioResult').textContent = missing.length ? `플레이 경로 부족: ${missing.join(', ')} 테이블에 도달하지 못했습니다.` : `플레이 경로 확인: ${[...reached].join(' → ')} 테이블의 ${seen.size}행에 도달했습니다.`;
+      }
+      function render() {
+        $('tableList').innerHTML = tables.length ? tables.map((table) => `<span class="tag">${escapeHtml(table.name)} · ${table.rows.length}행</span>`).join('') : '<span class="tag">불러온 테이블 없음</span>';
+        $('errorCount').textContent = lastReport?.errors ?? 0; $('warningCount').textContent = lastReport?.warnings ?? 0; $('tableCount').textContent = tables.length; $('exportButton').disabled = !lastReport; $('schemaExportButton').disabled = !tables.length; $('schemaClearButton').disabled = !schema;
+        const ready = $('readiness'); const hasCooking = $('cooking').checked;
+        const playable = lastReport && !lastReport.errors && (!hasCooking || lastReport.routes > 0);
+        ready.classList.toggle('blocked', Boolean(lastReport && !playable));
+        ready.textContent = !lastReport ? 'CSV를 불러오면 준비도를 계산합니다.' : playable ? '플레이 가능: 필수 참조가 연결됐고, 선택한 모듈의 경로를 찾았습니다.' : '플레이 전 수정 필요: 오류를 해결하거나 장르 모듈의 필수 경로를 채우세요.';
+        $('report').innerHTML = lastReport?.issues.length ? lastReport.issues.map((issue) => `<article class="issue ${issue.level}"><span class="level">${issue.level === 'error' ? '오류' : issue.level === 'warning' ? '주의' : '정보'}</span><p>${escapeHtml(issue.message)}</p></article>`).join('') : '<p class="empty">오류와 주의가 없습니다.</p>';
+        populateScenario();
+      }
+      async function load(files) { tables = await Promise.all([...files].map(async (file) => { const parsed = parseCsv(await file.text()); return { name:file.name.replace(/\.csv$/i, ''), ...parsed }; })); $('scenarioResult').textContent = '시작 테이블과 행을 선택하면 연결된 플레이 데이터를 추적합니다.'; check(); }
+      function loadSample() {
+        const sample = { 'Menu.csv':'MenuId,Name\nM01,돈테키', 'Recipe.csv':'RecipeId,Name\nR01,돈테키 굽기', 'Ingredient.csv':'IngredientId,Name\nI01,돼지고기', 'MenuRecipe.csv':'MenuRecipeId,MenuId,RecipeId\nMR01,M01,R01', 'RecipeStep.csv':'RecipeStepId,RecipeId,IngredientId,StepOrder\nRS01,R01,I01,1\nRS02,R01,I01,2' };
+        load(Object.entries(sample).map(([name, text]) => new File([text], name, { type:'text/csv' })));
+      }
+      Object.entries(modules).forEach(([id, module]) => $('moduleList').insertAdjacentHTML('beforeend', `<label class="module"><input id="${id}" data-module="${id}" type="checkbox" checked /><span><b>${module.label}</b><small>${module.detail}</small></span></label>`));
+      async function loadSchema(file) {
+        try { schema = JSON.parse(await file.text()); check(); }
+        catch { schema = null; lastReport = { errors:1, warnings:0, routes:0, issues:[{ level:'error', message:'스키마 JSON을 읽을 수 없습니다.' }] }; render(); }
+      }
+      function download(name, value) { const url = URL.createObjectURL(new Blob([JSON.stringify(value, null, 2)], { type:'application/json' })); const link = Object.assign(document.createElement('a'), { href:url, download:name }); link.click(); URL.revokeObjectURL(url); }
+      $('csvInput').addEventListener('change', (event) => load(event.target.files)); $('schemaInput').addEventListener('change', (event) => event.target.files[0] && loadSchema(event.target.files[0])); $('sampleButton').addEventListener('click', loadSample); $('moduleList').addEventListener('change', check); $('schemaExportButton').addEventListener('click', () => download('game-data-schema.json', schemaFromTables())); $('schemaClearButton').addEventListener('click', () => { schema = null; check(); }); $('scenarioTable').addEventListener('change', populateScenarioRows); $('scenarioButton').addEventListener('click', inspectScenario);
+      $('dropZone').addEventListener('dragover', (event) => event.preventDefault()); $('dropZone').addEventListener('drop', (event) => { event.preventDefault(); load([...event.dataTransfer.files].filter((file) => /\.csv$/i.test(file.name))); });
+      $('exportButton').addEventListener('click', () => download('game-data-table-report.json', lastReport));
+      render();
+    })();
+  </script>
+</body>
+</html>

@@ -3,358 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>게임 UI/UX 기획자 포트폴리오</title>
-  <meta name="description" content="시스템을 이해하고 UX로 풀어내는 게임 UI/UX 기획자의 포트폴리오 페이지입니다.">
+  <title>이동현 — 게임 콘텐츠 기획자</title>
+  <meta name="description" content="게임 경험을 콘텐츠 기획의 판단으로 바꾸는 이동현의 포트폴리오 아카이브입니다.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=0.1.16">
-  <script src="js/main.js?v=0.1.16" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=0.2.0">
+  <script src="js/main.js?v=0.2.0" defer></script>
+  <template id="personal-story-template"><section class="chapter personal-chapter" id="game-changed"><div class="chapter-label"><span>03</span><p>GAME CHANGED ME</p></div><div class="personal-intro"><p class="eyebrow">WHY I CHOSE THIS WORK</p><h2>게임이 나를<br><em>버티게 했던 시간.</em></h2><p>이 이야기는 직업을 고른 계기이면서, 콘텐츠를 대하는 기준이 되었습니다. 누군가에게 게임이 잠깐의 재미를 넘어 버팀목이 될 수 있다는 것을 직접 겪었습니다.</p></div><div class="personal-story"><article><span>01 / 코로나 학번</span><h3>사람을 연결하고 싶었지만, 방법을 몰랐습니다.</h3><p>새내기 때부터 원격 수업이 이어졌고, 1학년 2학기에는 과대를 맡았습니다. 대학 생활을 이렇게 남기고 싶지 않아 MT를 계획했습니다. 술자리에서 허물없이 친해져, 같은 과에서 보낼 4년을 함께 시작하면 좋겠다고 생각했습니다.</p><p>하지만 술을 좋아하는 사람만 많이 마셨고, 나머지는 거의 손대지 않았습니다. 술게임에도 서툴렀습니다. 좋은 의도만으로는 모두에게 편한 자리를 만들 수 없다는 것을 처음 크게 느꼈습니다.</p></article><article><span>02 / 실망과 우울</span><h3>작은 집단에서도 신뢰가 무너지면 오래 남습니다.</h3><p>20명 남짓한 과에서 익명 단톡방으로 과회장을 뽑던 날, 이전 과회장이 학기 중에 그만둔 이야기를 떠올려 “중간에 관두시는 거 아니죠?”라고 물었습니다. 그 질문에 욕설과 비난이 돌아왔고, 말투만으로도 누군지 짐작할 수 있는 환경이 더 힘들었습니다.</p><p>그때부터 과에 대한 실망이 깊어졌고, 이후 첫사랑의 이별이 겹치며 우울이 심해졌습니다. 모든 것이 허무하고, 내가 살아 있는 감각도 흐려지는 날들이 있었습니다.</p></article><article><span>03 / LIBRARY OF RUINA</span><h3>라오루는 나를 구원했다기보다, 생각을 계속하게 한 버팀목이었습니다.</h3><p>그 시기에 깊게 붙잡고 있던 게임이 <em>Library of Ruina</em>였습니다. 시나리오 속 인물들이 감당하는 질문과 선택을 따라가면서, 내 고민을 다른 거리에서 바라볼 수 있었습니다. 그 경험은 인문학과 철학, 특히 실존주의에 관심을 갖게 한 시작점이 됐습니다.</p><p>그래서 저는 누군가를 ‘구원하는 게임’을 말하고 싶지는 않습니다. 다만 힘든 시기에 곁에 남아, 다시 생각할 힘을 주는 게임은 만들 수 있다고 믿습니다. 제가 콘텐츠 기획을 택한 이유도 여기에 있습니다.</p></article></div></section></template>
+  <template id="laoru-note-template"><p><strong>“고통을 사랑하기 위한 기도.”</strong> 세상에 신은 없고 인간은 고독한 세상에 남겨진 존재라는 생각은, 목표와 목적 없이 떠도는 삶을 어떻게 이어갈지 묻게 했습니다. 고통을 없애야 할 적이 아니라 받아들이고 함께 가야 할 동반자로 보는 태도가 아련하면서도 굳건하게 남았습니다.</p></template>
+  <script>window.addEventListener('DOMContentLoaded',()=>{const button=document.querySelector('[data-case="experience"]');if(!button)return;button.innerHTML='<span>02</span>스태퍼 케이스';button.addEventListener('click',()=>{const panel=document.querySelector('[data-case-panel]');panel.querySelector('.panel-label').textContent='THE STAPPER CASE / STORY & DEDUCTION';panel.querySelector('h3').innerHTML='모든 단서를 소비하지 않아도,<br>추리는 성립합니다.';panel.querySelector('p:not(.panel-label)').textContent='추리 게임을 좋아해 시작한 국산 작품입니다. 보통 가진 단서는 전부 쓰게 되는데, 끝까지 사용하지 않는 단서가 남는 방식이 독특했습니다. 지하실에서 본 한 장면은 늘 밝아 보이던 인물에게 과거를 피하기 위해 밝게 살아가려 했던 면을 부여했습니다. 작은 디테일이 세계관·콘텐츠·시스템에 일관되게 쌓이면 코어 팬은 개발자의 진심을 읽고 깊이 머문다고 봅니다. 이것이 장기 애착과 LTV로 이어질 여지를 만듭니다.';});});</script>
+  <script>window.addEventListener('DOMContentLoaded',()=>{const button=document.querySelector('[data-case="trust"]');if(!button)return;button.innerHTML='<span>03</span>미스트오버 보스';button.addEventListener('click',()=>{const panel=document.querySelector('[data-case-panel]');panel.querySelector('.panel-label').textContent='MISTOVER / BLACK GODDESS OF ABUNDANCE';panel.querySelector('h3').innerHTML='어려워도,<br>불합리해서는 안 됩니다.';panel.querySelector('p:not(.panel-label)').textContent='검은 풍요의 여신전에서 잡몹을 잡지 말고 보스를 공격해야 하는 규칙을 사전에 알기 어려웠습니다. 단일 강한 공격과 달리 전체 즉사기는 실패의 대가가 너무 크고, 다음 대응을 역으로 추론하기도 어렵습니다. 보스의 대기 대사 한 줄이 아니라 전투 초반의 행동, 시각 효과, 잡몹의 반응처럼 플레이 중 읽을 수 있는 단서가 필요했다고 봅니다. 어려운 게임도 실패에서 배울 수 있어야 재미가 됩니다.';});});</script>
 </head>
 <body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
   <header class="site-header">
-    <div class="container site-header-inner">
-      <a href="#hero" class="site-brand" aria-label="메인 섹션으로 이동">
-      </a>
-
-      <nav class="site-nav" aria-label="페이지 이동">
-        <a href="#hero" class="site-link" data-nav-target="hero">Main</a>
-        <a href="#tools" class="site-link" data-nav-target="tools">What</a>
-        <a href="#origin" class="site-link" data-nav-target="origin">Why</a>
-        <a href="#how" class="site-link" data-nav-target="how">How</a>
-        <a href="#future" class="site-link" data-nav-target="future">Vision</a>
-        <a href="portfolio.html" class="site-link">Portfolio</a>
-      </nav>
-
-      <div class="site-nav-utility">
-        <button
-          type="button"
-          class="nav-guide-toggle"
-          id="navGuideToggle"
-          aria-expanded="false"
-          aria-controls="navGuidePanel"
-          aria-label="섹션 가이드 열기"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-
-        <div class="nav-guide-panel" id="navGuidePanel" hidden>
-          <div class="nav-guide-item">
-            <strong>Main</strong>
-            <span>이름, 포지션, 핵심 정체성과 대표 태그</span>
-          </div>
-          <div class="nav-guide-item">
-            <strong>What</strong>
-            <span>기획을 증명하는 작업 방식과 결과물 형태</span>
-          </div>
-          <div class="nav-guide-item">
-            <strong>Why</strong>
-            <span>출발점과 문제를 보는 기준</span>
-          </div>
-          <div class="nav-guide-item">
-            <strong>How</strong>
-            <span>원칙, 프로세스, 사례를 묶은 3D 캐러셀</span>
-          </div>
-          <div class="nav-guide-item">
-            <strong>Vision</strong>
-            <span>앞으로 고도화하고 싶은 방향</span>
-          </div>
-          <div class="nav-guide-item">
-            <strong>Portfolio</strong>
-            <span>별도 페이지에서 보는 문서, 테이블, 프로토타입 증거 자료</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <a class="wordmark" href="#top" aria-label="메인으로 이동">LDH<span>_archive</span></a>
+    <nav class="site-nav" aria-label="포트폴리오 탐색">
+      <a href="#top" class="is-active">Main</a><a href="#subculture">Subculture</a><a href="#ai-work">AI &amp; Work</a><a href="#game-changed">Story</a><a href="#projects">Projects</a><a href="#archive">Archive</a>
+    </nav>
+    <button class="print-button" type="button" data-print>PDF 보기</button>
   </header>
-
-  <section class="hero" id="hero">
-    <div class="hero-stage" aria-label="메인 메시지와 대표 비주얼">
-      <span class="hero-version">Version 0.1.16</span>
-      <div class="hero-visual" aria-hidden="true"></div>
-
-      <div class="hero-overlay">
-        <div class="container hero-overlay-inner">
-          <aside class="hero-profile-card" aria-label="요약 프로필">
-            <span class="hero-card-label">Profile</span>
-            <strong>이동현</strong>
-            <p class="hero-card-role">게임기획 전공 · 게임 UI/UX 기획자 지망</p>
-
-            <dl class="hero-mini-meta">
-              <div>
-                <dt>전화번호</dt>
-                <dd>010-5290-4901</dd>
-              </div>
-              <div>
-                <dt>이메일</dt>
-                <dd>ug777070@gmail.com</dd>
-              </div>
-            </dl>
-
-            <ul class="hero-mini-tags">
-              <li>Limbus UX 분석</li>
-              <li>Unity UI 상태</li>
-              <li>시스템 조건</li>
-              <li>재학습 흐름</li>
-            </ul>
-
-            <a href="#" class="hero-mini-link">Notion</a>
-          </aside>
-
-          <div class="hero-copy">
-            <h1>
-              <span class="hero-title-line">시스템을 이해하고 UX로 풀어내는</span>
-              <span class="hero-title-line">게임 UI/UX 기획자</span>
-            </h1>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <main>
-    <section class="section section-evidence" id="tools">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-kicker">What</p>
-          <h2>기획을 증명하는 작업 방식</h2>
-        </div>
-
-        <div class="grid tools">
-          <article class="card compact interactive-card open-modal tool-card" data-modal="tool1" role="button" tabindex="0" aria-label="데이터 테이블 설계 상세 보기">
-            <div class="tool-media-slot">
-              <img src="assets/images/data-table-reference.png" alt="데이터 테이블 참조 구조도">
-            </div>
-            <h3>데이터 테이블 설계</h3>
-            <p>시나리오, 선택지, 리소스, 보상 데이터를 구현 가능한 구조로 나눕니다.</p>
-          </article>
-
-          <article class="card compact interactive-card open-modal tool-card" data-modal="tool2" role="button" tabindex="0" aria-label="플로우차트와 상태 정의 상세 보기">
-            <div class="tool-media-slot">
-              <img src="assets/images/flow-room-rules.png" alt="방 진행 규칙 플로우차트">
-            </div>
-            <h3>플로우차트와 상태 정의</h3>
-            <p>방 진행, 피격, 강화, 상점처럼 조건이 갈리는 흐름을 시각화합니다.</p>
-          </article>
-
-          <article class="card compact interactive-card open-modal tool-card" data-modal="tool3" role="button" tabindex="0" aria-label="협업 문서화 상세 보기">
-            <div class="tool-media-slot">
-              <img src="assets/images/project-bb-thumbnail.png" alt="Project_BB 대표 썸네일">
-            </div>
-            <h3>협업 문서화</h3>
-            <p>팀원이 같은 기준을 보고 움직이도록 역할, 일정, 검수 기준을 남깁니다.</p>
-          </article>
-
-          <article class="card compact interactive-card open-modal tool-card" data-modal="tool4" role="button" tabindex="0" aria-label="구조 검증용 프로토타입 상세 보기">
-            <div class="tool-media-slot">
-              <img src="assets/images/limbus-prototype.png" alt="림버스 로그라이크 슬롯 프로토타입 화면">
-            </div>
-            <h3>구조 검증용 프로토타입</h3>
-            <p>제안이 말로만 끝나지 않도록 작은 작동 구조로 먼저 검증합니다.</p>
-          </article>
-
-          <article class="card compact interactive-card open-modal tool-card" data-modal="tool5" role="button" tabindex="0" aria-label="AI와 툴 검토 루프 상세 보기">
-            <div class="tool-media-slot">
-              <img src="assets/images/flow-shop.png" alt="상점 규칙 플로우차트">
-            </div>
-            <h3>AI와 툴 검토 루프</h3>
-            <p>AI 결과를 그대로 쓰기보다 값의 흐름과 호출 순서를 따라가며 검토합니다.</p>
-          </article>
-        </div>
-      </div>
+  <main id="main">
+    <section class="hero chapter" id="top">
+      <div class="hero-noise" aria-hidden="true"></div>
+      <div class="hero-rail" aria-hidden="true"><span>2026 / GAME CONTENT PLANNER</span><span>SCROLL TO READ</span></div>
+      <div class="hero-copy"><p class="eyebrow">GAME SYSTEM / CONTENT / LIVE</p><h1>게임을 하고,<br><em>기록하고,</em><br>콘텐츠의 이유를 찾습니다.</h1><p class="hero-lead">게임 경험에서 발견한 장면을 팀이 만들 수 있는 콘텐츠와 운영의 언어로 바꾸는 기획자, 이동현입니다.</p><div class="hero-actions"><a href="#projects" class="text-link">대표 프로젝트 보기 <span>↓</span></a><a href="#archive" class="text-link">생각 아카이브 보기 <span>↓</span></a></div></div>
+      <aside class="resume-panel" aria-label="이력서 요약"><p class="panel-label">RESUME / 2026</p><dl><div><dt>ROLE</dt><dd>게임 콘텐츠 기획자</dd></div><div><dt>FOCUS</dt><dd>서브컬처 · 라이브 서비스 · 협업 구조</dd></div><div><dt>NOW</dt><dd>개인·협업 프로젝트의 판단과 검증 기록을 정리하고 있습니다.</dd></div></dl><div class="growth-route" aria-label="성장 계획"><span>01<br><b>구현 기준</b></span><i></i><span>03<br><b>콘텐츠 단위</b></span><i></i><span>05<br><b>운영 판단</b></span></div></aside>
+      <figure class="library-window"><div class="window-bar"><span></span><span></span><span></span><b>STEAM LIBRARY / PLAY HISTORY</b></div><div class="library-content"><img src="assets/images/steam-library.png" alt="림버스 컴퍼니, 라이브러리 오브 루이나, 문명 6 등 게임별 플레이 시간이 보이는 스팀 라이브러리"></div></figure>
+      <a class="scroll-cue" href="#subculture">01 <span>scroll</span></a>
     </section>
-
-    <section class="section" id="origin">
-      <div class="container narrow">
-        <div class="section-heading">
-          <p class="section-kicker">Why</p>
-          <h2>나는 어디에서 출발했는가</h2>
-        </div>
-
-        <article class="editorial-story">
-          <div class="editorial-visual" aria-hidden="true">
-            <span class="editorial-label">Flow First</span>
-            <strong>학생이 멈추는 지점을 보던 습관은, 플레이어가 막히는 흐름을 보는 기준이 되었습니다.</strong>
-          </div>
-
-          <div class="editorial-copy">
-            <p>
-              교육 현장에서 학생들이 같은 설명을 듣고도 서로 다른 지점에서 막히는 모습을 자주 봤습니다. 그 경험은 게임을 볼 때도 자연스럽게 "플레이어가 어디에서 멈추는가"를 먼저 살피는 태도로 이어졌습니다.
-            </p>
-            <p>
-              지금은 아이디어를 먼저 늘리기보다, 플레이어가 이해해야 할 순서와 팀이 같은 기준으로 읽어야 할 조건을 먼저 정리하려고 합니다.
-            </p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="how-group" id="how">
-      <div class="container how-intro">
-        <div class="section-heading">
-          <p class="section-kicker">How</p>
-          <h2>흐름을 기준으로 바꾸는 방식</h2>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="slider-shell how-slider-shell">
-          <button type="button" class="slider-nav slider-nav-prev" data-slider-target="howSlider" aria-label="이전 카드 보기">&lt;</button>
-
-          <div class="slider-track how-slider" id="howSlider" data-slider-dots="howSliderDots" aria-label="How 3D 캐러셀">
-            <article class="card how-slide how-slide-principles" id="approach" data-slide-anchor="approach">
-              <div class="how-slide-head">
-                <p class="section-kicker">Principles</p>
-                <h3>나는 흐름을 이렇게 다룬다</h3>
-              </div>
-
-              <div class="principle-grid">
-                <article class="card emphasis principle-card interactive-card open-modal" data-modal="approach1" role="button" tabindex="0" aria-label="막히는 지점을 먼저 본다 상세 보기">
-                  <span class="principle-chip">01</span>
-                  <h3>막히는 지점을 먼저 본다</h3>
-                  <p>플레이어가 멈추는 순간과 팀이 해석을 나누는 순간을 먼저 찾아 우선순위를 정합니다.</p>
-                </article>
-
-                <article class="card emphasis principle-card interactive-card open-modal" data-modal="approach2" role="button" tabindex="0" aria-label="기준은 문서로 남긴다 상세 보기">
-                  <span class="principle-chip">02</span>
-                  <h3>기준은 문서로 남긴다</h3>
-                  <p>구두 합의로 끝내지 않고, 조건과 예외를 문장과 표로 남겨 재사용 가능하게 만듭니다.</p>
-                </article>
-
-                <article class="card emphasis principle-card interactive-card open-modal" data-modal="approach3" role="button" tabindex="0" aria-label="전달 후에도 확인한다 상세 보기">
-                  <span class="principle-chip">03</span>
-                  <h3>전달 후에도 확인한다</h3>
-                  <p>문서를 전달한 뒤에도 이해가 같은지 확인하고, 필요한 수정은 짧은 루프로 반영합니다.</p>
-                </article>
-
-                <article class="card emphasis principle-card interactive-card open-modal" data-modal="approach4" role="button" tabindex="0" aria-label="필요한 순간에 묻는다 상세 보기">
-                  <span class="principle-chip">04</span>
-                  <h3>필요한 순간에 묻는다</h3>
-                  <p>늦은 질문보다 빠른 질문이 비용을 줄인다고 보고, 결정 전 확인 루프를 운영합니다.</p>
-                </article>
-              </div>
-            </article>
-
-            <article class="card how-slide how-slide-process" id="alignment" data-slide-anchor="alignment">
-              <div class="how-slide-head">
-                <p class="section-kicker">Process</p>
-                <h3>관찰을 팀의 공통 기준으로 바꾼다</h3>
-              </div>
-
-              <div class="process-flow" aria-label="정렬 프로세스">
-                <article class="process-step interactive-card open-modal" data-modal="alignment1" role="button" tabindex="0" aria-label="관찰 상세 보기">
-                  <span class="process-number">01</span>
-                  <h3>관찰</h3>
-                  <p>플레이어와 팀원이 멈추는 지점을 먼저 찾고, 바꿔야 할 흐름을 좁힙니다.</p>
-                </article>
-
-                <article class="process-step interactive-card open-modal" data-modal="alignment2" role="button" tabindex="0" aria-label="기준화 상세 보기">
-                  <span class="process-number">02</span>
-                  <h3>기준화</h3>
-                  <p>조건, 예외, 완료 기준을 문장으로 고정해 해석 차이를 줄입니다.</p>
-                </article>
-
-                <article class="process-step interactive-card open-modal" data-modal="alignment3" role="button" tabindex="0" aria-label="구조화 상세 보기">
-                  <span class="process-number">03</span>
-                  <h3>구조화</h3>
-                  <p>테이블, 플로우차트, 와이어프레임으로 옮겨 구현 단위를 보이게 합니다.</p>
-                </article>
-
-                <article class="process-step interactive-card open-modal" data-modal="alignment4" role="button" tabindex="0" aria-label="검수 상세 보기">
-                  <span class="process-number">04</span>
-                  <h3>검수</h3>
-                  <p>문서만 보고 구현과 QA가 가능한지 다시 확인하고 수정 루프를 남깁니다.</p>
-                </article>
-              </div>
-            </article>
-
-            <article class="card how-slide how-slide-cases" id="scenes" data-slide-anchor="scenes">
-              <div class="how-slide-head">
-                <p class="section-kicker">Cases</p>
-                <h3>이 기준을 보여주는 대표 사례</h3>
-              </div>
-
-              <div class="case-grid">
-                <article class="card interactive-card open-modal case-card" data-modal="scene1" role="button" tabindex="0" aria-label="림버스 튜토리얼 학습 공백 분석 상세 보기">
-                  <div class="media-placeholder card-media-slot">
-                    <img src="assets/images/limbus-prototype.png" alt="림버스 구조 검증 프로토타입 화면">
-                  </div>
-                  <h3>림버스 튜토리얼 학습 공백 분석</h3>
-                  <p><strong>요약:</strong> 중간층 유저가 세부 전투 규칙을 다시 학습하기 어려운 지점을 정리했습니다.</p>
-                  <p><strong>교훈:</strong> 튜토리얼은 필요한 순간에 다시 확인할 수 있는 구조여야 합니다.</p>
-                </article>
-
-                <article class="card interactive-card open-modal case-card" data-modal="scene2" role="button" tabindex="0" aria-label="비주얼노벨 데이터 구조 분리 상세 보기">
-                  <div class="media-placeholder card-media-slot">
-                    <img src="assets/images/data-table-reference.png" alt="비주얼노벨 데이터 참조 구조도">
-                  </div>
-                  <h3>비주얼노벨 데이터 구조 분리</h3>
-                  <p><strong>요약:</strong> Script, Text, Character, Art, Sound, Choice 데이터를 나눠 흐름을 검토했습니다.</p>
-                  <p><strong>교훈:</strong> 문장 기획은 구현 가능한 데이터 구조로 바뀌어야 합니다.</p>
-                </article>
-
-                <article class="card interactive-card open-modal case-card" data-modal="scene3" role="button" tabindex="0" aria-label="Project_BB 시스템 기준 문서화 상세 보기">
-                  <div class="media-placeholder card-media-slot">
-                    <img src="assets/images/flow-equipment-upgrade.png" alt="장비 강화 규칙 플로우차트">
-                  </div>
-                  <h3>Project_BB 시스템 기준 문서화</h3>
-                  <p><strong>요약:</strong> 방 진행, 미니맵, 조작, 피격, 상점, 장비 강화 조건을 문서화했습니다.</p>
-                  <p><strong>교훈:</strong> 좋은 기획서는 아이디어보다 조건과 판정 기준이 명확해야 합니다.</p>
-                </article>
-              </div>
-            </article>
-          </div>
-
-          <button type="button" class="slider-nav slider-nav-next" data-slider-target="howSlider" aria-label="다음 카드 보기">&gt;</button>
-        </div>
-
-        <div class="slider-dots" id="howSliderDots" aria-label="How 캐러셀 위치 표시"></div>
-      </div>
-    </section>
-
-    <section class="section" id="future">
-      <div class="container narrow">
-        <div class="section-heading">
-          <p class="section-kicker">Vision</p>
-          <h2>앞으로 고도화하고 싶은 흐름</h2>
-        </div>
-
-        <div class="vision-panel">
-          <p>
-            앞으로는 기능 하나의 완성도뿐 아니라, 플레이어가 처음 규칙을 배우고 반복 플레이로 들어가기까지의 흐름을 더 정교하게 설계하고 싶습니다.
-          </p>
-          <p>
-            문서를 전달하는 데서 멈추지 않고, 구현 가능성과 QA 기준까지 함께 확인하는 기획자가 되는 것이 다음 목표입니다.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section tone" id="more">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-kicker">Portfolio</p>
-          <h2>Limbus Company UI/UX 지원용 포트폴리오</h2>
-          <p class="section-lead">
-            Limbus 재학습 UX 분석, 슬롯 프로토타입, Unity UI 상태 설계, 시스템 조건과 UX 흐름을 4개 사례로 재정렬했습니다.
-          </p>
-        </div>
-
-        <a class="resource-link" href="portfolio.html">Limbus UI/UX Portfolio 보기</a>
-      </div>
-    </section>
-  </main>
-
-  <div class="modal-backdrop" id="modalBackdrop" hidden>
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button type="button" class="modal-close" id="modalClose" aria-label="닫기">×</button>
-      <div class="modal-media">상세 이미지/영상 플레이스홀더</div>
-      <p class="modal-description-label">상세 설명</p>
-      <h3 id="modalTitle">상세 정보</h3>
-      <p id="modalBody">카드를 선택하면 문제, 행동, 배운 점 중심의 설명이 표시됩니다.</p>
-    </div>
-  </div>
-</body>
-</html>
+    <section class="chapter chapter-intro" id="subculture"><div class="chapter-label"><span>01</span><p>SUBCULTURE &amp; LIVE</p></div><div class="chapter-heading"><p class="eyebrow">OBSERVATION NOTE</p><h2>유저는 무엇을 기다리고,<br>어디에서 <em>신뢰를 잃는가.</em></h2></div><div class="signal-map" aria-label="라이브 서비스 관찰 흐름"><button class="signal is-active" data-case="expectation"><span>01</span>거울 던전 하드</button><button class="signal" data-case="experience"><span>02</span>업데이트를 체감하는 순간</button><button class="signal" data-case="trust"><span>03</span>신뢰가 바뀌는 순간</button><article class="signal-detail" data-case-panel><p class="panel-label">LIMBUS COMPANY / MIRROR DUNGEON HARD</p><h3>목표가 주어진 도전은,<br>끝까지 해야 하는 일이 됩니다.</h3><p>주간 보상에 약 1시간이 걸리는 구조에서 강제 제약과 성장 수단 부족이 피로를 키웠다고 보았습니다. 보상 목표까지는 완주 압력이 생기므로, 이후 스테이지는 의무가 아니라 만족감으로 남아야 합니다. 제약과 메리트를 선택하는 구조가 다음 시즌에 반영된 흐름을, 이 문제에 대한 더 나은 방향으로 해석했습니다.</p><a href="#archive" class="text-link">관련 게임 분석 노트 <span>→</span></a></article></div></section>
+    <section class="chapter ai-chapter" id="ai-work"><div class="chapter-label"><span>02</span><p>AI &amp; WORK</p></div><div class="ai-layout"><div class="chapter-heading"><p class="eyebrow">ACTUAL CASES ONLY</p><h2>AI가 만든 초안보다,<br>내가 <em>고친 이유</em>를 남깁니다.</h2><p class="chapter-lead">이 영역은 일반론 대신 냥냥스타·UT·Project_BB의 실제 작업 사례로 채웁니다.</p></div><div class="case-switcher" role="tablist" aria-label="AI 사례 선택"><button role="tab" aria-selected="true" data-ai="prototype">01 / 프로토타입</button><button role="tab" aria-selected="false" data-ai="engine">02 / 엔진 확인</button><button role="tab" aria-selected="false" data-ai="resource">03 / 리소스 제작</button></div><article class="ai-case" data-ai-panel><div class="case-stamp">CASE 01</div><div><p class="panel-label">DUMMY STRUCTURE</p><h3>질문을 바꾸면<br>검수 기준도 바뀝니다.</h3></div><ol><li><span>01</span>만들고 싶은 경험</li><li><span>02</span>AI가 맡은 초안</li><li><span>03</span>직접 찾은 한계</li><li><span>04</span>수정과 검증</li></ol></article></div></section>
+    <section class="chapter projects-chapter" id="projects"><div class="chapter-label"><span>03</span><p>SELECTED PROJECTS</p></div><div class="projects-heading"><p class="eyebrow">CAREER RECORD</p><h2>맡은 일, 내린 판단,<br>남긴 <em>증거.</em></h2></div><div class="project-stack"><article class="project-card project-card-featured"><div class="project-index">01 / 03</div><div class="project-art"><img src="assets/images/project-bb-thumbnail.png" alt="Project BB 로그라이트 프로젝트 이미지"></div><div class="project-copy"><p class="panel-label">PROJECT_BB / 2026.03.17–04.10</p><h3>코어 루프를<br>팀의 공통 언어로.</h3><dl class="project-facts"><div><dt>ROLE</dt><dd>시스템 기획 · AI 이미지 아티스트</dd></div><div><dt>TEAM</dt><dd>기획 7명 · 개발 5명 · 약 1개월</dd></div><div><dt>SCOPE</dt><dd>2D 쿼터뷰 로그라이트의 코어 루프, 성장·전투 시스템</dd></div></dl><p>방 진행·미니맵, 레벨업 선택지, 장비 강화, 상점, 플레이어·적 조작과 상태를 기획서·테이블로 구체화했습니다. 방 진행 조건을 위해 문을 닫는 구조를 설계했으나, 완전 무작위 맵에서 문·복도까지 생성하는 과정은 버그가 잦은 구현 리스크가 됐습니다.</p><p>입장 직후 피격되는 불쾌감을 막기 위해 입구 세이프 존을 추가했습니다. Unity에서 방 크기와 반경 수치를 확인한 뒤 원형 범위, 반지름 4로 결정했습니다.</p><p class="project-output">산출물: 시스템 기획서 · 데이터 테이블 · 2분 30초 스토리 애니메이션 · VFX</p></div></article><article class="project-card project-card-detail"><span>02</span><div><p class="panel-label">냥냥스타 / 2026.05.04–07.16</p><h3>가상 유저 피드 콘텐츠</h3><dl class="project-facts"><div><dt>ROLE</dt><dd>시스템 기획</dd></div><div><dt>TEAM</dt><dd>기획 8명 · 개발 4명 · 약 2.5개월</dd></div></dl><p>기존 머지·골드 소모 건설 구조와 스토리용 냥냥스타 피드가 있었지만 콘텐츠 볼륨을 보완할 필요가 있었습니다. 유저마다 다른 경험을 남기는 UGC형 피드를 제안했습니다.</p><p>자유 스크린샷 공유 원안은 기업 요구, 서버 비용, 개발 난이도를 고려해 게임에서 획득한 CG를 편집하는 방식으로 범위를 조정했습니다. 편집한 이미지는 서버에 업로드해 다른 유저가 볼 수 있게 하여 UGC 피드의 목적은 유지했습니다.</p><p>단어 블록을 드래그해 문장을 조합하도록 설계해 금지어 예외를 줄이고 기존 머지 조작의 학습 비용을 활용했습니다. QA에서는 의도한 조작·규칙과 구현 결과가 다른 문제가 반복됐고, 특히 드래그 시스템의 조건을 계속 전달하며 이슈를 추적했습니다.</p><p>상세 기획서를 빠르게 전달하지 못한 상태에서 기업 피드백도 예정보다 이틀 늦어져 시스템 절반을 다시 설계했습니다. 이 과정에서 초기 기능 일부와 UI·UX 의도를 구현하지 못한 경험을 통해, 초기 명세와 변경 기준을 먼저 고정해야 한다는 과제를 확인했습니다.</p><p class="project-output">산출물: CG 편집·업로드 피드 · 코멘트 블록 드래그 프로토타입 · QA/GitHub Issue 추적</p></div></article><article class="project-card project-card-detail"><span>03</span><div><p class="panel-label">나린가락 / 2026.02.13–03.03</p><h3>완성을 우선한<br>조선 국악 판타지</h3><dl class="project-facts"><div><dt>ROLE</dt><dd>팀장 · PM · 시나리오</dd></div><div><dt>TEAM</dt><dd>3주 · 5개 스테이지 · 약 20~30분</dd></div></dl><p>다른 팀원이 제안한 세계관을 존중하며 시나리오를 쓰고자 했지만, 팀이 기대한 힐링 감성과 거리가 있어 방향을 정하기 어려웠습니다. 삼족오·국악·거문고의 의미를 엮어 조선 국악 판타지로 구상했습니다.</p><p>초안 분량이 길다는 피드백을 받고, 팀원이 반대하는 방향을 밀어붙이기보다 완성을 우선했습니다. 설정 대부분을 덜어내고 짧은 분량으로 다시 썼습니다.</p><p class="project-output">결과: 게임 출시 · 잔업 1회 외 추가 잔업 없이 완료</p></div></article></div></section>
+    <section class="chapter archive-chapter" id="archive"><div class="chapter-label"><span>04</span><p>OPEN ARCHIVE</p></div><div class="archive-top"><div><p class="eyebrow">OBSIDIAN → WEB</p><h2>아직 완성되지 않은<br><em>생각도 기록합니다.</em></h2></div><p>공개 표시한 옵시디언 글이 이곳에 쌓입니다. 게임 분석, 독후감, 기획 메모, 개인적인 생각은 서로 연결된 노트로 남습니다.</p></div><div class="archive-grid"><a class="archive-entry entry-large" href="#top"><span>GAME NOTE</span><strong>라이브 서비스에서<br>신뢰를 만드는 장면</strong><small>draft · 2026.08</small></a><a class="archive-entry" href="#top"><span>BOOK</span><strong>독후감이 기획의 질문으로 바뀌는 과정</strong><small>seed · 2026.08</small></a><a class="archive-entry" href="#top"><span>THOUGHT</span><strong>좋아한다는 마음과 잘 만든 콘텐츠</strong><small>growing · 2026.08</small></a><a class="archive-entry entry-wide" href="#top"><span>PLAY LOG</span><strong>플레이 기록과 프로젝트 경험을 잇는 개인 데이터베이스</strong><small>updated · 2026.08</small></a></div></section>
+    <section class="chapter vision-chapter" id="vision"><div class="chapter-label"><span>05</span><p>CONTENT VISION</p></div><p class="eyebrow">ONE LAST QUESTION</p><h2>콘텐츠는 출시로 끝나지 않고,<br><em>다음 신뢰를 준비합니다.</em></h2><div class="vision-loop"><span>유저 신호</span><i>→</i><span>가설</span><i>→</i><span>콘텐츠</span><i>→</i><span>반응</span><i>→</i><span>다음 판단</span></div><div class="vision-footer"><p>프로젝트의 판단 과정과 검증 자료를 계속 보완하고 있습니다.</p><button type="button" class="text-link" data-print>PDF 보기 <span>↗</span></button></div></section>
+  </main><footer><span>LDH ARCHIVE / LAYOUT PROTOTYPE</span><span>CONTENT IS PLACEHOLDER</span></footer>
+</body></html>
