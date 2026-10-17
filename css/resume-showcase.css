@@ -69,3 +69,14 @@
 .tool-index{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 48px}.tool-index a{border:1px solid var(--line);padding:10px 16px;font-size:13px}.tool-index a:hover{border-color:var(--accent);color:var(--accent)}.tool-names{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:22px 0 0;padding:0}.tool-names li{font-size:12px;color:var(--green);padding:4px 10px;border:1px solid var(--line);border-radius:3px}.tools-page .chapter>.source-list{display:flex;gap:16px 28px;margin-top:26px}.tools-page .chapter{scroll-margin-top:30px}
 @media(max-width:900px){.collaboration-grid{gap:24px}.collaboration-grid h3{font-size:21px}.collaboration .section-label{display:block}.collaboration .section-label h2{margin-bottom:18px}}
 @media(max-width:700px){.collaboration{padding:40px 0}.collaboration-grid{grid-template-columns:1fr;gap:32px}.collaboration-grid h3{font-size:23px;margin-bottom:14px}.collaboration-grid .text-link{margin-top:10px}.tool-index{margin:24px 0 32px;gap:8px}.tool-index a{font-size:12px;padding:9px 12px}.tool-names{margin-top:16px}}
+
+/* Project metadata: genre and production environment. */
+.index-card .index-specs{order:3;display:flex;flex-wrap:wrap;gap:5px 18px;margin:0 0 12px;color:var(--paper);font-size:13px;line-height:1.6}
+.index-specs span{display:inline-block}
+.index-specs strong{font-weight:600;color:var(--green);margin-right:7px}
+.index-card>p{order:4}
+.index-card>.index-cta{order:5}
+.case-specs{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:23px;color:var(--paper);font-size:14px;line-height:1.6}
+.case-specs span{display:inline-block}
+.case-specs strong{font-weight:600;color:var(--green);margin-right:9px}
+@media(max-width:700px){.index-card .index-specs{font-size:12px;gap:3px 12px}.case-specs{font-size:12px;gap:6px 15px;margin-top:16px}}
