@@ -1,24 +1,22 @@
 # Portfolio - current and legacy
 
-## URLs
-- Main: https://asstro1456.github.io/Portfolio/
-- Previously shared current-page link: https://asstro1456.github.io/Portfolio/resume-showcase.html#top
-- Former archive site: https://asstro1456.github.io/Portfolio/legacy.html
+## Site addresses
+- Default: https://asstro1456.github.io/Portfolio/ — immediately redirects to the actual current homepage.
+- **Main content / single source of truth:** https://asstro1456.github.io/Portfolio/resume-showcase.html
+- Previous archive: https://asstro1456.github.io/Portfolio/legacy.html
 
-## Structure
-- `index.html`: **actual homepage markup**, no redirect or intermediate landing page.
-- `resume-showcase.html`: compatibility copy of the current homepage. Keep it available for previously shared URLs.
-- `legacy.html`: preserved copy of the former LDH Archive homepage. Its CSS and JS continue to load from `css/style.css` and `js/main.js`.
-- `showcase-*.html`: six project pages.
-- `planning-hub.html`: planning-document index.
-- `tools-skills.html`: tool and skills overview.
-- `print.html`, `project-record.html`, `cover-letter-generic.html`: printable application documents.
-- `output/pdf/`: previously generated PDF attachments, which require regeneration after HTML revisions.
-- `css/`, `js/`, `assets/`: styles, scripts, and images.
+## Pages
+- `resume-showcase.html`: the actual current main homepage. **Edit only this file for future homepage updates.**
+- `index.html`: minimal GitHub Pages root redirect. No duplicate homepage markup or separate landing screen.
+- `legacy.html`: preserved original archive homepage. Keep unchanged unless explicitly requested.
+- `showcase-*.html`: detailed project pages.
+- `planning-hub.html`: planning documents.
+- `tools-skills.html`: tools and competencies.
+- `print.html`, `project-record.html`, `cover-letter-generic.html`: application documents.
+- `output/pdf/`: PDF exports, updated independently when the HTML changes.
+- `css/`, `js/`, `assets/`: shared resources.
 
-## Updating the site
-Edit the current portfolio content in `resume-showcase.html`, then copy that entire HTML to `index.html` and verify they are identical. Both files deliberately exist to keep previously shared addresses working **without redirects**. Project detail pages remain shared between the two URLs.
+## Maintenance
+Do not duplicate `resume-showcase.html` into `index.html`. GitHub Pages requires `index.html` as the root entrypoint, so it only redirects with `location.replace`. The address bar changes to `resume-showcase.html` without an intermediate landing page. Search and hash fragments are carried across in JavaScript-supported browsers. The meta refresh is a fallback for scripts-disabled environments.
 
-Leave `legacy.html` unchanged during regular updates. The prior root address with an archive-only hash (e.g. `/Portfolio/#archive`) no longer forwards automatically; use `/Portfolio/legacy.html#archive` instead.
-
-Before submitting applications, regenerate downloadable PDF files as needed and verify external access permissions for linked resources.
+Previously shared `resume-showcase.html#top` links remain valid. Legacy links should explicitly use `legacy.html` (for example `legacy.html#archive`).
