@@ -1,15 +1,27 @@
-# Portfolio v1
+# Portfolio (current + legacy)
 
-단일 페이지 문서형 포트폴리오 초안입니다.
+GitHub Pages entry: https://asstro1456.github.io/Portfolio/
 
-## 수정 우선순위
-1. `index.html` 안의 텍스트를 실제 자기소개/프로젝트 내용으로 교체
-2. `assets/images/` 안의 SVG 플레이스홀더를 실제 썸네일/캡처 이미지로 교체
-3. `css/style.css`에서 색상 변수(`:root`) 조정
-4. 필요 시 `assets/docs/`에 보조 자료 추가 후 링크 연결
+## Main site
+- `index.html`: homepage router to `resume-showcase.html`.
+- `resume-showcase.html`: current main portfolio; **update this file as the single source of truth**.
+- `showcase-*.html`: six project detail pages, linked from the current main.
+- `planning-hub.html`: planning-document index.
+- `tools-skills.html`: skills and tools.
+- `print.html`, `project-record.html`, `cover-letter-generic.html`: printable application documents.
+- `output/pdf/`: existing downloaded PDFs (must be separately regenerated after updating HTML).
+- `css/`, `js/`, `assets/`: shared styles, scripts, and images.
 
-## 배포
-GitHub Pages에 그대로 올리면 됩니다.
+## Legacy site
+- `legacy.html`: unchanged copy of the former `index.html` LDH archive site.
+- Keeps its existing root-relative assets through `css/style.css`, `js/main.js`, and `assets/`.
+- Old legacy-only hash links to the repo root (for example `#subculture` or `#archive`) route to `legacy.html`.
+- Do not overwrite `legacy.html` during routine resume-showcase updates.
 
-## 주의
-핵심 내용은 PDF로 빼지 말고 `index.html` 안에 직접 유지하는 편이 좋습니다.
+## Link stability
+- The previously shared `resume-showcase.html#top` link remains valid.
+- The short root `/Portfolio/` now redirects to `resume-showcase.html`.
+- Full legacy archive URL: https://asstro1456.github.io/Portfolio/legacy.html
+
+## Maintenance
+Update `resume-showcase.html`, its project pages, and `css/resume-showcase.css` for new portfolio content. Keep the PDF exports in sync before submitting applications.
