@@ -1,15 +1,22 @@
-# Portfolio v1
+# Portfolio - current and legacy
 
-단일 페이지 문서형 포트폴리오 초안입니다.
+## Site addresses
+- Default: https://asstro1456.github.io/Portfolio/ — immediately redirects to the actual current homepage.
+- **Main content / single source of truth:** https://asstro1456.github.io/Portfolio/resume-showcase.html
+- Previous archive: https://asstro1456.github.io/Portfolio/legacy.html
 
-## 수정 우선순위
-1. `index.html` 안의 텍스트를 실제 자기소개/프로젝트 내용으로 교체
-2. `assets/images/` 안의 SVG 플레이스홀더를 실제 썸네일/캡처 이미지로 교체
-3. `css/style.css`에서 색상 변수(`:root`) 조정
-4. 필요 시 `assets/docs/`에 보조 자료 추가 후 링크 연결
+## Pages
+- `resume-showcase.html`: the actual current main homepage. **Edit only this file for future homepage updates.**
+- `index.html`: minimal GitHub Pages root redirect. No duplicate homepage markup or separate landing screen.
+- `legacy.html`: preserved original archive homepage. Keep unchanged unless explicitly requested.
+- `showcase-*.html`: detailed project pages.
+- `planning-hub.html`: planning documents.
+- `tools-skills.html`: tools and competencies.
+- `print.html`, `project-record.html`, `cover-letter-generic.html`: application documents.
+- `output/pdf/`: PDF exports, updated independently when the HTML changes.
+- `css/`, `js/`, `assets/`: shared resources.
 
-## 배포
-GitHub Pages에 그대로 올리면 됩니다.
+## Maintenance
+Do not duplicate `resume-showcase.html` into `index.html`. GitHub Pages requires `index.html` as the root entrypoint, so it only redirects with `location.replace`. The address bar changes to `resume-showcase.html` without an intermediate landing page. Search and hash fragments are carried across in JavaScript-supported browsers. The meta refresh is a fallback for scripts-disabled environments.
 
-## 주의
-핵심 내용은 PDF로 빼지 말고 `index.html` 안에 직접 유지하는 편이 좋습니다.
+Previously shared `resume-showcase.html#top` links remain valid. Legacy links should explicitly use `legacy.html` (for example `legacy.html#archive`).
