@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>작업실 포트폴리오 — 동선 프로토타입</title>
+  <style>
+    :root { --ink:#e8e5dd; --muted:#a7a49d; --void:#0c0e12; --wall:#171a20; --blue:#8ac7ff; --amber:#e6a762; --wood:#5a3826; --wood-light:#8f5b36; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-width:320px; color:var(--ink); background:var(--void); font-family:Inter, "Pretendard", system-ui, sans-serif; overflow-x:hidden; }
+    button { font:inherit; color:inherit; }
+    .shell { min-height:100vh; display:grid; grid-template-rows:auto 1fr; background:radial-gradient(circle at 50% 75%, #243044 0, #11151b 41%, #090b0f 82%); }
+    .topbar { position:relative; z-index:5; display:flex; justify-content:space-between; align-items:center; padding:22px clamp(20px,4vw,64px); }
+    .wordmark small, .eyebrow { display:block; color:var(--amber); font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+    .wordmark strong { display:block; margin-top:3px; font-size:15px; letter-spacing:.04em; }
+    .menu-toggle { width:47px; height:47px; border:1px solid #ffffff2c; border-radius:50%; background:#161a20cc; cursor:pointer; transition:.2s; }
+    .menu-toggle:hover, .menu-toggle[aria-expanded="true"] { border-color:var(--amber); background:#2b211d; }
+    .menu-toggle i, .menu-toggle i::before, .menu-toggle i::after { display:block; width:18px; height:1px; margin:auto; background:var(--ink); content:""; }
+    .menu-toggle i::before { transform:translateY(-6px); } .menu-toggle i::after { transform:translateY(5px); }
+    .stage { width:min(1360px, 100%); margin:auto; padding:0 clamp(13px,3vw,45px) 42px; display:flex; align-items:center; }
+    .room { position:relative; isolation:isolate; width:100%; min-height:680px; overflow:hidden; border:1px solid #ffffff1a; border-radius:20px; background:linear-gradient(180deg, #1a1d23 0 57%, #11151a 57%); box-shadow:0 40px 100px #0008; }
+    .room::before { position:absolute; inset:0; z-index:-1; background:linear-gradient(90deg,#0007,transparent 25% 76%,#0009), radial-gradient(ellipse at 50% 61%, transparent 20%,#06070aaa 95%); content:""; pointer-events:none; }
+    .room::after { position:absolute; z-index:-2; left:0; right:0; bottom:0; height:44%; background:repeating-linear-gradient(105deg, #20242b 0 2px, transparent 2px 73px), linear-gradient(168deg, #272c33, #101318 70%); content:""; transform:perspective(800px) rotateX(7deg) scale(1.1); transform-origin:bottom; }
+    .hint { position:absolute; z-index:4; left:28px; bottom:23px; margin:0; max-width:330px; color:#d9d7d0; font-size:13px; line-height:1.55; }
+    .hint kbd { border:1px solid #ffffff3d; border-bottom-width:2px; border-radius:4px; padding:1px 5px; font-size:11px; }
+    .object { position:absolute; z-index:2; border:0; text-align:left; cursor:pointer; color:var(--ink); transition:filter .2s, transform .2s; }
+    .object:hover, .object:focus-visible { filter:brightness(1.18); outline:2px solid var(--blue); outline-offset:4px; transform:translateY(-4px); }
+    .object .object-label { position:absolute; z-index:4; left:50%; bottom:-33px; transform:translateX(-50%); width:max-content; max-width:190px; padding:5px 9px; border:1px solid #ffffff25; border-radius:999px; background:#0e1117d9; color:#f3ede3; font-size:11px; font-weight:700; letter-spacing:.03em; opacity:0; transition:opacity .2s; }
+    .object:hover .object-label, .object:focus-visible .object-label { opacity:1; }
+    .board { top:9%; left:30%; width:34%; height:29%; padding:0; border:9px solid #553b2b; background:linear-gradient(135deg,#79604b,#a6815d); box-shadow:0 8px 18px #0008, inset 0 0 0 1px #d9b78466; transform:rotate(-.4deg); }
+    .board::before { position:absolute; inset:8%; background:linear-gradient(153deg,transparent 47%,#b43f357a 48% 49%,transparent 50%),linear-gradient(25deg,transparent 30%,#b43f357a 31% 32%,transparent 33%), radial-gradient(circle at 25% 33%,#ebbd73 0 3px,transparent 4px),radial-gradient(circle at 73% 63%,#d15c4c 0 3px,transparent 4px), linear-gradient(100deg,#e7d0a6 0 23%,transparent 24% 49%,#d9d1bf 50% 70%,transparent 71%); opacity:.85; content:""; }
+    .board::after { position:absolute; top:12%; right:14%; width:12%; height:22%; background:#c6d8e6; box-shadow:-78px 55px 0 #e1c9a3, -25px 67px 0 #d0ad7f; content:""; transform:rotate(5deg); }
+    .desk { left:29%; bottom:11%; width:42%; height:31%; padding:0; background:transparent; }
+    .desk::before { position:absolute; right:7%; bottom:4%; left:2%; height:30%; border:5px solid #3c2418; border-radius:3px; background:linear-gradient(#aa7246,#70442b); box-shadow:0 23px 20px #0008; content:""; transform:skewX(-8deg); }
+    .desk::after { position:absolute; right:12%; bottom:-1%; left:12%; height:11%; border:4px solid #302019; background:#39271e; content:""; transform:skewX(-8deg); }
+    .game-screen { position:absolute; z-index:3; top:4%; left:28%; width:48%; height:52%; border:7px solid #171b20; border-radius:4px; overflow:hidden; background:linear-gradient(145deg,#162c4a,#101826 55%,#211d38); box-shadow:0 0 31px #61b9ff80, 0 8px 10px #0008; }
+    .game-screen::before { position:absolute; inset:0; background:radial-gradient(ellipse at 35% 65%,#b66c5f 0 3%,transparent 3.5%),linear-gradient(154deg,transparent 0 40%,#385475 41% 45%,transparent 46%),linear-gradient(30deg,transparent 0 49%,#5e88ae 50% 54%,transparent 55%),linear-gradient(#4f79a0 0 31%,#162f51 32%); content:""; }
+    .game-screen::after { position:absolute; right:7%; bottom:8%; width:30%; height:12%; border:1px solid #b6e4fa; background:#112745cc; box-shadow:0 -25px 0 -7px #d0edf9; content:""; }
+    .screen-copy { position:absolute; z-index:1; left:10%; top:10%; color:#f4efd9; font-size:clamp(9px,1vw,13px); font-weight:800; letter-spacing:.1em; text-shadow:0 2px 5px #000; }
+    .paper { position:absolute; z-index:3; left:10%; bottom:28%; width:21%; height:22%; background:#e1d6bc; box-shadow:8px 7px 10px #0008; transform:rotate(-8deg); }
+    .paper::before { position:absolute; inset:13%; background:repeating-linear-gradient(#785f4f 0 1px,transparent 1px 8px); content:""; }
+    .lamp { position:absolute; z-index:2; top:0; right:2%; width:1px; height:42%; background:#35251c; box-shadow:0 36px 60px 23px #e7a15a22; }
+    .lamp::after { position:absolute; left:-20px; bottom:-14px; width:40px; height:20px; border-radius:50% 50% 10% 10%; background:#32231c; box-shadow:0 12px 33px 20px #e7a15a22; content:""; }
+    .bookshelf { right:8%; bottom:16%; width:19%; height:51%; padding:0; border:8px solid #492d21; background:repeating-linear-gradient(#6d432c 0 6px, #36231e 7px 9px, #5d3828 10px 27%); box-shadow:-10px 12px 18px #0008; }
+    .bookshelf::before { position:absolute; inset:7% 10%; background:repeating-linear-gradient(90deg,#c7a16b 0 8%,#332727 8.5% 14%,#678594 14.5% 21%,#9b5a43 22% 28%,#d5c3a0 29% 36%,#433438 37% 46%,transparent 47% 54%); box-shadow:0 29px 0 -3px #3b251d,0 59px 0 -3px #3b251d,0 89px 0 -3px #3b251d; content:""; }
+    .bookshelf::after { position:absolute; right:-43%; bottom:22%; width:35%; height:32%; border:5px solid #151b20; background:linear-gradient(130deg,#1c4e66,#081018); box-shadow:0 0 25px #5bc7ff99; content:""; }
+    .pc-zone { right:1%; bottom:16%; width:12%; height:28%; padding:0; background:transparent; }
+    .pc-zone::before { position:absolute; top:7%; right:7%; width:76%; height:57%; border:5px solid #14191e; background:linear-gradient(142deg,#326b7c,#111827 61%,#463062); box-shadow:0 0 24px #72c9ff92; content:""; }
+    .pc-zone::after { position:absolute; bottom:1%; left:12%; width:79%; height:28%; border:4px solid #34231e; background:#73503c; box-shadow:0 12px 16px #0008; content:""; }
+    .archive { left:5%; bottom:16%; width:18%; height:38%; padding:0; border:7px solid #302a28; background:linear-gradient(90deg,#433631,#1e2228); box-shadow:9px 13px 20px #0008; }
+    .archive::before { position:absolute; inset:9%; background:repeating-linear-gradient(90deg,#806047 0 12%,#b08d61 13% 20%,#3f5255 21% 30%,#544144 31% 40%,transparent 41% 48%); box-shadow:0 40px 0 -4px #25201f,0 82px 0 -4px #25201f; content:""; }
+    .archive::after { position:absolute; right:-31%; bottom:1%; width:43%; height:27%; border:4px solid #47342a; background:linear-gradient(135deg,#5e493b,#201917); content:""; transform:rotate(2deg); }
+    .zone-title { position:absolute; z-index:3; top:26px; left:28px; max-width:310px; }
+    h1 { margin:5px 0 0; font-size:clamp(24px,3vw,42px); font-weight:650; letter-spacing:-.04em; }
+    .zone-title p { margin:10px 0 0; color:var(--muted); font-size:13px; line-height:1.55; }
+    .quick-panel { position:fixed; z-index:10; top:83px; right:clamp(16px,4vw,64px); display:none; align-items:flex-start; gap:9px; }
+    .quick-panel.open { display:flex; animation:fade .18s ease-out; }
+    .quick-leaves, .quick-branches, .quick-roots { display:flex; flex-direction:column; gap:7px; }
+    .quick-leaves { width:0; overflow:hidden; opacity:0; transition:.2s; } .quick-leaves.show { width:146px; opacity:1; }
+    .quick-branches { width:0; overflow:hidden; opacity:0; transition:.2s; } .quick-branches.show { width:126px; opacity:1; }
+    .quick-roots { width:125px; padding:9px; border:1px solid #ffffff24; border-radius:13px; background:#10141beF; box-shadow:0 20px 40px #0008; }
+    .quick-panel button { min-height:35px; border:1px solid #ffffff1f; border-radius:8px; padding:7px 9px; background:#1d222bbb; text-align:left; cursor:pointer; color:#e9e4dc; font-size:12px; white-space:nowrap; }
+    .quick-panel button:hover, .quick-panel button.active { border-color:#e6a762; background:#3b2a22; } .quick-leaves button { border-color:#84c8ff44; }
+    .viewer { position:fixed; z-index:20; inset:0; display:none; place-items:center; padding:18px; background:#06080bb8; backdrop-filter:blur(7px); }
+    .viewer.open { display:grid; animation:fade .18s ease-out; }
+    .viewer-card { position:relative; width:min(790px,100%); max-height:min(760px,88vh); overflow:auto; border:1px solid #ffffff2a; border-radius:17px; background:#161b22; box-shadow:0 28px 90px #000b; }
+    .viewer-head { position:sticky; top:0; z-index:1; display:flex; justify-content:space-between; gap:20px; align-items:flex-start; padding:25px 27px 17px; border-bottom:1px solid #ffffff18; background:#161b22f5; }
+    .viewer-head h2 { margin:4px 0 0; font-size:clamp(22px,3vw,33px); letter-spacing:-.04em; }
+    .close { flex:0 0 auto; width:37px; height:37px; border:1px solid #ffffff3d; border-radius:50%; background:transparent; cursor:pointer; font-size:19px; }
+    .viewer-body { padding:25px 27px 32px; color:#d2d1cd; line-height:1.65; }
+    .viewer-body h3 { margin:25px 0 8px; color:#f1ebe2; font-size:15px; } .viewer-body p { margin:0 0 12px; }
+    .viewer-body ul { padding-left:19px; margin:7px 0; } .viewer-body li { margin:5px 0; }
+    .viewer-actions { display:flex; flex-wrap:wrap; gap:9px; margin-top:22px; }
+    .viewer-actions button { border:1px solid #87cfff70; border-radius:8px; padding:10px 12px; background:#1b3145; cursor:pointer; }
+    .mini-screen { height:135px; margin:5px 0 20px; border:1px solid #7dbde655; border-radius:8px; background:linear-gradient(125deg,#1f5077,#111a31 65%,#51305c); box-shadow:inset 0 0 35px #83c7ff35; }
+    @keyframes fade { from { opacity:0; transform:translateY(-5px); } to { opacity:1; transform:none; } }
+    @media (max-width:720px) { .topbar { padding:16px 19px; } .stage { padding:0 10px 20px; } .room { min-height:540px; border-radius:13px; } .zone-title { left:17px; top:18px; max-width:230px; } .zone-title p { font-size:11px; } .hint { left:16px; bottom:12px; max-width:225px; font-size:11px; } .object .object-label { opacity:1; bottom:-28px; padding:3px 6px; font-size:9px; } .quick-panel { top:72px; right:16px; gap:5px; } .quick-roots { width:108px; } .quick-branches.show { width:105px; } .quick-leaves.show { width:115px; } .quick-panel button { font-size:10px; } .viewer { padding:9px; } .viewer-head, .viewer-body { padding-left:18px; padding-right:18px; } }
+      .zone-title{pointer-events:none}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="wordmark"><small>Point &amp; Click prototype</small><strong>WORKROOM / 01</strong></div>
+      <button class="menu-toggle" id="menuToggle" aria-label="빠른 이동 열기" aria-expanded="false"><i></i></button>
+    </header>
+    <section class="stage" aria-label="탐색형 작업실">
+      <div class="room">
+        <div class="zone-title"><span class="eyebrow">Explore the room</span><h1>작업의 흔적을 따라가세요.</h1><p>공간의 오브젝트를 누르거나, 우측 상단 ☰에서 자료로 바로 이동할 수 있습니다.</p></div>
+        <button class="object board" data-view="board" aria-label="후면 보드 열기"><span class="object-label">후면 보드 · 판단과 협업</span></button>
+        <button class="object archive" data-view="archive" aria-label="왼쪽 선반과 캐비닛 열기"><span class="object-label">아카이브 · 다른 프로젝트</span></button>
+        <button class="object desk" data-view="ut" aria-label="Project UT 메인 책상 열기"><span class="game-screen"><span class="screen-copy">PROJECT UT<br>PLAY BUILD 0.3</span></span><span class="paper"></span><span class="lamp"></span><span class="object-label">Project UT · 플레이 화면과 문서</span></button>
+        <button class="object bookshelf" data-view="shelf" aria-label="목재 책장과 PC 존 보기"><span class="object-label">목재 책장 · 뒤쪽 PC 존</span></button>
+        <button class="object pc-zone" data-view="unity" aria-label="Unity 작업 PC 존 열기"><span class="object-label">Unity 작업 PC · 구현 과정</span></button>
+        <p class="hint">첫 방문이라면 중앙 <b>Project UT</b> 화면부터 눌러보세요. <kbd>Esc</kbd>로 문서를 닫을 수 있습니다.</p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="quick-panel" id="quickPanel" aria-label="빠른 이동">
+    <div class="quick-leaves" id="quickLeaves" aria-label="바로 열기"></div>
+    <div class="quick-branches" id="quickBranches" aria-label="세부 항목"></div>
+    <div class="quick-roots" id="quickRoots">
+      <button data-root="featured">대표 작업</button><button data-root="projects">프로젝트</button><button data-root="resume">이력서</button><button data-root="profile">프로필</button><button data-root="contact">연락처</button>
+    </div>
+  </nav>
+
+  <section class="viewer" id="viewer" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="viewerTitle">
+    <article class="viewer-card"><header class="viewer-head"><div><span class="eyebrow" id="viewerEyebrow">Document viewer</span><h2 id="viewerTitle"></h2></div><button class="close" id="closeViewer" aria-label="문서 닫기">×</button></header><div class="viewer-body" id="viewerBody"></div></article>
+  </section>
+  <script>
+    const content = {
+      ut: { eyebrow:'대표 작업 · Project UT', title:'결과부터, 근거로.', body:`<div class="mini-screen"></div><p><b>메인 책상은 Project UT의 실제 플레이 장면을 먼저 보여주는 자리</b>입니다. 화면을 본 뒤, 필요할 때만 기획·협업 자료로 더 깊게 들어갑니다.</p><h3>이 동선에서 볼 점</h3><ul><li>입장 직후 플레이 화면이 가장 먼저 읽히는가</li><li>결과 → 기획 문서 → 협업 흔적 순서가 자연스러운가</li><li>문서가 공간 탐색을 방해하지 않고 별도 화면에서 읽히는가</li></ul>`, actions:[['기획 문서 보기','ut-doc'],['협업 흔적 보기','board'],['Unity 구현 보기','unity']] },
+      'ut-doc': { eyebrow:'Project UT · 기획 문서', title:'기획 근거', body:`<p>여기는 실제 기획서가 들어갈 자리입니다. 프로토타입에서는 읽기 흐름만 검증합니다.</p><h3>문서 구조 초안</h3><ul><li>담당 역할</li><li>문제와 기획 의도</li><li>UI·내러티브 화면 설계</li><li>구현 결과와 원본 자료</li></ul><p>최종 버전에는 본인이 제작한 자료와 실제 담당 범위만 연결합니다.</p>` },
+      board: { eyebrow:'후면 보드', title:'왜 이렇게 만들었는가', body:`<p>후면 보드는 사고 과정과 협업·수정 흔적을 모으는 곳입니다. 중앙 책상에서 결과를 본 뒤 “왜?”가 생겼을 때 찾는 두 번째 목적지입니다.</p><h3>배치할 자료</h3><ul><li>플로우와 판단 기준</li><li>피드백 반영 전후</li><li>결정된 사안과 전달 관계</li></ul><p>한 사람이 쓰는 책상이라는 인상은 유지하고, 협업은 자료의 흔적으로 보여줍니다.</p>` },
+      shelf: { eyebrow:'반분리 공간', title:'목재 책장 너머', body:`<p>책장은 벽이 아니라 탐색을 유도하는 가림막입니다. <b>책장 틈의 푸른 화면 빛</b>으로 Unity PC 존의 존재를 먼저 알리고, 가까이 가면 전체 작업 화면을 보게 합니다.</p><h3>검증할 점</h3><ul><li>PC 존이 완전히 숨지 않고 “저기에도 무언가 있다”로 읽히는가</li><li>중앙 UT 책상보다 시선을 빼앗지 않는가</li><li>책장 자체도 자료·프로젝트 흔적을 담는 오브젝트가 되는가</li></ul>`, actions:[['Unity 작업 PC 열기','unity']] },
+      unity: { eyebrow:'작업용 PC 존', title:'Unity 구현 과정', body:`<div class="mini-screen"></div><p>오른쪽 PC는 결과가 아닌 <b>제작 능력의 근거</b>를 보여주는 두 번째 목적지입니다. 최종 화면에는 Hierarchy·Inspector·Prefab과 실제 Scene/Game View가 함께 보이는 캡처를 둡니다.</p><h3>바로가기 구조</h3><ul><li>Prefab 구조</li><li>UI 구현</li><li>Animation / VFX</li><li>수정 전후와 실제 적용 결과</li></ul>` },
+      archive: { eyebrow:'왼쪽 선반 · 캐비닛', title:'아카이브와 탐색 기믹', body:`<p>왼쪽은 대표 작업의 집중을 흐리지 않으면서, 다른 프로젝트를 발견하게 하는 보조 영역입니다.</p><h3>첫 버전의 범위</h3><ul><li>다른 프로젝트의 이름과 한 줄 요약</li><li>캐비닛을 열어보는 단순한 탐색 반응</li><li>자료는 언제든 빠른 이동 패널로 직접 접근</li></ul><p>초현실 기믹은 이 위치에서 하나만 시험합니다. 예: 캐비닛을 누르면 내부가 더 깊게 펼쳐지는 연출.</p>` },
+      resume: { eyebrow:'빠른 이동 · 이력서', title:'이력서', body:`<p>이력서는 탐색을 거치지 않고 바로 열리는 독립 자료입니다. 실제 PDF 또는 인쇄용 페이지 링크를 이 자리에 연결합니다.</p>` },
+      profile: { eyebrow:'빠른 이동 · 프로필', title:'프로필', body:`<p>설정과 스토리를 플레이 가능한 콘텐츠와 시스템으로 연결하는 게임 기획자. 이 공간의 동선도 그 관심을 보여주기 위한 작은 레벨 디자인 실험입니다.</p>` },
+      contact: { eyebrow:'빠른 이동 · 연락처', title:'연락처', body:`<p>최종 사이트에서는 이메일과 외부 링크를 이 자리에 둡니다. 이 프로토타입에는 개인 연락처를 넣지 않았습니다.</p>` },
+      projects: { eyebrow:'프로젝트', title:'프로젝트 아카이브', body:`<p>대표 작업 외 프로젝트는 여기에서 탐색 없이 바로 접근할 수 있습니다.</p><ul><li>Project UT — UI 기획·구현 화면과 관련 문서</li><li>Rune Trace — 웹 프로토타입, 규칙·시스템 설계</li><li>냥냥스타 — 추가 콘텐츠 제안과 검수 기준</li></ul>` },
+      rune: { eyebrow:'프로젝트 · Rune Trace', title:'Rune Trace', body:`<p>웹 프로토타입과 규칙·시스템 설계, 플레이 로그·검증 계획이 들어갈 자리입니다.</p>` },
+      nyang: { eyebrow:'프로젝트 · 냥냥스타', title:'냥냥스타', body:`<p>추가 콘텐츠 제안, 코멘트 블록 프로토타입, 구현·검수 기준 자료가 들어갈 자리입니다. 정식 업데이트가 아닌 제안서 제출 사례로 표기합니다.</p>` }
+    };
+    const nav = { featured:[['Project UT','ut']], projects:[['Project UT','ut'],['Rune Trace','rune'],['냥냥스타','nyang']], resume:[['이력서 바로 보기','resume']], profile:[['프로필','profile']], contact:[['연락처','contact']] };
+    const menuToggle=document.querySelector('#menuToggle'), panel=document.querySelector('#quickPanel'), branches=document.querySelector('#quickBranches'), leaves=document.querySelector('#quickLeaves'), viewer=document.querySelector('#viewer'), viewerTitle=document.querySelector('#viewerTitle'), viewerEyebrow=document.querySelector('#viewerEyebrow'), viewerBody=document.querySelector('#viewerBody');
+    let lastFocus;
+    function openView(id) { const item=content[id]; if(!item) return; lastFocus=document.activeElement; viewerEyebrow.textContent=item.eyebrow; viewerTitle.textContent=item.title; viewerBody.innerHTML=item.body+(item.actions?`<div class="viewer-actions">${item.actions.map(([label,target])=>`<button data-open="${target}">${label} →</button>`).join('')}</div>`:''); viewer.classList.add('open'); viewer.setAttribute('aria-hidden','false'); document.querySelector('#closeViewer').focus(); }
+    function closeView() { viewer.classList.remove('open'); viewer.setAttribute('aria-hidden','true'); lastFocus?.focus(); }
+    function selectRoot(id, button) { document.querySelectorAll('[data-root]').forEach(x=>x.classList.remove('active')); button.classList.add('active'); branches.innerHTML=nav[id].map(([label,target])=>`<button data-branch="${target}">${label}</button>`).join(''); branches.classList.add('show'); leaves.innerHTML=''; leaves.classList.remove('show'); }
+    document.querySelectorAll('.object').forEach(el=>el.addEventListener('click',()=>openView(el.dataset.view)));
+    menuToggle.addEventListener('click',()=>{const open=panel.classList.toggle('open'); menuToggle.setAttribute('aria-expanded',open); menuToggle.setAttribute('aria-label',open?'빠른 이동 닫기':'빠른 이동 열기'); if(open) selectRoot('featured',document.querySelector('[data-root="featured"]'));});
+    document.querySelector('#quickRoots').addEventListener('click',e=>{if(e.target.dataset.root) selectRoot(e.target.dataset.root,e.target);});
+    branches.addEventListener('click',e=>{if(!e.target.dataset.branch)return; const target=e.target.dataset.branch; leaves.innerHTML=`<button data-open="${target}">자료 열기 →</button>`; leaves.classList.add('show'); branches.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===e.target));});
+    document.addEventListener('click',e=>{if(e.target.dataset.open) openView(e.target.dataset.open);});
+    document.querySelector('#closeViewer').addEventListener('click',closeView); viewer.addEventListener('click',e=>{if(e.target===viewer)closeView();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(viewer.classList.contains('open'))closeView(); else if(panel.classList.contains('open'))menuToggle.click();}});
+  </script>
+</body>
+</html>
