@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow"><meta name="description" content="선별한 텍스트 자료에서 근거를 찾고 검토 계획을 연결해, 문서 초안과 점검 결과를 만드는 오프라인 실행기입니다.">
+<title>판단 자료 → 문서 초안 워크플로 | 이동현 작업물 모음</title>
+<link rel="stylesheet" href="../css/resume-showcase.css?v=20261104.2">
+<link rel="stylesheet" href="../css/archives.css?v=20261104.2">
+<link rel="stylesheet" href="../css/work-archive.css?v=20261104.2"></head>
+<body class="archive-page work-reader" id="top">
+<a class="skip" href="#main">본문으로 건너뛰기</a><header class="topbar"><div class="wrap header-inner">
+<a class="brand" href="../resume-showcase.html#top">이동현<span>게임 콘텐츠 기획자</span></a><nav class="nav site-menu" aria-label="사이트 메뉴"><a href="../resume-showcase.html#top">홈</a><a href="../resume-showcase.html#projects">대표 프로젝트</a><a href="../resume-showcase.html#about">기획 방식</a><a href="../planning-hub.html">기획서 목록</a><a class="skills-chip" href="../tools-skills.html">도구와 역량</a><a href="../work-archive.html">작업물 모음</a><a class="portfolio-chip" href="../ai-portfolio.html">AI 포트폴리오</a><a href="../writings.html">글 모음</a><a href="../book-reviews.html">독후감</a><a class="resume-link" href="../output/pdf/이동현_이력서.pdf" download="이동현_이력서.pdf">이력서 다운로드 ↓</a></nav></div></header>
+<main class="wrap" id="main"><header class="archive-intro gallery-intro">
+<p class="eyebrow"><a href="../work-archive.html">← 작업물 모음</a></p>
+<h1>판단 자료 → 문서 초안 워크플로</h1><p class="archive-lead">선별한 텍스트 자료에서 근거를 찾고 검토 계획을 연결해, 문서 초안과 점검 결과를 만드는 오프라인 실행기입니다.</p></header><div class="reader-layout"><p class="source-note">2026.11.04 로컬 구현·스킬 지침을 확인해 정리한 소개입니다. 기능 설명과 실제 실행 검증의 범위를 구분합니다.</p><section class="source-section" id="section-1"><h2>입력과 출력</h2><div class="source-text">입력은 요청 JSON, 검토 계획 JSON, 고정된 텍스트 스냅샷입니다. 자료 탐색 뒤 사람이거나 AI인 검토자가 관련성·조건·문장별 근거를 작성합니다. 실행기는 그 연결을 검사해 Markdown 초안과 audit.json을 만듭니다.</div></section><section class="source-section" id="section-2"><h2>두 단계 실행</h2><div class="source-text">discover: 고정 자료 안에서 키워드로 후보를 찾고 원문·화자·판단 상태를 전달합니다.
+run: 선택 근거와 요구사항 연결, 스냅샷 해시·기간·차단 상태를 검사합니다. 검토가 빠졌거나 자료가 차단되면 점검 결과만 남기고 초안을 만들지 않습니다.</div></section><section class="source-section" id="section-3"><h2>구성 파일</h2><div class="source-text">workflow.py — 탐색·입력 검증·초안 출력
+test_workflow.py — 실행기 테스트
+snapshot-ref.json — 자료 버전 참조
+examples/request.json, examples/plan.json — 입력 예제
+package_verify.py — 스냅샷 파일 검사</div></section><section class="source-section" id="section-4"><h2>사용 범위</h2><div class="source-text">Python 3.10 이상 표준 라이브러리로 실행합니다. 웹 조사나 모델 API 호출, 원격 동기화를 수행하지 않습니다. 키워드 일치는 관련성의 증명이 아니며 정상 종료도 사람의 검토를 기다리는 상태입니다.
+
+개인 판단 발췌가 들어 있는 원본 패키지는 비공개 자료로 유지하고, 여기에는 실행 구조만 소개합니다.</div></section><div class="archive-crosslinks"><a href="../work-archive.html">모든 작업 보기 →</a><a href="../tools-skills.html#my-tools">제작한 도구·스킬 보기 →</a></div></div></main>
+<footer class="wrap footer"><span>이동현 / 작업물 모음 / 2026</span><a href="#top">맨 위로 ↑</a></footer></body></html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow"><meta name="description" content="편집 가능한 레이어 구조를 만들고, 원화 보존과 이미지의 실제 사용 맥락을 함께 점검하는 스킬 묶음입니다.">
+<title>PSD 제작·이미지 검수 스킬 | 이동현 작업물 모음</title>
+<link rel="stylesheet" href="../css/resume-showcase.css?v=20261104.2">
+<link rel="stylesheet" href="../css/archives.css?v=20261104.2">
+<link rel="stylesheet" href="../css/work-archive.css?v=20261104.2"></head>
+<body class="archive-page work-reader" id="top">
+<a class="skip" href="#main">본문으로 건너뛰기</a><header class="topbar"><div class="wrap header-inner">
+<a class="brand" href="../resume-showcase.html#top">이동현<span>게임 콘텐츠 기획자</span></a><nav class="nav site-menu" aria-label="사이트 메뉴"><a href="../resume-showcase.html#top">홈</a><a href="../resume-showcase.html#projects">대표 프로젝트</a><a href="../resume-showcase.html#about">기획 방식</a><a href="../planning-hub.html">기획서 목록</a><a class="skills-chip" href="../tools-skills.html">도구와 역량</a><a href="../work-archive.html">작업물 모음</a><a class="portfolio-chip" href="../ai-portfolio.html">AI 포트폴리오</a><a href="../writings.html">글 모음</a><a href="../book-reviews.html">독후감</a><a class="resume-link" href="../output/pdf/이동현_이력서.pdf" download="이동현_이력서.pdf">이력서 다운로드 ↓</a></nav></div></header>
+<main class="wrap" id="main"><header class="archive-intro gallery-intro">
+<p class="eyebrow"><a href="../work-archive.html">← 작업물 모음</a></p>
+<h1>PSD 제작·이미지 검수 스킬</h1><p class="archive-lead">편집 가능한 레이어 구조를 만들고, 원화 보존과 이미지의 실제 사용 맥락을 함께 점검하는 스킬 묶음입니다.</p></header><div class="reader-layout"><p class="source-note">2026.11.04 로컬 구현·스킬 지침을 확인해 정리한 소개입니다. 기능 설명과 실제 실행 검증의 범위를 구분합니다.</p><section class="source-section" id="section-1"><h2>각 스킬의 역할</h2><div class="source-text">layered-psd: 이미 나뉜 PNG를 PSD로 저장하고 레이어 순서·좌표·알파·합성을 확인합니다. 평면 이미지의 레이어 추정 재구성과 단순 파일 포장을 구분합니다.
+
+review-ai-generated-art: 형태·경계·의미 전달·수정 전후 차이를 검토합니다.
+review-ui-art: 개별 이미지의 차이보다 화면 내 역할, 시각적 위계와 사용 중인 자산 그룹을 확인합니다.
+anime-image-direction: 캐릭터·소품·구도·투명도를 보존하며 2D 애니메이션풍 표현을 유지하는 지침입니다.</div></section><section class="source-section" id="section-2"><h2>실제 구성</h2><div class="source-text">PSD 저장용 pack_psd.py와 검사 스크립트, UI 자산의 이미지 모아보기·Unity 참조 검색 스크립트, 역할별 검수 기준 문서가 있습니다. 도구의 기술 검증과 사람·AI의 시각 판단을 분리합니다.</div></section><section class="source-section" id="section-3"><h2>저장 도구의 한계</h2><div class="source-text">PSD 저장기는 RGB 8비트·Normal 혼합·평면 레이어 목록을 지원합니다. 그룹, 조정층, 실제 편집 마스크, 다양한 혼합 모드를 모두 보존하는 편집 앱은 아닙니다.
+
+평면 이미지에서 원래의 제작 이력을 복구하지 않습니다. 복잡한 이미지의 자동 선·색·음영 분리는 외형 보존 검수를 통과한 범용 기능으로 소개하지 않습니다.</div></section><details class="source-section"><summary>스킬 이름과 구성 파일 보기</summary><div class="source-text"><strong>layered-psd</strong>
+SKILL.md
+references/authoring.md
+references/packaging.md
+references/validation.md
+scripts/check_pack_psd.py
+scripts/pack_psd.py
+
+<strong>review-ai-generated-art</strong>
+SKILL.md
+references/correction-review.md
+references/image-workflow.md
+
+<strong>review-ui-art</strong>
+SKILL.md
+references/review-criteria.md
+scripts/build_contact_sheets.py
+scripts/find_unity_image_refs.py
+
+<strong>anime-image-direction</strong>
+SKILL.md
+references/style-profile.md
+
+파일 이름은 로컬 구성 확인용이며, 이 페이지가 스킬 설치 패키지는 아닙니다.</div></details><div class="archive-crosslinks"><a href="../work-archive.html">모든 작업 보기 →</a><a href="../tools-skills.html#my-tools">제작한 도구·스킬 보기 →</a></div></div></main>
+<footer class="wrap footer"><span>이동현 / 작업물 모음 / 2026</span><a href="#top">맨 위로 ↑</a></footer></body></html>

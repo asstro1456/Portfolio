@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow"><meta name="description" content="채용 공고와 지원 준비 자료를 수집하고, 중복과 경력 조건을 정리해 Google Sheets로 전달하는 자동화 코드입니다.">
+<title>채용 자료 수집·Career Hub | 이동현 작업물 모음</title>
+<link rel="stylesheet" href="../css/resume-showcase.css?v=20261104.2">
+<link rel="stylesheet" href="../css/archives.css?v=20261104.2">
+<link rel="stylesheet" href="../css/work-archive.css?v=20261104.2"></head>
+<body class="archive-page work-reader" id="top">
+<a class="skip" href="#main">본문으로 건너뛰기</a><header class="topbar"><div class="wrap header-inner">
+<a class="brand" href="../resume-showcase.html#top">이동현<span>게임 콘텐츠 기획자</span></a><nav class="nav site-menu" aria-label="사이트 메뉴"><a href="../resume-showcase.html#top">홈</a><a href="../resume-showcase.html#projects">대표 프로젝트</a><a href="../resume-showcase.html#about">기획 방식</a><a href="../planning-hub.html">기획서 목록</a><a class="skills-chip" href="../tools-skills.html">도구와 역량</a><a href="../work-archive.html">작업물 모음</a><a class="portfolio-chip" href="../ai-portfolio.html">AI 포트폴리오</a><a href="../writings.html">글 모음</a><a href="../book-reviews.html">독후감</a><a class="resume-link" href="../output/pdf/이동현_이력서.pdf" download="이동현_이력서.pdf">이력서 다운로드 ↓</a></nav></div></header>
+<main class="wrap" id="main"><header class="archive-intro gallery-intro">
+<p class="eyebrow"><a href="../work-archive.html">← 작업물 모음</a></p>
+<h1>채용 자료 수집·Career Hub</h1><p class="archive-lead">채용 공고와 지원 준비 자료를 수집하고, 중복과 경력 조건을 정리해 Google Sheets로 전달하는 자동화 코드입니다.</p></header><div class="reader-layout"><p class="source-note">2026.11.04 로컬 구현·스킬 지침을 확인해 정리한 소개입니다. 기능 설명과 실제 실행 검증의 범위를 구분합니다.</p><div class="archive-crosslinks"><a href="https://github.com/asstro1456/Portfolio/tree/main/apps-script/career-hub-core">코어 코드 보기 ↗</a><a href="https://github.com/asstro1456/Portfolio/blob/main/scripts/gamejob-collect.mjs">수집 코드 보기 ↗</a></div><section class="source-section" id="section-1"><h2>처리 흐름</h2><div class="source-text">공고 수집 → 상세 요구사항 분류 → 중복 제거 → 주간 자료 준비 → 인증된 웹앱으로 시트 적재. 목록의 경력 표기와 본문 요구 경력을 나누고, 판정이 어려운 경우 수동 확인 상태를 남깁니다.</div></section><section class="source-section" id="section-2"><h2>구성 파일</h2><div class="source-text">scripts/gamejob-collect.mjs, gamejob_full_collect.mjs — 공고 수집
+scripts/gamejob-weekly-collect.mjs — 주간 처리
+scripts/gamejob-backup-report.mjs — 수동입력경력 이월 점검
+apps-script/career-hub-core/Core.gs — 시트 적재·중복 제거·집계
+apps-script/career-hub-webapp/Main.gs — 인증·요청 처리</div></section><section class="source-section" id="section-3"><h2>운영을 고려한 부분</h2><div class="source-text">코어와 웹앱을 분리하고 운영 설정은 코드 밖에서 읽습니다. 자료를 전송하지 않는 점검 모드와 실제 시트 반영을 구분합니다. 목록 정보만으로 지원 가능성을 확정하지 않도록 상세 경력과 수동 확인 결과를 함께 다룹니다.</div></section><section class="source-section" id="section-4"><h2>공개 범위</h2><div class="source-text">기존 공개 저장소의 코드로 연결합니다. 개인 시트나 운영 웹앱을 체험용으로 실행하지 않습니다. 이번 수록 작업은 페이지·링크 확인이며 실제 공고 수집이나 시트 갱신을 재실행한 것은 아닙니다.</div></section><div class="archive-crosslinks"><a href="../work-archive.html">모든 작업 보기 →</a><a href="../tools-skills.html#my-tools">제작한 도구·스킬 보기 →</a></div></div></main>
+<footer class="wrap footer"><span>이동현 / 작업물 모음 / 2026</span><a href="#top">맨 위로 ↑</a></footer></body></html>

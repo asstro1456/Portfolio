@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow"><meta name="description" content="승인된 전신 원화를 파츠로 준비하고 Unity의 본·메시·대기 동작 검수까지 연결하는 작업 절차입니다.">
+<title>전신 파츠·Unity 리깅 워크플로 | 이동현 작업물 모음</title>
+<link rel="stylesheet" href="../css/resume-showcase.css?v=20261104.2">
+<link rel="stylesheet" href="../css/archives.css?v=20261104.2">
+<link rel="stylesheet" href="../css/work-archive.css?v=20261104.2"></head>
+<body class="archive-page work-reader" id="top">
+<a class="skip" href="#main">본문으로 건너뛰기</a><header class="topbar"><div class="wrap header-inner">
+<a class="brand" href="../resume-showcase.html#top">이동현<span>게임 콘텐츠 기획자</span></a><nav class="nav site-menu" aria-label="사이트 메뉴"><a href="../resume-showcase.html#top">홈</a><a href="../resume-showcase.html#projects">대표 프로젝트</a><a href="../resume-showcase.html#about">기획 방식</a><a href="../planning-hub.html">기획서 목록</a><a class="skills-chip" href="../tools-skills.html">도구와 역량</a><a href="../work-archive.html">작업물 모음</a><a class="portfolio-chip" href="../ai-portfolio.html">AI 포트폴리오</a><a href="../writings.html">글 모음</a><a href="../book-reviews.html">독후감</a><a class="resume-link" href="../output/pdf/이동현_이력서.pdf" download="이동현_이력서.pdf">이력서 다운로드 ↓</a></nav></div></header>
+<main class="wrap" id="main"><header class="archive-intro gallery-intro">
+<p class="eyebrow"><a href="../work-archive.html">← 작업물 모음</a></p>
+<h1>전신 파츠·Unity 리깅 워크플로</h1><p class="archive-lead">승인된 전신 원화를 파츠로 준비하고 Unity의 본·메시·대기 동작 검수까지 연결하는 작업 절차입니다.</p></header><div class="reader-layout"><p class="source-note">2026.11.04 로컬 구현·스킬 지침을 확인해 정리한 소개입니다. 기능 설명과 실제 실행 검증의 범위를 구분합니다.</p><div class="archive-crosslinks"><a href="../showcase-project-ut.html">Project UT 작업 보기 →</a></div><section class="source-section" id="section-1"><h2>파츠 준비</h2><div class="source-text">fullbody-idle-parts는 전신 표시 크기, 허용된 움직임, 가려진 영역의 복원과 픽셀 소유권을 정합니다. 공통 캔버스와 좌표를 유지하고 얼굴·옷·실루엣의 승인 범위를 보존합니다.</div></section><section class="source-section" id="section-2"><h2>Unity 연결</h2><div class="source-text">ut-fullbody-rigging-harness는 프로젝트의 기존 importer·prefab·clip을 사용해 본 배열, SpriteSkin 참조, 메시·웨이트, 레이어 순서와 clip binding을 점검합니다.
+
+unity-animation-clips는 시각 연출을 편집 가능한 AnimationClip으로 남기고 기존 이벤트·연결 범위와 맞추는 절차입니다.</div></section><section class="source-section" id="section-3"><h2>검증 흐름</h2><div class="source-text">원화·파츠 선행 검수 → 본·메시 연결 → 실제 전신 크기에서 루프 확인 → 실패 자세와 경계 재검수. 아트 준비, 연결 상태, 동작 품질, 영상 파일 검사를 따로 기록합니다.</div></section><section class="source-section" id="section-4"><h2>적용 범위</h2><div class="source-text">Project UT 전용 하네스와 범용 파츠 준비 스킬을 구분합니다. 프리뷰나 정지 화면만으로 Play Mode, 실제 기기 성능, 자연스러운 연속 동작을 확인했다고 하지 않습니다.</div></section><details class="source-section"><summary>스킬 이름과 구성 파일 보기</summary><div class="source-text"><strong>fullbody-idle-parts</strong>
+SKILL.md
+assets/handoff-template.json
+references/develli-trial.md
+references/psd-and-layers.md
+references/quality-and-handoff.md
+references/whitehair-corrections.md
+
+<strong>ut-fullbody-rigging-harness</strong>
+SKILL.md
+references/art-before-rigging.md
+references/capture-and-video.md
+references/frame-mesh-audit.md
+references/ut-environment.md
+scripts/audit_frame_mesh.py
+scripts/test_audit_frame_mesh.py
+scripts/test_verify_video.py
+그 외 참고·검증 파일 1개
+
+<strong>unity-animation-clips</strong>
+SKILL.md
+references/material-flow-review.md
+
+파일 이름은 로컬 구성 확인용이며, 이 페이지가 스킬 설치 패키지는 아닙니다.</div></details><div class="archive-crosslinks"><a href="../work-archive.html">모든 작업 보기 →</a><a href="../tools-skills.html#my-tools">제작한 도구·스킬 보기 →</a></div></div></main>
+<footer class="wrap footer"><span>이동현 / 작업물 모음 / 2026</span><a href="#top">맨 위로 ↑</a></footer></body></html>

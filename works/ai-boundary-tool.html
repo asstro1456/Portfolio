@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow"><meta name="description" content="말로 설명하기 어려운 수정 위치를 이미지 위에 표시하고, 원본 좌표와 함께 전달하는 브라우저 도구입니다.">
+<title>이미지 경계 전달 도구 | 이동현 작업물 모음</title>
+<link rel="stylesheet" href="../css/resume-showcase.css?v=20261104.2">
+<link rel="stylesheet" href="../css/archives.css?v=20261104.2">
+<link rel="stylesheet" href="../css/work-archive.css?v=20261104.2"></head>
+<body class="archive-page work-reader" id="top">
+<a class="skip" href="#main">본문으로 건너뛰기</a><header class="topbar"><div class="wrap header-inner">
+<a class="brand" href="../resume-showcase.html#top">이동현<span>게임 콘텐츠 기획자</span></a><nav class="nav site-menu" aria-label="사이트 메뉴"><a href="../resume-showcase.html#top">홈</a><a href="../resume-showcase.html#projects">대표 프로젝트</a><a href="../resume-showcase.html#about">기획 방식</a><a href="../planning-hub.html">기획서 목록</a><a class="skills-chip" href="../tools-skills.html">도구와 역량</a><a href="../work-archive.html">작업물 모음</a><a class="portfolio-chip" href="../ai-portfolio.html">AI 포트폴리오</a><a href="../writings.html">글 모음</a><a href="../book-reviews.html">독후감</a><a class="resume-link" href="../output/pdf/이동현_이력서.pdf" download="이동현_이력서.pdf">이력서 다운로드 ↓</a></nav></div></header>
+<main class="wrap" id="main"><header class="archive-intro gallery-intro">
+<p class="eyebrow"><a href="../work-archive.html">← 작업물 모음</a></p>
+<h1>이미지 경계 전달 도구</h1><p class="archive-lead">말로 설명하기 어려운 수정 위치를 이미지 위에 표시하고, 원본 좌표와 함께 전달하는 브라우저 도구입니다.</p></header><div class="reader-layout"><p class="source-note">2026.11.04 로컬 구현·스킬 지침을 확인해 정리한 소개입니다. 기능 설명과 실제 실행 검증의 범위를 구분합니다.</p><div class="archive-crosslinks"><a href="../assets/tools/ai-boundary-tool.html">도구 열기 ↗</a><a href="../assets/tools/ai-boundary-tool-v2.0.1.zip" download>공유본 ZIP 다운로드 ↓</a></div><section class="source-section" id="section-1"><h2>어떤 문제를 다루나</h2><div class="source-text">“이 부분을 고쳐 주세요”라는 말만으로는 머리카락과 옷, 선과 그림자의 경계를 정확히 전달하기 어렵습니다. 이미지 위에 색별 선과 설명을 남겨 수정 대상과 보존 영역을 함께 전달합니다.</div></section><section class="source-section" id="section-2"><h2>사용 흐름</h2><div class="source-text">이미지 열기 → 펜으로 경계 표시 → 색의 의미와 설명 작성 → PNG·JSON 내보내기.
+
+펜·표시 지우기·실행 취소, 확대·이동을 지원합니다. Shift+클릭은 남아 있는 이전 선의 끝에서 직선으로 연결하고, Shift+휠은 펜 굵기를 조절합니다.
+
+작업 폴더를 선택하면 요청·원본·응답을 로컬 파일로 연결합니다. 제출 뒤 파일 위치를 Codex에 전달해 같은 이미지 버전을 검토하도록 구성했습니다.</div></section><section class="source-section" id="section-3"><h2>구성 파일</h2><div class="source-text">ai-boundary-tool.html — 화면·펜 입력·로컬 저장
+codex-local.cjs — 요청 파일 작성과 응답 무결성 검사
+AI-사용법.md / 사용법.pdf — 사용자 및 AI용 안내
+examples/ — 경계 표시 예시</div></section><section class="source-section" id="section-4"><h2>사용 범위</h2><div class="source-text">2.0.1 공유본입니다. 이미지 표시·선 그리기와 파일 내보내기는 브라우저에서 동작합니다. Codex를 자동 호출하거나 원화를 자동 수정하는 도구는 아닙니다.
+
+폴더 저장은 데스크톱 Edge·Chrome을 기준으로 만들었습니다. 파일 핸들 시험과 실제 폴더 선택·권한 허용을 구분하며, 실사용 폴더 저장과 모바일 저장 지원은 별도 확인이 필요합니다.</div></section><div class="archive-crosslinks"><a href="../work-archive.html">모든 작업 보기 →</a><a href="../tools-skills.html#my-tools">제작한 도구·스킬 보기 →</a></div></div></main>
+<footer class="wrap footer"><span>이동현 / 작업물 모음 / 2026</span><a href="#top">맨 위로 ↑</a></footer></body></html>

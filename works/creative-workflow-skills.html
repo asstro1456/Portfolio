@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow"><meta name="description" content="기획, 원고 검토, 서비스 입력과 이미지 작업을 요청 범위에 맞춰 연결하는 개인 창작용 스킬 구성입니다.">
+<title>캐릭터·스토리 제작 워크플로 | 이동현 작업물 모음</title>
+<link rel="stylesheet" href="../css/resume-showcase.css?v=20261104.2">
+<link rel="stylesheet" href="../css/archives.css?v=20261104.2">
+<link rel="stylesheet" href="../css/work-archive.css?v=20261104.2"></head>
+<body class="archive-page work-reader" id="top">
+<a class="skip" href="#main">본문으로 건너뛰기</a><header class="topbar"><div class="wrap header-inner">
+<a class="brand" href="../resume-showcase.html#top">이동현<span>게임 콘텐츠 기획자</span></a><nav class="nav site-menu" aria-label="사이트 메뉴"><a href="../resume-showcase.html#top">홈</a><a href="../resume-showcase.html#projects">대표 프로젝트</a><a href="../resume-showcase.html#about">기획 방식</a><a href="../planning-hub.html">기획서 목록</a><a class="skills-chip" href="../tools-skills.html">도구와 역량</a><a href="../work-archive.html">작업물 모음</a><a class="portfolio-chip" href="../ai-portfolio.html">AI 포트폴리오</a><a href="../writings.html">글 모음</a><a href="../book-reviews.html">독후감</a><a class="resume-link" href="../output/pdf/이동현_이력서.pdf" download="이동현_이력서.pdf">이력서 다운로드 ↓</a></nav></div></header>
+<main class="wrap" id="main"><header class="archive-intro gallery-intro">
+<p class="eyebrow"><a href="../work-archive.html">← 작업물 모음</a></p>
+<h1>캐릭터·스토리 제작 워크플로</h1><p class="archive-lead">기획, 원고 검토, 서비스 입력과 이미지 작업을 요청 범위에 맞춰 연결하는 개인 창작용 스킬 구성입니다.</p></header><div class="reader-layout"><p class="source-note">2026.11.04 로컬 구현·스킬 지침을 확인해 정리한 소개입니다. 기능 설명과 실제 실행 검증의 범위를 구분합니다.</p><div class="archive-crosslinks"><a href="https://github.com/jwynia/agent-skills">연결한 외부 창작 스킬 출처 ↗</a><a href="danah-story.html">유단아 스토리 원문 →</a><a href="hope-world.html">희망부서 세계관 →</a></div><section class="source-section" id="section-1"><h2>작업 연결</h2><div class="source-text">crack-idea-harness가 새 제작·수정·검수·이미지 작업을 구분하고 필요한 단계로 연결합니다. 캐릭터 빌더와 스토리 빌더는 서로 다른 입력 필드·제약·게시 단계를 다룹니다.
+
+validate_run.py는 작업 기록의 구조를 점검합니다. 구조 검사만으로 원고의 재미나 독자 반응이 입증되는 것은 아닙니다.</div></section><section class="source-section" id="section-2"><h2>원고 검토</h2><div class="source-text">fiction-workbench는 세계관, 인물, 대사, 선택권, 분기와 엔딩처럼 질문의 성격에 맞는 창작 스킬을 고릅니다. 확정 설정·의도적 미정·독자에게 숨긴 비밀을 구분하고 플레이어의 선택권을 확인합니다.</div></section><section class="source-section" id="section-3"><h2>직접 구성한 부분과 외부 출처</h2><div class="source-text">개인 작업에 맞춘 진입·분기·서비스 입력·검증 절차를 소개합니다. 연결된 모든 창작 스킬을 직접 만든 것으로 세지 않습니다. 예를 들어 dialogue, character-arc, systemic-worldbuilding 등은 jwynia/agent-skills에서 가져와 로컬 환경에 맞춘 항목이며 설치 출처와 변경점을 별도로 기록합니다.</div></section><section class="source-section" id="section-4"><h2>결과물</h2><div class="source-text">유단아와 희망부서의 원고·세계관·이미지는 작업물 모음에 따로 수록했습니다. 스킬의 존재와 특정 결과물의 품질 승인, 실제 서비스 등록 여부는 구분합니다.</div></section><details class="source-section"><summary>스킬 이름과 구성 파일 보기</summary><div class="source-text"><strong>crack-idea-harness</strong>
+SKILL.md
+agents/roles.json
+references/buyer-appeal.md
+references/design-and-play-review.md
+references/quality-and-feedback.md
+references/workflow.md
+scripts/test_validate_run.py
+scripts/validate_run.py
+
+<strong>crack-character-builder</strong>
+SKILL.md
+references/character-ui.md
+
+<strong>crack-story-builder</strong>
+SKILL.md
+references/builder-ui.md
+references/story-intake.md
+
+<strong>fiction-workbench</strong>
+SKILL.md
+references/catalog.md
+references/manifest.json
+
+파일 이름은 로컬 구성 확인용이며, 이 페이지가 스킬 설치 패키지는 아닙니다.</div></details><div class="archive-crosslinks"><a href="../work-archive.html">모든 작업 보기 →</a><a href="../tools-skills.html#my-tools">제작한 도구·스킬 보기 →</a></div></div></main>
+<footer class="wrap footer"><span>이동현 / 작업물 모음 / 2026</span><a href="#top">맨 위로 ↑</a></footer></body></html>
