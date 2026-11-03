@@ -1,0 +1,282 @@
+{
+  "date": "2026-11-04",
+  "scope": "설치된 개인 스킬 21종과 별도 공통 업무용 9종. 외부 설치 스킬은 제작물 수에서 제외.",
+  "skills": [
+    {
+      "name": "judgment-harness",
+      "type": "개인 환경 원본",
+      "download": "judgment-harness.zip",
+      "files": 49,
+      "bytes": 203441,
+      "sha256": "cc0662de77c002e699e25277e25ad953f6c7205208cb3312b667d175de6679e0",
+      "changes": []
+    },
+    {
+      "name": "fullbody-idle-parts",
+      "type": "개인 환경 원본",
+      "download": "fullbody-idle-parts.zip",
+      "files": 9,
+      "bytes": 1313348,
+      "sha256": "90ec1771f3cc6010a6dfd61b50f9012fc51bc8f2bfa49f5d07a949875e91fdb0",
+      "changes": []
+    },
+    {
+      "name": "ut-fullbody-rigging-harness",
+      "type": "개인 환경 원본",
+      "download": "ut-fullbody-rigging-harness.zip",
+      "files": 11,
+      "bytes": 33116,
+      "sha256": "69bad9772db34c6a1d1e829752bc56456665061f430c914282ea1b863ca34b07",
+      "changes": []
+    },
+    {
+      "name": "layered-psd",
+      "type": "개인 환경 원본",
+      "download": "layered-psd.zip",
+      "files": 6,
+      "bytes": 17225,
+      "sha256": "673aada31cd78b6a14ab5676d38ebc907011f39541949d742bd7a497e64f029c",
+      "changes": []
+    },
+    {
+      "name": "review-ai-generated-art",
+      "type": "개인 환경 원본",
+      "download": "review-ai-generated-art.zip",
+      "files": 4,
+      "bytes": 11488,
+      "sha256": "5485f4f4d8043c6a67ba575fed77172b3593c77a5ead165866fcb96b561e8c3c",
+      "changes": []
+    },
+    {
+      "name": "review-ui-art",
+      "type": "개인 환경 원본",
+      "download": "review-ui-art.zip",
+      "files": 5,
+      "bytes": 10972,
+      "sha256": "b1ae4ae7b761a6de4e8da358e67a44ab87bee77e53a5de19d6d609afb33fc3d7",
+      "changes": [
+        {
+          "file": "agents/openai.yaml",
+          "change": "CP949 → UTF-8; text preserved",
+          "original_sha256": "22f6da0006239ebdc128f8084c1ad7747de33f33dbbf1afb77efa8047b8ab234"
+        }
+      ]
+    },
+    {
+      "name": "game-gdd-html",
+      "type": "개인 환경 원본",
+      "download": "game-gdd-html.zip",
+      "files": 49,
+      "bytes": 162172,
+      "sha256": "57998991f09d94073dfbeb36c0209342832c822fc8889482c638ae210a77baed",
+      "changes": []
+    },
+    {
+      "name": "crack-idea-harness",
+      "type": "개인 환경 원본",
+      "download": "crack-idea-harness.zip",
+      "files": 9,
+      "bytes": 41993,
+      "sha256": "e1252a322e95b2a727c566917b2ff0ffe3ac04da242ed2e2055aff083bb9a8d0",
+      "changes": []
+    },
+    {
+      "name": "crack-character-builder",
+      "type": "개인 환경 원본",
+      "download": "crack-character-builder.zip",
+      "files": 3,
+      "bytes": 5274,
+      "sha256": "96008e35c80e8153353e5ff91f5a7879e78b274466443d7253a89aaaaed505d7",
+      "changes": []
+    },
+    {
+      "name": "crack-story-builder",
+      "type": "개인 환경 원본",
+      "download": "crack-story-builder.zip",
+      "files": 4,
+      "bytes": 6903,
+      "sha256": "c3422b6de7a6758f4afde2db7a11ef76141f1d4500fff6cdf39be39d712d7c94",
+      "changes": []
+    },
+    {
+      "name": "fiction-workbench",
+      "type": "개인 환경 원본",
+      "download": "fiction-workbench.zip",
+      "files": 3,
+      "bytes": 10757,
+      "sha256": "b12f0d73d57d940accb8764b27909b87228f5d0685c566ffe4e0a15fdb21a1af",
+      "changes": []
+    },
+    {
+      "name": "anime-image-direction",
+      "type": "개인 환경 원본",
+      "download": "anime-image-direction.zip",
+      "files": 2,
+      "bytes": 5053,
+      "sha256": "db0bb7cbb0455a4e9cb404ffb78c3cc8d99641913c43af8876d4cc745035300e",
+      "changes": []
+    },
+    {
+      "name": "personal-korean-writing-style",
+      "type": "개인 환경 원본",
+      "download": "personal-korean-writing-style.zip",
+      "files": 1,
+      "bytes": 3288,
+      "sha256": "8fe8620f7cb1c88cd8afb426bfbfe798e4c3a0ec2a96d4c4e8ea785893c65669",
+      "changes": []
+    },
+    {
+      "name": "model-switch-advisor",
+      "type": "개인 환경 원본",
+      "download": "model-switch-advisor.zip",
+      "files": 2,
+      "bytes": 4865,
+      "sha256": "eb169e1db1bb01202d7006138267c2d923c6b4d3a0ce9a6fbce28f443e8093ed",
+      "changes": []
+    },
+    {
+      "name": "utf8-text-safety",
+      "type": "개인 환경 원본",
+      "download": "utf8-text-safety.zip",
+      "files": 2,
+      "bytes": 3920,
+      "sha256": "f82277b477526ae7c98cefee516738f7951ecbcaf1e4a862ba7e152aeb2e0d11",
+      "changes": []
+    },
+    {
+      "name": "codex-idle-cleanup",
+      "type": "개인 환경 원본",
+      "download": "codex-idle-cleanup.zip",
+      "files": 1,
+      "bytes": 3579,
+      "sha256": "77aba64a0255e2e0261c5b5f5f422de960894ef6485e1955281e1c1b10725152",
+      "changes": []
+    },
+    {
+      "name": "preserve-chat-summary",
+      "type": "개인 환경 원본",
+      "download": "preserve-chat-summary.zip",
+      "files": 2,
+      "bytes": 3288,
+      "sha256": "ade85a96dd1c30198f19bdfd3c91a504f05c8e7aecfbb408c5571223acacb8df",
+      "changes": []
+    },
+    {
+      "name": "task-handoff",
+      "type": "개인 환경 원본",
+      "download": "task-handoff.zip",
+      "files": 2,
+      "bytes": 3765,
+      "sha256": "cde8fe4d3de1f986626fac72d800f8adc9430513cb36afa795ea44bf13ca0965",
+      "changes": []
+    },
+    {
+      "name": "static-portfolio-site",
+      "type": "개인 환경 원본",
+      "download": "static-portfolio-site.zip",
+      "files": 2,
+      "bytes": 4606,
+      "sha256": "852f364d34ceda300b2e25036606d0c5ff709a1cc3a8246c62861e79d7e74bc3",
+      "changes": []
+    },
+    {
+      "name": "unity-animation-clips",
+      "type": "개인 환경 원본",
+      "download": "unity-animation-clips.zip",
+      "files": 2,
+      "bytes": 8741,
+      "sha256": "8aa8c5fe1f85ca37027ed8bedb5581811380ea0866015895efd496f4a24fbc3a",
+      "changes": []
+    },
+    {
+      "name": "chronoark-workshop-modding",
+      "type": "개인 환경 원본",
+      "download": "chronoark-workshop-modding.zip",
+      "files": 2,
+      "bytes": 3396,
+      "sha256": "a3cbe9513605237c7cbcd7b37b1f5255a747966216ba1e626ea04d4585c15591",
+      "changes": []
+    },
+    {
+      "name": "work-art-review",
+      "type": "공통 업무용 별도 구성",
+      "download": "work-art-review.zip",
+      "files": 2,
+      "bytes": 3251,
+      "sha256": "505c7fa4475ca93d3e11354a3dbaca6c7a78622c867dc0ea311c091a62274dbf",
+      "changes": []
+    },
+    {
+      "name": "work-core",
+      "type": "공통 업무용 별도 구성",
+      "download": "work-core.zip",
+      "files": 1,
+      "bytes": 2162,
+      "sha256": "f3b867c93cf4aeaa441815fe40414bab77ed4bd6c320caccedab8fc68d44b4f3",
+      "changes": []
+    },
+    {
+      "name": "work-korean-writing",
+      "type": "공통 업무용 별도 구성",
+      "download": "work-korean-writing.zip",
+      "files": 1,
+      "bytes": 1430,
+      "sha256": "4a39c266aa182a620b70f7385e2a6429b79fe9c0c17c7c4d9ebe5784f5b80ebd",
+      "changes": []
+    },
+    {
+      "name": "work-planning",
+      "type": "공통 업무용 별도 구성",
+      "download": "work-planning.zip",
+      "files": 1,
+      "bytes": 1879,
+      "sha256": "3f099e83ea3fea306772f6ab797b527ebf396dc9289d634240a10bc29244374b",
+      "changes": []
+    },
+    {
+      "name": "work-ui-review",
+      "type": "공통 업무용 별도 구성",
+      "download": "work-ui-review.zip",
+      "files": 2,
+      "bytes": 2462,
+      "sha256": "8618f9850bfba97389ed9d494dab12798caec87cc2fdca8607e28945624b4069",
+      "changes": []
+    },
+    {
+      "name": "work-anime-direction",
+      "type": "공통 업무용 별도 구성",
+      "download": "work-anime-direction.zip",
+      "files": 1,
+      "bytes": 1778,
+      "sha256": "6c50a5b94996e513b265991faed5fe5ccbfdfa63579134a660d5b562a57576b1",
+      "changes": []
+    },
+    {
+      "name": "work-handoff",
+      "type": "공통 업무용 별도 구성",
+      "download": "work-handoff.zip",
+      "files": 1,
+      "bytes": 1612,
+      "sha256": "a24667adfb7a420e5066c14d75b9d442dd91e6383c8e9634c5564495a5d249bd",
+      "changes": []
+    },
+    {
+      "name": "work-summary",
+      "type": "공통 업무용 별도 구성",
+      "download": "work-summary.zip",
+      "files": 1,
+      "bytes": 1450,
+      "sha256": "3c7fe3cdfa62199a2969be3906a7170b13742fb50fca3e4479c73f9c3a20ebe0",
+      "changes": []
+    },
+    {
+      "name": "work-text-safety",
+      "type": "공통 업무용 별도 구성",
+      "download": "work-text-safety.zip",
+      "files": 1,
+      "bytes": 1678,
+      "sha256": "9972e0349a1def067f80c61c98382a170b95b6875e3bd098c4d9d2d7492eced9",
+      "changes": []
+    }
+  ]
+}

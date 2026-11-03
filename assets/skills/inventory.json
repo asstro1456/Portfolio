@@ -1,0 +1,615 @@
+{
+  "date": "2026-11-04",
+  "scan": [
+    {
+      "drive": "C",
+      "files": 1852307,
+      "exit_code": 2,
+      "errors_bytes": 60270,
+      "index_bytes": 271193524
+    },
+    {
+      "drive": "D",
+      "files": 931628,
+      "exit_code": 2,
+      "errors_bytes": 230,
+      "index_bytes": 105162278
+    }
+  ],
+  "scope": "C·D 드라이브 접근 가능한 파일 이름 전체 탐색. 본문 전수 검수는 아님. 숨김 파일 포함, 심볼릭 링크를 따라가지 않음.",
+  "skills": [
+    {
+      "name": "agent-comic-kit",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "anime-image-direction",
+      "status": "이번 수록",
+      "reason": "실제 원본 파일 ZIP 제공",
+      "download": "../assets/skills/anime-image-direction.zip"
+    },
+    {
+      "name": "baoyu-comic",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 도구·스킬 또는 제작·수정 기여 범위가 확정되지 않은 항목. 로컬에 있다는 이유만으로 자체 제작물에 포함하지 않음.",
+      "download": ""
+    },
+    {
+      "name": "brandkit",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 도구·스킬 또는 제작·수정 기여 범위가 확정되지 않은 항목. 로컬에 있다는 이유만으로 자체 제작물에 포함하지 않음.",
+      "download": ""
+    },
+    {
+      "name": "camera-systems",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "chapter-writing",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "character-arc",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "character-management",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "character-sim",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "chronoark-workshop-modding",
+      "status": "이번 수록",
+      "reason": "실제 원본 파일 ZIP 제공",
+      "download": "../assets/skills/chronoark-workshop-modding.zip"
+    },
+    {
+      "name": "codex-idle-cleanup",
+      "status": "이번 수록",
+      "reason": "실제 원본 파일 ZIP 제공",
+      "download": "../assets/skills/codex-idle-cleanup.zip"
+    },
+    {
+      "name": "crack-character-builder",
+      "status": "이번 수록",
+      "reason": "실제 원본 파일 ZIP 제공",
+      "download": "../assets/skills/crack-character-builder.zip"
+    },
+    {
+      "name": "crack-idea-harness",
+      "status": "이번 수록",
+      "reason": "실제 원본 파일 ZIP 제공",
+      "download": "../assets/skills/crack-idea-harness.zip"
+    },
+    {
+      "name": "crack-story-builder",
+      "status": "이번 수록",
+      "reason": "실제 원본 파일 ZIP 제공",
+      "download": "../assets/skills/crack-story-builder.zip"
+    },
+    {
+      "name": "creative-writing-craft",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "creative-writing-modes",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "dialogue",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "endings",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "feedback-triage",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "fiction-workbench",
+      "status": "이번 수록",
+      "reason": "실제 원본 파일 ZIP 제공",
+      "download": "../assets/skills/fiction-workbench.zip"
+    },
+    {
+      "name": "fullbody-idle-parts",
+      "status": "이번 수록",
+      "reason": "실제 원본 파일 ZIP 제공",
+      "download": "../assets/skills/fullbody-idle-parts.zip"
+    },
+    {
+      "name": "game-feel",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "game-gdd-html",
+      "status": "이번 수록",
+      "reason": "실제 원본 파일 ZIP 제공",
+      "download": "../assets/skills/game-gdd-html.zip"
+    },
+    {
+      "name": "generate2dmap",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 도구·스킬 또는 제작·수정 기여 범위가 확정되지 않은 항목. 로컬에 있다는 이유만으로 자체 제작물에 포함하지 않음.",
+      "download": ""
+    },
+    {
+      "name": "generate2dsprite",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 도구·스킬 또는 제작·수정 기여 범위가 확정되지 않은 항목. 로컬에 있다는 이유만으로 자체 제작물에 포함하지 않음.",
+      "download": ""
+    },
+    {
+      "name": "genre-conventions",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "genre-craft",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "governance-systems",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "gpt-taste",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 도구·스킬 또는 제작·수정 기여 범위가 확정되지 않은 항목. 로컬에 있다는 이유만으로 자체 제작물에 포함하지 않음.",
+      "download": ""
+    },
+    {
+      "name": "hatch-pet",
+      "status": "별도 설치·출처 확인",
+      "reason": "보유·사용 또는 로컬 보완한 지침. 원본 출처와 자체 기여의 구분이 더 필요해 자체 제작 다운로드 수에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "image-to-code",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 도구·스킬 또는 제작·수정 기여 범위가 확정되지 않은 항목. 로컬에 있다는 이유만으로 자체 제작물에 포함하지 않음.",
+      "download": ""
+    },
+    {
+      "name": "imagegen-frontend-web",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 도구·스킬 또는 제작·수정 기여 범위가 확정되지 않은 항목. 로컬에 있다는 이유만으로 자체 제작물에 포함하지 않음.",
+      "download": ""
+    },
+    {
+      "name": "interactive-fiction",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "interactive-fiction-diagnostic",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "judgment-harness",
+      "status": "이번 수록",
+      "reason": "실제 원본 파일 ZIP 제공",
+      "download": "../assets/skills/judgment-harness.zip"
+    },
+    {
+      "name": "layered-psd",
+      "status": "이번 수록",
+      "reason": "실제 원본 파일 ZIP 제공",
+      "download": "../assets/skills/layered-psd.zip"
+    },
+    {
+      "name": "line-editing",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "model-switch-advisor",
+      "status": "이번 수록",
+      "reason": "실제 원본 파일 ZIP 제공",
+      "download": "../assets/skills/model-switch-advisor.zip"
+    },
+    {
+      "name": "obsidian-vault",
+      "status": "별도 설치·출처 확인",
+      "reason": "보유·사용 또는 로컬 보완한 지침. 원본 출처와 자체 기여의 구분이 더 필요해 자체 제작 다운로드 수에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ouroboros-auto",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 Ouroboros 워크플로 스킬. 별도 실행 엔진에 의존하므로 자체 제작 다운로드에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ouroboros-brownfield",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 Ouroboros 워크플로 스킬. 별도 실행 엔진에 의존하므로 자체 제작 다운로드에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ouroboros-cancel",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 Ouroboros 워크플로 스킬. 별도 실행 엔진에 의존하므로 자체 제작 다운로드에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ouroboros-config",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 Ouroboros 워크플로 스킬. 별도 실행 엔진에 의존하므로 자체 제작 다운로드에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ouroboros-evaluate",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 Ouroboros 워크플로 스킬. 별도 실행 엔진에 의존하므로 자체 제작 다운로드에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ouroboros-evolve",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 Ouroboros 워크플로 스킬. 별도 실행 엔진에 의존하므로 자체 제작 다운로드에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ouroboros-help",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 Ouroboros 워크플로 스킬. 별도 실행 엔진에 의존하므로 자체 제작 다운로드에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ouroboros-interview",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 Ouroboros 워크플로 스킬. 별도 실행 엔진에 의존하므로 자체 제작 다운로드에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ouroboros-pm",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 Ouroboros 워크플로 스킬. 별도 실행 엔진에 의존하므로 자체 제작 다운로드에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ouroboros-publish",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 Ouroboros 워크플로 스킬. 별도 실행 엔진에 의존하므로 자체 제작 다운로드에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ouroboros-qa",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 Ouroboros 워크플로 스킬. 별도 실행 엔진에 의존하므로 자체 제작 다운로드에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ouroboros-ralph",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 Ouroboros 워크플로 스킬. 별도 실행 엔진에 의존하므로 자체 제작 다운로드에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ouroboros-resume-session",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 Ouroboros 워크플로 스킬. 별도 실행 엔진에 의존하므로 자체 제작 다운로드에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ouroboros-run",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 Ouroboros 워크플로 스킬. 별도 실행 엔진에 의존하므로 자체 제작 다운로드에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ouroboros-seed",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 Ouroboros 워크플로 스킬. 별도 실행 엔진에 의존하므로 자체 제작 다운로드에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ouroboros-setup",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 Ouroboros 워크플로 스킬. 별도 실행 엔진에 의존하므로 자체 제작 다운로드에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ouroboros-status",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 Ouroboros 워크플로 스킬. 별도 실행 엔진에 의존하므로 자체 제작 다운로드에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ouroboros-tutorial",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 Ouroboros 워크플로 스킬. 별도 실행 엔진에 의존하므로 자체 제작 다운로드에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ouroboros-unstuck",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 Ouroboros 워크플로 스킬. 별도 실행 엔진에 의존하므로 자체 제작 다운로드에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ouroboros-update",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 Ouroboros 워크플로 스킬. 별도 실행 엔진에 의존하므로 자체 제작 다운로드에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ouroboros-welcome",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 Ouroboros 워크플로 스킬. 별도 실행 엔진에 의존하므로 자체 제작 다운로드에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "pdf",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 도구·스킬 또는 제작·수정 기여 범위가 확정되지 않은 항목. 로컬에 있다는 이유만으로 자체 제작물에 포함하지 않음.",
+      "download": ""
+    },
+    {
+      "name": "personal-korean-writing-style",
+      "status": "이번 수록",
+      "reason": "실제 원본 파일 ZIP 제공",
+      "download": "../assets/skills/personal-korean-writing-style.zip"
+    },
+    {
+      "name": "playwright",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "plot-structure",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "premise-workshop",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "preserve-chat-summary",
+      "status": "이번 수록",
+      "reason": "실제 원본 파일 ZIP 제공",
+      "download": "../assets/skills/preserve-chat-summary.zip"
+    },
+    {
+      "name": "reader-panel",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "reader-sim",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "redesign-existing-projects",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 도구·스킬 또는 제작·수정 기여 범위가 확정되지 않은 항목. 로컬에 있다는 이유만으로 자체 제작물에 포함하지 않음.",
+      "download": ""
+    },
+    {
+      "name": "review-ai-generated-art",
+      "status": "이번 수록",
+      "reason": "실제 원본 파일 ZIP 제공",
+      "download": "../assets/skills/review-ai-generated-art.zip"
+    },
+    {
+      "name": "review-ui-art",
+      "status": "이번 수록",
+      "reason": "실제 원본 파일 ZIP 제공",
+      "download": "../assets/skills/review-ui-art.zip"
+    },
+    {
+      "name": "revision-continuity",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "scene-craft",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "shader-dev",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "sora",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "sprite-editor",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 도구·스킬 또는 제작·수정 기여 범위가 확정되지 않은 항목. 로컬에 있다는 이유만으로 자체 제작물에 포함하지 않음.",
+      "download": ""
+    },
+    {
+      "name": "static-portfolio-site",
+      "status": "이번 수록",
+      "reason": "실제 원본 파일 ZIP 제공",
+      "download": "../assets/skills/static-portfolio-site.zip"
+    },
+    {
+      "name": "story-init",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "story-maintenance",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "story-planning",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "story-review",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "systemic-worldbuilding",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "task-handoff",
+      "status": "이번 수록",
+      "reason": "실제 원본 파일 ZIP 제공",
+      "download": "../assets/skills/task-handoff.zip"
+    },
+    {
+      "name": "theme-craft",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "ui-ugui",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 도구·스킬 또는 제작·수정 기여 범위가 확정되지 않은 항목. 로컬에 있다는 이유만으로 자체 제작물에 포함하지 않음.",
+      "download": ""
+    },
+    {
+      "name": "underdog-unit",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "unity-animation-clips",
+      "status": "이번 수록",
+      "reason": "실제 원본 파일 ZIP 제공",
+      "download": "../assets/skills/unity-animation-clips.zip"
+    },
+    {
+      "name": "unity-mcp-skill",
+      "status": "별도 설치·출처 확인",
+      "reason": "보유·사용 또는 로컬 보완한 지침. 원본 출처와 자체 기여의 구분이 더 필요해 자체 제작 다운로드 수에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "unity-script",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "unity-shader-gen",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 도구·스킬 또는 제작·수정 기여 범위가 확정되지 않은 항목. 로컬에 있다는 이유만으로 자체 제작물에 포함하지 않음.",
+      "download": ""
+    },
+    {
+      "name": "ut-fullbody-rigging-harness",
+      "status": "이번 수록",
+      "reason": "실제 원본 파일 ZIP 제공",
+      "download": "../assets/skills/ut-fullbody-rigging-harness.zip"
+    },
+    {
+      "name": "utf8-text-safety",
+      "status": "이번 수록",
+      "reason": "실제 원본 파일 ZIP 제공",
+      "download": "../assets/skills/utf8-text-safety.zip"
+    },
+    {
+      "name": "video2dsprite",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 도구·스킬 또는 제작·수정 기여 범위가 확정되지 않은 항목. 로컬에 있다는 이유만으로 자체 제작물에 포함하지 않음.",
+      "download": ""
+    },
+    {
+      "name": "voice-style",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "worldbuilding",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "worldbuilding-diagnostic",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    },
+    {
+      "name": "writing-principles",
+      "status": "별도 설치·출처 확인",
+      "reason": "외부 출처·도구 의존성을 가진 설치 스킬. 자체 제작물로 분류하지 않으며 이번 재배포에서 제외.",
+      "download": ""
+    }
+  ],
+  "additional_portable_skills": [
+    "work-art-review",
+    "work-core",
+    "work-korean-writing",
+    "work-planning",
+    "work-ui-review",
+    "work-anime-direction",
+    "work-handoff",
+    "work-summary",
+    "work-text-safety"
+  ]
+}

@@ -14,6 +14,7 @@
 - `work-archive.html`: searchable collection of local creative work, prototypes, and existing projects.
 - `works/`, `assets/works/`: readable manuscripts, webtoon pages, illustration galleries, and original-view assets.
 - `assets/tools/`: browser tools and existing share packages; skill introductions are in `works/` and linked from `tools-skills.html#my-tools`.
+- `assets/skills/`: actual skill source ZIPs, general-work bundles, file hashes, and the scoped inventory; start at `works/skill-downloads.html`.
 - `tools-skills.html`: tools and competencies.
 - `print.html`, `project-record.html`, `cover-letter-generic.html`: application documents.
 - `output/pdf/`: PDF exports, updated independently when the HTML changes.

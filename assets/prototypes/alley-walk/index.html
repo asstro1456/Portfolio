@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#203c3b">
+  <title>골목의 여백 · 1인칭 v0.2.4</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="model.js"></script>
+  <script defer src="game.js"></script>
+</head>
+<body>
+<main id="game" aria-label="골목의 여백 게임">
+  <canvas id="scene" aria-label="1인칭 골목. WASD로 이동하고 화면을 드래그해 둘러보세요. 입구로 돌아오면 산책이 끝납니다."></canvas>
+  <header><div class="wordmark">골목의 여백 <span>A LITTLE OUTSIDE</span></div><div class="top-actions"><button id="sound" aria-pressed="true">소리 켜짐</button><button id="pause" aria-label="일시 정지">Ⅱ</button></div></header>
+  <div id="chapter">늘 걷던 길 · 1인칭</div>
+  <div id="reticle" hidden aria-hidden="true">·</div>
+  <div id="phone" aria-hidden="true"><div class="phone-camera"></div><div class="phone-title">for you <span>⌕</span></div><div class="feed"><small>오늘도, 다음 영상</small><div class="feed-sun"></div><p>지금 가장<br>빛나는 순간 ✦</p><span>다음엔 어디로 갈까?</span><div class="feed-icons">♡<br>↗<br>···</div></div><div class="phone-line"></div></div>
+  <div id="controls" hidden><div class="walk"><button data-move="forward" aria-label="앞으로 걷기">↑</button><button data-move="left" aria-label="왼쪽으로 걷기">←</button><button data-move="back" aria-label="뒤로 걷기">↓</button><button data-move="right" aria-label="오른쪽으로 걷기">→</button></div><div class="actions"><button id="turn">뒤돌아보기 <kbd>R</kbd></button><button id="phone-toggle">휴대폰 내리기 <kbd>Space</kbd></button></div></div>
+  <section id="cover" class="overlay"><div class="intro"><span class="eyebrow">THATGAMEJAM #02 · FIRST PERSON 0.2.4</span><h1>골목의<br><em>여백</em></h1><p>조금 걷고, 마음 가는 곳을 바라보고.<br>돌아오고 싶을 때 돌아오면 되는 길.</p><button id="start" class="primary">골목으로 들어가기 <span>→</span></button><p class="instructions">WASD 이동 · 화면 드래그 / ← → 시선 회전<br>Space 휴대폰 · R 뒤돌기 · Esc 쉬기<br>입구로 돌아오면 끝납니다. 발견은 모두 선택이에요.</p></div><div class="cover-note">같은 길, 내 속도로.<br><span>해야 할 일도, 기다려야 할 순간도 없습니다.</span></div></section>
+  <section id="paused" class="overlay compact" hidden><div><span class="eyebrow">TAKE YOUR TIME</span><h2>잠시, 쉬어가기</h2><button id="resume" class="primary">계속 걷기</button></div></section>
+  <section id="ending" class="overlay compact" hidden><div><span class="eyebrow">A LITTLE OUTSIDE</span><h2>다시, 골목 입구.</h2><p id="ending-line">길은 그대로, 나는 잠깐 다녀왔다.</p><p>다음에는 다른 쪽을 바라봐도 좋겠다.</p><div id="duration"></div><button id="restart" class="primary">한 번 더 걸어보기 <span>↗</span></button><small>골목의 여백 · 1인칭 v0.2.4<br>발견하지 않아도 괜찮은 산책 · 공식 주제곡 미사용</small></div></section>
+  <noscript>이 게임은 JavaScript가 필요합니다. 브라우저에서 JavaScript를 켜 주세요.</noscript>
+</main>
+</body>
+</html>
