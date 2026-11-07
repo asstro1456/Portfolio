@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow"><meta name="description" content="보유 게임의 플레이시간·장르·도전과제를 정리하고, 플레이 성향을 살펴본 데이터 분석 작업입니다.">
+<title>Steam 라이브러리 분석 | 이동현 작업물 모음</title>
+<link rel="stylesheet" href="../css/resume-showcase.css?v=20261107.2">
+<link rel="stylesheet" href="../css/archives.css?v=20261107.2">
+<link rel="stylesheet" href="../css/work-archive.css?v=20261107.2"><link rel="stylesheet" href="../css/steam-library.css?v=20261107.2"></head>
+<body class="archive-page work-reader" id="top">
+<a class="skip" href="#main">본문으로 건너뛰기</a><header class="topbar"><div class="wrap header-inner">
+<a class="brand" href="../resume-showcase.html#top">이동현<span>게임 콘텐츠 기획자</span></a><nav class="nav site-menu" aria-label="사이트 메뉴"><a href="../resume-showcase.html#top">홈</a><a href="../resume-showcase.html#projects">대표 프로젝트</a><a href="../resume-showcase.html#about">기획 방식</a><a href="../planning-hub.html">기획서 목록</a><a class="skills-chip" href="../tools-skills.html">도구와 역량</a><a href="../work-archive.html">작업물 모음</a><a class="portfolio-chip" href="../ai-portfolio.html">AI 포트폴리오</a><a href="../writings.html">글 모음</a><a href="../book-reviews.html">독후감</a><a class="resume-link" href="../output/pdf/이동현_이력서.pdf" download="이동현_이력서.pdf">이력서 다운로드 ↓</a></nav></div></header>
+<main class="wrap" id="main"><header class="archive-intro gallery-intro">
+<p class="eyebrow"><a href="../work-archive.html">← 작업물 모음</a></p>
+<h1>Steam 라이브러리 분석</h1><p class="archive-lead">보유 게임의 플레이시간·장르·도전과제를 정리하고, 플레이 성향을 살펴본 데이터 분석 작업입니다.</p></header><div class="reader-layout"><p class="source-note">개인 Steam 라이브러리의 보관 데이터를 분석한 작업입니다. 현재 계정의 실시간 수치가 아닙니다. 림버스 컴퍼니는 별도 시트로 분리하고 아래 집계에서 제외했습니다.</p><div class="steam-metrics"><div><strong>143</strong><span>분석 게임</span></div><div><strong>93</strong><span>플레이한 게임</span></div><div><strong>3,137.5시간</strong><span>누적 플레이</span></div></div><div class="archive-crosslinks"><a href="../assets/works/data/steam-library-dashboard.xlsx" download>분석 시트 XLSX 다운로드 ↓</a></div>
+<section class="source-section"><h2>무엇을 정리했나</h2><div class="source-text">게임별 플레이시간·도전과제·장르·기능 태그를 한 표로 정리하고, 몰입 구간과 인디·비인디 분포를 비교했습니다. 관측 데이터와 플레이 성향에 대한 해석을 구분해 출처·추론 시트에 남겼습니다.
+
+구성: 대시보드 / 게임 데이터 / 장르 분석 / 출처·추론 / 림버스 별도 / 인디 분석.</div></section>
+<section class="source-section"><h2>플레이시간 상위 10개</h2><p class="source-note">게임 데이터 시트의 저장값 기준입니다. 림버스 컴퍼니의 569.6시간은 별도 시트에 보존되어 있습니다.</p><div class="steam-table-wrap"><table class="steam-table"><thead><tr><th scope="col">게임</th><th scope="col">플레이시간</th></tr></thead><tbody><tr><td>Library Of Ruina</td><td>534.7시간</td></tr><tr><td>Sid Meier&#x27;s Civilization V</td><td>229.6시간</td></tr><tr><td>Satisfactory</td><td>146.5시간</td></tr><tr><td>크로노 아크</td><td>145.2시간</td></tr><tr><td>Lobotomy Corporation</td><td>133.3시간</td></tr><tr><td>Darkest Dungeon®</td><td>109.0시간</td></tr><tr><td>페르소나 5 더 로열</td><td>92.8시간</td></tr><tr><td>The Last Spell</td><td>84.2시간</td></tr><tr><td>Skul: The Hero Slayer</td><td>80.3시간</td></tr><tr><td>Shape of Dreams</td><td>79.7시간</td></tr></tbody></table></div></section><section class="source-section"><h2>장르 집계와 해석 기준</h2><div class="source-text">복수 장르 게임은 해당하는 각 장르에 포함됩니다. 따라서 장르별 게임 수와 플레이시간을 더하면 실제 전체 합계보다 커집니다. 시트의 장르 비중은 이 중복 포함 합계를 분모로 사용합니다.
+
+Indie가 Steam 장르에 포함된 게임을 인디로 분류합니다. 기능 태그는 Steam Categories를 사용한 값이며, 사용자 태그와는 구분합니다. 플레이 성향은 관측값을 바탕으로 한 해석입니다.</div></section><section class="source-section"><h2>자료와 확인 범위</h2><div class="source-text">다운로드 파일은 로컬에 보관된 장르 집계 수정본입니다. 원본을 재계산·수정하지 않고 그대로 제공합니다. 게임 데이터의 143개 항목과 플레이시간 합계, 12개 장르의 게임 수·플레이시간을 독립 집계해 저장값과 대조했습니다.
+
+원천은 Steam 커뮤니티 저장 HTML이며, 장르·개발사·배급사·기능 분류는 파일에 기록된 Steam App Details API 자료를 사용했습니다. 이번 게시에서 최신 Steam 데이터를 다시 수집하지 않았습니다. 날짜 기반 수식은 엑셀에서 열 때 기준일에 따라 달라질 수 있습니다.</div></section><div class="archive-crosslinks"><a href="../work-archive.html">모든 작업 보기 →</a></div></div></main>
+<footer class="wrap footer"><span>이동현 / 작업물 모음 / 2026</span><a href="#top">맨 위로 ↑</a></footer></body></html>

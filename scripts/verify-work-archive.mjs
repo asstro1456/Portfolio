@@ -34,7 +34,7 @@ try{
  for(const width of [1440,768,390,320]){
   await page.setViewportSize({width,height:900});
   await page.goto(new URL('work-archive.html',base).href,{waitUntil:'load'});
-  assert.equal(await page.locator('.artwork-card').count(),45);
+  assert.equal(await page.locator('.artwork-card').count(),46);
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`${width}: horizontal overflow`);
   for(const selector of ['.site-menu a','.artwork-card h2','.artwork-card h3']){
    assert(await page.locator(selector).evaluateAll(nodes=>nodes.every(n=>{const r=n.getBoundingClientRect();return r.left>=-1&&r.right<=innerWidth+1})),`${width}: clipped content ${selector}`);
@@ -49,7 +49,7 @@ try{
   await page.locator('.archive-filters button').filter({hasText:/^전체 /}).click();
   assert((await page.locator('.artwork-card:visible').count())>=4);
   await page.locator('#work-search').fill('');
-  assert.equal(await page.locator('.artwork-card:visible').count(),45);
+  assert.equal(await page.locator('.artwork-card:visible').count(),46);
   await page.locator('.archive-filters button').filter({hasText:/^스킬 /}).click();
   assert.equal(await page.locator('.artwork-card:visible').count(),7);
   await page.locator('#work-search').fill('판단');
@@ -91,5 +91,5 @@ try{
  await page.locator('#closeViewer').click();
  assert.equal(await page.locator('#viewer').getAttribute('aria-hidden'),'true');
  assert.deepEqual(errors,[]);
- console.log(JSON.stringify({result:'pass',cards:45,readerPages:pages.length-1,widths:[1440,768,390,320],checks:['links and anchors','navigation','combined search and tag filters','skill filter','empty and reset states','image decoding','spoiler disclosure','webtoon page navigation','CSV sample and path','workroom open and close'],pageErrors:errors}));
+ console.log(JSON.stringify({result:'pass',cards:46,readerPages:pages.length-1,widths:[1440,768,390,320],checks:['links and anchors','navigation','combined search and tag filters','skill filter','empty and reset states','image decoding','spoiler disclosure','webtoon page navigation','CSV sample and path','workroom open and close'],pageErrors:errors}));
 }finally{await browser.close();}
