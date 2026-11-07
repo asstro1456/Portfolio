@@ -1,0 +1,292 @@
+[
+  {
+    "id": "V01",
+    "title": "디벨리 전신 리깅",
+    "page": "works/rigging-videos.html",
+    "file": "assets/works/videos/v01.mp4",
+    "poster": "assets/works/videos/v01.jpg",
+    "seconds": 6.0,
+    "bytes": 3175106,
+    "sha256": "999de6ddc48aa0871915a78bb10f92defcf4273750f3ec8b48c0a3bc38243c99"
+  },
+  {
+    "id": "V02",
+    "title": "백발 캐릭터 전신 Idle",
+    "page": "works/rigging-videos.html",
+    "file": "assets/works/videos/v02.mp4",
+    "poster": "assets/works/videos/v02.jpg",
+    "seconds": 6.0,
+    "bytes": 2361299,
+    "sha256": "7f6b01e2802cde64f1d8abd5571002996e90976abf0db5a7b5b1911e6c15aca1"
+  },
+  {
+    "id": "V03",
+    "title": "백발 캐릭터 v23 Idle",
+    "page": "works/rigging-videos.html",
+    "file": "assets/works/videos/v03.mp4",
+    "poster": "assets/works/videos/v03.jpg",
+    "seconds": 6.0,
+    "bytes": 1268535,
+    "sha256": "d8b5fe57dc956b3bf1b395a71f64786d54192db168d76abad8cdb8ae14126ae5"
+  },
+  {
+    "id": "V04",
+    "title": "리샤르 62·124·248본 비교",
+    "page": "works/rigging-videos.html",
+    "file": "assets/works/videos/v04.mp4",
+    "poster": "assets/works/videos/v04.jpg",
+    "seconds": 6.0,
+    "bytes": 4022649,
+    "sha256": "15a9d1daecca80db8a12bbc44baa1d781f8c5f50ed063dabc5a4e880736723ec"
+  },
+  {
+    "id": "V05",
+    "title": "리샤르 동작 강조 비교",
+    "page": "works/rigging-videos.html",
+    "file": "assets/works/videos/v05.mp4",
+    "poster": "assets/works/videos/v05.jpg",
+    "seconds": 18.0,
+    "bytes": 12064098,
+    "sha256": "ee10e5f6912028551ad2be081d8e15d88960ec36876575a7d1f3294e96c3574b"
+  },
+  {
+    "id": "V06",
+    "title": "악몽 리깅 프리뷰",
+    "page": "works/rigging-videos.html",
+    "file": "assets/works/videos/v06.webm",
+    "poster": "assets/works/videos/v06.jpg",
+    "seconds": 4.033,
+    "bytes": 694763,
+    "sha256": "a0a1435702c02db8419ef7166e86f05d2b725c2ab29de3382cc25b9e856a4b8e"
+  },
+  {
+    "id": "V07",
+    "title": "캐릭터 커서 3종 비교",
+    "page": "works/rigging-videos.html",
+    "file": "assets/works/videos/v07.mp4",
+    "poster": "assets/works/videos/v07.jpg",
+    "seconds": 8.0,
+    "bytes": 742697,
+    "sha256": "82bef66416a031ea52ff471be43787443d35932f068a8bd96eda623591911efa"
+  },
+  {
+    "id": "V08",
+    "title": "커서 손동작·효과 v2",
+    "page": "works/rigging-videos.html",
+    "file": "assets/works/videos/v08.mp4",
+    "poster": "assets/works/videos/v08.jpg",
+    "seconds": 8.0,
+    "bytes": 238928,
+    "sha256": "8d25c4755f50d84d2803f5264448a121cdaea7a29cd77e8de3032890dc98da94"
+  },
+  {
+    "id": "V09",
+    "title": "커서 몸체 고정 v4",
+    "page": "works/rigging-videos.html",
+    "file": "assets/works/videos/v09.mp4",
+    "poster": "assets/works/videos/v09.jpg",
+    "seconds": 8.0,
+    "bytes": 314645,
+    "sha256": "bb47ecaf8142d98184fea2cba518de882250376303b697134edb541e8c35eeb2"
+  },
+  {
+    "id": "V10",
+    "title": "악몽 입 타격 후보",
+    "page": "works/skill-vfx-videos.html",
+    "file": "assets/works/videos/v10.webm",
+    "poster": "assets/works/videos/v10.jpg",
+    "seconds": 6.709,
+    "bytes": 3213847,
+    "sha256": "08dd75c18315244b21009680ad3c02734257169f9cc29cdfafd7dda9d5d1bd64"
+  },
+  {
+    "id": "V11",
+    "title": "악몽 7초 연출 후보",
+    "page": "works/skill-vfx-videos.html",
+    "file": "assets/works/videos/v11.webm",
+    "poster": "assets/works/videos/v11.jpg",
+    "seconds": 7.042,
+    "bytes": 3215050,
+    "sha256": "bd6b73de3d4cf829bf6b299b7c3f55cfa56df57355048a5eb4426cb4526d58e3"
+  },
+  {
+    "id": "V12",
+    "title": "악몽 궁극기 v4 녹화",
+    "page": "works/skill-vfx-videos.html",
+    "file": "assets/works/videos/v12.webm",
+    "poster": "assets/works/videos/v12.jpg",
+    "seconds": 4.667,
+    "bytes": 2305056,
+    "sha256": "e6af722a0c12b1a148db77403434765dbff366401bee54d3d56363ac27ff01bd"
+  },
+  {
+    "id": "V13",
+    "title": "번개 폭주 카메라 연출",
+    "page": "works/skill-vfx-videos.html",
+    "file": "assets/works/videos/v13.webm",
+    "poster": "assets/works/videos/v13.jpg",
+    "seconds": 6.959,
+    "bytes": 1343006,
+    "sha256": "2da9faadf237c9784dc6e7c4134eb91e6b9c486eb129045c4f59b86682055bd7"
+  },
+  {
+    "id": "V14",
+    "title": "번개 폭주 v10·v12 비교",
+    "page": "works/skill-vfx-videos.html",
+    "file": "assets/works/videos/v14.webm",
+    "poster": "assets/works/videos/v14.jpg",
+    "seconds": 8.667,
+    "bytes": 4353169,
+    "sha256": "2539edb2eeea343bf9ebbb25ce9bc666d4859014f1d956f433656821d3d1035b"
+  },
+  {
+    "id": "V15",
+    "title": "태풍의 눈 v5 후보",
+    "page": "works/skill-vfx-videos.html",
+    "file": "assets/works/videos/v15.webm",
+    "poster": "assets/works/videos/v15.jpg",
+    "seconds": 13.125,
+    "bytes": 4051908,
+    "sha256": "2cc5e1d8da9d71b939ef6d5b37ecaa805a812ca674d624430d535fe509f459d6"
+  },
+  {
+    "id": "V16",
+    "title": "영혼·유언 크기 v8",
+    "page": "works/skill-vfx-videos.html",
+    "file": "assets/works/videos/v16.webm",
+    "poster": "assets/works/videos/v16.jpg",
+    "seconds": 2.033,
+    "bytes": 625514,
+    "sha256": "8b66ad638e86f64cc5954d243868ddf0592e3bef4fc222434c85f53ba79c1fda"
+  },
+  {
+    "id": "V17",
+    "title": "폭풍 저지 실패 연출",
+    "page": "works/skill-vfx-videos.html",
+    "file": "assets/works/videos/v17.mp4",
+    "poster": "assets/works/videos/v17.jpg",
+    "seconds": 3.75,
+    "bytes": 495158,
+    "sha256": "b1a6b58ad58c5f0c2a453fabdcc182e01d320af5ad7a040e1b473fe880109908"
+  },
+  {
+    "id": "V18",
+    "title": "11월 7일 번개 구름 비교",
+    "page": "works/skill-vfx-videos.html",
+    "file": "assets/works/videos/v18.webm",
+    "poster": "assets/works/videos/v18.jpg",
+    "seconds": 3.25,
+    "bytes": 1034896,
+    "sha256": "734dd7cad3b072680fa9f41f1028b33ef7edbd24aa1b0f3bce180c9499f047f0"
+  },
+  {
+    "id": "V19",
+    "title": "커스 스피어 3회",
+    "page": "works/skill-recordings.html",
+    "file": "assets/works/videos/v19.mp4",
+    "poster": "assets/works/videos/v19.jpg",
+    "seconds": 14.203,
+    "bytes": 9529365,
+    "sha256": "59cfc7771b57110690e3c60944c22b7cd3c30f76c68a13065c5f969add62fa69"
+  },
+  {
+    "id": "V20",
+    "title": "다중 영창 13회",
+    "page": "works/skill-recordings.html",
+    "file": "assets/works/videos/v20.mp4",
+    "poster": "assets/works/videos/v20.jpg",
+    "seconds": 57.804,
+    "bytes": 55582039,
+    "sha256": "552de7212ca0e35740f73994d66827a4f0a7faebeeacb38fd4b696a950f4127f"
+  },
+  {
+    "id": "V21",
+    "title": "태풍의 눈",
+    "page": "works/skill-recordings.html",
+    "file": "assets/works/videos/v21.mp4",
+    "poster": "assets/works/videos/v21.jpg",
+    "seconds": 17.074,
+    "bytes": 18968201,
+    "sha256": "d57585e21565ba8a04e658bfeb03ec956dbedc21812aef77ae044a86c2bfea42"
+  },
+  {
+    "id": "V22",
+    "title": "폭풍 장벽 활성화",
+    "page": "works/skill-recordings.html",
+    "file": "assets/works/videos/v22.mp4",
+    "poster": "assets/works/videos/v22.jpg",
+    "seconds": 13.503,
+    "bytes": 15427683,
+    "sha256": "76a2f319fa7aaceaf10175a077993148c971feda0006f75c10bd4e8f53f0dfce"
+  },
+  {
+    "id": "V23",
+    "title": "폭풍 장벽 성공",
+    "page": "works/skill-recordings.html",
+    "file": "assets/works/videos/v23.mp4",
+    "poster": "assets/works/videos/v23.jpg",
+    "seconds": 5.805,
+    "bytes": 7115529,
+    "sha256": "eb9d1f3f23d127601927265fbdb50a06ab380c06bfc44ba339e81703e3f50237"
+  },
+  {
+    "id": "V24",
+    "title": "기우제",
+    "page": "works/skill-recordings.html",
+    "file": "assets/works/videos/v24.mp4",
+    "poster": "assets/works/videos/v24.jpg",
+    "seconds": 8.021,
+    "bytes": 9185015,
+    "sha256": "ab43b63a8ae415ebfb72bfcbc471eaf671ff3e0a368023dc4514331beb750f8d"
+  },
+  {
+    "id": "V25",
+    "title": "낙뢰",
+    "page": "works/skill-recordings.html",
+    "file": "assets/works/videos/v25.mp4",
+    "poster": "assets/works/videos/v25.jpg",
+    "seconds": 12.634,
+    "bytes": 10910076,
+    "sha256": "ac861a9d985c993d5b92934484ba96a564a3e2ba015c4694c74c20933abfd57b"
+  },
+  {
+    "id": "V26",
+    "title": "잔류 전류",
+    "page": "works/skill-recordings.html",
+    "file": "assets/works/videos/v26.mp4",
+    "poster": "assets/works/videos/v26.jpg",
+    "seconds": 8.536,
+    "bytes": 7503612,
+    "sha256": "1454da9ec5fb03505c5f5e0e066006d9014949703a23c967731a64367cf90cc3"
+  },
+  {
+    "id": "V27",
+    "title": "일반 공격·피격·특수 피격",
+    "page": "works/skill-recordings.html",
+    "file": "assets/works/videos/v27.mp4",
+    "poster": "assets/works/videos/v27.jpg",
+    "seconds": 16.267,
+    "bytes": 15860760,
+    "sha256": "7b31b3b71692b5eaf1db61481c37a6d354c470ecbe748a2f04d62658b6d8c35e"
+  },
+  {
+    "id": "V28",
+    "title": "회복",
+    "page": "works/skill-recordings.html",
+    "file": "assets/works/videos/v28.mp4",
+    "poster": "assets/works/videos/v28.jpg",
+    "seconds": 8.674,
+    "bytes": 7228245,
+    "sha256": "83d3ac769203086de167f20c113a471c14ca82167d94a0a9b44761b0edce4e2c"
+  },
+  {
+    "id": "V29",
+    "title": "기절",
+    "page": "works/skill-recordings.html",
+    "file": "assets/works/videos/v29.mp4",
+    "poster": "assets/works/videos/v29.jpg",
+    "seconds": 10.467,
+    "bytes": 2388125,
+    "sha256": "4e3ee1e0a8851f78ca5c1630e26c8191e83c20ccdb4908a6cde2f26eaf32feb5"
+  }
+]
